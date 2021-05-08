@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>src.datastruct.maxheap &mdash; leetcode-in-python3 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> leetcode-in-python3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../algo/index.html">Algo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datastruct/index.html">Datastruct</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../solution/index.html">Solution</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">leetcode-in-python3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>src.datastruct.maxheap</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for src.datastruct.maxheap</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+
+<div class="viewcode-block" id="MaxHeap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.MaxHeap">[docs]</a><span class="k">class</span> <span class="nc">MaxHeap</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MaxHeap.heapify"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.MaxHeap.heapify">[docs]</a>    <span class="k">def</span> <span class="nf">heapify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        <span class="n">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">nums</span></div>
+
+<div class="viewcode-block" id="MaxHeap.push"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.MaxHeap.push">[docs]</a>    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">shiftup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MaxHeap.pop"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.MaxHeap.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">shiftdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item</span></div></div>
+
+
+<div class="viewcode-block" id="heapify"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.heapify">[docs]</a><span class="k">def</span> <span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="n">k</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">shiftdown</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="shiftup"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.shiftup">[docs]</a><span class="k">def</span> <span class="nf">shiftup</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">while</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+        <span class="n">nums</span><span class="p">[(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">nums</span><span class="p">[(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="shiftdown"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.shiftdown">[docs]</a><span class="k">def</span> <span class="nf">shiftdown</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">while</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+            <span class="k">break</span>
+        <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">j</span></div>
+
+
+<div class="viewcode-block" id="print_heap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.print_heap">[docs]</a><span class="k">def</span> <span class="nf">print_heap</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">max_level</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">number_per_level</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">max_level</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="n">number_per_level</span>
+        <span class="n">number_per_level</span> <span class="o">*=</span> <span class="mi">2</span>
+
+    <span class="n">max_level_number</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">max_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cur_tree_max_level_number</span> <span class="o">=</span> <span class="n">max_level_number</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_level</span><span class="p">):</span>
+        <span class="n">line1</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_level_number</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cur_level_number</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">level</span><span class="p">)</span>
+        <span class="n">is_left</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">index_cur_level</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">while</span> <span class="n">index_cur_level</span> <span class="o">&lt;</span> <span class="n">cur_level_number</span><span class="p">:</span>
+            <span class="n">line1</span> <span class="o">=</span> <span class="n">put_number_in_line</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">line1</span><span class="p">,</span> <span class="n">index_cur_level</span><span class="p">,</span> <span class="n">cur_tree_max_level_number</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                                       <span class="n">is_left</span><span class="p">)</span>
+            <span class="n">is_left</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">is_left</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">index_cur_level</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="n">max_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">line2</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_level_number</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index_cur_level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cur_level_number</span><span class="p">):</span>
+            <span class="n">line2</span> <span class="o">=</span> <span class="n">put_branch_in_line</span><span class="p">(</span><span class="n">line2</span><span class="p">,</span> <span class="n">index_cur_level</span><span class="p">,</span> <span class="n">cur_tree_max_level_number</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line2</span><span class="p">)</span>
+
+        <span class="n">cur_tree_max_level_number</span> <span class="o">//=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="put_number_in_line"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.put_number_in_line">[docs]</a><span class="k">def</span> <span class="nf">put_number_in_line</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">index_cur_level</span><span class="p">,</span> <span class="n">cur_tree_width</span><span class="p">,</span> <span class="n">is_left</span><span class="p">):</span>
+    <span class="n">sub_tree_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">cur_tree_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">index_cur_level</span> <span class="o">*</span> <span class="p">(</span><span class="n">cur_tree_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">sub_tree_width</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_left</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">line</span></div>
+
+
+<div class="viewcode-block" id="put_branch_in_line"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.put_branch_in_line">[docs]</a><span class="k">def</span> <span class="nf">put_branch_in_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">index_cur_level</span><span class="p">,</span> <span class="n">cur_tree_width</span><span class="p">):</span>
+    <span class="n">sub_tree_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">cur_tree_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">sub_sub_tree_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">sub_tree_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">offset_left</span> <span class="o">=</span> <span class="n">index_cur_level</span> <span class="o">*</span> <span class="p">(</span><span class="n">cur_tree_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">sub_sub_tree_width</span>
+    <span class="n">offset_right</span> <span class="o">=</span> <span class="n">index_cur_level</span> <span class="o">*</span> <span class="p">(</span><span class="n">cur_tree_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">sub_tree_width</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">sub_sub_tree_width</span>
+
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">offset_left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">line</span><span class="p">[</span><span class="n">offset_left</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:]</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">offset_right</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">line</span><span class="p">[</span><span class="n">offset_right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">line</span></div>
+
+
+<div class="viewcode-block" id="TestMaxHeap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.TestMaxHeap">[docs]</a><span class="k">class</span> <span class="nc">TestMaxHeap</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TestMaxHeap.test_heapify"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.TestMaxHeap.test_heapify">[docs]</a>    <span class="k">def</span> <span class="nf">test_heapify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">src.algo.sort</span> <span class="kn">import</span> <span class="n">helper</span>
+        <span class="n">test_case</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">helper</span><span class="o">.</span><span class="n">random_nums</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">nums</span> <span class="ow">in</span> <span class="n">test_case</span><span class="p">:</span>
+            <span class="n">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">helper</span><span class="o">.</span><span class="n">is_maxheap</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, rsj217.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
