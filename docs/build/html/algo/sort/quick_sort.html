@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quick Sort &mdash; leetcode-in-python3 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Merge Sort" href="merge_sort.html" />
+    <link rel="prev" title="Insert Sort" href="insert_sort.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> leetcode-in-python3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Algo</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Sort</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="select_sort.html">Select Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="insert_sort.html">Insert Sort</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quick Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge_sort.html">Merge Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="heap_sort.html">Heap Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="helper.html">helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html">performance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../datastruct/index.html">Datastruct</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../solution/index.html">Solution</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">leetcode-in-python3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Algo</a> &raquo;</li>
+        
+          <li><a href="index.html">Sort</a> &raquo;</li>
+        
+      <li>Quick Sort</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/algo/sort/quick_sort.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-src.algo.sort.quick_sort">
+<span id="quick-sort"></span><h1>Quick Sort<a class="headerlink" href="#module-src.algo.sort.quick_sort" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="src.algo.sort.quick_sort.TestMain">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.algo.sort.quick_sort.</span></code><code class="sig-name descname"><span class="pre">TestMain</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/algo/sort/quick_sort.html#TestMain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.sort.quick_sort.TestMain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt id="src.algo.sort.quick_sort.TestMain.setUp">
+<code class="sig-name descname"><span class="pre">setUp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="../../_modules/src/algo/sort/quick_sort.html#TestMain.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.sort.quick_sort.TestMain.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.algo.sort.quick_sort.TestMain.test_solution">
+<code class="sig-name descname"><span class="pre">test_solution</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/algo/sort/quick_sort.html#TestMain.test_solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.sort.quick_sort.TestMain.test_solution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="src.algo.sort.quick_sort.partition">
+<code class="sig-prename descclassname"><span class="pre">src.algo.sort.quick_sort.</span></code><code class="sig-name descname"><span class="pre">partition</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hi</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/algo/sort/quick_sort.html#partition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.sort.quick_sort.partition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="src.algo.sort.quick_sort.quick_3way_sort">
+<code class="sig-prename descclassname"><span class="pre">src.algo.sort.quick_sort.</span></code><code class="sig-name descname"><span class="pre">quick_3way_sort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/algo/sort/quick_sort.html#quick_3way_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.sort.quick_sort.quick_3way_sort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="src.algo.sort.quick_sort.quick_sort">
+<code class="sig-prename descclassname"><span class="pre">src.algo.sort.quick_sort.</span></code><code class="sig-name descname"><span class="pre">quick_sort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/algo/sort/quick_sort.html#quick_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.sort.quick_sort.quick_sort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="merge_sort.html" class="btn btn-neutral float-right" title="Merge Sort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="insert_sort.html" class="btn btn-neutral float-left" title="Insert Sort" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, rsj217.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
