@@ -5,4 +5,5 @@ Algo
    :maxdepth: 2
 
    sort/index
+   search/index
 

@@ -51,6 +51,7 @@ Solution
    374_guess_number_higher_or_lo
    513_find_bottom_left_tree_value
    515_find_largest_value_in_each_tree_row
+   538_binary_search_tree_to_greater_sum_tree
    543_diameter_of_binary_tree
    589_n_ary_tree_preorder_traversal
    655_print_binary_tree

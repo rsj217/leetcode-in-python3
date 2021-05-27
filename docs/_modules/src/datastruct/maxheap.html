@@ -205,7 +205,30 @@
         <span class="n">k</span> <span class="o">=</span> <span class="n">j</span></div>
 
 
-<div class="viewcode-block" id="print_heap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.print_heap">[docs]</a><span class="k">def</span> <span class="nf">print_heap</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+<div class="viewcode-block" id="print_heap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.print_heap">[docs]</a><span class="k">def</span> <span class="nf">print_heap</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">:</span>
+        <span class="n">height</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot; &quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">)]</span>
+
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">deep</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">seq</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">lo</span> <span class="o">+</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">ans</span><span class="p">[</span><span class="n">deep</span><span class="p">][</span><span class="n">mid</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">seq</span><span class="p">])</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">seq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">deep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">seq</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">deep</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span>
+
+    <span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="draw_heap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.draw_heap">[docs]</a><span class="k">def</span> <span class="nf">draw_heap</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="n">max_level</span> <span class="o">=</span> <span class="mi">0</span>
@@ -283,6 +306,17 @@
         <span class="k">for</span> <span class="n">nums</span> <span class="ow">in</span> <span class="n">test_case</span><span class="p">:</span>
             <span class="n">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">helper</span><span class="o">.</span><span class="n">is_maxheap</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="TestPrintHeap"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.TestPrintHeap">[docs]</a><span class="k">class</span> <span class="nc">TestPrintHeap</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TestPrintHeap.test_print"><a class="viewcode-back" href="../../../datastruct/maxheap.html#src.datastruct.maxheap.TestPrintHeap.test_print">[docs]</a>    <span class="k">def</span> <span class="nf">test_print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">print_heap</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">()</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

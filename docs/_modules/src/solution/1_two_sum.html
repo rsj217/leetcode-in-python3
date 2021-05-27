@@ -154,7 +154,51 @@
            <div itemprop="articleBody">
             
   <h1>Source code for src.solution.1_two_sum</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">`Problem &lt;https://leetcode-cn.com/problems/two-sum/&gt;`_</span>
+<span class="sd">--------------------------------------------------------</span>
+
+<span class="sd">定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。</span>
+<span class="sd">你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</span>
+<span class="sd">你可以按任意顺序返回答案。</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    示例 1：</span>
+
+<span class="sd">    入：nums = [2,7,11,15], target = 9</span>
+<span class="sd">    出：[0,1]</span>
+<span class="sd">    释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</span>
+
+<span class="sd">    示例 2：</span>
+
+<span class="sd">    入：nums = [3,2,4], target = 6</span>
+<span class="sd">    出：[1,2]</span>
+
+<span class="sd">    示例 3：</span>
+
+<span class="sd">    入：nums = [3,3], target = 6</span>
+<span class="sd">    出：[0,1]</span>
+
+
+<span class="sd">    提示：</span>
+
+<span class="sd">    2 &lt;= nums.length &lt;= 103</span>
+<span class="sd">    -109 &lt;= nums[i] &lt;= 109</span>
+<span class="sd">    -109 &lt;= target &lt;= 109</span>
+<span class="sd">    只会存在一个有效答案</span>
+
+<span class="sd">Tips</span>
+<span class="sd">------</span>
+
+<span class="sd">使用 `~hash` map</span>
+
+<span class="sd">Answer</span>
+<span class="sd">------</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../solution/1_two_sum.html#src.solution.1_two_sum.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>

@@ -90,7 +90,12 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Solution</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1_two_sum</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1_two_sum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answer">Answer</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="2_add_two_numbers.html">2_add_two_numbers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3_longest_substring_without_repeating_characters.html">3_longest_substring_without_repeating_characters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5_longest_palindromic_substring.html">5_longest_palindromic_substring</a></li>
@@ -137,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="513_find_bottom_left_tree_value.html">513_find_bottom_left_tree_value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="515_find_largest_value_in_each_tree_row.html">515_find_largest_value_in_each_tree_row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html">538_binary_search_tree_to_greater_sum_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="543_diameter_of_binary_tree.html">543_diameter_of_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="589_n_ary_tree_preorder_traversal.html">589_n_ary_tree_preorder_traversal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="655_print_binary_tree.html">655_print_binary_tree</a></li>
@@ -223,6 +229,43 @@
             
   <div class="section" id="module-src.solution.1_two_sum">
 <span id="two-sum"></span><h1>1_two_sum<a class="headerlink" href="#module-src.solution.1_two_sum" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="https://leetcode-cn.com/problems/two-sum/">Problem</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+你可以按任意顺序返回答案。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>示例 1：
+
+入：nums = [2,7,11,15], target = 9
+出：[0,1]
+释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+
+示例 2：
+
+入：nums = [3,2,4], target = 6
+出：[1,2]
+
+示例 3：
+
+入：nums = [3,3], target = 6
+出：[0,1]
+
+
+提示：
+
+2 &lt;= nums.length &lt;= 103
+-109 &lt;= nums[i] &lt;= 109
+-109 &lt;= target &lt;= 109
+只会存在一个有效答案
+</pre></div>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<p>使用 <cite>~hash</cite> map</p>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="src.solution.1_two_sum.Solution">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.solution.1_two_sum.</span></code><code class="sig-name descname"><span class="pre">Solution</span></code><a class="reference internal" href="../_modules/src/solution/1_two_sum.html#Solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.1_two_sum.Solution" title="Permalink to this definition">¶</a></dt>
@@ -234,6 +277,7 @@
 
 </dd></dl>
 
+</div>
 </div>
 
 
