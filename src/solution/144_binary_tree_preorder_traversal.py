@@ -4,42 +4,34 @@ import unittest
 
 
 class Solution:
-    def postorderTraversal(self, root: TreeNode) -> List[int]:
-        # num = random.randint(0, 2)
-        num = 1
-        d = {
-            0: self._postorderTraversalRecursion,
-            1: self._postorderTraversalIter,
-        }
-        return list(d[num](root))
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        return list(self.preorder(root))
 
-    def _postorderTraversalRecursion(self, root: TreeNode):
-        if root is None:
-            return
-        # 访问左子树
-        yield from self._postorderTraversalRecursion(root.left)
-        # 访问右子树
-        yield from self._postorderTraversalRecursion(root.right)
-        # 访问 root 节点
-        yield root.val
-
-    def _postorderTraversalIter(self, root: TreeNode):
-        pre_node = None
-        node = root
+    def preorder(self, node: TreeNode):
         stack = []
         while True:
             while node is not None:
+                yield node.val
                 stack.append(node)
                 node = node.left
+
             if len(stack) <= 0:
                 break
 
-            if stack[-1].right != pre_node:
-                node = stack[-1].right
-                pre_node = None
-            else:
-                pre_node = stack.pop()
-                yield pre_node.val
+            node = stack.pop()
+            node = node.right
+
+    def preorder_dfs(self, node: TreeNode):
+        if node is None:
+            return
+        stack = [node]
+        while len(stack) > 0:
+            node = stack.pop()
+            yield node.val
+            if node.right is not None:
+                stack.append(node.right)
+            if node.left is not None:
+                stack.append(node.left)
 
 
 class TestSolution(unittest.TestCase):
@@ -47,19 +39,19 @@ class TestSolution(unittest.TestCase):
     def setUp(self):
         self.test_case = [
             ([], []),
-            ([1, None, 2, 3], [3, 2, 1]),
+            ([1, None, 2, 3], [1, 2, 3]),
             ([1], [1]),
-            ([1, 2], [2, 1]),
-            ([1, None, 2], [2, 1]),
-            ([1, 2], [2, 1]),
+            ([1, 2], [1, 2]),
+            ([1, None, 2], [1, 2]),
+            ([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8], [1, 2, 4, 7, 3, 5, 6, 8])
         ]
         self.s = Solution()
 
     def test_solution(self):
         for nums, answer in self.test_case:
             root = TreeNode.create(nums)
-            ans = self.s.postorderTraversal(root)
-            self.assertEqual(answer,ans )
+            ans = self.s.preorderTraversal(root)
+            self.assertEqual(answer, ans)
 
 
 if __name__ == '__main__':

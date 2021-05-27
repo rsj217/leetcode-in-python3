@@ -49,7 +49,30 @@ def shiftdown(nums: List[int], k: int):
         k = j
 
 
-def print_heap(nums):
+def print_heap(nums) -> str:
+    size = len(nums)
+    i = 0
+    height = 1
+    while 2 * i + 1 < size:
+        height += 1
+        i = 2 * i + 1
+
+    width = (1 << height) - 1
+    ans = [[" " for _ in range(width)] for _ in range(height)]
+
+    def dfs(seq, deep, lo, hi):
+        if seq >= size:
+            return
+        mid = lo + (hi - lo) // 2
+        ans[deep][mid] = str(nums[seq])
+        dfs(2 * seq + 1, deep + 1, lo, mid)
+        dfs(2 * seq + 2, deep + 1, mid + 1, hi)
+
+    dfs(0, 0, 0, width)
+    return "\n".join(["".join(line) for line in ans])
+
+
+def draw_heap(nums):
     n = len(nums)
     count = len(nums)
     max_level = 0
@@ -127,6 +150,17 @@ class TestMaxHeap(unittest.TestCase):
         for nums in test_case:
             heapify(nums)
             self.assertTrue(helper.is_maxheap(nums))
+
+
+class TestPrintHeap(unittest.TestCase):
+
+    def test_print(self):
+        for i in range(10):
+            nums = list(range(i))
+            print(i, nums)
+            s = print_heap(nums)
+            print(s)
+            print()
 
 
 if __name__ == '__main__':

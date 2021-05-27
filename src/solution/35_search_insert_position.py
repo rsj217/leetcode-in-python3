@@ -22,9 +22,11 @@ class TestSolution(unittest.TestCase):
         self.input = [
             ([1,3,4,6], 7),
             ([4,5,5,5,], 5),
+            ([1, 2, 2, 3, 4, 5], 2),
         ]
         self.answer = [
             4,
+            1,
             1,
         ]
         self.s = Solution()

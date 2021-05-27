@@ -1,4 +1,4 @@
-from src.datastruct.treenode import TreeNode, tree_literal
+from src.datastruct.treenode import TreeNode
 import unittest
 
 
@@ -34,7 +34,7 @@ class TestSolution(unittest.TestCase):
         for nums, answer in self.test_case:
             root = TreeNode.create(nums)
             ans = self.s.pruneTree(root)
-            self.assertEqual(answer, tree_literal(ans))
+            self.assertEqual(answer, TreeNode.literal(ans))
 
 
 if __name__ == '__main__':

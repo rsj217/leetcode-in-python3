@@ -54,9 +54,35 @@ class TreeNode:
                 index += 1
         return root
 
+    @classmethod
+    def literal(cls, root) -> List[int]:
+        if root is None:
+            return []
+
+        queue = deque()
+        queue.append(root)
+        ans = []
+        while len(queue) > 0:
+            qsize = len(queue)
+            for i in range(qsize):
+                node = queue.popleft()
+                if node is not None:
+                    ans.append(node.val)
+                    queue.append(node.left)
+                    queue.append(node.right)
+                else:
+                    ans.append(None)
+
+        size = len(ans)
+        for i in range(size - 1, -1, -1):
+            if ans[i] is None:
+                ans.pop()
+            else:
+                break
+        return ans
+
 
 def print_tree(node) -> str:
-    num = random.randint(0, 1)
     num = 1
     d = {
         0: print_tree_dfs,
@@ -104,61 +130,12 @@ def print_tree_dfs(node: TreeNode) -> List[List[str]]:
         if node is None:
             return
         mid = lo + (hi - lo) // 2
-        ans[deep - 1][mid] = str(node.val)
+        ans[deep][mid] = str(node.val)
         dfs(node.left, deep + 1, lo, mid)
         dfs(node.right, deep + 1, mid + 1, hi)
 
-    dfs(node, 1, 0, width)
+    dfs(node, 0, 0, width)
     return ans
-
-
-def tree_deep(node: TreeNode) -> int:
-    max_deep = 0
-
-    def dfs(node: TreeNode, level: int):
-        nonlocal max_deep
-        if node is None:
-            return
-        max_deep = max(max_deep, level)
-        dfs(node.left, level + 1)
-        dfs(node.right, level + 1)
-
-    dfs(node, 0)
-    return max_deep
-
-
-def tree_literal(node: TreeNode) -> List[int]:
-    if node is None:
-        return []
-    max_deep = tree_deep(node)
-    ret = [node.val]
-    queue = [node]
-
-    deep = -1
-    while len(queue) > 0:
-        size = len(queue)
-        deep += 1
-        for i in range(size):
-            node = queue.pop(0)
-            if node.left is not None:
-                queue.append(node.left)
-            if node.right is not None:
-                queue.append(node.right)
-            if deep < max_deep:
-                left, right = None, None
-                if node.left is not None:
-                    left = node.left.val
-                if node.right is not None:
-                    right = node.right.val
-                ret.append(left)
-                ret.append(right)
-
-    for i in range(len(ret) - 1, -1, -1):
-        if ret[i] is None:
-            ret.pop()
-        else:
-            break
-    return ret
 
 
 class TestTreeNode(unittest.TestCase):
@@ -174,7 +151,7 @@ class TestTreeNode(unittest.TestCase):
         self.assertEqual(root.left.val, 2)
         self.assertEqual(root.right.val, 3)
 
-        self.assertEqual(nums, tree_literal(root))
+        self.assertEqual(nums, TreeNode.literal(root))
 
         nums = [1, None, 2, 3]
         root = TreeNode.create(nums)
@@ -183,7 +160,7 @@ class TestTreeNode(unittest.TestCase):
         self.assertEqual(root.right.val, 2)
         self.assertEqual(root.right.left.val, 3)
 
-        self.assertEqual(nums, tree_literal(root))
+        self.assertEqual(nums, TreeNode.literal(root))
 
         nums = [1, 2, 3, None, 4, 5]
         root = TreeNode.create(nums)
@@ -194,7 +171,7 @@ class TestTreeNode(unittest.TestCase):
         self.assertEqual(root.left.right.val, 4)
         self.assertEqual(root.right.left.val, 5)
 
-        self.assertEqual(nums, tree_literal(root))
+        self.assertEqual(nums, TreeNode.literal(root))
 
         nums = [1, 2, 3, None, None, 5]
         root = TreeNode.create(nums)
@@ -205,7 +182,7 @@ class TestTreeNode(unittest.TestCase):
         self.assertIsNone(root.left.right)
         self.assertEqual(root.right.left.val, 5)
 
-        self.assertEqual(nums, tree_literal(root))
+        self.assertEqual(nums, TreeNode.literal(root))
 
         nums = [1, 2, 3, None, None, 5, None, 6]
         root = TreeNode.create(nums)
@@ -218,7 +195,7 @@ class TestTreeNode(unittest.TestCase):
         self.assertIsNone(root.right.right)
         self.assertEqual(root.right.left.left.val, 6)
 
-        self.assertEqual(nums, tree_literal(root))
+        self.assertEqual(nums, TreeNode.literal(root))
 
 
 class TestPrintTreeNode(unittest.TestCase):
@@ -228,29 +205,28 @@ class TestPrintTreeNode(unittest.TestCase):
         print(print_tree(root))
 
     def test_print_tree(self):
-        # root = TreeNode.create([1, 2, None, 2, None, 3])
-        # root = TreeNode.create([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
-        # print(print_tree(root))
-        #
-        # nums = [1, None, 2, 3]
-        # root = TreeNode.create(nums)
-        # print(print_tree(root))
-        #
-        # nums = [1, 2, None, 3]
-        # root = TreeNode.create(nums)
-        # print(print_tree(root))
+        root = TreeNode.create([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
+        print(print_tree(root))
+
+        nums = [1, None, 2, 3]
+        root = TreeNode.create(nums)
+        print(print_tree(root))
+
+        nums = [1, 2, None, 3]
+        root = TreeNode.create(nums)
+        print(print_tree(root))
 
         nums = [1, 2, 3, None, 4, 5]
         root = TreeNode.create(nums)
         print(print_tree(root))
-        #
-        # nums = [1, 2, 3, None, None, 5]
-        # root = TreeNode.create(nums)
-        # print(print_tree(root))
-        #
-        # nums = [1, 2, 3, None, None, 5, None, 6]
-        # root = TreeNode.create(nums)
-        # print(print_tree(root))
+
+        nums = [1, 2, 3, None, None, 5]
+        root = TreeNode.create(nums)
+        print(print_tree(root))
+
+        nums = [1, 2, 3, None, None, 5, None, 6]
+        root = TreeNode.create(nums)
+        print(print_tree(root))
 
 
 if __name__ == '__main__':
