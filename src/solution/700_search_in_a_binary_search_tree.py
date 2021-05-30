@@ -31,7 +31,7 @@ class TestSolution(unittest.TestCase):
     def test_solution(self):
         for nums, target, answer in self.test_case:
             ans = self.s.search(nums, target)
-            self.assertEqual(answer,ans , (nums, answer))
+            self.assertEqual(answer, ans, (nums, answer))
 
 
 if __name__ == '__main__':

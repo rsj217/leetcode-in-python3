@@ -54,6 +54,7 @@ Solution
    538_binary_search_tree_to_greater_sum_tree
    543_diameter_of_binary_tree
    589_n_ary_tree_preorder_traversal
+   654_maximum_binary_tree
    655_print_binary_tree
    662_maximum_width_of_binary_tree
    704_binary_search

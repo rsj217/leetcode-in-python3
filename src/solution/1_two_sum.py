@@ -35,7 +35,7 @@
 Tips
 ------
 
-使用 `~hash` map
+
 
 Answer
 ------
