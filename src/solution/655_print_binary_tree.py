@@ -1,6 +1,6 @@
 from typing import List
 from collections import deque
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 
 
 class Solution:

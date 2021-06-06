@@ -154,17 +154,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for src.solution.1038_binary_search_tree_to_greater_sum_tree</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">src.datastruct.treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span></span><span class="kn">from</span> <span class="nn">src.datastruct.treenode.treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
-
-<span class="c1"># Definition for a binary tree node.</span>
-<span class="c1"># class TreeNode:</span>
-<span class="c1">#     def __init__(self, val=0, left=None, right=None):</span>
-<span class="c1">#         self.val = val</span>
-<span class="c1">#         self.left = left</span>
-<span class="c1">#         self.right = right</span>
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../solution/1038_binary_search_tree_to_greater_sum_tree.html#src.solution.1038_binary_search_tree_to_greater_sum_tree.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
 <div class="viewcode-block" id="Solution.bstToGst"><a class="viewcode-back" href="../../../solution/1038_binary_search_tree_to_greater_sum_tree.html#src.solution.1038_binary_search_tree_to_greater_sum_tree.Solution.bstToGst">[docs]</a>    <span class="k">def</span> <span class="nf">bstToGst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TreeNode</span><span class="p">:</span>
@@ -219,7 +212,7 @@
 <div class="viewcode-block" id="TestSolution.test_solution"><a class="viewcode-back" href="../../../solution/1038_binary_search_tree_to_greater_sum_tree.html#src.solution.1038_binary_search_tree_to_greater_sum_tree.TestSolution.test_solution">[docs]</a>    <span class="k">def</span> <span class="nf">test_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">nums</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">bstToGst</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="c1"># TODO</span></div></div>
+            <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">bstToGst</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>  <span class="c1"># TODO</span></div></div>
             <span class="c1"># self.assertEqual(answer,ans , (nums, answer))</span>
 
 

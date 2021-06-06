@@ -37,7 +37,7 @@ class TreeNode:
         """ 树高属性，已当前节点为root的树的树高
         ::
 
-            >>> from src.datastruct.treenode import TreeNode
+            >>> from src.datastruct.treenode.treenode import TreeNode
             >>> root = TreeNode(val=1)
             >>> height = root.height
         """
@@ -63,13 +63,13 @@ class TreeNode:
 
         ::
 
-            >>> nums = [
+            nums = [
                 1,
                 2, 3,
                 4, None, 5, 6,
                 None, 7, None, None, 8,
             ]
-            >>> root = TreeNode.create(nums)
+            root = TreeNode.create(nums)
 
         root 的拓扑形状如下，可以使用该模块的 ``print_tree`` 打印树的拓扑
 
@@ -118,13 +118,13 @@ class TreeNode:
 
         ::
 
-            >>> from src.datastruct.treenode import TreeNode
-            >>> nums = [
+            from src.datastruct.treenode import TreeNode
+            nums = [
                 1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8,
             ]
-            >>> root = TreeNode.create(nums)
-            >>> ans = TreeNode.literal(root)
-            >>> assert nums, ans, "err"
+            root = TreeNode.create(nums)
+            ans = TreeNode.literal(root)
+            assert nums, ans, "err"
         """
 
         if root is None:
@@ -223,6 +223,7 @@ def print_tree_bfs(node: TreeNode) -> List[List[str]]:
             if node.right is not None:
                 queue.append((node.right, 2 * seq + 2))
     return levels
+
 
 
 class TestTreeNode(unittest.TestCase):

@@ -1,8 +1,6 @@
-from typing import List
-from collections import deque
-import unittest
-import random
+""" N 叉树 节点定义
 
+"""
 
 class TreeNode:
     def __init__(self, val=0):

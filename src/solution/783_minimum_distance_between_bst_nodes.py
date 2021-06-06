@@ -1,6 +1,7 @@
 import random
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 import unittest
+
 
 class Solution:
     def minDiffInBST(self, root: TreeNode) -> int:
@@ -20,9 +21,9 @@ class Solution:
                 return
 
             if l is not None:
-                ans = min(ans , abs(l - node.val))
+                ans = min(ans, abs(l - node.val))
             if r is not None:
-                ans = min(ans , abs(node.val - r))
+                ans = min(ans, abs(node.val - r))
             _dfs(node.left, l, node.val)
             _dfs(node.right, node.val, r)
 
@@ -41,7 +42,7 @@ class Solution:
                 break
             node = stack.pop()
             if prev is not None:
-                ans = min(ans , node.val - prev.val)
+                ans = min(ans, node.val - prev.val)
             prev = node
             node = node.right
         return ans
@@ -53,6 +54,7 @@ class TestSolution(unittest.TestCase):
         self.test_case = [
             ([6, 3, 9, 1, 5], 1),
             ([4, 2, 6, 1, 3, None, None], 1),
+            ([6, 3, None, 1], 2),
         ]
         self.s = Solution()
 
@@ -60,7 +62,7 @@ class TestSolution(unittest.TestCase):
         for nums, answer in self.test_case:
             root = TreeNode.create(nums)
             ans = self.s.minDiffInBST(root)
-            self.assertEqual(answer,ans )
+            self.assertEqual(answer, ans)
 
 
 if __name__ == '__main__':

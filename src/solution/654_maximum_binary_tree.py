@@ -50,7 +50,7 @@ Answer
 """
 
 from typing import List
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 
 
 class Solution:

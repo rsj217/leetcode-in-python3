@@ -154,14 +154,102 @@
            <div itemprop="articleBody">
             
   <h1>Source code for src.solution.98_validate_binary_search_tree</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">src.datastruct.treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">`Problem &lt;https:leetcode-cn.com/problems/validate-binary-search-tree/&gt;`_</span>
+<span class="sd">-------------------------------------------------------------------------</span>
+
+<span class="sd">给定一个二叉树，判断其是否是一个有效的二叉搜索树。</span>
+
+<span class="sd">假设一个二叉搜索树具有如下特征：</span>
+
+<span class="sd">* 节点的左子树只包含小于当前节点的数。</span>
+<span class="sd">* 节点的右子树只包含大于当前节点的数。</span>
+<span class="sd">* 所有左子树和右子树自身必须也是二叉搜索树。</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    示例 1:</span>
+<span class="sd">    输入:</span>
+<span class="sd">      2</span>
+<span class="sd">     / \\</span>
+<span class="sd">    1   3</span>
+<span class="sd">    输出: true</span>
+
+<span class="sd">    示例 2:</span>
+<span class="sd">    输入:</span>
+<span class="sd">      5</span>
+<span class="sd">     / \\</span>
+<span class="sd">    1   4</span>
+<span class="sd">       / \\</span>
+<span class="sd">      3   6</span>
+<span class="sd">    输出: false</span>
+<span class="sd">    解释: 输入为: [5,1,4,null,null,3,6]。</span>
+<span class="sd">        根节点的值为 5 ，但是其右子节点值为 4 。</span>
+
+<span class="sd">Tips</span>
+<span class="sd">------</span>
+
+<span class="sd">方法一 中序遍历:</span>
+
+<span class="sd">使用中序遍历的顺序是树节点的投影性质。存储一个 ``prev`` 节点，每次访问节点的时候比较 ``prev &lt; curnode`` 。</span>
+<span class="sd">如果不是单调递增，则不符合二叉搜索树的定义。即可返回结果</span>
+
+<span class="sd">方法二 DFS递归：</span>
+
+<span class="sd">根据二叉树搜索树的定义，``左边的节点 &lt; 当前节点 &lt; 右边的节点`` 左边的节点可能是左孩子，也可能是左孩子的右孩子</span>
+
+<span class="sd">::</span>
+
+<span class="sd">     10</span>
+<span class="sd">    /</span>
+<span class="sd">  5</span>
+<span class="sd">   \\</span>
+<span class="sd">    8</span>
+
+<span class="sd">因此每次递归的时候，需要传入一个下界（左边最大值）和一个上界（右边最小值）。使用 DFS 递归遍历即可。伪代码如下：</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    def dfs(node, lval, rval) -&gt; bool:</span>
+<span class="sd">        # 空树属于二叉搜索树</span>
+<span class="sd">        if node is None:</span>
+<span class="sd">            return True</span>
+
+<span class="sd">        # 当前节点在 (lval, rval) 区间内，递归左右子树</span>
+<span class="sd">        if lval &lt; node.val &lt; rval:</span>
+<span class="sd">            # 递归左子树，当前节点为左子树的上界。</span>
+<span class="sd">            lvalid =  dfs(node.left, lval, node.val)</span>
+<span class="sd">            # 递归右子树，当前节点为右子树的下界。</span>
+<span class="sd">            rvalid =  dfs(node.right, node.val, rval)</span>
+<span class="sd">            # 左右子树都是二叉搜索树</span>
+<span class="sd">            return lvalid and rvalid</span>
+<span class="sd">        else: # 当前节点不在 (lval, rval) 区间内，不符合二叉搜索树定义，返回 False</span>
+<span class="sd">            return False</span>
+
+<span class="sd">dfs 方法中，通常可以使用 ``and`` 或 ``or`` 逻辑表达式通过短路提前返回，优化性能 ``return dfs(node.left) and dfs(node.right)``</span>
+
+<span class="sd">Answer</span>
+<span class="sd">------</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">src.datastruct.treenode.treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../solution/98_validate_binary_search_tree.html#src.solution.98_validate_binary_search_tree.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
 <div class="viewcode-block" id="Solution.isValidBST"><a class="viewcode-back" href="../../../solution/98_validate_binary_search_tree.html#src.solution.98_validate_binary_search_tree.Solution.isValidBST">[docs]</a>    <span class="k">def</span> <span class="nf">isValidBST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">inorder</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">num</span><span class="p">](</span><span class="n">root</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.inorder"><a class="viewcode-back" href="../../../solution/98_validate_binary_search_tree.html#src.solution.98_validate_binary_search_tree.Solution.inorder">[docs]</a>    <span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; 中序遍历 &quot;&quot;&quot;</span>
         <span class="n">prev</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">root</span>
         <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -174,7 +262,19 @@
                 <span class="k">return</span> <span class="kc">False</span>
             <span class="n">prev</span> <span class="o">=</span> <span class="n">node</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span>
-        <span class="k">return</span> <span class="kc">True</span></div></div>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="Solution.dfs"><a class="viewcode-back" href="../../../solution/98_validate_binary_search_tree.html#src.solution.98_validate_binary_search_tree.Solution.dfs">[docs]</a>    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; dfs 递归遍历 &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">lval</span><span class="p">,</span> <span class="n">rval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">lval</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">rval</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">lval</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="ow">and</span> <span class="n">_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">rval</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="n">_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span></div></div>
 
 
 <div class="viewcode-block" id="TestSolution"><a class="viewcode-back" href="../../../solution/98_validate_binary_search_tree.html#src.solution.98_validate_binary_search_tree.TestSolution">[docs]</a><span class="k">class</span> <span class="nc">TestSolution</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
@@ -191,7 +291,7 @@
         <span class="k">for</span> <span class="n">nums</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
             <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">isValidBST</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span><span class="n">ans</span> <span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

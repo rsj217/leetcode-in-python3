@@ -2,7 +2,7 @@ Solution
 ==========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    1_two_sum
    2_add_two_numbers
@@ -31,6 +31,7 @@ Solution
    104_maximum_depth_of_binary_tree
    105_construct_binary_tree_from_preorder_and_inorder_traversal
    106_construct_binary_tree_from_postorder_and_inorder_traversal
+   110_balanced_binary_tree
    112_path_sum
    113_path_sum_ii
    114_flatten_binary_tree_to_linked_list
@@ -49,8 +50,11 @@ Solution
    236_lowest_common_ancestor_of_a_binary_tree
    257_binary_tree_paths
    374_guess_number_higher_or_lo
+   450_delete_node_in_a_bst
+   501_find_mode_in_binary_search_tree
    513_find_bottom_left_tree_value
    515_find_largest_value_in_each_tree_row
+   530_minimum_absolute_difference_in_bst
    538_binary_search_tree_to_greater_sum_tree
    543_diameter_of_binary_tree
    589_n_ary_tree_preorder_traversal
@@ -61,6 +65,7 @@ Solution
    783_minimum_distance_between_bst_nodes
    814_binary_tree_pruning
    897_increasing_order_search_tree
+   938_range_sum_of_bst
    951_flip_equivalent_binary_trees
    1026_maximum_difference_between_node_and_ancestor
    1038_binary_search_tree_to_greater_sum_tree

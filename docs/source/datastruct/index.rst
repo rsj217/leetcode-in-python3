@@ -6,5 +6,5 @@ Datastruct
 
    linknode
    maxheap
-   treenode
+   treenode/index
 

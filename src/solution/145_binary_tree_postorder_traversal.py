@@ -1,4 +1,4 @@
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 from typing import List
 import random
 import unittest

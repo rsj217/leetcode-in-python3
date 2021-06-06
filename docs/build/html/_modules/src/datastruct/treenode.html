@@ -219,13 +219,13 @@
 
 <span class="sd">        ::</span>
 
-<span class="sd">            &gt;&gt;&gt; nums = [</span>
+<span class="sd">            nums = [</span>
 <span class="sd">                1,</span>
 <span class="sd">                2, 3,</span>
 <span class="sd">                4, None, 5, 6,</span>
 <span class="sd">                None, 7, None, None, 8,</span>
 <span class="sd">            ]</span>
-<span class="sd">            &gt;&gt;&gt; root = TreeNode.create(nums)</span>
+<span class="sd">            root = TreeNode.create(nums)</span>
 
 <span class="sd">        root 的拓扑形状如下，可以使用该模块的 ``print_tree`` 打印树的拓扑</span>
 
@@ -274,13 +274,13 @@
 
 <span class="sd">        ::</span>
 
-<span class="sd">            &gt;&gt;&gt; from src.datastruct.treenode import TreeNode</span>
-<span class="sd">            &gt;&gt;&gt; nums = [</span>
+<span class="sd">            from src.datastruct.treenode import TreeNode</span>
+<span class="sd">            nums = [</span>
 <span class="sd">                1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8,</span>
 <span class="sd">            ]</span>
-<span class="sd">            &gt;&gt;&gt; root = TreeNode.create(nums)</span>
-<span class="sd">            &gt;&gt;&gt; ans = TreeNode.literal(root)</span>
-<span class="sd">            &gt;&gt;&gt; assert nums, ans, &quot;err&quot;</span>
+<span class="sd">            root = TreeNode.create(nums)</span>
+<span class="sd">            ans = TreeNode.literal(root)</span>
+<span class="sd">            assert nums, ans, &quot;err&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -381,6 +381,71 @@
     <span class="k">return</span> <span class="n">levels</span></div>
 
 
+<div class="viewcode-block" id="BSTreeNode"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.BSTreeNode">[docs]</a><span class="k">class</span> <span class="nc">BSTreeNode</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; 二叉搜索树节点 &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+
+<div class="viewcode-block" id="BSTreeNode.search"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.BSTreeNode.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BSTreeNode.minimum"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.BSTreeNode.minimum">[docs]</a>    <span class="k">def</span> <span class="nf">minimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; 以 node 为 root 的树的最小值，即最左边的节点&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minimum</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_minimum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minimum</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BSTreeNode.maximum"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.BSTreeNode.maximum">[docs]</a>    <span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; 以 node 为 root 的树的最大值，即最右边的节点&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maximum</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_maximum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maximum</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BSTreeNode.insert"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.BSTreeNode.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; 以 ``node`` 为 ``root`` 的二叉搜索树种插入 ``val``，并返回新的 ``root`` &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">BSTreeNode</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># node.val &lt; val</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span>
+
+<div class="viewcode-block" id="BSTreeNode.delete"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.BSTreeNode.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; 以 ``node`` 为 ``root`` 的二叉搜索树种删除 ``val``，并返回删除后的树的 ``root`` &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="inorder_dfs"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.inorder_dfs">[docs]</a><span class="k">def</span> <span class="nf">inorder_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">yield from</span> <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span>
+        <span class="k">yield from</span> <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">))</span></div>
+
+
 <div class="viewcode-block" id="TestTreeNode"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.TestTreeNode">[docs]</a><span class="k">class</span> <span class="nc">TestTreeNode</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
 <div class="viewcode-block" id="TestTreeNode.test_create"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.TestTreeNode.test_create">[docs]</a>    <span class="k">def</span> <span class="nf">test_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -439,6 +504,18 @@
         <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
         <span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">print_tree</span><span class="p">(</span><span class="n">root</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="TestBSTreeNode"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.TestBSTreeNode">[docs]</a><span class="k">class</span> <span class="nc">TestBSTreeNode</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TestBSTreeNode.test_insert"><a class="viewcode-back" href="../../../datastruct/treenode.html#src.datastruct.treenode.TestBSTreeNode.test_insert">[docs]</a>    <span class="k">def</span> <span class="nf">test_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">src.algo.sort</span> <span class="kn">import</span> <span class="n">helper</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">BSTreeNode</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">root</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="n">inorder_dfs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">helper</span><span class="o">.</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

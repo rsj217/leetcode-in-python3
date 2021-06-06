@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1_two_sum" href="1_two_sum.html" />
-    <link rel="prev" title="TreeNode" href="../datastruct/treenode.html" /> 
+    <link rel="prev" title="NTreeNode" href="../datastruct/treenode/n_treenode.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -117,6 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="104_maximum_depth_of_binary_tree.html">104_maximum_depth_of_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="105_construct_binary_tree_from_preorder_and_inorder_traversal.html">105_construct_binary_tree_from_preorder_and_inorder_traversal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="106_construct_binary_tree_from_postorder_and_inorder_traversal.html">106_construct_binary_tree_from_postorder_and_inorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="110_balanced_binary_tree.html">110_balanced_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="112_path_sum.html">112_path_sum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="113_path_sum_ii.html">113_path_sum_ii</a></li>
 <li class="toctree-l2"><a class="reference internal" href="114_flatten_binary_tree_to_linked_list.html">114_flatten_binary_tree_to_linked_list</a></li>
@@ -135,8 +136,11 @@
 <li class="toctree-l2"><a class="reference internal" href="236_lowest_common_ancestor_of_a_binary_tree.html">236_lowest_common_ancestor_of_a_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="257_binary_tree_paths.html">257_binary_tree_paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="450_delete_node_in_a_bst.html">450_delete_node_in_a_bst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="501_find_mode_in_binary_search_tree.html">501_find_mode_in_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="513_find_bottom_left_tree_value.html">513_find_bottom_left_tree_value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="515_find_largest_value_in_each_tree_row.html">515_find_largest_value_in_each_tree_row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="530_minimum_absolute_difference_in_bst.html">530_minimum_absolute_difference_in_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html">538_binary_search_tree_to_greater_sum_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="543_diameter_of_binary_tree.html">543_diameter_of_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="589_n_ary_tree_preorder_traversal.html">589_n_ary_tree_preorder_traversal</a></li>
@@ -147,6 +151,7 @@
 <li class="toctree-l2"><a class="reference internal" href="783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="897_increasing_order_search_tree.html">897_increasing_order_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1026_maximum_difference_between_node_and_ancestor.html">1026_maximum_difference_between_node_and_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1038_binary_search_tree_to_greater_sum_tree.html">1038_binary_search_tree_to_greater_sum_tree</a></li>
@@ -225,12 +230,7 @@
 <h1>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="1_two_sum.html">1_two_sum</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="1_two_sum.html#id1">Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_two_sum.html#tips">Tips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_two_sum.html#answer">Answer</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="1_two_sum.html">1_two_sum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_add_two_numbers.html">2_add_two_numbers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_longest_substring_without_repeating_characters.html">3_longest_substring_without_repeating_characters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_longest_palindromic_substring.html">5_longest_palindromic_substring</a></li>
@@ -257,6 +257,7 @@
 <li class="toctree-l1"><a class="reference internal" href="104_maximum_depth_of_binary_tree.html">104_maximum_depth_of_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="105_construct_binary_tree_from_preorder_and_inorder_traversal.html">105_construct_binary_tree_from_preorder_and_inorder_traversal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="106_construct_binary_tree_from_postorder_and_inorder_traversal.html">106_construct_binary_tree_from_postorder_and_inorder_traversal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="110_balanced_binary_tree.html">110_balanced_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="112_path_sum.html">112_path_sum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="113_path_sum_ii.html">113_path_sum_ii</a></li>
 <li class="toctree-l1"><a class="reference internal" href="114_flatten_binary_tree_to_linked_list.html">114_flatten_binary_tree_to_linked_list</a></li>
@@ -275,28 +276,22 @@
 <li class="toctree-l1"><a class="reference internal" href="236_lowest_common_ancestor_of_a_binary_tree.html">236_lowest_common_ancestor_of_a_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="257_binary_tree_paths.html">257_binary_tree_paths</a></li>
 <li class="toctree-l1"><a class="reference internal" href="374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="450_delete_node_in_a_bst.html">450_delete_node_in_a_bst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="501_find_mode_in_binary_search_tree.html">501_find_mode_in_binary_search_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="513_find_bottom_left_tree_value.html">513_find_bottom_left_tree_value</a></li>
 <li class="toctree-l1"><a class="reference internal" href="515_find_largest_value_in_each_tree_row.html">515_find_largest_value_in_each_tree_row</a></li>
-<li class="toctree-l1"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html">538_binary_search_tree_to_greater_sum_tree</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html#id1">题目</a></li>
-<li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html#id2">思路</a></li>
-<li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html#module-src.solution.538_binary_search_tree_to_greater_sum_tree">实现</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="530_minimum_absolute_difference_in_bst.html">530_minimum_absolute_difference_in_bst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html">538_binary_search_tree_to_greater_sum_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="543_diameter_of_binary_tree.html">543_diameter_of_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="589_n_ary_tree_preorder_traversal.html">589_n_ary_tree_preorder_traversal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="654_maximum_binary_tree.html">654_maximum_binary_tree</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="654_maximum_binary_tree.html#id1">Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="654_maximum_binary_tree.html#tips">Tips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="654_maximum_binary_tree.html#answer">Answer</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="654_maximum_binary_tree.html">654_maximum_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="655_print_binary_tree.html">655_print_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="662_maximum_width_of_binary_tree.html">662_maximum_width_of_binary_tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="704_binary_search.html">704_binary_search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="897_increasing_order_search_tree.html">897_increasing_order_search_tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
 <li class="toctree-l1"><a class="reference internal" href="951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1026_maximum_difference_between_node_and_ancestor.html">1026_maximum_difference_between_node_and_ancestor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1038_binary_search_tree_to_greater_sum_tree.html">1038_binary_search_tree_to_greater_sum_tree</a></li>
@@ -313,7 +308,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="1_two_sum.html" class="btn btn-neutral float-right" title="1_two_sum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../datastruct/treenode.html" class="btn btn-neutral float-left" title="TreeNode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../datastruct/treenode/n_treenode.html" class="btn btn-neutral float-left" title="NTreeNode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

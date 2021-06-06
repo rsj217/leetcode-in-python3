@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>AVLTreeNode &mdash; leetcode-in-python3 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NTreeNode" href="n_treenode.html" />
+    <link rel="prev" title="BSTreeNode" href="bs_treenode.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> leetcode-in-python3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../algo/index.html">Algo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Datastruct</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../linknode.html">LinkNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../maxheap.html">MaxHeap</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">TreeNode</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="treenode.html">TreeNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bs_treenode.html">BSTreeNode</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AVLTreeNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="n_treenode.html">NTreeNode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../solution/index.html">Solution</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">leetcode-in-python3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Datastruct</a> &raquo;</li>
+        
+          <li><a href="index.html">TreeNode</a> &raquo;</li>
+        
+      <li>AVLTreeNode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/datastruct/treenode/avl_treenode.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-src.datastruct.treenode.avl_treenode">
+<span id="avltreenode"></span><h1>AVLTreeNode<a class="headerlink" href="#module-src.datastruct.treenode.avl_treenode" title="Permalink to this headline">¶</a></h1>
+<p>AVL树搜索节点&amp;树结构定义，插入，删除相关遍历相关算法</p>
+<p>AVL 树也是二叉搜索树，其插入，删除方法基于二叉搜索插入，删除方法</p>
+<p>不同在于插入或删除节点，该节点的祖先节点的高度会发生变化，需要进行选择以调整平衡</p>
+<dl class="py class">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.datastruct.treenode.avl_treenode.</span></code><code class="sig-name descname"><span class="pre">AVLTreeNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>二叉搜索树节点
+<code class="docutils literal notranslate"><span class="pre">AVLTreeNode</span></code> 新增了 <code class="docutils literal notranslate"><span class="pre">height</span></code> 属性。提供了节点的插入 <code class="docutils literal notranslate"><span class="pre">insert</span></code> 和删除 <code class="docutils literal notranslate"><span class="pre">delete</span></code> 操作。
+在插入和删除之后，需要更新节点的 <code class="docutils literal notranslate"><span class="pre">height</span></code> 属性。
+通过 <code class="docutils literal notranslate"><span class="pre">height</span></code> 计算平衡因子 <code class="docutils literal notranslate"><span class="pre">balance</span> <span class="pre">factor</span></code> ,当树节点不再平衡的时候，调用旋转 <code class="docutils literal notranslate"><span class="pre">_balance_rotate</span></code> 接口维护平衡。</p>
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.delete">
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>删除节点方法，当 key 不存在，什么也不做</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.delete_dfs">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">delete_dfs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.delete_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.delete_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>以 <code class="docutils literal notranslate"><span class="pre">node</span></code> 为根删除匹配 <code class="docutils literal notranslate"><span class="pre">key</span></code> 的节点, 返回删除后新的 <code class="docutils literal notranslate"><span class="pre">root</span></code>，若 <code class="docutils literal notranslate"><span class="pre">key</span></code> 不存在，则不作删除操作。
+该方法与 <code class="docutils literal notranslate"><span class="pre">二叉树搜索</span></code> 的 <code class="docutils literal notranslate"><span class="pre">delete_dfs</span></code> 方法类似，不同在于需要调整平衡。
+与 <code class="docutils literal notranslate"><span class="pre">_insert</span></code> 方法类似，删除节点的祖先节点的高度都会变化，需要更新其高度，并对当前节点为根的子树进行平衡调整。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.get_bf">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get_bf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.get_bf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.get_bf" title="Permalink to this definition">¶</a></dt>
+<dd><p>求节点的 平衡因子 <code class="docutils literal notranslate"><span class="pre">balance_factor</span> <span class="pre">=</span> <span class="pre">node.left.height</span> <span class="pre">-</span> <span class="pre">node.right.height</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.get_height">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get_height</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.get_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.get_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>求节点的树的高度，当节点不存在（空树）时候返回 0
+该方法依次调用其递归方法实现。由于节点本身具有 <code class="docutils literal notranslate"><span class="pre">height</span></code> 属性。只需要求左右子树即可，无需过多深入递归。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.insert">
+<code class="sig-name descname"><span class="pre">insert</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>插入节点方法，当 key 已存在，则更新节点的值，否则将节点插入到 <code class="docutils literal notranslate"><span class="pre">AVLTreeNode</span></code> 中</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.insert_dfs">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">insert_dfs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.insert_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.insert_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>以 <code class="docutils literal notranslate"><span class="pre">node</span></code> 为根插入 <code class="docutils literal notranslate"><span class="pre">key</span></code>, 返回插入新的 <code class="docutils literal notranslate"><span class="pre">root</span></code>
+该方法与 <code class="docutils literal notranslate"><span class="pre">二叉树搜索</span></code> 的 <code class="docutils literal notranslate"><span class="pre">insert_dfs</span></code> 方法类似，不同在于需要调整平衡。
+插入节点之后，<code class="docutils literal notranslate"><span class="pre">node</span></code> 的及其 <code class="docutils literal notranslate"><span class="pre">parent</span></code> 的路径上的祖先节点高度会变化，需要先更新高度。
+为了保持平衡，需要进行平衡调整，通过旋转得到新子树的子根节点，然后返回给上层递归调用。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.is_balance">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">is_balance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.is_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.is_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>平衡判断</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.left_rotate">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">left_rotate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.left_rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.left_rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>左旋转</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.minimum">
+<code class="sig-name descname"><span class="pre">minimum</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.minimum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.minimum" title="Permalink to this definition">¶</a></dt>
+<dd><p>求最小值节点方法，通过调用</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.right_rotate">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">right_rotate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#AVLTreeNode.right_rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.right_rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>右旋转</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.AVLTreeNode.val">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">val</span></code><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.AVLTreeNode.val" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.datastruct.treenode.avl_treenode.</span></code><code class="sig-name descname"><span class="pre">TestAVLTreeNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_LL">
+<code class="sig-name descname"><span class="pre">test_delete_LL</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_delete_LL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_LL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_LR">
+<code class="sig-name descname"><span class="pre">test_delete_LR</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_delete_LR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_LR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_RL">
+<code class="sig-name descname"><span class="pre">test_delete_RL</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_delete_RL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_RL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_RR">
+<code class="sig-name descname"><span class="pre">test_delete_RR</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_delete_RR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_RR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_one_element">
+<code class="sig-name descname"><span class="pre">test_delete_one_element</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_delete_one_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_delete_one_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_LL">
+<code class="sig-name descname"><span class="pre">test_insert_LL</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_insert_LL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_LL" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">3</span>            <span class="mi">2</span>
+   <span class="o">/</span>            <span class="o">/</span> \
+  <span class="mi">2</span>        <span class="o">-&gt;</span>  <span class="mi">1</span>   <span class="mi">3</span>
+ <span class="o">/</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_LR">
+<code class="sig-name descname"><span class="pre">test_insert_LR</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_insert_LR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_LR" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">3</span>            <span class="mi">2</span>            <span class="mi">1</span>
+ <span class="o">/</span>            <span class="o">/</span>            <span class="o">/</span> \
+<span class="mi">1</span>        <span class="o">-&gt;</span>  <span class="mi">1</span>       <span class="o">-&gt;</span>   <span class="mi">2</span>   <span class="mi">3</span>
+ \          <span class="o">/</span>
+  <span class="mi">2</span>        <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_RL">
+<code class="sig-name descname"><span class="pre">test_insert_RL</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_insert_RL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_RL" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>           <span class="mi">1</span>            <span class="mi">2</span>
+ \           \          <span class="o">/</span> \
+  <span class="mi">2</span>    <span class="o">-&gt;</span>     <span class="mi">2</span>    <span class="o">-&gt;</span>  <span class="mi">1</span>   <span class="mi">3</span>
+ <span class="o">/</span>             \
+<span class="mi">3</span>               <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_RR">
+<code class="sig-name descname"><span class="pre">test_insert_RR</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_insert_RR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_RR" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>                 <span class="mi">2</span>
+ \               <span class="o">/</span> \
+   <span class="mi">2</span>        <span class="o">-&gt;</span>  <span class="mi">1</span>   <span class="mi">3</span>
+    \
+     <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_random">
+<code class="sig-name descname"><span class="pre">test_random</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/src/datastruct/treenode/avl_treenode.html#TestAVLTreeNode.test_random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_random" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="n_treenode.html" class="btn btn-neutral float-right" title="NTreeNode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="bs_treenode.html" class="btn btn-neutral float-left" title="BSTreeNode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, rsj217.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,14 +1,7 @@
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 import unittest
 import random
 
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
@@ -63,7 +56,7 @@ class TestSolution(unittest.TestCase):
     def test_solution(self):
         for nums, answer in self.test_case:
             root = TreeNode.create(nums)
-            ans = self.s.bstToGst(root) # TODO
+            ans = self.s.bstToGst(root)  # TODO
             # self.assertEqual(answer,ans , (nums, answer))
 
 

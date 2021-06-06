@@ -155,8 +155,9 @@
             
   <h1>Source code for src.solution.783_minimum_distance_between_bst_nodes</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">src.datastruct.treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="kn">from</span> <span class="nn">src.datastruct.treenode.treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
+
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../solution/783_minimum_distance_between_bst_nodes.html#src.solution.783_minimum_distance_between_bst_nodes.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
 <div class="viewcode-block" id="Solution.minDiffInBST"><a class="viewcode-back" href="../../../solution/783_minimum_distance_between_bst_nodes.html#src.solution.783_minimum_distance_between_bst_nodes.Solution.minDiffInBST">[docs]</a>    <span class="k">def</span> <span class="nf">minDiffInBST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -176,9 +177,9 @@
                 <span class="k">return</span>
 
             <span class="k">if</span> <span class="n">l</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span> <span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+                <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span> <span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
+                <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
             <span class="n">_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
             <span class="n">_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
@@ -197,7 +198,7 @@
                 <span class="k">break</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">prev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span> <span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">prev</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+                <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">prev</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
             <span class="n">prev</span> <span class="o">=</span> <span class="n">node</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span>
         <span class="k">return</span> <span class="n">ans</span></div></div>
@@ -209,6 +210,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span> <span class="o">=</span> <span class="p">[</span>
             <span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span>
             <span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span></div>
 
@@ -216,7 +218,7 @@
         <span class="k">for</span> <span class="n">nums</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
             <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">minDiffInBST</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span><span class="n">ans</span> <span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

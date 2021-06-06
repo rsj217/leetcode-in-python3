@@ -1,5 +1,5 @@
 from collections import deque
-from src.datastruct.treenode import TreeNode, print_tree
+from src.datastruct.treenode.treenode import TreeNode, print_tree
 import unittest
 
 

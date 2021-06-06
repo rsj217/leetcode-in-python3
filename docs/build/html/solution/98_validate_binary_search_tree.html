@@ -109,7 +109,12 @@
 <li class="toctree-l2"><a class="reference internal" href="75_sort_colors.html">75_sort_colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="81_search_in_rotated_sorted_array_ii.html">81_search_in_rotated_sorted_array_ii</a></li>
 <li class="toctree-l2"><a class="reference internal" href="94_binary_tree_inorder_traversal.html">94_binary_tree_inorder_traversal</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">98_validate_binary_search_tree</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">98_validate_binary_search_tree</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answer">Answer</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="100_same_trees.html">100_same_trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="101_symmetric_tree.html">101_symmetric_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="102_binary_tree_level_order_traversal.html">102_binary_tree_level_order_traversal</a></li>
@@ -117,6 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="104_maximum_depth_of_binary_tree.html">104_maximum_depth_of_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="105_construct_binary_tree_from_preorder_and_inorder_traversal.html">105_construct_binary_tree_from_preorder_and_inorder_traversal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="106_construct_binary_tree_from_postorder_and_inorder_traversal.html">106_construct_binary_tree_from_postorder_and_inorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="110_balanced_binary_tree.html">110_balanced_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="112_path_sum.html">112_path_sum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="113_path_sum_ii.html">113_path_sum_ii</a></li>
 <li class="toctree-l2"><a class="reference internal" href="114_flatten_binary_tree_to_linked_list.html">114_flatten_binary_tree_to_linked_list</a></li>
@@ -135,8 +141,11 @@
 <li class="toctree-l2"><a class="reference internal" href="236_lowest_common_ancestor_of_a_binary_tree.html">236_lowest_common_ancestor_of_a_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="257_binary_tree_paths.html">257_binary_tree_paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="450_delete_node_in_a_bst.html">450_delete_node_in_a_bst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="501_find_mode_in_binary_search_tree.html">501_find_mode_in_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="513_find_bottom_left_tree_value.html">513_find_bottom_left_tree_value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="515_find_largest_value_in_each_tree_row.html">515_find_largest_value_in_each_tree_row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="530_minimum_absolute_difference_in_bst.html">530_minimum_absolute_difference_in_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html">538_binary_search_tree_to_greater_sum_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="543_diameter_of_binary_tree.html">543_diameter_of_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="589_n_ary_tree_preorder_traversal.html">589_n_ary_tree_preorder_traversal</a></li>
@@ -147,6 +156,7 @@
 <li class="toctree-l2"><a class="reference internal" href="783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="897_increasing_order_search_tree.html">897_increasing_order_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1026_maximum_difference_between_node_and_ancestor.html">1026_maximum_difference_between_node_and_ancestor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1038_binary_search_tree_to_greater_sum_tree.html">1038_binary_search_tree_to_greater_sum_tree</a></li>
@@ -225,13 +235,90 @@
             
   <div class="section" id="module-src.solution.98_validate_binary_search_tree">
 <span id="validate-binary-search-tree"></span><h1>98_validate_binary_search_tree<a class="headerlink" href="#module-src.solution.98_validate_binary_search_tree" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="https:leetcode-cn.com/problems/validate-binary-search-tree/">Problem</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。</p>
+<p>假设一个二叉搜索树具有如下特征：</p>
+<ul class="simple">
+<li><p>节点的左子树只包含小于当前节点的数。</p></li>
+<li><p>节点的右子树只包含大于当前节点的数。</p></li>
+<li><p>所有左子树和右子树自身必须也是二叉搜索树。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>示例 1:
+输入:
+  2
+ / \
+1   3
+输出: true
+
+示例 2:
+输入:
+  5
+ / \
+1   4
+   / \
+  3   6
+输出: false
+解释: 输入为: [5,1,4,null,null,3,6]。
+    根节点的值为 5 ，但是其右子节点值为 4 。
+</pre></div>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<p>方法一 中序遍历:</p>
+<p>使用中序遍历的顺序是树节点的投影性质。存储一个 <code class="docutils literal notranslate"><span class="pre">prev</span></code> 节点，每次访问节点的时候比较 <code class="docutils literal notranslate"><span class="pre">prev</span> <span class="pre">&lt;</span> <span class="pre">curnode</span></code> 。
+如果不是单调递增，则不符合二叉搜索树的定义。即可返回结果</p>
+<p>方法二 DFS递归：</p>
+<p>根据二叉树搜索树的定义，<code class="docutils literal notranslate"><span class="pre">左边的节点</span> <span class="pre">&lt;</span> <span class="pre">当前节点</span> <span class="pre">&lt;</span> <span class="pre">右边的节点</span></code> 左边的节点可能是左孩子，也可能是左孩子的右孩子</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">10</span>
+  <span class="o">/</span>
+<span class="mi">5</span>
+ \
+  <span class="mi">8</span>
+</pre></div>
+</div>
+<p>因此每次递归的时候，需要传入一个下界（左边最大值）和一个上界（右边最小值）。使用 DFS 递归遍历即可。伪代码如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">lval</span><span class="p">,</span> <span class="n">rval</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="c1"># 空树属于二叉搜索树</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># 当前节点在 (lval, rval) 区间内，递归左右子树</span>
+    <span class="k">if</span> <span class="n">lval</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">rval</span><span class="p">:</span>
+        <span class="c1"># 递归左子树，当前节点为左子树的上界。</span>
+        <span class="n">lvalid</span> <span class="o">=</span>  <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">lval</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+        <span class="c1"># 递归右子树，当前节点为右子树的下界。</span>
+        <span class="n">rvalid</span> <span class="o">=</span>  <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">rval</span><span class="p">)</span>
+        <span class="c1"># 左右子树都是二叉搜索树</span>
+        <span class="k">return</span> <span class="n">lvalid</span> <span class="ow">and</span> <span class="n">rvalid</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># 当前节点不在 (lval, rval) 区间内，不符合二叉搜索树定义，返回 False</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>dfs 方法中，通常可以使用 <code class="docutils literal notranslate"><span class="pre">and</span></code> 或 <code class="docutils literal notranslate"><span class="pre">or</span></code> 逻辑表达式通过短路提前返回，优化性能 <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">dfs(node.left)</span> <span class="pre">and</span> <span class="pre">dfs(node.right)</span></code></p>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="src.solution.98_validate_binary_search_tree.Solution">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.solution.98_validate_binary_search_tree.</span></code><code class="sig-name descname"><span class="pre">Solution</span></code><a class="reference internal" href="../_modules/src/solution/98_validate_binary_search_tree.html#Solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.98_validate_binary_search_tree.Solution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
+<dt id="src.solution.98_validate_binary_search_tree.Solution.dfs">
+<code class="sig-name descname"><span class="pre">dfs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../datastruct/treenode/treenode.html#src.datastruct.treenode.treenode.TreeNode" title="src.datastruct.treenode.treenode.TreeNode"><span class="pre">src.datastruct.treenode.treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="../_modules/src/solution/98_validate_binary_search_tree.html#Solution.dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.98_validate_binary_search_tree.Solution.dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>dfs 递归遍历</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.solution.98_validate_binary_search_tree.Solution.inorder">
+<code class="sig-name descname"><span class="pre">inorder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../datastruct/treenode/treenode.html#src.datastruct.treenode.treenode.TreeNode" title="src.datastruct.treenode.treenode.TreeNode"><span class="pre">src.datastruct.treenode.treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="../_modules/src/solution/98_validate_binary_search_tree.html#Solution.inorder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.98_validate_binary_search_tree.Solution.inorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>中序遍历</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="src.solution.98_validate_binary_search_tree.Solution.isValidBST">
-<code class="sig-name descname"><span class="pre">isValidBST</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../datastruct/treenode.html#src.datastruct.treenode.TreeNode" title="src.datastruct.treenode.TreeNode"><span class="pre">src.datastruct.treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="../_modules/src/solution/98_validate_binary_search_tree.html#Solution.isValidBST"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.98_validate_binary_search_tree.Solution.isValidBST" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">isValidBST</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../datastruct/treenode/treenode.html#src.datastruct.treenode.treenode.TreeNode" title="src.datastruct.treenode.treenode.TreeNode"><span class="pre">src.datastruct.treenode.treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="../_modules/src/solution/98_validate_binary_search_tree.html#Solution.isValidBST"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.98_validate_binary_search_tree.Solution.isValidBST" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -253,6 +340,7 @@
 
 </dd></dl>
 
+</div>
 </div>
 
 

@@ -1,14 +1,7 @@
 import random
 from typing import List
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 import unittest
-
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
 from collections import deque
 
@@ -29,10 +22,10 @@ class Solution:
         def _dfs(node: TreeNode, level: int):
             if node is None:
                 return
-            if len(ans ) <= level:
-                ans .append(node.val)
+            if len(ans) <= level:
+                ans.append(node.val)
             else:
-                ans [level] = max(ans [level], node.val)
+                ans[level] = max(ans[level], node.val)
             _dfs(node.left, level + 1)
             _dfs(node.right, level + 1)
 
@@ -56,7 +49,7 @@ class Solution:
 
                 if node.right is not None:
                     queue.append(node.right)
-            ans .append(max_)
+            ans.append(max_)
         return ans
 
 
@@ -72,7 +65,7 @@ class TestSolution(unittest.TestCase):
         for nums, answer in self.test_case:
             root = TreeNode.create(nums)
             ans = self.s.largestValues(root)
-            self.assertEqual(answer,ans )
+            self.assertEqual(answer, ans)
 
 
 if __name__ == '__main__':

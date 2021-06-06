@@ -1,4 +1,4 @@
-from src.datastruct.treenode import TreeNode
+from src.datastruct.treenode.treenode import TreeNode
 import unittest
 
 
@@ -7,7 +7,7 @@ class Solution:
         ans = 0
 
         def dfs(node: TreeNode, minimum: int, maximum: int):
-            nonlocalans
+            nonlocal ans
             if node is None:
                 return
 
