@@ -154,14 +154,63 @@
            <div itemprop="articleBody">
             
   <h1>Source code for src.solution.17_letter_combinations_of_a_phone_number</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">`Problem &lt;https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/&gt;`_</span>
+<span class="sd">-------------------------------------------------------------------------------------</span>
+
+<span class="sd">给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。</span>
+
+<span class="sd">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    示例 1：</span>
+
+<span class="sd">    输入：digits = &quot;23&quot;</span>
+<span class="sd">    输出：[&quot;ad&quot;,&quot;ae&quot;,&quot;af&quot;,&quot;bd&quot;,&quot;be&quot;,&quot;bf&quot;,&quot;cd&quot;,&quot;ce&quot;,&quot;cf&quot;]</span>
+<span class="sd">    示例 2：</span>
+
+<span class="sd">    输入：digits = &quot;&quot;</span>
+<span class="sd">    输出：[]</span>
+<span class="sd">    示例 3：</span>
+
+<span class="sd">    输入：digits = &quot;2&quot;</span>
+<span class="sd">    输出：[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]</span>
+<span class="sd">     </span>
+
+<span class="sd">    提示：</span>
+
+<span class="sd">    0 &lt;= digits.length &lt;= 4</span>
+<span class="sd">    digits[i] 是范围 [&#39;2&#39;, &#39;9&#39;] 的一个数字。</span>
+
+
+<span class="sd">Tips</span>
+<span class="sd">------</span>
+
+
+<span class="sd">Answer</span>
+<span class="sd">--------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
 
-<div class="viewcode-block" id="Solution.digit_letter"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution.digit_letter">[docs]</a>    <span class="k">def</span> <span class="nf">digit_letter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">{</span>
+<div class="viewcode-block" id="Solution.letterCombinations"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution.letterCombinations">[docs]</a>    <span class="k">def</span> <span class="nf">letterCombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">,</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">backtracking</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">num</span><span class="p">](</span><span class="n">digits</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Solution.dfs"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution.dfs">[docs]</a>    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">digit_letter_map</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
             <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span>
             <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="s1">&#39;ghi&#39;</span><span class="p">,</span>
@@ -170,34 +219,87 @@
             <span class="s1">&#39;7&#39;</span><span class="p">:</span> <span class="s1">&#39;pqrs&#39;</span><span class="p">,</span>
             <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="s1">&#39;tuv&#39;</span><span class="p">,</span>
             <span class="s1">&#39;9&#39;</span><span class="p">:</span> <span class="s1">&#39;wxyz&#39;</span><span class="p">,</span>
-        <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+        <span class="p">}</span>
 
-<div class="viewcode-block" id="Solution.letterCombinations"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution.letterCombinations">[docs]</a>    <span class="k">def</span> <span class="nf">letterCombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_dfs</span><span class="p">(</span><span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">):</span>
+                <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">return</span>
+
+            <span class="n">letters</span> <span class="o">=</span> <span class="n">digit_letter_map</span><span class="p">[</span><span class="n">digits</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
+                <span class="n">_dfs</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="n">letter</span><span class="p">)</span>
+
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">_dfs</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ans</span></div>
+
+<div class="viewcode-block" id="Solution.backtracking"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution.backtracking">[docs]</a>    <span class="k">def</span> <span class="nf">backtracking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_letterCombinations</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_letterCombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">digit_letter</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
-        <span class="n">head_letters</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">digit_letter</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
-        <span class="n">tail_letters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_letterCombinations</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">head_letters</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tail_letters</span><span class="p">]</span></div>
+        <span class="n">digit_letter_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="s1">&#39;def&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="s1">&#39;ghi&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="s1">&#39;jkl&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="s1">&#39;mno&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;7&#39;</span><span class="p">:</span> <span class="s1">&#39;pqrs&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="s1">&#39;tuv&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;9&#39;</span><span class="p">:</span> <span class="s1">&#39;wxyz&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">def</span> <span class="nf">_backtracking</span><span class="p">(</span><span class="n">track</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">):</span>
+                <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">track</span><span class="p">))</span>
+                <span class="k">return</span>
+
+            <span class="n">letters</span> <span class="o">=</span> <span class="n">digit_letter_map</span><span class="p">[</span><span class="n">digits</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
+                <span class="n">track</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+                <span class="n">_backtracking</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">track</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">_backtracking</span><span class="p">([],</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ans</span></div></div>
 
 
 <div class="viewcode-block" id="TestSolution"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.TestSolution">[docs]</a><span class="k">class</span> <span class="nc">TestSolution</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
 <div class="viewcode-block" id="TestSolution.setUp"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.TestSolution.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">(</span><span class="s2">&quot;23&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ad&quot;</span><span class="p">,</span> <span class="s2">&quot;ae&quot;</span><span class="p">,</span> <span class="s2">&quot;af&quot;</span><span class="p">,</span> <span class="s2">&quot;bd&quot;</span><span class="p">,</span> <span class="s2">&quot;be&quot;</span><span class="p">,</span> <span class="s2">&quot;bf&quot;</span><span class="p">,</span> <span class="s2">&quot;cd&quot;</span><span class="p">,</span> <span class="s2">&quot;ce&quot;</span><span class="p">,</span> <span class="s2">&quot;cf&quot;</span><span class="p">]),</span>
-            <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[]),</span>
+            <span class="p">(</span><span class="s2">&quot;23&quot;</span><span class="p">,</span> <span class="p">[</span>
+                <span class="s2">&quot;ad&quot;</span><span class="p">,</span> <span class="s2">&quot;ae&quot;</span><span class="p">,</span> <span class="s2">&quot;af&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bd&quot;</span><span class="p">,</span> <span class="s2">&quot;be&quot;</span><span class="p">,</span> <span class="s2">&quot;bf&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cd&quot;</span><span class="p">,</span> <span class="s2">&quot;ce&quot;</span><span class="p">,</span> <span class="s2">&quot;cf&quot;</span><span class="p">]),</span>
+            <span class="p">(</span><span class="s2">&quot;234&quot;</span><span class="p">,</span> <span class="p">[</span>
+                <span class="s2">&quot;adg&quot;</span><span class="p">,</span> <span class="s2">&quot;adh&quot;</span><span class="p">,</span> <span class="s2">&quot;adi&quot;</span><span class="p">,</span> <span class="s2">&quot;aeg&quot;</span><span class="p">,</span> <span class="s2">&quot;aeh&quot;</span><span class="p">,</span> <span class="s2">&quot;aei&quot;</span><span class="p">,</span> <span class="s2">&quot;afg&quot;</span><span class="p">,</span> <span class="s2">&quot;afh&quot;</span><span class="p">,</span> <span class="s2">&quot;afi&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;bdg&quot;</span><span class="p">,</span> <span class="s2">&quot;bdh&quot;</span><span class="p">,</span> <span class="s2">&quot;bdi&quot;</span><span class="p">,</span> <span class="s2">&quot;beg&quot;</span><span class="p">,</span> <span class="s2">&quot;beh&quot;</span><span class="p">,</span> <span class="s2">&quot;bei&quot;</span><span class="p">,</span> <span class="s2">&quot;bfg&quot;</span><span class="p">,</span> <span class="s2">&quot;bfh&quot;</span><span class="p">,</span> <span class="s2">&quot;bfi&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cdg&quot;</span><span class="p">,</span> <span class="s2">&quot;cdh&quot;</span><span class="p">,</span> <span class="s2">&quot;cdi&quot;</span><span class="p">,</span> <span class="s2">&quot;ceg&quot;</span><span class="p">,</span> <span class="s2">&quot;ceh&quot;</span><span class="p">,</span> <span class="s2">&quot;cei&quot;</span><span class="p">,</span> <span class="s2">&quot;cfg&quot;</span><span class="p">,</span> <span class="s2">&quot;cfh&quot;</span><span class="p">,</span> <span class="s2">&quot;cfi&quot;</span><span class="p">]),</span>
+            <span class="p">(</span><span class="s2">&quot;222&quot;</span><span class="p">,</span> <span class="p">[</span>
+                <span class="s2">&quot;aaa&quot;</span><span class="p">,</span> <span class="s2">&quot;aab&quot;</span><span class="p">,</span> <span class="s2">&quot;aac&quot;</span><span class="p">,</span> <span class="s2">&quot;aba&quot;</span><span class="p">,</span> <span class="s2">&quot;abb&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;aca&quot;</span><span class="p">,</span> <span class="s2">&quot;acb&quot;</span><span class="p">,</span> <span class="s2">&quot;acc&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;baa&quot;</span><span class="p">,</span> <span class="s2">&quot;bab&quot;</span><span class="p">,</span> <span class="s2">&quot;bac&quot;</span><span class="p">,</span> <span class="s2">&quot;bba&quot;</span><span class="p">,</span> <span class="s2">&quot;bbb&quot;</span><span class="p">,</span> <span class="s2">&quot;bbc&quot;</span><span class="p">,</span> <span class="s2">&quot;bca&quot;</span><span class="p">,</span> <span class="s2">&quot;bcb&quot;</span><span class="p">,</span> <span class="s2">&quot;bcc&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;caa&quot;</span><span class="p">,</span> <span class="s2">&quot;cab&quot;</span><span class="p">,</span> <span class="s2">&quot;cac&quot;</span><span class="p">,</span> <span class="s2">&quot;cba&quot;</span><span class="p">,</span> <span class="s2">&quot;cbb&quot;</span><span class="p">,</span> <span class="s2">&quot;cbc&quot;</span><span class="p">,</span> <span class="s2">&quot;cca&quot;</span><span class="p">,</span> <span class="s2">&quot;ccb&quot;</span><span class="p">,</span> <span class="s2">&quot;ccc&quot;</span><span class="p">]),</span>
+            <span class="p">(</span><span class="s2">&quot;999&quot;</span><span class="p">,</span>
+             <span class="p">[</span><span class="s2">&quot;www&quot;</span><span class="p">,</span> <span class="s2">&quot;wwx&quot;</span><span class="p">,</span> <span class="s2">&quot;wwy&quot;</span><span class="p">,</span> <span class="s2">&quot;wwz&quot;</span><span class="p">,</span> <span class="s2">&quot;wxw&quot;</span><span class="p">,</span> <span class="s2">&quot;wxx&quot;</span><span class="p">,</span> <span class="s2">&quot;wxy&quot;</span><span class="p">,</span> <span class="s2">&quot;wxz&quot;</span><span class="p">,</span> <span class="s2">&quot;wyw&quot;</span><span class="p">,</span> <span class="s2">&quot;wyx&quot;</span><span class="p">,</span> <span class="s2">&quot;wyy&quot;</span><span class="p">,</span> <span class="s2">&quot;wyz&quot;</span><span class="p">,</span> <span class="s2">&quot;wzw&quot;</span><span class="p">,</span> <span class="s2">&quot;wzx&quot;</span><span class="p">,</span> <span class="s2">&quot;wzy&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;wzz&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;xww&quot;</span><span class="p">,</span> <span class="s2">&quot;xwx&quot;</span><span class="p">,</span> <span class="s2">&quot;xwy&quot;</span><span class="p">,</span> <span class="s2">&quot;xwz&quot;</span><span class="p">,</span> <span class="s2">&quot;xxw&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="s2">&quot;xxy&quot;</span><span class="p">,</span> <span class="s2">&quot;xxz&quot;</span><span class="p">,</span> <span class="s2">&quot;xyw&quot;</span><span class="p">,</span> <span class="s2">&quot;xyx&quot;</span><span class="p">,</span> <span class="s2">&quot;xyy&quot;</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">,</span> <span class="s2">&quot;xzw&quot;</span><span class="p">,</span> <span class="s2">&quot;xzx&quot;</span><span class="p">,</span> <span class="s2">&quot;xzy&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;xzz&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;yww&quot;</span><span class="p">,</span> <span class="s2">&quot;ywx&quot;</span><span class="p">,</span> <span class="s2">&quot;ywy&quot;</span><span class="p">,</span> <span class="s2">&quot;ywz&quot;</span><span class="p">,</span> <span class="s2">&quot;yxw&quot;</span><span class="p">,</span> <span class="s2">&quot;yxx&quot;</span><span class="p">,</span> <span class="s2">&quot;yxy&quot;</span><span class="p">,</span> <span class="s2">&quot;yxz&quot;</span><span class="p">,</span> <span class="s2">&quot;yyw&quot;</span><span class="p">,</span> <span class="s2">&quot;yyx&quot;</span><span class="p">,</span> <span class="s2">&quot;yyy&quot;</span><span class="p">,</span> <span class="s2">&quot;yyz&quot;</span><span class="p">,</span> <span class="s2">&quot;yzw&quot;</span><span class="p">,</span> <span class="s2">&quot;yzx&quot;</span><span class="p">,</span> <span class="s2">&quot;yzy&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;yzz&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;zww&quot;</span><span class="p">,</span> <span class="s2">&quot;zwx&quot;</span><span class="p">,</span> <span class="s2">&quot;zwy&quot;</span><span class="p">,</span> <span class="s2">&quot;zwz&quot;</span><span class="p">,</span> <span class="s2">&quot;zxw&quot;</span><span class="p">,</span> <span class="s2">&quot;zxx&quot;</span><span class="p">,</span> <span class="s2">&quot;zxy&quot;</span><span class="p">,</span> <span class="s2">&quot;zxz&quot;</span><span class="p">,</span> <span class="s2">&quot;zyw&quot;</span><span class="p">,</span> <span class="s2">&quot;zyx&quot;</span><span class="p">,</span> <span class="s2">&quot;zyy&quot;</span><span class="p">,</span> <span class="s2">&quot;zyz&quot;</span><span class="p">,</span> <span class="s2">&quot;zzw&quot;</span><span class="p">,</span> <span class="s2">&quot;zzx&quot;</span><span class="p">,</span> <span class="s2">&quot;zzy&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;zzz&quot;</span><span class="p">]),</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TestSolution.test_solution"><a class="viewcode-back" href="../../../solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.TestSolution.test_solution">[docs]</a>    <span class="k">def</span> <span class="nf">test_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">digits</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
             <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">letterCombinations</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span><span class="n">ans</span> <span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

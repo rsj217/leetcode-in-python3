@@ -162,7 +162,7 @@
 <span class="sd">* 所有左子树和右子树自身必须也是二叉搜索树。</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
@@ -174,10 +174,10 @@
 <span class="sd">        为了描述算法，``BSTreeNode`` 节点定义只有 ``key`` 和左( ``left`` )右( ``right`` )子树</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">val</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -189,7 +189,7 @@
         <span class="sd">&quot;&quot;&quot; 树高属性，已当前节点为root的树的树高 &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_height</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_get_height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_get_height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BSTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 树高的求法，递归DFS方法。</span>
 <span class="sd">        即 ``curnode.height = 1 + max(node.left.height, node.right.height)``</span>
 <span class="sd">        空树（empty tree）定义高度为0</span>
@@ -198,23 +198,23 @@
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_height</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_height</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">))</span>
 
-<div class="viewcode-block" id="BSTreeNode.insert"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="BSTreeNode.insert"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BSTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;插入值为 ``key`` 的节点&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">BSTreeNode</span><span class="o">.</span><span class="n">insert_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BSTreeNode.delete"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="BSTreeNode.delete"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BSTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;删除值为 ``key`` 的节点&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">BSTreeNode</span><span class="o">.</span><span class="n">delete_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BSTreeNode.minimum_dfs"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.minimum_dfs">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">minimum_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">minimum_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BSTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BSTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 以 ``node`` 为 ``root`` 的二叉搜索树中查找最小值节点 &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">node</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">minimum_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BSTreeNode.delete_dfs"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.delete_dfs">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">delete_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">delete_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BSTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BSTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; delete_dfs 方法，递归使用 ``dfs`` 删除以 ``node`` 为根的二叉搜素中的 ``key`` 的节点。 若节点不存在，则什么也不做</span>
 <span class="sd">            通过递归调用左右子树，返回删除节点之后的新树的树根</span>
 <span class="sd">            删除一个 ``key``  节点，有三种情况</span>
@@ -253,7 +253,7 @@
         <span class="k">return</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="BSTreeNode.insert_dfs"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.BSTreeNode.insert_dfs">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">insert_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">insert_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BSTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BSTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 以 ``node`` 为 ``root`` 的二叉搜索树中插入 ``key``，并返回新的 ``root`` &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">BSTreeNode</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -269,7 +269,7 @@
 <span class="kn">from</span> <span class="nn">src.algo.sort</span> <span class="kn">import</span> <span class="n">helper</span>
 
 
-<div class="viewcode-block" id="is_valid"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.is_valid">[docs]</a><span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">BSTreeNode</span><span class="p">):</span>
+<div class="viewcode-block" id="is_valid"><a class="viewcode-back" href="../../../../datastruct/treenode/bs_treenode.html#src.datastruct.treenode.bs_treenode.is_valid">[docs]</a><span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">BSTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="n">nums</span> <span class="o">=</span> <span class="n">inorder_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">helper</span><span class="o">.</span><span class="n">is_sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span></div>
 

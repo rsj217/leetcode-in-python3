@@ -162,6 +162,7 @@
 <span class="sd">不同在于插入或删除节点，该节点的祖先节点的高度会发生变化，需要进行选择以调整平衡</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
@@ -179,25 +180,25 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1</span>
 
-<div class="viewcode-block" id="AVLTreeNode.minimum"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.minimum">[docs]</a>    <span class="k">def</span> <span class="nf">minimum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AVLTreeNode.minimum"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.minimum">[docs]</a>    <span class="k">def</span> <span class="nf">minimum</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 求最小值节点方法，通过调用 &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">AVLTreeNode</span><span class="o">.</span><span class="n">_minimum</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">AVLTreeNode</span><span class="o">.</span><span class="n">minimum_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
     <span class="c1"># 为了适配 print_tree 方法</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">val</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span>
 
-<div class="viewcode-block" id="AVLTreeNode.insert"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="AVLTreeNode.insert"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 插入节点方法，当 key 已存在，则更新节点的值，否则将节点插入到 ``AVLTreeNode`` 中 &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">AVLTreeNode</span><span class="o">.</span><span class="n">insert_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AVLTreeNode.delete"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="AVLTreeNode.delete"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 删除节点方法，当 key 不存在，什么也不做 &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">AVLTreeNode</span><span class="o">.</span><span class="n">delete_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AVLTreeNode.get_height"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.get_height">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">get_height</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_height</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 求节点的树的高度，当节点不存在（空树）时候返回 0</span>
 <span class="sd">            该方法依次调用其递归方法实现。由于节点本身具有 ``height`` 属性。只需要求左右子树即可，无需过多深入递归。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -206,14 +207,14 @@
         <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">get_height</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">),</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_height</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="AVLTreeNode.get_bf"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.get_bf">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">get_bf</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_bf</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 求节点的 平衡因子 ``balance_factor = node.left.height - node.right.height`` &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_height</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">-</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_height</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span></div>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_update_height</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_update_height</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 更新节点的 ``height`` ，返回更新后的节点 &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;node is None&quot;</span>
         <span class="n">height</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_height</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
@@ -221,7 +222,7 @@
         <span class="k">return</span> <span class="n">node</span>
 
 <div class="viewcode-block" id="AVLTreeNode.insert_dfs"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.insert_dfs">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">insert_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">insert_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 以 ``node`` 为根插入 ``key``, 返回插入新的 ``root``</span>
 <span class="sd">            该方法与 ``二叉树搜索`` 的 ``insert_dfs`` 方法类似，不同在于需要调整平衡。</span>
 <span class="sd">            插入节点之后，``node`` 的及其 ``parent`` 的路径上的祖先节点高度会变化，需要先更新高度。</span>
@@ -244,7 +245,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_balance_rotate</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AVLTreeNode.delete_dfs"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.delete_dfs">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">delete_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">delete_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 以 ``node`` 为根删除匹配 ``key`` 的节点, 返回删除后新的 ``root``，若 ``key`` 不存在，则不作删除操作。</span>
 <span class="sd">            该方法与 ``二叉树搜索`` 的 ``delete_dfs`` 方法类似，不同在于需要调整平衡。</span>
 <span class="sd">            与 ``_insert`` 方法类似，删除节点的祖先节点的高度都会变化，需要更新其高度，并对当前节点为根的子树进行平衡调整。</span>
@@ -261,7 +262,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># 待删除 key 节点 左右子树都存在。使用右子树的 最小值 替换当前节点。然后删除右子树最小值，并把最小值的右子树嫁接到当前节点</span>
             <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">successor</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_minimum</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+                <span class="n">successor</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">minimum_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
                 <span class="n">successor</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">delete_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
                 <span class="n">successor</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span>
                 <span class="n">node</span> <span class="o">=</span> <span class="n">successor</span>
@@ -270,7 +271,7 @@
                 <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span>
             <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span>
-            <span class="k">else</span><span class="p">:</span> <span class="c1"># 左右子树都为空，删除当前节点，即返回None即可</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># 左右子树都为空，删除当前节点，即返回None即可</span>
                 <span class="k">return</span> <span class="kc">None</span>
 
         <span class="c1"># 更新当前节点高度</span>
@@ -278,16 +279,16 @@
         <span class="c1"># 平衡调整，并返回新的节点作为子树的root，返回给上层调用</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_balance_rotate</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_minimum</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="AVLTreeNode.minimum_dfs"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.minimum_dfs">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">minimum_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 以 ``node`` 为 ``root`` 的AVL树中查找最小值节点 &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;node err&quot;</span>
         <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">node</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_minimum</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">minimum_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AVLTreeNode.right_rotate"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.right_rotate">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">right_rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">right_rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 右旋转</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">left</span>
@@ -299,7 +300,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_update_height</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AVLTreeNode.left_rotate"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.left_rotate">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">left_rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">left_rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 左旋转</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">right</span>
@@ -311,7 +312,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_update_height</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></div>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_balance_rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_balance_rotate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AVLTreeNode</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 平衡调整 一共四种情况</span>
 
 <span class="sd">            * LL：</span>
@@ -337,7 +338,7 @@
         <span class="k">return</span> <span class="n">node</span>
 
 <div class="viewcode-block" id="AVLTreeNode.is_balance"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.AVLTreeNode.is_balance">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">is_balance</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">is_balance</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AVLTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot; 平衡判断 &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
@@ -353,13 +354,6 @@
 
 <div class="viewcode-block" id="TestAVLTreeNode.test_insert_LL"><a class="viewcode-back" href="../../../../datastruct/treenode/avl_treenode.html#src.datastruct.treenode.avl_treenode.TestAVLTreeNode.test_insert_LL">[docs]</a>    <span class="k">def</span> <span class="nf">test_insert_LL</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        ::</span>
-
-<span class="sd">                3            2</span>
-<span class="sd">               /            / \\</span>
-<span class="sd">              2        -&gt;  1   3</span>
-<span class="sd">             /</span>
-<span class="sd">            1</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">avl</span> <span class="o">=</span> <span class="n">AVLTreeNode</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" xml:lang="en"
+ unique-identifier="unknown"
+ prefix="ibooks: http://vocabulary.itunes.apple.com/rdf/ibooks/vocabulary-extensions-1.0/">
+  <metadata xmlns:opf="http://www.idpf.org/2007/opf"
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:language>en</dc:language>
+    <dc:title>leetcode-in-python3</dc:title>
+    <dc:description>unknown</dc:description>
+    <dc:creator>rsj217</dc:creator>
+    <dc:contributor>unknown</dc:contributor>
+    <dc:publisher>rsj217</dc:publisher>
+    <dc:rights>2021, rsj217</dc:rights>
+    <dc:identifier id="unknown">unknown</dc:identifier>
+    <dc:date>2021-06-11T16:27:24Z</dc:date>
+    <meta property="dcterms:modified">2021-06-11T16:27:24Z</meta>
+    <meta property="ibooks:version"></meta>
+    <meta property="ibooks:specified-fonts">true</meta>
+    <meta property="ibooks:binding">true</meta>
+    <meta property="ibooks:scroll-axis">vertical</meta>
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" />
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="epub-0" href="genindex.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-1" href="index.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-2" href="py-modindex.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-3" href="_static/basic.css" media-type="text/css" />
+    <item id="epub-4" href="_static/epub.css" media-type="text/css" />
+    <item id="epub-5" href="_static/file.png" media-type="image/png" />
+    <item id="epub-6" href="_static/minus.png" media-type="image/png" />
+    <item id="epub-7" href="_static/plus.png" media-type="image/png" />
+    <item id="epub-8" href="_static/pygments.css" media-type="text/css" />
+    <item id="epub-9" href="algo/index.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-10" href="algo/search/binary_search.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-11" href="algo/search/index.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-12" href="algo/sort/heap_sort.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-13" href="algo/sort/helper.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-14" href="algo/sort/index.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-15" href="algo/sort/insert_sort.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-16" href="algo/sort/merge_sort.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-17" href="algo/sort/performance.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-18" href="algo/sort/quick_sort.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-19" href="algo/sort/select_sort.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-20" href="datastruct/avl_treenode.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-21" href="datastruct/bin_treenode.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-22" href="datastruct/bs_treenode.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-23" href="datastruct/index.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-24" href="datastruct/linknode.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-25" href="datastruct/maxheap.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-26" href="datastruct/n_treenode.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-27" href="solution/100_same_trees.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-28" href="solution/101_symmetric_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-29" href="solution/1026_maximum_difference_between_node_and_ancestor.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-30" href="solution/102_binary_tree_level_order_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-31" href="solution/1038_binary_search_tree_to_greater_sum_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-32" href="solution/103_binary_tree_zigzag_level_order_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-33" href="solution/104_maximum_depth_of_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-34" href="solution/105_construct_binary_tree_from_preorder_and_inorder_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-35" href="solution/106_construct_binary_tree_from_postorder_and_inorder_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-36" href="solution/110_balanced_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-37" href="solution/1110_delete_nodes_and_return_forest.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-38" href="solution/112_path_sum.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-39" href="solution/113_path_sum_ii.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-40" href="solution/114_flatten_binary_tree_to_linked_list.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-41" href="solution/116_populating_next_right_pointers_in_each_node.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-42" href="solution/117_populating_next_right_pointers_in_each_node_ii.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-43" href="solution/11_container_with_most_water.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-44" href="solution/121_best_time_to_buy_and_sell_stock.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-45" href="solution/122_best_time_to_buy_and_sell_stock_ii.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-46" href="solution/124_binary_tree_maximum_path_sum.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-47" href="solution/1302_deepest_leaves_sum.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-48" href="solution/136_single_number.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-49" href="solution/13_roman_to_integer.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-50" href="solution/144_binary_tree_preorder_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-51" href="solution/14_longest_common_prefix.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-52" href="solution/153_find_minimum_in_rotated_sorted_array.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-53" href="solution/154_find_minimum_in_rotated_sorted_array_ii.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-54" href="solution/15_3sum.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-55" href="solution/162_find_peak_element.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-56" href="solution/17_letter_combinations_of_a_phone_number.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-57" href="solution/199_binary_tree_right_side_view.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-58" href="solution/1_two_sum.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-59" href="solution/226_invert_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-60" href="solution/236_lowest_common_ancestor_of_a_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-61" href="solution/257_binary_tree_paths.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-62" href="solution/2_add_two_numbers.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-63" href="solution/33_search_in_rotated_sorted_array.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-64" href="solution/35_search_insert_position.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-65" href="solution/374_guess_number_higher_or_lo.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-66" href="solution/3_longest_substring_without_repeating_characters.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-67" href="solution/450_delete_node_in_a_bst.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-68" href="solution/46_permutations.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-69" href="solution/501_find_mode_in_binary_search_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-70" href="solution/513_find_bottom_left_tree_value.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-71" href="solution/515_find_largest_value_in_each_tree_row.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-72" href="solution/530_minimum_absolute_difference_in_bst.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-73" href="solution/538_binary_search_tree_to_greater_sum_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-74" href="solution/543_diameter_of_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-75" href="solution/589_n_ary_tree_preorder_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-76" href="solution/5_longest_palindromic_substring.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-77" href="solution/654_maximum_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-78" href="solution/655_print_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-79" href="solution/662_maximum_width_of_binary_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-80" href="solution/69_sqrtx.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-81" href="solution/704_binary_search.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-82" href="solution/71_simplify_path.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-83" href="solution/75_sort_colors.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-84" href="solution/783_minimum_distance_between_bst_nodes.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-85" href="solution/7_reverse_integer.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-86" href="solution/814_binary_tree_pruning.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-87" href="solution/81_search_in_rotated_sorted_array_ii.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-88" href="solution/897_increasing_order_search_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-89" href="solution/938_range_sum_of_bst.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-90" href="solution/94_binary_tree_inorder_traversal.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-91" href="solution/951_flip_equivalent_binary_trees.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-92" href="solution/98_validate_binary_search_tree.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-93" href="solution/9_palindrome_number.xhtml" media-type="application/xhtml+xml" />
+    <item id="epub-94" href="solution/index.xhtml" media-type="application/xhtml+xml" />
+  </manifest>
+  <spine toc="ncx" page-progression-direction="ltr">
+    <itemref idref="epub-1" />
+    <itemref idref="epub-9" />
+    <itemref idref="epub-14" />
+    <itemref idref="epub-19" />
+    <itemref idref="epub-15" />
+    <itemref idref="epub-18" />
+    <itemref idref="epub-16" />
+    <itemref idref="epub-12" />
+    <itemref idref="epub-13" />
+    <itemref idref="epub-17" />
+    <itemref idref="epub-11" />
+    <itemref idref="epub-10" />
+    <itemref idref="epub-23" />
+    <itemref idref="epub-24" />
+    <itemref idref="epub-25" />
+    <itemref idref="epub-21" />
+    <itemref idref="epub-22" />
+    <itemref idref="epub-20" />
+    <itemref idref="epub-26" />
+    <itemref idref="epub-94" />
+    <itemref idref="epub-58" />
+    <itemref idref="epub-62" />
+    <itemref idref="epub-66" />
+    <itemref idref="epub-76" />
+    <itemref idref="epub-85" />
+    <itemref idref="epub-93" />
+    <itemref idref="epub-43" />
+    <itemref idref="epub-49" />
+    <itemref idref="epub-51" />
+    <itemref idref="epub-54" />
+    <itemref idref="epub-56" />
+    <itemref idref="epub-63" />
+    <itemref idref="epub-64" />
+    <itemref idref="epub-68" />
+    <itemref idref="epub-80" />
+    <itemref idref="epub-82" />
+    <itemref idref="epub-83" />
+    <itemref idref="epub-87" />
+    <itemref idref="epub-90" />
+    <itemref idref="epub-92" />
+    <itemref idref="epub-27" />
+    <itemref idref="epub-28" />
+    <itemref idref="epub-30" />
+    <itemref idref="epub-32" />
+    <itemref idref="epub-33" />
+    <itemref idref="epub-34" />
+    <itemref idref="epub-35" />
+    <itemref idref="epub-36" />
+    <itemref idref="epub-38" />
+    <itemref idref="epub-39" />
+    <itemref idref="epub-40" />
+    <itemref idref="epub-41" />
+    <itemref idref="epub-42" />
+    <itemref idref="epub-44" />
+    <itemref idref="epub-45" />
+    <itemref idref="epub-46" />
+    <itemref idref="epub-48" />
+    <itemref idref="epub-50" />
+    <itemref idref="epub-52" />
+    <itemref idref="epub-53" />
+    <itemref idref="epub-55" />
+    <itemref idref="epub-57" />
+    <itemref idref="epub-59" />
+    <itemref idref="epub-60" />
+    <itemref idref="epub-61" />
+    <itemref idref="epub-65" />
+    <itemref idref="epub-67" />
+    <itemref idref="epub-69" />
+    <itemref idref="epub-70" />
+    <itemref idref="epub-71" />
+    <itemref idref="epub-72" />
+    <itemref idref="epub-73" />
+    <itemref idref="epub-74" />
+    <itemref idref="epub-75" />
+    <itemref idref="epub-77" />
+    <itemref idref="epub-78" />
+    <itemref idref="epub-79" />
+    <itemref idref="epub-81" />
+    <itemref idref="epub-84" />
+    <itemref idref="epub-86" />
+    <itemref idref="epub-88" />
+    <itemref idref="epub-89" />
+    <itemref idref="epub-91" />
+    <itemref idref="epub-29" />
+    <itemref idref="epub-31" />
+    <itemref idref="epub-37" />
+    <itemref idref="epub-47" />
+    <itemref idref="epub-2" />
+    <itemref idref="epub-0" />
+  </spine>
+  <guide>
+    <reference type="toc" title="Table of Contents" href="index.xhtml" />
+  </guide>
+</package>

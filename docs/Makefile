@@ -21,3 +21,6 @@ help:
 
 docs_pub:
 	cp -a build/html/. ./
+
+solution:
+	python3 gen_solution_rst.py

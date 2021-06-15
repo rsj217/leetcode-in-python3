@@ -5,11 +5,11 @@ from typing import List
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
-        nums_visit = [False for i in range(len(nums))]
+        nums_visit = [False for _ in range(len(nums))]
 
         def backtrack(nums_visit: List[int], path: List[int]):
             if len(nums) == len(path):
-                ans .append(path[:])
+                ans.append(path[:])
                 return
 
             for i, item in enumerate(nums):
@@ -30,15 +30,16 @@ class TestSolution(unittest.TestCase):
 
     def setUp(self):
         self.test_case = [
-            ([1, 2, 3], []),
+            ([1], [[1]]),
+            ([0, 1], [[0,1],[1,0]]),
+            ([1, 2, 3], [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]),
         ]
         self.s = Solution()
 
     def test_solution(self):
         for nums, answer in self.test_case:
             ans = self.s.permute(nums)
-            print(ans )
-            # self.assertEqual(nums, answer) # TODO
+            self.assertEqual(answer, ans)
 
 
 if __name__ == '__main__':

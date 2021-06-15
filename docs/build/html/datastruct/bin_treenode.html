@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>TreeNode &mdash; leetcode-in-python3 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> leetcode-in-python3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../algo/index.html">Algo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Datastruct</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../solution/index.html">Solution</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">leetcode-in-python3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>TreeNode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/datastruct/bin_treenode.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-src.datastruct.bin_treenode">
+<span id="treenode"></span><h1>TreeNode<a class="headerlink" href="#module-src.datastruct.bin_treenode" title="Permalink to this headline">¶</a></h1>
+<p>树节点&amp;树结构定义，序列化/反序列化，打印，遍历相关算法</p>
+<dl class="py class">
+<dt id="src.datastruct.bin_treenode.TestPrintTreeNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.datastruct.bin_treenode.</span></code><code class="sig-name descname"><span class="pre">TestPrintTreeNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TestPrintTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TestPrintTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt id="src.datastruct.bin_treenode.TestPrintTreeNode.test_empty">
+<code class="sig-name descname"><span class="pre">test_empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TestPrintTreeNode.test_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TestPrintTreeNode.test_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.bin_treenode.TestPrintTreeNode.test_print_tree">
+<code class="sig-name descname"><span class="pre">test_print_tree</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TestPrintTreeNode.test_print_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TestPrintTreeNode.test_print_tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.datastruct.bin_treenode.TestTreeNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.datastruct.bin_treenode.</span></code><code class="sig-name descname"><span class="pre">TestTreeNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TestTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TestTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt id="src.datastruct.bin_treenode.TestTreeNode.test_create">
+<code class="sig-name descname"><span class="pre">test_create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TestTreeNode.test_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TestTreeNode.test_create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="src.datastruct.bin_treenode.TreeNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.datastruct.bin_treenode.</span></code><code class="sig-name descname"><span class="pre">TreeNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>树节点(TreeNode)定义，三个字段</p>
+<ul class="simple">
+<li><p>val： 数据域，通常是 i32。</p></li>
+<li><p>left：左子树，TreeNode 类型</p></li>
+<li><p>right：右子树, TreeNode 类型</p></li>
+</ul>
+<dl class="py method">
+<dt id="src.datastruct.bin_treenode.TreeNode.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TreeNode.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TreeNode.create" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">create</span></code> 方法用于将的正数列表反序列化成一棵树。
+列表元素的的顺序是树的 <cite>BFS</cite> 层序遍历的顺序
+除了最深的一层的叶子节点之外，其他的叶子节点的左右子树，使用 <code class="docutils literal notranslate"><span class="pre">None</span></code> 站位。位于最后一个节点之后的 <code class="docutils literal notranslate"><span class="pre">None</span></code> 则需要去掉
+该方法与 <code class="docutils literal notranslate"><span class="pre">literal</span></code> 逆方法。后者将一棵树序列化成整数列表。
+实现原理借助了完全二叉树层序遍历的序号(seq) 与 数组中索引(index)的关系。
+由于有的None节点在数组中不存在，因此这个 seq 与 完全二叉树的节点 seq 有差别。但左右子树的序号与当前节点的序号关系依然成立</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="kc">None</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>root 的拓扑形状如下，可以使用该模块的 <code class="docutils literal notranslate"><span class="pre">print_tree</span></code> 打印树的拓扑</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="mi">1</span>
+  <span class="mi">2</span>       <span class="mi">3</span>
+<span class="mi">4</span>       <span class="mi">5</span>   <span class="mi">6</span>
+ <span class="mi">7</span>         <span class="mi">8</span>
+</pre></div>
+</div>
+<p>叶子节点 2 的右子树，4的左子树 5 的左右子树都用 None 占位，叶子节点 6 的右子树在最后一个节点 8 之后，就不需要 None 占位了。
+树的序列化和反序列化可以参考 Leetcode <a class="reference external" href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/">[297.二叉树序列化]</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.bin_treenode.TreeNode.height">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">height</span></code><a class="headerlink" href="#src.datastruct.bin_treenode.TreeNode.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>树高属性，已当前节点为root的树的树高</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">src.datastruct.bin_treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">height</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="src.datastruct.bin_treenode.TreeNode.literal">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">literal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#TreeNode.literal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.TreeNode.literal" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">literal</span></code> 是将一颗二叉树序列化成整数列表。是 <code class="docutils literal notranslate"><span class="pre">create</span></code> 方法的逆方法。
+其原理是使用二叉树的 <cite>bfs</cite> 层序遍历依次解析节点。
+从树根开始遍历，如果当前节点不存在，直接放入输出 <code class="docutils literal notranslate"><span class="pre">None</span></code> 进行占位。如果节点存在，则将其值输出到结果。
+遍历完成之后，再剔除最后一个节点之后的 <code class="docutils literal notranslate"><span class="pre">None</span></code> 值。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src.datastruct.bin_treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">ans</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">literal</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">nums</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="s2">&quot;err&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="src.datastruct.bin_treenode.print_tree">
+<code class="sig-prename descclassname"><span class="pre">src.datastruct.bin_treenode.</span></code><code class="sig-name descname"><span class="pre">print_tree</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#print_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.print_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>打印二叉树的拓扑形状，调用两个子函数，
+分表是 dfs 方法和 bfs 方法，两个方法随机调用</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="src.datastruct.bin_treenode.print_tree_bfs">
+<code class="sig-prename descclassname"><span class="pre">src.datastruct.bin_treenode.</span></code><code class="sig-name descname"><span class="pre">print_tree_bfs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#src.datastruct.bin_treenode.TreeNode" title="src.datastruct.bin_treenode.TreeNode"><span class="pre">src.datastruct.bin_treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#print_tree_bfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.print_tree_bfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>使用 bfs 方法打印二叉树的树形拓扑</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="src.datastruct.bin_treenode.print_tree_dfs">
+<code class="sig-prename descclassname"><span class="pre">src.datastruct.bin_treenode.</span></code><code class="sig-name descname"><span class="pre">print_tree_dfs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#src.datastruct.bin_treenode.TreeNode" title="src.datastruct.bin_treenode.TreeNode"><span class="pre">src.datastruct.bin_treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/src/datastruct/bin_treenode.html#print_tree_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bin_treenode.print_tree_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">print_tree_dfs</span></code> 函数用于打印二叉树的树形拓扑，方便直观的观察一棵树的形状。便于验证相关树算法。</p>
+<p>拓扑结果中，并没有画出路径，由于控制台输出长度的限制，树的节点数也有限制。树的宽度 <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span> <span class="pre">(1&lt;&lt;height)</span> <span class="pre">-</span> <span class="pre">1</span></code> ，不能太大。
+函数使用了 <code class="docutils literal notranslate"><span class="pre">DFS</span></code> 方式遍历一棵树。</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, rsj217.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

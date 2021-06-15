@@ -1,5 +1,5 @@
 from typing import List
-from src.datastruct.treenode.treenode import TreeNode
+from src.datastruct.bin_treenode import TreeNode
 import unittest
 
 

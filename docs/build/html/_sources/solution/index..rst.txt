@@ -1,0 +1,7 @@
+index.
+====================================================================================================
+
+.. automodule:: src.solution.index.
+   :members:
+   :undoc-members:
+   :show-inheritance:

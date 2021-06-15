@@ -1,5 +1,5 @@
 Solution
-==========
+====================================================================================================
 
 .. toctree::
    :maxdepth: 1
@@ -21,6 +21,7 @@ Solution
    69_sqrtx
    71_simplify_path
    75_sort_colors
+   77_combinations
    81_search_in_rotated_sorted_array_ii
    94_binary_tree_inorder_traversal
    98_validate_binary_search_tree
@@ -42,11 +43,13 @@ Solution
    124_binary_tree_maximum_path_sum
    136_single_number
    144_binary_tree_preorder_traversal
+   145_binary_tree_postorder_traversal
    153_find_minimum_in_rotated_sorted_array
    154_find_minimum_in_rotated_sorted_array_ii
    162_find_peak_element
    199_binary_tree_right_side_view
    226_invert_binary_tree
+   235_lowest_common_ancestor_of_a_binary_search_tree
    236_lowest_common_ancestor_of_a_binary_tree
    257_binary_tree_paths
    374_guess_number_higher_or_lo
@@ -58,9 +61,12 @@ Solution
    538_binary_search_tree_to_greater_sum_tree
    543_diameter_of_binary_tree
    589_n_ary_tree_preorder_traversal
+   590_n_ary_tree_postorder_traversal
    654_maximum_binary_tree
    655_print_binary_tree
    662_maximum_width_of_binary_tree
+   700_search_in_a_binary_search_tree
+   701_insert_into_a_binary_search_tree
    704_binary_search
    783_minimum_distance_between_bst_nodes
    814_binary_tree_pruning

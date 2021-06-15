@@ -1,0 +1,698 @@
+<?xml version="1.0"?>
+<ncx version="2005-1" xmlns="http://www.daisy.org/z3986/2005/ncx/">
+  <head>
+    <meta name="dtb:uid" content="unknown"/>
+    <meta name="dtb:depth" content="3"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    <text>leetcode-in-python3</text>
+  </docTitle>
+  <navMap>    
+    <navPoint id="navPoint1" playOrder="1">
+      <navLabel>
+        <text>Leetcode in Python3</text>
+      </navLabel>
+      <content src="index.xhtml" />  
+    </navPoint>
+    <navPoint id="navPoint2" playOrder="2">
+      <navLabel>
+        <text>Algo</text>
+      </navLabel>
+      <content src="algo/index.xhtml" />  
+      <navPoint id="navPoint3" playOrder="2">
+        <navLabel>
+          <text>Algo</text>
+        </navLabel>
+        <content src="algo/index.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint4" playOrder="3">
+        <navLabel>
+          <text>Sort</text>
+        </navLabel>
+        <content src="algo/sort/index.xhtml" />  
+        <navPoint id="navPoint5" playOrder="3">
+          <navLabel>
+            <text>Sort</text>
+          </navLabel>
+          <content src="algo/sort/index.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint6" playOrder="4">
+          <navLabel>
+            <text>Select Sort</text>
+          </navLabel>
+          <content src="algo/sort/select_sort.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint7" playOrder="5">
+          <navLabel>
+            <text>Insert Sort</text>
+          </navLabel>
+          <content src="algo/sort/insert_sort.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint8" playOrder="6">
+          <navLabel>
+            <text>Quick Sort</text>
+          </navLabel>
+          <content src="algo/sort/quick_sort.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint9" playOrder="7">
+          <navLabel>
+            <text>Merge Sort</text>
+          </navLabel>
+          <content src="algo/sort/merge_sort.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint10" playOrder="8">
+          <navLabel>
+            <text>Heap Sort</text>
+          </navLabel>
+          <content src="algo/sort/heap_sort.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint11" playOrder="9">
+          <navLabel>
+            <text>helper</text>
+          </navLabel>
+          <content src="algo/sort/helper.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint12" playOrder="10">
+          <navLabel>
+            <text>performance</text>
+          </navLabel>
+          <content src="algo/sort/performance.xhtml" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint13" playOrder="11">
+        <navLabel>
+          <text>Search</text>
+        </navLabel>
+        <content src="algo/search/index.xhtml" />  
+        <navPoint id="navPoint14" playOrder="11">
+          <navLabel>
+            <text>Search</text>
+          </navLabel>
+          <content src="algo/search/index.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint15" playOrder="12">
+          <navLabel>
+            <text>Binary Search</text>
+          </navLabel>
+          <content src="algo/search/binary_search.xhtml" />  
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint16" playOrder="13">
+      <navLabel>
+        <text>Datastruct</text>
+      </navLabel>
+      <content src="datastruct/index.xhtml" />  
+      <navPoint id="navPoint17" playOrder="13">
+        <navLabel>
+          <text>Datastruct</text>
+        </navLabel>
+        <content src="datastruct/index.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint18" playOrder="14">
+        <navLabel>
+          <text>LinkNode</text>
+        </navLabel>
+        <content src="datastruct/linknode.xhtml" />  
+        <navPoint id="navPoint19" playOrder="14">
+          <navLabel>
+            <text>LinkNode</text>
+          </navLabel>
+          <content src="datastruct/linknode.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint20" playOrder="15">
+          <navLabel>
+            <text>ListNode</text>
+          </navLabel>
+          <content src="datastruct/linknode.xhtml#listnode" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint21" playOrder="16">
+        <navLabel>
+          <text>MaxHeap</text>
+        </navLabel>
+        <content src="datastruct/maxheap.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint22" playOrder="17">
+        <navLabel>
+          <text>TreeNode</text>
+        </navLabel>
+        <content src="datastruct/bin_treenode.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint23" playOrder="18">
+        <navLabel>
+          <text>BSTreeNode</text>
+        </navLabel>
+        <content src="datastruct/bs_treenode.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint24" playOrder="19">
+        <navLabel>
+          <text>AVLTreeNode</text>
+        </navLabel>
+        <content src="datastruct/avl_treenode.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint25" playOrder="20">
+        <navLabel>
+          <text>NTreeNode</text>
+        </navLabel>
+        <content src="datastruct/n_treenode.xhtml" />  
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint26" playOrder="21">
+      <navLabel>
+        <text>Solution</text>
+      </navLabel>
+      <content src="solution/index.xhtml" />  
+      <navPoint id="navPoint27" playOrder="21">
+        <navLabel>
+          <text>Solution</text>
+        </navLabel>
+        <content src="solution/index.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint28" playOrder="22">
+        <navLabel>
+          <text>1_two_sum</text>
+        </navLabel>
+        <content src="solution/1_two_sum.xhtml" />  
+        <navPoint id="navPoint29" playOrder="22">
+          <navLabel>
+            <text>1_two_sum</text>
+          </navLabel>
+          <content src="solution/1_two_sum.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint30" playOrder="23">
+          <navLabel>
+            <text>Problem</text>
+          </navLabel>
+          <content src="solution/1_two_sum.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint31" playOrder="24">
+          <navLabel>
+            <text>Tips</text>
+          </navLabel>
+          <content src="solution/1_two_sum.xhtml#tips" />  
+        </navPoint>
+        <navPoint id="navPoint32" playOrder="25">
+          <navLabel>
+            <text>Answer</text>
+          </navLabel>
+          <content src="solution/1_two_sum.xhtml#answer" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint33" playOrder="26">
+        <navLabel>
+          <text>2_add_two_numbers</text>
+        </navLabel>
+        <content src="solution/2_add_two_numbers.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint34" playOrder="27">
+        <navLabel>
+          <text>3_longest_substring_without_repeating_characters</text>
+        </navLabel>
+        <content src="solution/3_longest_substring_without_repeating_characters.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint35" playOrder="28">
+        <navLabel>
+          <text>5_longest_palindromic_substring</text>
+        </navLabel>
+        <content src="solution/5_longest_palindromic_substring.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint36" playOrder="29">
+        <navLabel>
+          <text>7_reverse_integer</text>
+        </navLabel>
+        <content src="solution/7_reverse_integer.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint37" playOrder="30">
+        <navLabel>
+          <text>9_palindrome_number</text>
+        </navLabel>
+        <content src="solution/9_palindrome_number.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint38" playOrder="31">
+        <navLabel>
+          <text>11_container_with_most_water</text>
+        </navLabel>
+        <content src="solution/11_container_with_most_water.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint39" playOrder="32">
+        <navLabel>
+          <text>13_roman_to_integer</text>
+        </navLabel>
+        <content src="solution/13_roman_to_integer.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint40" playOrder="33">
+        <navLabel>
+          <text>14_longest_common_prefix</text>
+        </navLabel>
+        <content src="solution/14_longest_common_prefix.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint41" playOrder="34">
+        <navLabel>
+          <text>15_3sum</text>
+        </navLabel>
+        <content src="solution/15_3sum.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint42" playOrder="35">
+        <navLabel>
+          <text>17_letter_combinations_of_a_phone_number</text>
+        </navLabel>
+        <content src="solution/17_letter_combinations_of_a_phone_number.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint43" playOrder="36">
+        <navLabel>
+          <text>33_search_in_rotated_sorted_array</text>
+        </navLabel>
+        <content src="solution/33_search_in_rotated_sorted_array.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint44" playOrder="37">
+        <navLabel>
+          <text>35_search_insert_position</text>
+        </navLabel>
+        <content src="solution/35_search_insert_position.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint45" playOrder="38">
+        <navLabel>
+          <text>46_permutations</text>
+        </navLabel>
+        <content src="solution/46_permutations.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint46" playOrder="39">
+        <navLabel>
+          <text>69_sqrtx</text>
+        </navLabel>
+        <content src="solution/69_sqrtx.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint47" playOrder="40">
+        <navLabel>
+          <text>71_simplify_path</text>
+        </navLabel>
+        <content src="solution/71_simplify_path.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint48" playOrder="41">
+        <navLabel>
+          <text>75_sort_colors</text>
+        </navLabel>
+        <content src="solution/75_sort_colors.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint49" playOrder="42">
+        <navLabel>
+          <text>81_search_in_rotated_sorted_array_ii</text>
+        </navLabel>
+        <content src="solution/81_search_in_rotated_sorted_array_ii.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint50" playOrder="43">
+        <navLabel>
+          <text>94_binary_tree_inorder_traversal</text>
+        </navLabel>
+        <content src="solution/94_binary_tree_inorder_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint51" playOrder="44">
+        <navLabel>
+          <text>98_validate_binary_search_tree</text>
+        </navLabel>
+        <content src="solution/98_validate_binary_search_tree.xhtml" />  
+        <navPoint id="navPoint52" playOrder="44">
+          <navLabel>
+            <text>98_validate_binary_search_tree</text>
+          </navLabel>
+          <content src="solution/98_validate_binary_search_tree.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint53" playOrder="45">
+          <navLabel>
+            <text>Problem</text>
+          </navLabel>
+          <content src="solution/98_validate_binary_search_tree.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint54" playOrder="46">
+          <navLabel>
+            <text>Tips</text>
+          </navLabel>
+          <content src="solution/98_validate_binary_search_tree.xhtml#tips" />  
+        </navPoint>
+        <navPoint id="navPoint55" playOrder="47">
+          <navLabel>
+            <text>Answer</text>
+          </navLabel>
+          <content src="solution/98_validate_binary_search_tree.xhtml#answer" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint56" playOrder="48">
+        <navLabel>
+          <text>100_same_trees</text>
+        </navLabel>
+        <content src="solution/100_same_trees.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint57" playOrder="49">
+        <navLabel>
+          <text>101_symmetric_tree</text>
+        </navLabel>
+        <content src="solution/101_symmetric_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint58" playOrder="50">
+        <navLabel>
+          <text>102_binary_tree_level_order_traversal</text>
+        </navLabel>
+        <content src="solution/102_binary_tree_level_order_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint59" playOrder="51">
+        <navLabel>
+          <text>103_binary_tree_zigzag_level_order_traversal</text>
+        </navLabel>
+        <content src="solution/103_binary_tree_zigzag_level_order_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint60" playOrder="52">
+        <navLabel>
+          <text>104_maximum_depth_of_binary_tree</text>
+        </navLabel>
+        <content src="solution/104_maximum_depth_of_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint61" playOrder="53">
+        <navLabel>
+          <text>105_construct_binary_tree_from_preorder_and_inorder_traversal</text>
+        </navLabel>
+        <content src="solution/105_construct_binary_tree_from_preorder_and_inorder_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint62" playOrder="54">
+        <navLabel>
+          <text>106_construct_binary_tree_from_postorder_and_inorder_traversal</text>
+        </navLabel>
+        <content src="solution/106_construct_binary_tree_from_postorder_and_inorder_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint63" playOrder="55">
+        <navLabel>
+          <text>110_balanced_binary_tree</text>
+        </navLabel>
+        <content src="solution/110_balanced_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint64" playOrder="56">
+        <navLabel>
+          <text>112_path_sum</text>
+        </navLabel>
+        <content src="solution/112_path_sum.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint65" playOrder="57">
+        <navLabel>
+          <text>113_path_sum_ii</text>
+        </navLabel>
+        <content src="solution/113_path_sum_ii.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint66" playOrder="58">
+        <navLabel>
+          <text>114_flatten_binary_tree_to_linked_list</text>
+        </navLabel>
+        <content src="solution/114_flatten_binary_tree_to_linked_list.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint67" playOrder="59">
+        <navLabel>
+          <text>116_populating_next_right_pointers_in_each_node</text>
+        </navLabel>
+        <content src="solution/116_populating_next_right_pointers_in_each_node.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint68" playOrder="60">
+        <navLabel>
+          <text>117_populating_next_right_pointers_in_each_node_ii</text>
+        </navLabel>
+        <content src="solution/117_populating_next_right_pointers_in_each_node_ii.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint69" playOrder="61">
+        <navLabel>
+          <text>121_best_time_to_buy_and_sell_stock</text>
+        </navLabel>
+        <content src="solution/121_best_time_to_buy_and_sell_stock.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint70" playOrder="62">
+        <navLabel>
+          <text>122_best_time_to_buy_and_sell_stock_ii</text>
+        </navLabel>
+        <content src="solution/122_best_time_to_buy_and_sell_stock_ii.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint71" playOrder="63">
+        <navLabel>
+          <text>124_binary_tree_maximum_path_sum</text>
+        </navLabel>
+        <content src="solution/124_binary_tree_maximum_path_sum.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint72" playOrder="64">
+        <navLabel>
+          <text>136_single_number</text>
+        </navLabel>
+        <content src="solution/136_single_number.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint73" playOrder="65">
+        <navLabel>
+          <text>144_binary_tree_preorder_traversal</text>
+        </navLabel>
+        <content src="solution/144_binary_tree_preorder_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint74" playOrder="66">
+        <navLabel>
+          <text>153_find_minimum_in_rotated_sorted_array</text>
+        </navLabel>
+        <content src="solution/153_find_minimum_in_rotated_sorted_array.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint75" playOrder="67">
+        <navLabel>
+          <text>154_find_minimum_in_rotated_sorted_array_ii</text>
+        </navLabel>
+        <content src="solution/154_find_minimum_in_rotated_sorted_array_ii.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint76" playOrder="68">
+        <navLabel>
+          <text>162_find_peak_element</text>
+        </navLabel>
+        <content src="solution/162_find_peak_element.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint77" playOrder="69">
+        <navLabel>
+          <text>199_binary_tree_right_side_view</text>
+        </navLabel>
+        <content src="solution/199_binary_tree_right_side_view.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint78" playOrder="70">
+        <navLabel>
+          <text>226_invert_binary_tree</text>
+        </navLabel>
+        <content src="solution/226_invert_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint79" playOrder="71">
+        <navLabel>
+          <text>236_lowest_common_ancestor_of_a_binary_tree</text>
+        </navLabel>
+        <content src="solution/236_lowest_common_ancestor_of_a_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint80" playOrder="72">
+        <navLabel>
+          <text>257_binary_tree_paths</text>
+        </navLabel>
+        <content src="solution/257_binary_tree_paths.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint81" playOrder="73">
+        <navLabel>
+          <text>374_guess_number_higher_or_lo</text>
+        </navLabel>
+        <content src="solution/374_guess_number_higher_or_lo.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint82" playOrder="74">
+        <navLabel>
+          <text>450_delete_node_in_a_bst</text>
+        </navLabel>
+        <content src="solution/450_delete_node_in_a_bst.xhtml" />  
+        <navPoint id="navPoint83" playOrder="74">
+          <navLabel>
+            <text>450_delete_node_in_a_bst</text>
+          </navLabel>
+          <content src="solution/450_delete_node_in_a_bst.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint84" playOrder="75">
+          <navLabel>
+            <text>Problem</text>
+          </navLabel>
+          <content src="solution/450_delete_node_in_a_bst.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint85" playOrder="76">
+          <navLabel>
+            <text>Tips</text>
+          </navLabel>
+          <content src="solution/450_delete_node_in_a_bst.xhtml#tips" />  
+        </navPoint>
+        <navPoint id="navPoint86" playOrder="77">
+          <navLabel>
+            <text>Answer</text>
+          </navLabel>
+          <content src="solution/450_delete_node_in_a_bst.xhtml#answer" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint87" playOrder="78">
+        <navLabel>
+          <text>501_find_mode_in_binary_search_tree</text>
+        </navLabel>
+        <content src="solution/501_find_mode_in_binary_search_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint88" playOrder="79">
+        <navLabel>
+          <text>513_find_bottom_left_tree_value</text>
+        </navLabel>
+        <content src="solution/513_find_bottom_left_tree_value.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint89" playOrder="80">
+        <navLabel>
+          <text>515_find_largest_value_in_each_tree_row</text>
+        </navLabel>
+        <content src="solution/515_find_largest_value_in_each_tree_row.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint90" playOrder="81">
+        <navLabel>
+          <text>530_minimum_absolute_difference_in_bst</text>
+        </navLabel>
+        <content src="solution/530_minimum_absolute_difference_in_bst.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint91" playOrder="82">
+        <navLabel>
+          <text>538_binary_search_tree_to_greater_sum_tree</text>
+        </navLabel>
+        <content src="solution/538_binary_search_tree_to_greater_sum_tree.xhtml" />  
+        <navPoint id="navPoint92" playOrder="82">
+          <navLabel>
+            <text>538_binary_search_tree_to_greater_sum_tree</text>
+          </navLabel>
+          <content src="solution/538_binary_search_tree_to_greater_sum_tree.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint93" playOrder="83">
+          <navLabel>
+            <text>题目</text>
+          </navLabel>
+          <content src="solution/538_binary_search_tree_to_greater_sum_tree.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint94" playOrder="84">
+          <navLabel>
+            <text>思路</text>
+          </navLabel>
+          <content src="solution/538_binary_search_tree_to_greater_sum_tree.xhtml#id2" />  
+        </navPoint>
+        <navPoint id="navPoint95" playOrder="85">
+          <navLabel>
+            <text>实现</text>
+          </navLabel>
+          <content src="solution/538_binary_search_tree_to_greater_sum_tree.xhtml#module-src.solution.538_binary_search_tree_to_greater_sum_tree" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint96" playOrder="86">
+        <navLabel>
+          <text>543_diameter_of_binary_tree</text>
+        </navLabel>
+        <content src="solution/543_diameter_of_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint97" playOrder="87">
+        <navLabel>
+          <text>589_n_ary_tree_preorder_traversal</text>
+        </navLabel>
+        <content src="solution/589_n_ary_tree_preorder_traversal.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint98" playOrder="88">
+        <navLabel>
+          <text>654_maximum_binary_tree</text>
+        </navLabel>
+        <content src="solution/654_maximum_binary_tree.xhtml" />  
+        <navPoint id="navPoint99" playOrder="88">
+          <navLabel>
+            <text>654_maximum_binary_tree</text>
+          </navLabel>
+          <content src="solution/654_maximum_binary_tree.xhtml" />  
+        </navPoint>
+        <navPoint id="navPoint100" playOrder="89">
+          <navLabel>
+            <text>Problem</text>
+          </navLabel>
+          <content src="solution/654_maximum_binary_tree.xhtml#id1" />  
+        </navPoint>
+        <navPoint id="navPoint101" playOrder="90">
+          <navLabel>
+            <text>Tips</text>
+          </navLabel>
+          <content src="solution/654_maximum_binary_tree.xhtml#tips" />  
+        </navPoint>
+        <navPoint id="navPoint102" playOrder="91">
+          <navLabel>
+            <text>Answer</text>
+          </navLabel>
+          <content src="solution/654_maximum_binary_tree.xhtml#answer" />  
+        </navPoint>
+      </navPoint>
+      <navPoint id="navPoint103" playOrder="92">
+        <navLabel>
+          <text>655_print_binary_tree</text>
+        </navLabel>
+        <content src="solution/655_print_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint104" playOrder="93">
+        <navLabel>
+          <text>662_maximum_width_of_binary_tree</text>
+        </navLabel>
+        <content src="solution/662_maximum_width_of_binary_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint105" playOrder="94">
+        <navLabel>
+          <text>704_binary_search</text>
+        </navLabel>
+        <content src="solution/704_binary_search.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint106" playOrder="95">
+        <navLabel>
+          <text>783_minimum_distance_between_bst_nodes</text>
+        </navLabel>
+        <content src="solution/783_minimum_distance_between_bst_nodes.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint107" playOrder="96">
+        <navLabel>
+          <text>814_binary_tree_pruning</text>
+        </navLabel>
+        <content src="solution/814_binary_tree_pruning.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint108" playOrder="97">
+        <navLabel>
+          <text>897_increasing_order_search_tree</text>
+        </navLabel>
+        <content src="solution/897_increasing_order_search_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint109" playOrder="98">
+        <navLabel>
+          <text>938_range_sum_of_bst</text>
+        </navLabel>
+        <content src="solution/938_range_sum_of_bst.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint110" playOrder="99">
+        <navLabel>
+          <text>951_flip_equivalent_binary_trees</text>
+        </navLabel>
+        <content src="solution/951_flip_equivalent_binary_trees.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint111" playOrder="100">
+        <navLabel>
+          <text>1026_maximum_difference_between_node_and_ancestor</text>
+        </navLabel>
+        <content src="solution/1026_maximum_difference_between_node_and_ancestor.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint112" playOrder="101">
+        <navLabel>
+          <text>1038_binary_search_tree_to_greater_sum_tree</text>
+        </navLabel>
+        <content src="solution/1038_binary_search_tree_to_greater_sum_tree.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint113" playOrder="102">
+        <navLabel>
+          <text>1110_delete_nodes_and_return_forest</text>
+        </navLabel>
+        <content src="solution/1110_delete_nodes_and_return_forest.xhtml" />  
+      </navPoint>
+      <navPoint id="navPoint114" playOrder="103">
+        <navLabel>
+          <text>1302_deepest_leaves_sum</text>
+        </navLabel>
+        <content src="solution/1302_deepest_leaves_sum.xhtml" />  
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

@@ -1,0 +1,7 @@
+35_1_search_insert_position_other
+====================================================================================================
+
+.. automodule:: src.solution.35_1_search_insert_position_other
+   :members:
+   :undoc-members:
+   :show-inheritance:
