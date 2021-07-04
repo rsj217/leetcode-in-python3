@@ -19,8 +19,5 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-docs_pub:
-	cp -a build/html/. ./
-
 solution:
 	python3 gen_solution_rst.py

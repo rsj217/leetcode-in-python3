@@ -102,13 +102,20 @@
 <li class="toctree-l2"><a class="reference internal" href="15_3sum.html">15_3sum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="17_letter_combinations_of_a_phone_number.html">17_letter_combinations_of_a_phone_number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33_search_in_rotated_sorted_array.html">33_search_in_rotated_sorted_array</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">35_search_insert_position</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">35_search_insert_position</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answer">Answer</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="46_permutations.html">46_permutations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="69_sqrtx.html">69_sqrtx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="71_simplify_path.html">71_simplify_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="75_sort_colors.html">75_sort_colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="77_combinations.html">77_combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="78_subsets.html">78_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="81_search_in_rotated_sorted_array_ii.html">81_search_in_rotated_sorted_array_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="90_subsets_with_duplicates.html">90_subsets_with_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="94_binary_tree_inorder_traversal.html">94_binary_tree_inorder_traversal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="98_validate_binary_search_tree.html">98_validate_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="100_same_trees.html">100_same_trees</a></li>
@@ -236,6 +243,40 @@
             
   <div class="section" id="module-src.solution.35_search_insert_position">
 <span id="search-insert-position"></span><h1>35_search_insert_position<a class="headerlink" href="#module-src.solution.35_search_insert_position" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="https://leetcode-cn.com/problems/search-insert-position/">Problem</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">示例</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="n">输入</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">5</span>
+<span class="n">输出</span><span class="p">:</span> <span class="mi">2</span>
+
+
+<span class="n">示例</span> <span class="mi">2</span><span class="p">:</span>
+
+<span class="n">输入</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">2</span>
+<span class="n">输出</span><span class="p">:</span> <span class="mi">1</span>
+
+
+<span class="n">示例</span> <span class="mi">3</span><span class="p">:</span>
+
+<span class="n">输入</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">7</span>
+<span class="n">输出</span><span class="p">:</span> <span class="mi">4</span>
+
+
+<span class="n">示例</span> <span class="mi">4</span><span class="p">:</span>
+
+<span class="n">输入</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">0</span>
+<span class="n">输出</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="src.solution.35_search_insert_position.Solution">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.solution.35_search_insert_position.</span></code><code class="sig-name descname"><span class="pre">Solution</span></code><a class="reference internal" href="../_modules/src/solution/35_search_insert_position.html#Solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.35_search_insert_position.Solution" title="Permalink to this definition">¶</a></dt>
@@ -264,6 +305,7 @@
 
 </dd></dl>
 
+</div>
 </div>
 
 

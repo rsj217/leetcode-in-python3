@@ -154,7 +154,56 @@
            <div itemprop="articleBody">
             
   <h1>Source code for src.solution.1038_binary_search_tree_to_greater_sum_tree</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">src.datastruct.bin_treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">`Problem &lt;https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/&gt;`_</span>
+<span class="sd">--------------------------------------------------------------------------------------</span>
+
+<span class="sd">给出二叉 搜索 树的根节点，该树的节点值各不相同，请你将其转换为累加树（Greater Sum Tree），使每个节点 node 的新值等于原树中大于或等于</span>
+<span class="sd">node.val 的值之和。</span>
+
+<span class="sd">提醒一下，二叉搜索树满足下列约束条件：</span>
+
+
+<span class="sd">节点的左子树仅包含键 小于 节点键的节点。</span>
+<span class="sd">节点的右子树仅包含键 大于 节点键的节点。</span>
+<span class="sd">左右子树也必须是二叉搜索树。</span>
+
+
+<span class="sd">&gt; 注意：该题目与 538: https://leetcode-cn.com/problems/convert-bst-to-greater-tree/ 相同</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    示例 1：</span>
+
+<span class="sd">    输入：[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]</span>
+<span class="sd">    输出：[30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]</span>
+
+<span class="sd">    示例 2：</span>
+
+<span class="sd">    输入：root = [0,null,1]</span>
+<span class="sd">    输出：[1,null,1]</span>
+
+<span class="sd">    示例 3：</span>
+
+<span class="sd">    输入：root = [1,0,2]</span>
+<span class="sd">    输出：[3,3,2]</span>
+
+<span class="sd">    示例 4：</span>
+
+<span class="sd">    输入：root = [3,2,4,1]</span>
+<span class="sd">    输出：[7,9,4,10]</span>
+
+<span class="sd">Tips</span>
+<span class="sd">------</span>
+
+
+
+<span class="sd">Answer</span>
+<span class="sd">------</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">src.datastruct.bin_treenode</span> <span class="kn">import</span> <span class="n">TreeNode</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
@@ -172,10 +221,10 @@
         <span class="k">def</span> <span class="nf">dfs_</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">sum_</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">sum_</span>
-            <span class="n">sum_</span> <span class="o">=</span> <span class="n">dfs_</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">sum_</span><span class="p">)</span>
+            <span class="n">sum_</span> <span class="o">=</span> <span class="n">dfs_</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">sum_</span><span class="p">)</span>
             <span class="n">sum_</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span>
             <span class="n">node</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">sum_</span>
-            <span class="k">return</span> <span class="n">dfs_</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">sum_</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">dfs_</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">sum_</span><span class="p">)</span>
 
         <span class="n">dfs_</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">root</span></div>
@@ -205,15 +254,19 @@
 
 <div class="viewcode-block" id="TestSolution.setUp"><a class="viewcode-back" href="../../../solution/1038_binary_search_tree_to_greater_sum_tree.html#src.solution.1038_binary_search_tree_to_greater_sum_tree.TestSolution.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">15</span><span class="p">),</span>
+            <span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">8</span><span class="p">]),</span>
+            <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+            <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
+            <span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]),</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TestSolution.test_solution"><a class="viewcode-back" href="../../../solution/1038_binary_search_tree_to_greater_sum_tree.html#src.solution.1038_binary_search_tree_to_greater_sum_tree.TestSolution.test_solution">[docs]</a>    <span class="k">def</span> <span class="nf">test_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">nums</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">bstToGst</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>  <span class="c1"># TODO</span></div></div>
-            <span class="c1"># self.assertEqual(answer,ans , (nums, answer))</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">bstToGst</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">TreeNode</span><span class="o">.</span><span class="n">literal</span><span class="p">(</span><span class="n">ans</span><span class="p">))</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

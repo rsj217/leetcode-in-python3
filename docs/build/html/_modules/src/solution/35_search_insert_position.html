@@ -154,7 +154,50 @@
            <div itemprop="articleBody">
             
   <h1>Source code for src.solution.35_search_insert_position</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">`Problem &lt;https://leetcode-cn.com/problems/search-insert-position/&gt;`_</span>
+<span class="sd">-----------------------------------------------------------------------</span>
+
+<span class="sd">给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</span>
+
+<span class="sd">你可以假设数组中无重复元素。</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    示例 1:</span>
+
+<span class="sd">    输入: [1,3,5,6], 5</span>
+<span class="sd">    输出: 2</span>
+
+
+<span class="sd">    示例 2:</span>
+
+<span class="sd">    输入: [1,3,5,6], 2</span>
+<span class="sd">    输出: 1</span>
+
+
+<span class="sd">    示例 3:</span>
+
+<span class="sd">    输入: [1,3,5,6], 7</span>
+<span class="sd">    输出: 4</span>
+
+
+<span class="sd">    示例 4:</span>
+
+<span class="sd">    输入: [1,3,5,6], 0</span>
+<span class="sd">    输出: 0</span>
+
+<span class="sd">Tips</span>
+<span class="sd">------</span>
+
+
+
+<span class="sd">Answer</span>
+<span class="sd">------</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 
 <div class="viewcode-block" id="Solution"><a class="viewcode-back" href="../../../solution/35_search_insert_position.html#src.solution.35_search_insert_position.Solution">[docs]</a><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
@@ -162,9 +205,9 @@
         <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
         <span class="k">while</span> <span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span><span class="p">:</span>
             <span class="n">mid</span> <span class="o">=</span> <span class="n">lo</span> <span class="o">+</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span> <span class="c1"># 绝对小于，右半边</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>  <span class="c1"># 绝对小于，右半边</span>
                 <span class="n">lo</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># target &lt;= nums[mid]</span>
                 <span class="n">hi</span> <span class="o">=</span> <span class="n">mid</span>
         <span class="k">return</span> <span class="n">hi</span></div></div>
 
@@ -175,22 +218,17 @@
 <div class="viewcode-block" id="TestSolution"><a class="viewcode-back" href="../../../solution/35_search_insert_position.html#src.solution.35_search_insert_position.TestSolution">[docs]</a><span class="k">class</span> <span class="nc">TestSolution</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
 <div class="viewcode-block" id="TestSolution.setUp"><a class="viewcode-back" href="../../../solution/35_search_insert_position.html#src.solution.35_search_insert_position.TestSolution.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">input</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">7</span><span class="p">),</span>
-            <span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,],</span> <span class="mi">5</span><span class="p">),</span>
-            <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">answer</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="mi">4</span><span class="p">,</span>
-            <span class="mi">1</span><span class="p">,</span>
-            <span class="mi">1</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TestSolution.test_solution"><a class="viewcode-back" href="../../../solution/35_search_insert_position.html#src.solution.35_search_insert_position.TestSolution.test_solution">[docs]</a>    <span class="k">def</span> <span class="nf">test_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
             <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">searchInsert</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ans</span> <span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">answer</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">ans</span> <span class="p">)</span></div></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

@@ -1,7 +1,0 @@
-15_3sum
-====================================================================================================
-
-.. automodule:: src.solution.15_3sum
-   :members:
-   :undoc-members:
-   :show-inheritance:

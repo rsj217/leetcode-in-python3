@@ -22,7 +22,9 @@ Solution
    71_simplify_path
    75_sort_colors
    77_combinations
+   78_subsets
    81_search_in_rotated_sorted_array_ii
+   90_subsets_with_duplicates
    94_binary_tree_inorder_traversal
    98_validate_binary_search_tree
    100_same_trees

@@ -35,6 +35,8 @@
 Tips
 ------
 
+.. image:: ../../img/Spanish.jpg
+
 
 
 Answer

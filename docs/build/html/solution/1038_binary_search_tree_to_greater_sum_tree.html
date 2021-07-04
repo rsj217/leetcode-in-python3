@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="71_simplify_path.html">71_simplify_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="75_sort_colors.html">75_sort_colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="77_combinations.html">77_combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="78_subsets.html">78_subsets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="81_search_in_rotated_sorted_array_ii.html">81_search_in_rotated_sorted_array_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="90_subsets_with_duplicates.html">90_subsets_with_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="94_binary_tree_inorder_traversal.html">94_binary_tree_inorder_traversal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="98_validate_binary_search_tree.html">98_validate_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="100_same_trees.html">100_same_trees</a></li>
@@ -160,7 +162,12 @@
 <li class="toctree-l2"><a class="reference internal" href="938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1026_maximum_difference_between_node_and_ancestor.html">1026_maximum_difference_between_node_and_ancestor</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1038_binary_search_tree_to_greater_sum_tree</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1038_binary_search_tree_to_greater_sum_tree</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answer">Answer</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="1110_delete_nodes_and_return_forest.html">1110_delete_nodes_and_return_forest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1302_deepest_leaves_sum.html">1302_deepest_leaves_sum</a></li>
 </ul>
@@ -236,6 +243,42 @@
             
   <div class="section" id="module-src.solution.1038_binary_search_tree_to_greater_sum_tree">
 <span id="binary-search-tree-to-greater-sum-tree"></span><h1>1038_binary_search_tree_to_greater_sum_tree<a class="headerlink" href="#module-src.solution.1038_binary_search_tree_to_greater_sum_tree" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/">Problem</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>给出二叉 搜索 树的根节点，该树的节点值各不相同，请你将其转换为累加树（Greater Sum Tree），使每个节点 node 的新值等于原树中大于或等于
+node.val 的值之和。</p>
+<p>提醒一下，二叉搜索树满足下列约束条件：</p>
+<p>节点的左子树仅包含键 小于 节点键的节点。
+节点的右子树仅包含键 大于 节点键的节点。
+左右子树也必须是二叉搜索树。</p>
+<p>&gt; 注意：该题目与 538: <a class="reference external" href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/">https://leetcode-cn.com/problems/convert-bst-to-greater-tree/</a> 相同</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>示例 1：
+
+输入：[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+输出：[30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+
+示例 2：
+
+输入：root = [0,null,1]
+输出：[1,null,1]
+
+示例 3：
+
+输入：root = [1,0,2]
+输出：[3,3,2]
+
+示例 4：
+
+输入：root = [3,2,4,1]
+输出：[7,9,4,10]
+</pre></div>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="src.solution.1038_binary_search_tree_to_greater_sum_tree.Solution">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">src.solution.1038_binary_search_tree_to_greater_sum_tree.</span></code><code class="sig-name descname"><span class="pre">Solution</span></code><a class="reference internal" href="../_modules/src/solution/1038_binary_search_tree_to_greater_sum_tree.html#Solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.1038_binary_search_tree_to_greater_sum_tree.Solution" title="Permalink to this definition">¶</a></dt>
@@ -274,6 +317,7 @@
 
 </dd></dl>
 
+</div>
 </div>
 
 
