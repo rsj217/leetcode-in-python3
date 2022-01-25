@@ -1,20 +1,11 @@
+from src.datastruct.b_treenode import *
 
+bt = BTree(order=4)
 
+nums = [3, 1, 5, 4, 2, 9, 10, 8, 7, 6]
+nums.reverse()
 
+for i in nums:
+    bt.insert(i)
 
-nums = [1, 5, 3]
-
-
-ans = []
-def subset(nums, index, path):
-    if index > len(nums):
-        return
-    ans.append(path[:])
-    for i in range(index, len(nums)):
-        path.append(nums[i])
-        subset(nums, i+1, path)
-        path.pop()
-
-subset(nums, 0, [])
-print(ans)
-
+graphviz_tree(bt.root)

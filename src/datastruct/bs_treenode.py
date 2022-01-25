@@ -9,6 +9,9 @@
 from __future__ import annotations
 from typing import List
 import unittest
+import os
+from src.algo.sort import helper
+from src.datastruct.treenode import print_tree
 
 
 class BSTreeNode:
@@ -81,16 +84,16 @@ class BSTreeNode:
             # 左右子树都存在，删除key节点右子树的最小值
             if node.left is not None and node.right is not None:
                 successor = cls.minimum_dfs(node.right)
-                successor.right = cls.delete_dfs(node.right, key)
+                successor.right = cls.delete_dfs(node.right, successor.key)
                 successor.left = node.left
                 node = successor
-            if node.left is not None:
+            elif node.left is not None:
                 lnode = node.left
-                del node
+                node.left = None
                 return lnode
             elif node.right is not None:
                 rnode = node.right
-                del node
+                node.right = None
                 return rnode
             else:
                 return None
@@ -110,7 +113,20 @@ class BSTreeNode:
         return node
 
 
-from src.algo.sort import helper
+class BSTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, key):
+        if self.root is None:
+            self.root = BSTreeNode(key)
+        else:
+            self.root = BSTreeNode.insert_dfs(self.root, key)
+
+    def delete(self, key):
+        if self.root is None:
+            return
+        self.root = BSTreeNode.delete_dfs(self.root, key)
 
 
 def is_valid(node: BSTreeNode) -> bool:
@@ -129,9 +145,6 @@ def inorder_dfs(node) -> List[int]:
         yield from dfs(node.right)
 
     return list(dfs(node))
-
-
-from src.datastruct.bin_treenode import print_tree
 
 
 class TestBSTreeNode(unittest.TestCase):
@@ -182,6 +195,36 @@ class TestBSTreeNode(unittest.TestCase):
         print(print_tree(root))
         self.assertTrue(is_valid(root))
 
+def graphviz_tree(node: BSTreeNode) -> List[List[str]]:
+    if node is None:
+        return []
+
+    seq = 1
+    queue = [(node, seq)]
+
+    lines = []
+    lines.append('digraph g {\n')
+    lines.append('node [shape=record, height=.1];\n')
+    lines.append(f'node{seq}[label="<f0> |{node.val}| <f1>"];\n')
+    while len(queue) > 0:
+        size = len(queue)
+        for i in range(size):
+            node, seq = queue.pop(0)
+            if node.left is not None:
+                queue.append((node.left, 2 * seq))
+                lines.append(f'node{2 * seq}[label="<f0> |{node.left.val}| <f1>"];\n')
+                lines.append(f'node{seq}:f0 -> node{2 * seq};\n')
+
+            if node.right is not None:
+                queue.append((node.right, 2 * seq + 1))
+                lines.append(f'node{2 * seq + 1}[label="<f0> |{node.right.val}| <f1>"];\n')
+                lines.append(f'node{seq}:f1 -> node{2 * seq + 1};\n')
+    lines.append('}')
+    with open("tree.dot", "w") as f:
+        f.writelines(lines)
+    cmd = "dot -Tpng -o tree.png tree.dot"
+    os.system(cmd)
+    os.system("open tree.png")
 
 if __name__ == '__main__':
     unittest.main()

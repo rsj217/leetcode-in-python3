@@ -107,7 +107,7 @@ class AVLTreeNode:
             # 待删除 key 节点 左右子树都存在。使用右子树的 最小值 替换当前节点。然后删除右子树最小值，并把最小值的右子树嫁接到当前节点
             if node.left is not None and node.right is not None:
                 successor = cls.minimum_dfs(node.right)
-                successor.right = cls.delete_dfs(node.right, key)
+                successor.right = cls.delete_dfs(node.right, successor.key)
                 successor.left = node.left
                 node = successor
             # 左子树不为空，返回左子树
@@ -191,7 +191,23 @@ class AVLTreeNode:
         return cls.is_balance(node.left) and cls.is_balance(node.right)
 
 
-from src.datastruct.bin_treenode import print_tree
+class AVLTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, key):
+        if self.root is None:
+            self.root = AVLTreeNode(key)
+        else:
+            self.root = AVLTreeNode.insert_dfs(self.root, key)
+
+    def delete(self, key):
+        if self.root is None:
+            return
+        self.root = AVLTreeNode.delete_dfs(self.root, key)
+
+
+from src.datastruct.treenode import print_tree
 
 
 class TestAVLTreeNode(unittest.TestCase):

@@ -1,4 +1,3 @@
-from typing import List
 import unittest
 
 
@@ -14,7 +13,6 @@ class Solution:
             else:
                 hi = mid
         return ans
-
 
 
 class TestSolution(unittest.TestCase):
@@ -35,7 +33,7 @@ class TestSolution(unittest.TestCase):
     def test_solution(self):
         for x, answer in self.test_case:
             ans = self.s.mySqrt(x)
-            self.assertEqual(answer,ans , (x, answer))
+            self.assertEqual(answer, ans, (x, answer))
 
 
 if __name__ == '__main__':

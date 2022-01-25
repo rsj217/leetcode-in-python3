@@ -1,6 +1,6 @@
 import random
 from typing import List
-from src.datastruct.bin_treenode import TreeNode
+from src.datastruct.treenode import TreeNode
 import unittest
 
 

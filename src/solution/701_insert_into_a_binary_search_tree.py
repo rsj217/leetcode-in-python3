@@ -40,7 +40,7 @@ Answer
 ------
 """
 
-from src.datastruct.bin_treenode import TreeNode
+from src.datastruct.treenode import TreeNode
 
 
 class Solution(object):

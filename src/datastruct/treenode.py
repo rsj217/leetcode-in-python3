@@ -7,6 +7,7 @@ from typing import List
 from collections import deque
 import unittest
 import random
+import os
 
 
 class TreeNode:
@@ -37,7 +38,7 @@ class TreeNode:
         """ 树高属性，已当前节点为root的树的树高
         ::
 
-            >>> from src.datastruct.bin_treenode import TreeNode
+            >>> from src.datastruct.treenode import TreeNode
             >>> root = TreeNode(val=1)
             >>> height = root.height
         """
@@ -118,7 +119,7 @@ class TreeNode:
 
         ::
 
-            from src.datastruct.bin_treenode import TreeNode
+            from src.datastruct.treenode import TreeNode
             nums = [
                 1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8,
             ]
@@ -225,6 +226,80 @@ def print_tree_bfs(node: TreeNode) -> List[List[str]]:
     return levels
 
 
+def draw_tree(root):
+    def jump_to(x, y):
+        t.penup()
+        t.goto(x, y)
+        t.pendown()
+
+    def draw(node, x, y, dx):
+        if node:
+            t.goto(x, y)
+            jump_to(x, y - 20)
+            t.write(node.val, align='center', font=('Arial', 12, 'normal'))
+            t.circle(15)
+            draw(node.left, x - dx, y - 60, dx / 2)
+            jump_to(x, y - 20)
+            draw(node.right, x + dx, y - 60, dx / 2)
+
+    import turtle
+    t = turtle.Turtle()
+    t.speed(0)
+    turtle.delay(0)
+    h = root.height
+    jump_to(0, 30 * h)
+    draw(root, 0, 30 * h, 40 * h)
+    t.hideturtle()
+    turtle.mainloop()
+
+
+def deserialize(string):
+    """ deserialize('[1,2,3,null,null,4,null,null,5,6]') """
+    if string == '{}':
+        return None
+    nodes = [None if val == 'null' else TreeNode(int(val))
+             for val in string.strip('[]{}').split(',')]
+    kids = nodes[::-1]
+    root = kids.pop()
+    for node in nodes:
+        if node:
+            if kids: node.left = kids.pop()
+            if kids: node.right = kids.pop()
+    return root
+
+
+def graphviz_tree(node: TreeNode) -> List[List[str]]:
+    if node is None:
+        return []
+
+    seq = 1
+    queue = [(node, seq)]
+
+    lines = []
+    lines.append('digraph g {\n')
+    lines.append('node [shape=record, height=.1];\n')
+    lines.append(f'node{seq}[label="<f0> |{node.val}| <f1>"];\n')
+    while len(queue) > 0:
+        size = len(queue)
+        for i in range(size):
+            node, seq = queue.pop(0)
+            if node.left is not None:
+                queue.append((node.left, 2 * seq))
+                lines.append(f'node{2 * seq}[label="<f0> |{node.left.val}| <f1>"];\n')
+                lines.append(f'node{seq}:f0 -> node{2 * seq};\n')
+
+            if node.right is not None:
+                queue.append((node.right, 2 * seq + 1))
+                lines.append(f'node{2 * seq + 1}[label="<f0> |{node.right.val}| <f1>"];\n')
+                lines.append(f'node{seq}:f1 -> node{2 * seq + 1};\n')
+    lines.append('}')
+    with open("tree.dot", "w") as f:
+        f.writelines(lines)
+    cmd = "dot -Tpng -o tree.png tree.dot"
+    os.system(cmd)
+    os.system("open tree.png")
+
+
 class TestTreeNode(unittest.TestCase):
 
     def test_create(self):
@@ -263,6 +338,7 @@ class TestPrintTreeNode(unittest.TestCase):
     def test_print_tree(self):
         root = TreeNode.create([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
         print(print_tree(root))
+        graphviz_tree(root)
 
         nums = [1, None, 2, 3]
         root = TreeNode.create(nums)

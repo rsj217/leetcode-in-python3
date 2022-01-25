@@ -1,5 +1,5 @@
 import random
-from src.datastruct.bin_treenode import TreeNode
+from src.datastruct.treenode import TreeNode
 import unittest
 from collections import deque
 
