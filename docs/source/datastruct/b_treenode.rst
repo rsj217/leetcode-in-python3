@@ -1,7 +1,7 @@
-TreeNode
+BTreeNode
 =========
 
-.. automodule:: src.datastruct.bin_treenode
+.. automodule:: src.datastruct.b_treenode
    :members:
    :undoc-members:
    :show-inheritance:

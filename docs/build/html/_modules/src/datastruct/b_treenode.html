@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>src.datastruct.b_treenode &mdash; leetcode-in-python3 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> leetcode-in-python3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../algo/index.html">Algo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datastruct/index.html">Datastruct</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../solution/index.html">Solution</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">leetcode-in-python3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>src.datastruct.b_treenode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for src.datastruct.b_treenode</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="find"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.find">[docs]</a><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; 查找 nums 中，不大于 key 的最大 index &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="BTreeNode"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode">[docs]</a><span class="k">class</span> <span class="nc">BTreeNode</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">]</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;|</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">|&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BTreeNode.search_dfs"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.search_dfs">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">search_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BTreeNode</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hot</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BTreeNode</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">BTreeNode</span><span class="p">,</span> <span class="n">BTreeNode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        search_dfs 内部搜索接口，以 node 为根节点进行 关键码 key 的查找。</span>
+<span class="sd">        因为树由内部节点和外部节点组成，外部节点都是 None 空引用。因此节点一定会命中。</span>
+<span class="sd">        hot 则表示命中节点的 parent 节点。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hot</span><span class="p">,</span> <span class="n">node</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hot</span><span class="p">,</span> <span class="n">node</span>
+        <span class="n">hot</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">search_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">hot</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BTreeNode.minimum_dfs"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.minimum_dfs">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">minimum_dfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BTreeNode</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">minimum_dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_search</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">BTreeNode</span><span class="p">,</span> <span class="n">BTreeNode</span><span class="p">):</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">parent</span><span class="p">,</span> <span class="n">node</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">parent</span><span class="p">,</span> <span class="n">node</span>
+
+<div class="viewcode-block" id="BTreeNode.insert"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.insert">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BTreeNode</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        以 node 为 root 插入关键码 key，返回插入之后新树的root。</span>
+<span class="sd">        先使用 search_dfs 查找，目标 key 已存在则直接返回，否则将目标 key 插入到 叶子节点。</span>
+<span class="sd">        当叶子节点新增一个key之后，其自身的 key 的个数可能上溢 overflow，需要调用 overflow_split 方法修复上溢的节点</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hot</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">search_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ans</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">hot</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">hot</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">hot</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">overflow_split</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">hot</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BTreeNode.delete"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.delete">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BTreeNode</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        以 node 为 root，删除关键码 key ，返回删除后新树的树root</span>
+<span class="sd">        与 insert 类似，先查找目标 key，若 key 不存在，则忽略。</span>
+<span class="sd">        当查找到 key 之后。如果 key 是root，则root跟其中序后继的节点进行交换，进而删除交换后的中序后继节点 successor。</span>
+<span class="sd">        如果 key 不是 根节点，则删除相应节点的key。</span>
+<span class="sd">        删除 key 之后节点key 数量减少，可能发现下溢（underflow），需要调用 underflow_merge 方法修复下溢节点。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">search_dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ans</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">ans</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ans</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># 目标节点是非叶子节点</span>
+            <span class="n">successor</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">minimum_dfs</span><span class="p">(</span><span class="n">ans</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># 查找中序后继 sucessor：右孩子的最左边的节点</span>
+            <span class="n">ans</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">successor</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 与 successor 节点交换 key</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">successor</span>  <span class="c1"># 将目标转换为删除 successor</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">underflow_merge</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>  <span class="c1"># 删除节点可能发生下溢，通过旋转或合并修复</span></div>
+
+<div class="viewcode-block" id="BTreeNode.overflow_split"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.overflow_split">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">overflow_split</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BTreeNode</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">order</span><span class="p">:</span>  <span class="c1"># 递归基：当前节点node的children 小于等于order的时候，节点未发生overflow</span>
+            <span class="k">return</span> <span class="n">root</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">order</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># 中位数节点</span>
+
+        <span class="n">right</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="p">()</span>  <span class="c1"># 新建一个空节点，为以中位数节点分离的右节点</span>
+        <span class="n">right</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">right</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">keys</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">[:</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">right</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># 若 right 的children 不为None，需要更新他们的parent，之前是 node，现在更新为 right</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span> <span class="o">-</span> <span class="n">mid</span><span class="p">):</span>
+                <span class="n">right</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">right</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># p 不存在，则表示 node 是根节点</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="p">()</span>  <span class="c1"># 分裂之后，需要一个新的根节点 p</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span>  <span class="c1"># node 作为新根 p 的左孩子节点</span>
+            <span class="n">left</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">p</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">p</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">find</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">left</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 找到 p 中指向原 node 的r，用于插入分裂的 mid</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">left</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>  <span class="c1"># p 插入 mid 的 key</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>  <span class="c1"># p 插入 mid 的 children</span>
+        <span class="n">right</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">p</span>  <span class="c1"># 更新 分裂 的 right的 parent</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">overflow_split</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>  <span class="c1"># 当前层分裂完毕，向上递归，至多  O(H)，即 O(logN))</span></div>
+
+<div class="viewcode-block" id="BTreeNode.underflow_merge"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.underflow_merge">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">underflow_merge</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BTreeNode</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">):</span>  <span class="c1"># 递归基：当前节点满足最小关键码的大小 [m+1//2, m-1]</span>
+            <span class="k">return</span> <span class="n">root</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">root</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">root</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">root</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>  <span class="c1"># 寻找 node 在 其 parent children中的 rank</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># case1: 左顾：向左兄弟借key 旋转</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>  <span class="c1"># 存在左兄弟</span>
+            <span class="n">ls</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># ls: left sibling 左兄弟</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="p">):</span>  <span class="c1"># ls 可以借出关键码</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># node 从 parent 借出关键码</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># parent 从 ls 借出关键码</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># ls 借出关键码的 children（最右的children） 过继给 node（最左边的children）</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># 借出的 children 非叶子节点，</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">node</span>  <span class="c1"># 则需要更新该节点的 parent 为 node</span>
+                <span class="k">return</span> <span class="n">root</span>
+
+        <span class="c1"># case2: 右盼：向右兄弟借key 旋转</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 存在有兄弟</span>
+            <span class="n">rs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># rs: right sibling 右兄弟</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="p">):</span>  <span class="c1"># rs 可以借出关键码</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>  <span class="c1"># node 从 parent 借出关键码</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># parent 从 rs 借出关键码</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># 从 rs 借出关键码的 children（最左边的children）过继给 node （最右边的children）</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># 借出的 children 非叶子节点，</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">node</span>  <span class="c1"># 则需要更新该节点的 parent 为 node</span>
+                <span class="k">return</span> <span class="n">root</span>
+        <span class="c1"># case3: 合并: 左右兄弟都不足以借出</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>  <span class="c1"># 与左兄弟合并</span>
+            <span class="n">ls</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">ls</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">ls</span>
+
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">ls</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+                <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">ls</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">ls</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># 与右兄弟合并</span>
+            <span class="n">rs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">rs</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">rs</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">rs</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">rs</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">rs</span>
+
+        <span class="c1"># 合并之后, 高度减少，需要向上回溯，依次修复下溢的节点</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">underflow_merge</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="BTree"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTree">[docs]</a><span class="k">class</span> <span class="nc">BTree</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BTree.search"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTree.search">[docs]</a>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">BTreeNode</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BTree.insert"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTree.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BTree.delete"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.BTree.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="graphviz_tree"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.graphviz_tree">[docs]</a><span class="k">def</span> <span class="nf">graphviz_tree</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">graphviz_label</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">BTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;f</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">):</span>
+            <span class="n">label</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; |</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">| &lt;f</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">label</span>
+
+    <span class="n">root</span> <span class="o">=</span> <span class="n">node</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">graphviz_label</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;digraph g {</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;node [shape=record, height=.1];</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;node</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">[label=&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&quot;];</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">()</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">root</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;node</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">node</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">graphviz_label</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;node</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">[label=&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&quot;];</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">&quot;: f</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> -&gt; &quot;node</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;node</span><span class="si">{</span><span class="n">seq</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;btree.dot&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;dot -Tpng -o btree.png btree.dot&quot;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;open btree.png&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestBTreeNode"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTreeNode">[docs]</a><span class="k">class</span> <span class="nc">TestBTreeNode</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TestBTreeNode.setUp"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTreeNode.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="TestBTreeNode.test_empty"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTreeNode.test_empty">[docs]</a>    <span class="k">def</span> <span class="nf">test_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">keys</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestBTreeNode.test_insert"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTreeNode.test_insert">[docs]</a>    <span class="k">def</span> <span class="nf">test_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="p">()</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">53</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">53</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">BTreeNode</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">53</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">left</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">36</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">children</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">77</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">children</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="TestBTree"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree">[docs]</a><span class="k">class</span> <span class="nc">TestBTree</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TestBTree.setUp"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="TestBTree.test_insert_overflow_split"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.test_insert_overflow_split">[docs]</a>    <span class="k">def</span> <span class="nf">test_insert_overflow_split</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bt</span> <span class="o">=</span> <span class="n">BTree</span><span class="p">()</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">53</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">84</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+        <span class="c1"># graphviz_tree(bt.root)</span>
+        <span class="n">node36</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">node1923</span> <span class="o">=</span> <span class="n">node36</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node1923</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node1923</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">node36</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span>
+
+        <span class="n">node2336</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">node19</span><span class="p">,</span> <span class="n">node29</span><span class="p">,</span> <span class="n">node4151</span> <span class="o">=</span> <span class="n">node2336</span><span class="o">.</span><span class="n">children</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node19</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">node2336</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node19</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">19</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node29</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">node2336</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node29</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">29</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node4151</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">node2336</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node4151</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">51</span><span class="p">])</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">53</span><span class="p">])</span>
+
+        <span class="n">node23</span><span class="p">,</span> <span class="n">node45</span><span class="p">,</span> <span class="n">node7789</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node23</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node23</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">23</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node45</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node45</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">45</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node7789</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node7789</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">89</span><span class="p">])</span>
+
+        <span class="n">node41</span><span class="p">,</span> <span class="n">node51</span> <span class="o">=</span> <span class="n">node45</span><span class="o">.</span><span class="n">children</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node41</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">node45</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node41</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">41</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node51</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">node45</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node51</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">51</span><span class="p">])</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">87</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">53</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TestBTree.test_delete_underflow_merge"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.test_delete_underflow_merge">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete_underflow_merge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bt</span> <span class="o">=</span> <span class="n">BTree</span><span class="p">()</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">53</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">64</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
+
+        <span class="n">n36</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">n51</span> <span class="o">=</span> <span class="n">n36</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n51</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n36</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n36</span><span class="o">.</span><span class="n">keys</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">53</span><span class="p">)</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">64</span><span class="p">])</span>
+        <span class="n">n75</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n75</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">75</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n75</span><span class="o">.</span><span class="n">children</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>
+
+        <span class="n">n7989</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">n77</span><span class="p">,</span> <span class="n">n84</span><span class="p">,</span> <span class="n">n97</span> <span class="o">=</span> <span class="n">n7989</span><span class="o">.</span><span class="n">children</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n77</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">77</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n77</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n7989</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n84</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">84</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n84</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n7989</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n97</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">97</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n97</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n7989</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span>
+
+        <span class="n">n89</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">n7779</span> <span class="o">=</span> <span class="n">n89</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n89</span><span class="o">.</span><span class="n">children</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n7779</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">79</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n7779</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n89</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+
+        <span class="n">n6489</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span>
+        <span class="n">n1936</span><span class="p">,</span> <span class="n">n7779</span><span class="p">,</span> <span class="n">n97</span> <span class="o">=</span> <span class="n">n6489</span><span class="o">.</span><span class="n">children</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n1936</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">36</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n1936</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n6489</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n7779</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">79</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n7779</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n6489</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n97</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">97</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n97</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n6489</span><span class="p">)</span></div>
+
+    <span class="c1"># def test_delete_rotate(self):</span>
+    <span class="c1">#     bt = BTree(5)</span>
+    <span class="c1">#     nums = [528, 249, 703, 268, 850, 54, 315, 758, 855, 152, 266, 423, 468, 484, 644, 771, 882, 936, 984, 500, 990]</span>
+    <span class="c1">#     for i in nums:</span>
+    <span class="c1">#         bt.insert(i)</span>
+    <span class="c1">#</span>
+    <span class="c1">#     bt.delete(266)</span>
+    <span class="c1">#     bt.delete(644)</span>
+
+<div class="viewcode-block" id="TestBTree.test_left_rotate"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.test_left_rotate">[docs]</a>    <span class="k">def</span> <span class="nf">test_left_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bt</span> <span class="o">=</span> <span class="n">BTree</span><span class="p">()</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">53</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
+
+        <span class="n">n19</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n19</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n19</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">19</span><span class="p">])</span>
+
+        <span class="n">n10</span><span class="p">,</span> <span class="n">n36</span> <span class="o">=</span> <span class="n">n19</span><span class="o">.</span><span class="n">children</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n10</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n19</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n10</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n36</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n19</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n36</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">36</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TestBTree.test_right_rotate"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.test_right_rotate">[docs]</a>    <span class="k">def</span> <span class="nf">test_right_rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bt</span> <span class="o">=</span> <span class="n">BTree</span><span class="p">()</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">53</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span>
+
+        <span class="n">n41</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n41</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n41</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">41</span><span class="p">])</span>
+
+        <span class="n">n36</span><span class="p">,</span> <span class="n">n51</span> <span class="o">=</span> <span class="n">n41</span><span class="o">.</span><span class="n">children</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n36</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n41</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n36</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">36</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n51</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">n41</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">n51</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="p">[</span><span class="mi">51</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TestBTree.test_right_merge"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.test_right_merge">[docs]</a>    <span class="k">def</span> <span class="nf">test_right_merge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bt</span> <span class="o">=</span> <span class="n">BTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">528</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">703</span><span class="p">,</span> <span class="mi">850</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">758</span><span class="p">,</span> <span class="mi">855</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">468</span><span class="p">,</span> <span class="mi">484</span><span class="p">,</span> <span class="mi">644</span><span class="p">,</span> <span class="mi">771</span><span class="p">,</span> <span class="mi">882</span><span class="p">,</span> <span class="mi">936</span><span class="p">,</span> <span class="mi">984</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">990</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">54</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestBTree.test_left_merge"><a class="viewcode-back" href="../../../datastruct/b_treenode.html#src.datastruct.b_treenode.TestBTree.test_left_merge">[docs]</a>    <span class="k">def</span> <span class="nf">test_left_merge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bt</span> <span class="o">=</span> <span class="n">BTree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">528</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">703</span><span class="p">,</span> <span class="mi">850</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">758</span><span class="p">,</span> <span class="mi">855</span><span class="p">,</span> <span class="mi">152</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">468</span><span class="p">,</span> <span class="mi">484</span><span class="p">,</span> <span class="mi">644</span><span class="p">,</span> <span class="mi">771</span><span class="p">,</span> <span class="mi">882</span><span class="p">,</span> <span class="mi">936</span><span class="p">,</span> <span class="mi">984</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">990</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="n">bt</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">bt</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">644</span><span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, rsj217.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

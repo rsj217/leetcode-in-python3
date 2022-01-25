@@ -11,6 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.abspath('..'))
@@ -24,7 +25,7 @@ def gen_solution_rst():
     module_name = []
     for i in d:
         fname = i[0:-3]
-        if fname == "__init__":
+        if re.match(r"^[\d]+.", fname) is None:
             continue
         rst = os.path.join(solution_rst_path, f"{fname}.rst")
         print(f"write {fname}.rst")

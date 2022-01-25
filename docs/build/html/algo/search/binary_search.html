@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="zh_CN">
+<html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="搜索" href="../../search.html" /><link rel="next" title="Datastruct" href="../../datastruct/index.html" /><link rel="prev" title="Search" href="index.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Datastruct" href="../../datastruct/index.html" /><link rel="prev" title="Search" href="index.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
-        <title>Binary Search - leetcode-in-python3 0.0.1 文档</title>
+        <title>Binary Search - leetcode-in-python3 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">leetcode-in-python3 0.0.1 文档</div></a>
+      <a href="../../index.html"><div class="brand">leetcode-in-python3 0.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,10 +145,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
   
   
-  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 文档</span>
+  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
-  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -174,10 +174,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../datastruct/index.html">Datastruct</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../datastruct/linknode.html">LinkNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../datastruct/maxheap.html">MaxHeap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../datastruct/bin_treenode.html">TreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../datastruct/treenode.html">TreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../datastruct/bs_treenode.html">BSTreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../datastruct/avl_treenode.html">AVLTreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../datastruct/n_treenode.html">NTreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../datastruct/b_treenode.html">BTreeNode</a></li>
 </ul>
 </li>
 </ul>
@@ -287,14 +288,14 @@
         </div>
         <article role="main">
           <div class="section" id="module-src.algo.search.binary_search">
-<span id="binary-search"></span><h1>Binary Search<a class="headerlink" href="#module-src.algo.search.binary_search" title="永久链接至标题">¶</a></h1>
+<span id="binary-search"></span><h1>Binary Search<a class="headerlink" href="#module-src.algo.search.binary_search" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.algo.search.binary_search.binary_search">
-<span class="sig-prename descclassname"><span class="pre">src.algo.search.binary_search.</span></span><span class="sig-name descname"><span class="pre">binary_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/src/algo/search/binary_search.html#binary_search"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.algo.search.binary_search.binary_search" title="永久链接至目标">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.algo.search.binary_search.</span></span><span class="sig-name descname"><span class="pre">binary_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/src/algo/search/binary_search.html#binary_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.search.binary_search.binary_search" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.algo.search.binary_search.binary_search_min_insert">
-<span class="sig-prename descclassname"><span class="pre">src.algo.search.binary_search.</span></span><span class="sig-name descname"><span class="pre">binary_search_min_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/src/algo/search/binary_search.html#binary_search_min_insert"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.algo.search.binary_search.binary_search_min_insert" title="永久链接至目标">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.algo.search.binary_search.</span></span><span class="sig-name descname"><span class="pre">binary_search_min_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/src/algo/search/binary_search.html#binary_search_min_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.algo.search.binary_search.binary_search_min_insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </div>
 
@@ -331,7 +332,7 @@
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="../../_sources/algo/search/binary_search.rst.txt"
                rel="nofollow">
-              显示源代码
+              Show Source
             </a>
         </div>
         
@@ -348,6 +349,5 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
-    <script src="../../_static/translations.js"></script>
     </body>
 </html>

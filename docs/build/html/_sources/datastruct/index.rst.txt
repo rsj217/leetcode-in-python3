@@ -6,8 +6,9 @@ Datastruct
 
    linknode
    maxheap
-   bin_treenode
+   treenode
    bs_treenode
    avl_treenode
    n_treenode
+   b_treenode
 

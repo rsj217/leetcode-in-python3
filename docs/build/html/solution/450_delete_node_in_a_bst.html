@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="zh_CN">
+<html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="501_find_mode_in_binary_search_tree" href="501_find_mode_in_binary_search_tree.html" /><link rel="prev" title="374_guess_number_higher_or_lo" href="374_guess_number_higher_or_lo.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="501_find_mode_in_binary_search_tree" href="501_find_mode_in_binary_search_tree.html" /><link rel="prev" title="374_guess_number_higher_or_lo" href="374_guess_number_higher_or_lo.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
-        <title>450_delete_node_in_a_bst - leetcode-in-python3 0.0.1 文档</title>
+        <title>450_delete_node_in_a_bst - leetcode-in-python3 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">leetcode-in-python3 0.0.1 文档</div></a>
+      <a href="../index.html"><div class="brand">leetcode-in-python3 0.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,10 +145,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 文档</span>
+  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -174,10 +174,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../datastruct/index.html">Datastruct</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../datastruct/linknode.html">LinkNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastruct/maxheap.html">MaxHeap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datastruct/bin_treenode.html">TreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/treenode.html">TreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastruct/bs_treenode.html">BSTreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastruct/avl_treenode.html">AVLTreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastruct/n_treenode.html">NTreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/b_treenode.html">BTreeNode</a></li>
 </ul>
 </li>
 </ul>
@@ -287,9 +288,9 @@
         </div>
         <article role="main">
           <div class="section" id="module-src.solution.450_delete_node_in_a_bst">
-<span id="delete-node-in-a-bst"></span><h1>450_delete_node_in_a_bst<a class="headerlink" href="#module-src.solution.450_delete_node_in_a_bst" title="永久链接至标题">¶</a></h1>
+<span id="delete-node-in-a-bst"></span><h1>450_delete_node_in_a_bst<a class="headerlink" href="#module-src.solution.450_delete_node_in_a_bst" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2><a class="reference external" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/">Problem</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2><a class="reference external" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/">Problem</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的
 根节点的引用。</p>
 <p>一般来说，删除节点可分为两个步骤：</p>
@@ -328,39 +329,39 @@ key = 3
 </div>
 </div>
 <div class="section" id="tips">
-<h2>Tips<a class="headerlink" href="#tips" title="永久链接至标题">¶</a></h2>
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="answer">
-<h2>Answer<a class="headerlink" href="#answer" title="永久链接至标题">¶</a></h2>
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.Solution">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.solution.450_delete_node_in_a_bst.</span></span><span class="sig-name descname"><span class="pre">Solution</span></span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution" title="永久链接至目标">¶</a></dt>
-<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.solution.450_delete_node_in_a_bst.</span></span><span class="sig-name descname"><span class="pre">Solution</span></span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.Solution.deleteNode">
-<span class="sig-name descname"><span class="pre">deleteNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution.deleteNode"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution.deleteNode" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">deleteNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution.deleteNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution.deleteNode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.Solution.delete_dfs">
-<span class="sig-name descname"><span class="pre">delete_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../datastruct/bin_treenode.html#src.datastruct.bin_treenode.TreeNode" title="src.datastruct.bin_treenode.TreeNode"><span class="pre">src.datastruct.bin_treenode.TreeNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="../datastruct/bin_treenode.html#src.datastruct.bin_treenode.TreeNode" title="src.datastruct.bin_treenode.TreeNode"><span class="pre">src.datastruct.bin_treenode.TreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution.delete_dfs"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution.delete_dfs" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../datastruct/treenode.html#src.datastruct.treenode.TreeNode" title="src.datastruct.treenode.TreeNode"><span class="pre">src.datastruct.treenode.TreeNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="../datastruct/treenode.html#src.datastruct.treenode.TreeNode" title="src.datastruct.treenode.TreeNode"><span class="pre">src.datastruct.treenode.TreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution.delete_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution.delete_dfs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.Solution.minimum">
-<span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../datastruct/bin_treenode.html#src.datastruct.bin_treenode.TreeNode" title="src.datastruct.bin_treenode.TreeNode"><span class="pre">src.datastruct.bin_treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="../datastruct/bin_treenode.html#src.datastruct.bin_treenode.TreeNode" title="src.datastruct.bin_treenode.TreeNode"><span class="pre">src.datastruct.bin_treenode.TreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution.minimum"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution.minimum" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../datastruct/treenode.html#src.datastruct.treenode.TreeNode" title="src.datastruct.treenode.TreeNode"><span class="pre">src.datastruct.treenode.TreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="../datastruct/treenode.html#src.datastruct.treenode.TreeNode" title="src.datastruct.treenode.TreeNode"><span class="pre">src.datastruct.treenode.TreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#Solution.minimum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.Solution.minimum" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.TestSolution">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.solution.450_delete_node_in_a_bst.</span></span><span class="sig-name descname"><span class="pre">TestSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#TestSolution"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.TestSolution" title="永久链接至目标">¶</a></dt>
-<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.solution.450_delete_node_in_a_bst.</span></span><span class="sig-name descname"><span class="pre">TestSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#TestSolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.TestSolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.TestSolution.setUp">
-<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#TestSolution.setUp"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.TestSolution.setUp" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#TestSolution.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.TestSolution.setUp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hook method for setting up the test fixture before exercising it.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.solution.450_delete_node_in_a_bst.TestSolution.test_solution">
-<span class="sig-name descname"><span class="pre">test_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#TestSolution.test_solution"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.TestSolution.test_solution" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/450_delete_node_in_a_bst.html#TestSolution.test_solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.450_delete_node_in_a_bst.TestSolution.test_solution" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
 </div>
@@ -399,7 +400,7 @@ key = 3
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="../_sources/solution/450_delete_node_in_a_bst.rst.txt"
                rel="nofollow">
-              显示源代码
+              Show Source
             </a>
         </div>
         
@@ -411,7 +412,7 @@ key = 3
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            目录
+            Contents
           </span>
         </div>
         <div class="toc-tree-container">
@@ -437,6 +438,5 @@ key = 3
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/translations.js"></script>
     </body>
 </html>

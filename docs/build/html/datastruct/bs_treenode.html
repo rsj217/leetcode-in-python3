@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="zh_CN">
+<html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="AVLTreeNode" href="avl_treenode.html" /><link rel="prev" title="TreeNode" href="bin_treenode.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="AVLTreeNode" href="avl_treenode.html" /><link rel="prev" title="TreeNode" href="treenode.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
-        <title>BSTreeNode - leetcode-in-python3 0.0.1 文档</title>
+        <title>BSTreeNode - leetcode-in-python3 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">leetcode-in-python3 0.0.1 文档</div></a>
+      <a href="../index.html"><div class="brand">leetcode-in-python3 0.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -145,10 +145,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 文档</span>
+  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=搜索 name="q" aria-label="搜索">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -174,10 +174,11 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Datastruct</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linknode.html">LinkNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maxheap.html">MaxHeap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bin_treenode.html">TreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="treenode.html">TreeNode</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">BSTreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avl_treenode.html">AVLTreeNode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="n_treenode.html">NTreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="b_treenode.html">BTreeNode</a></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +288,7 @@
         </div>
         <article role="main">
           <div class="section" id="module-src.datastruct.bs_treenode">
-<span id="bstreenode"></span><h1>BSTreeNode<a class="headerlink" href="#module-src.datastruct.bs_treenode" title="永久链接至标题">¶</a></h1>
+<span id="bstreenode"></span><h1>BSTreeNode<a class="headerlink" href="#module-src.datastruct.bs_treenode" title="Permalink to this headline">¶</a></h1>
 <p>二叉树搜索节点&amp;树结构定义，插入，删除相关算法</p>
 <ul class="simple">
 <li><p>节点的左子树只包含小于当前节点的数。</p></li>
@@ -295,21 +296,34 @@
 <li><p>所有左子树和右子树自身必须也是二叉搜索树。</p></li>
 </ul>
 <dl class="py class">
+<dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTree">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">BSTree</span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTree.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTree.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTree.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTree.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTree.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTree.insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">BSTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode" title="永久链接至目标">¶</a></dt>
-<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">BSTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>二叉搜索树节点
 通常二叉搜索树的数据域是 <code class="docutils literal notranslate"><span class="pre">（key，val）</span></code> 这样的数据结构。<code class="docutils literal notranslate"><span class="pre">key</span></code> 用于排序，<code class="docutils literal notranslate"><span class="pre">val</span></code> 存储实际的值
 二叉树搜索树的 <code class="docutils literal notranslate"><span class="pre">insert</span></code> 和 <code class="docutils literal notranslate"><span class="pre">delete</span></code> 算法都不涉及 <code class="docutils literal notranslate"><span class="pre">val</span></code> 操作
 为了描述算法，<code class="docutils literal notranslate"><span class="pre">BSTreeNode</span></code> 节点定义只有 <code class="docutils literal notranslate"><span class="pre">key</span></code> 和左( <code class="docutils literal notranslate"><span class="pre">left</span></code> )右( <code class="docutils literal notranslate"><span class="pre">right</span></code> )子树</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.delete"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.delete" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>删除值为 <code class="docutils literal notranslate"><span class="pre">key</span></code> 的节点</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.delete_dfs">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.delete_dfs"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.delete_dfs" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.delete_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.delete_dfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>delete_dfs 方法，递归使用 <code class="docutils literal notranslate"><span class="pre">dfs</span></code> 删除以 <code class="docutils literal notranslate"><span class="pre">node</span></code> 为根的二叉搜素中的 <code class="docutils literal notranslate"><span class="pre">key</span></code> 的节点。 若节点不存在，则什么也不做
 通过递归调用左右子树，返回删除节点之后的新树的树根
 删除一个 <code class="docutils literal notranslate"><span class="pre">key</span></code>  节点，有三种情况</p>
@@ -326,59 +340,63 @@
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.height">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.height" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.height" title="Permalink to this definition">¶</a></dt>
 <dd><p>树高属性，已当前节点为root的树的树高</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.insert">
-<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.insert"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.insert" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>插入值为 <code class="docutils literal notranslate"><span class="pre">key</span></code> 的节点</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.insert_dfs">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">insert_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.insert_dfs"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.insert_dfs" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">insert_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.insert_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.insert_dfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>以 <code class="docutils literal notranslate"><span class="pre">node</span></code> 为 <code class="docutils literal notranslate"><span class="pre">root</span></code> 的二叉搜索树中插入 <code class="docutils literal notranslate"><span class="pre">key</span></code>，并返回新的 <code class="docutils literal notranslate"><span class="pre">root</span></code></p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.minimum_dfs">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">minimum_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.minimum_dfs"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.minimum_dfs" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">minimum_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#BSTreeNode.minimum_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.minimum_dfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>以 <code class="docutils literal notranslate"><span class="pre">node</span></code> 为 <code class="docutils literal notranslate"><span class="pre">root</span></code> 的二叉搜索树中查找最小值节点</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.BSTreeNode.val">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">val</span></span><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.val" title="永久链接至目标">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">val</span></span><a class="headerlink" href="#src.datastruct.bs_treenode.BSTreeNode.val" title="Permalink to this definition">¶</a></dt>
 <dd><p>val 属性是为了匹配 <code class="docutils literal notranslate"><span class="pre">print_tree</span></code> 方法</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.TestBSTreeNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">TestBSTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode" title="永久链接至目标">¶</a></dt>
-<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">TestBSTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.TestBSTreeNode.test_delete_leaf">
-<span class="sig-name descname"><span class="pre">test_delete_leaf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_delete_leaf"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_delete_leaf" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_delete_leaf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_delete_leaf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_delete_leaf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.TestBSTreeNode.test_delete_left_child">
-<span class="sig-name descname"><span class="pre">test_delete_left_child</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_delete_left_child"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_delete_left_child" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_delete_left_child</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_delete_left_child"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_delete_left_child" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.TestBSTreeNode.test_delete_right_child">
-<span class="sig-name descname"><span class="pre">test_delete_right_child</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_delete_right_child"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_delete_right_child" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_delete_right_child</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_delete_right_child"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_delete_right_child" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.TestBSTreeNode.test_insert">
-<span class="sig-name descname"><span class="pre">test_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_insert"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_insert" title="永久链接至目标">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#TestBSTreeNode.test_insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.TestBSTreeNode.test_insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="src.datastruct.bs_treenode.graphviz_tree">
+<span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">graphviz_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#graphviz_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.graphviz_tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.inorder_dfs">
-<span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">inorder_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#inorder_dfs"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.inorder_dfs" title="永久链接至目标">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">inorder_dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#inorder_dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.inorder_dfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>中序遍历</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.datastruct.bs_treenode.is_valid">
-<span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#is_valid"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.is_valid" title="永久链接至目标">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.datastruct.bs_treenode.</span></span><span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.datastruct.bs_treenode.BSTreeNode" title="src.datastruct.bs_treenode.BSTreeNode"><span class="pre">src.datastruct.bs_treenode.BSTreeNode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/src/datastruct/bs_treenode.html#is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.datastruct.bs_treenode.is_valid" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 </div>
 
@@ -396,7 +414,7 @@
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="bin_treenode.html">
+          <a class="prev-page" href="treenode.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
@@ -415,7 +433,7 @@
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             | <a class="muted-link" href="../_sources/datastruct/bs_treenode.rst.txt"
                rel="nofollow">
-              显示源代码
+              Show Source
             </a>
         </div>
         
@@ -432,6 +450,5 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
-    <script src="../_static/translations.js"></script>
     </body>
 </html>
