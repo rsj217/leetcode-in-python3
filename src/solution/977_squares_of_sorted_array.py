@@ -1,6 +1,7 @@
 from typing import List
 import unittest
 
+# 归并排序思想，合并两个有序数组
 
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
