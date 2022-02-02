@@ -15,9 +15,13 @@ Solution
    14_longest_common_prefix
    15_3sum
    17_letter_combinations_of_a_phone_number
+   26_remove_duplicates_from_sorted_array
+   27_remove_element
    33_search_in_rotated_sorted_array
    35_search_insert_position
    46_permutations
+   54_spiral_matrix
+   59_spiral_matrix_ii
    69_sqrtx
    71_simplify_path
    75_sort_colors
@@ -50,13 +54,16 @@ Solution
    154_find_minimum_in_rotated_sorted_array_ii
    162_find_peak_element
    199_binary_tree_right_side_view
+   209_minimum_size_subarray_sum
    226_invert_binary_tree
    235_lowest_common_ancestor_of_a_binary_search_tree
    236_lowest_common_ancestor_of_a_binary_tree
    257_binary_tree_paths
+   283_move_zeroes
    374_guess_number_higher_or_lo
    450_delete_node_in_a_bst
    501_find_mode_in_binary_search_tree
+   509_fibonacci_number
    513_find_bottom_left_tree_value
    515_find_largest_value_in_each_tree_row
    530_minimum_absolute_difference_in_bst
@@ -72,9 +79,11 @@ Solution
    704_binary_search
    783_minimum_distance_between_bst_nodes
    814_binary_tree_pruning
+   844_backspace_string_compare
    897_increasing_order_search_tree
    938_range_sum_of_bst
    951_flip_equivalent_binary_trees
+   977_squares_of_sorted_array
    1026_maximum_difference_between_node_and_ancestor
    1038_binary_search_tree_to_greater_sum_tree
    1110_delete_nodes_and_return_forest
