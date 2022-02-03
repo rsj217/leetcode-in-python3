@@ -1,0 +1,377 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="897_increasing_order_search_tree" href="897_increasing_order_search_tree.html" /><link rel="prev" title="814_binary_tree_pruning" href="814_binary_tree_pruning.html" />
+
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
+        <title>844_backspace_string_compare - leetcode-in-python3 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">leetcode-in-python3 0.0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">leetcode-in-python3 0.0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../algo/index.html">Algo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../algo/sort/index.html">Sort</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/select_sort.html">Select Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/insert_sort.html">Insert Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/quick_sort.html">Quick Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/merge_sort.html">Merge Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/heap_sort.html">Heap Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/helper.html">helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algo/sort/performance.html">performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../algo/search/index.html">Search</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algo/search/binary_search.html">Binary Search</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../datastruct/index.html">Datastruct</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/linknode.html">LinkNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/maxheap.html">MaxHeap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/treenode.html">TreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/bs_treenode.html">BSTreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/avl_treenode.html">AVLTreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/n_treenode.html">NTreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastruct/b_treenode.html">BTreeNode</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Solution</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1_two_sum.html">1_two_sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_add_two_numbers.html">2_add_two_numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_longest_substring_without_repeating_characters.html">3_longest_substring_without_repeating_characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_longest_palindromic_substring.html">5_longest_palindromic_substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_reverse_integer.html">7_reverse_integer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9_palindrome_number.html">9_palindrome_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_container_with_most_water.html">11_container_with_most_water</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_roman_to_integer.html">13_roman_to_integer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_longest_common_prefix.html">14_longest_common_prefix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15_3sum.html">15_3sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_letter_combinations_of_a_phone_number.html">17_letter_combinations_of_a_phone_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_remove_duplicates_from_sorted_array.html">26_remove_duplicates_from_sorted_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27_remove_element.html">27_remove_element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33_search_in_rotated_sorted_array.html">33_search_in_rotated_sorted_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="35_search_insert_position.html">35_search_insert_position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46_permutations.html">46_permutations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="54_spiral_matrix.html">54_spiral_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="59_spiral_matrix_ii.html">59_spiral_matrix_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="69_sqrtx.html">69_sqrtx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="71_simplify_path.html">71_simplify_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="75_sort_colors.html">75_sort_colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="77_combinations.html">77_combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="78_subsets.html">78_subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="81_search_in_rotated_sorted_array_ii.html">81_search_in_rotated_sorted_array_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="90_subsets_with_duplicates.html">90_subsets_with_duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="94_binary_tree_inorder_traversal.html">94_binary_tree_inorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="98_validate_binary_search_tree.html">98_validate_binary_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="100_same_trees.html">100_same_trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="101_symmetric_tree.html">101_symmetric_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="102_binary_tree_level_order_traversal.html">102_binary_tree_level_order_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="103_binary_tree_zigzag_level_order_traversal.html">103_binary_tree_zigzag_level_order_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="104_maximum_depth_of_binary_tree.html">104_maximum_depth_of_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="105_construct_binary_tree_from_preorder_and_inorder_traversal.html">105_construct_binary_tree_from_preorder_and_inorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="106_construct_binary_tree_from_postorder_and_inorder_traversal.html">106_construct_binary_tree_from_postorder_and_inorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="110_balanced_binary_tree.html">110_balanced_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="112_path_sum.html">112_path_sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="113_path_sum_ii.html">113_path_sum_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="114_flatten_binary_tree_to_linked_list.html">114_flatten_binary_tree_to_linked_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="116_populating_next_right_pointers_in_each_node.html">116_populating_next_right_pointers_in_each_node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="117_populating_next_right_pointers_in_each_node_ii.html">117_populating_next_right_pointers_in_each_node_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="121_best_time_to_buy_and_sell_stock.html">121_best_time_to_buy_and_sell_stock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="122_best_time_to_buy_and_sell_stock_ii.html">122_best_time_to_buy_and_sell_stock_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="124_binary_tree_maximum_path_sum.html">124_binary_tree_maximum_path_sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="136_single_number.html">136_single_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="144_binary_tree_preorder_traversal.html">144_binary_tree_preorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="145_binary_tree_postorder_traversal.html">145_binary_tree_postorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="153_find_minimum_in_rotated_sorted_array.html">153_find_minimum_in_rotated_sorted_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="154_find_minimum_in_rotated_sorted_array_ii.html">154_find_minimum_in_rotated_sorted_array_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="162_find_peak_element.html">162_find_peak_element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="199_binary_tree_right_side_view.html">199_binary_tree_right_side_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="209_minimum_size_subarray_sum.html">209_minimum_size_subarray_sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="226_invert_binary_tree.html">226_invert_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="235_lowest_common_ancestor_of_a_binary_search_tree.html">235_lowest_common_ancestor_of_a_binary_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="236_lowest_common_ancestor_of_a_binary_tree.html">236_lowest_common_ancestor_of_a_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="257_binary_tree_paths.html">257_binary_tree_paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="283_move_zeroes.html">283_move_zeroes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="450_delete_node_in_a_bst.html">450_delete_node_in_a_bst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="501_find_mode_in_binary_search_tree.html">501_find_mode_in_binary_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="509_fibonacci_number.html">509_fibonacci_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="513_find_bottom_left_tree_value.html">513_find_bottom_left_tree_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="515_find_largest_value_in_each_tree_row.html">515_find_largest_value_in_each_tree_row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="530_minimum_absolute_difference_in_bst.html">530_minimum_absolute_difference_in_bst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="538_binary_search_tree_to_greater_sum_tree.html">538_binary_search_tree_to_greater_sum_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="543_diameter_of_binary_tree.html">543_diameter_of_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="589_n_ary_tree_preorder_traversal.html">589_n_ary_tree_preorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="590_n_ary_tree_postorder_traversal.html">590_n_ary_tree_postorder_traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="654_maximum_binary_tree.html">654_maximum_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="655_print_binary_tree.html">655_print_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="662_maximum_width_of_binary_tree.html">662_maximum_width_of_binary_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="700_search_in_a_binary_search_tree.html">700_search_in_a_binary_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="701_insert_into_a_binary_search_tree.html">701_insert_into_a_binary_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="704_binary_search.html">704_binary_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">844_backspace_string_compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="897_increasing_order_search_tree.html">897_increasing_order_search_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="977_squares_of_sorted_array.html">977_squares_of_sorted_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1026_maximum_difference_between_node_and_ancestor.html">1026_maximum_difference_between_node_and_ancestor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1038_binary_search_tree_to_greater_sum_tree.html">1038_binary_search_tree_to_greater_sum_tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1110_delete_nodes_and_return_forest.html">1110_delete_nodes_and_return_forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1302_deepest_leaves_sum.html">1302_deepest_leaves_sum</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <div class="section" id="module-src.solution.844_backspace_string_compare">
+<span id="backspace-string-compare"></span><h1>844_backspace_string_compare<a class="headerlink" href="#module-src.solution.844_backspace_string_compare" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.solution.844_backspace_string_compare.Solution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.solution.844_backspace_string_compare.</span></span><span class="sig-name descname"><span class="pre">Solution</span></span><a class="reference internal" href="../_modules/src/solution/844_backspace_string_compare.html#Solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.844_backspace_string_compare.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.solution.844_backspace_string_compare.Solution.backspaceCompare">
+<span class="sig-name descname"><span class="pre">backspaceCompare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/src/solution/844_backspace_string_compare.html#Solution.backspaceCompare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.844_backspace_string_compare.Solution.backspaceCompare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.solution.844_backspace_string_compare.TestSolution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.solution.844_backspace_string_compare.</span></span><span class="sig-name descname"><span class="pre">TestSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/844_backspace_string_compare.html#TestSolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.844_backspace_string_compare.TestSolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.solution.844_backspace_string_compare.TestSolution.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/844_backspace_string_compare.html#TestSolution.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.844_backspace_string_compare.TestSolution.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.solution.844_backspace_string_compare.TestSolution.test_solution">
+<span class="sig-name descname"><span class="pre">test_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/solution/844_backspace_string_compare.html#TestSolution.test_solution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.solution.844_backspace_string_compare.TestSolution.test_solution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="897_increasing_order_search_tree.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">897_increasing_order_search_tree</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="814_binary_tree_pruning.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">814_binary_tree_pruning</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, rsj217 |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="../_sources/solution/844_backspace_string_compare.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>
