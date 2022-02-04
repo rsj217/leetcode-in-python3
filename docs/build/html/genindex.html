@@ -201,7 +201,9 @@
 <li class="toctree-l2"><a class="reference internal" href="solution/46_permutations.html">46_permutations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/54_spiral_matrix.html">54_spiral_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/59_spiral_matrix_ii.html">59_spiral_matrix_ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/62_unique_paths.html">62_unique_paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/69_sqrtx.html">69_sqrtx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/70_climbing_staris.html">70_climbing_staris</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/71_simplify_path.html">71_simplify_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/75_sort_colors.html">75_sort_colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/77_combinations.html">77_combinations</a></li>
@@ -240,7 +242,9 @@
 <li class="toctree-l2"><a class="reference internal" href="solution/257_binary_tree_paths.html">257_binary_tree_paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/283_move_zeroes.html">283_move_zeroes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/392_is_subsequence.html">392_is_subsequence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/450_delete_node_in_a_bst.html">450_delete_node_in_a_bst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/455_assign_cookies.html">455_assign_cookies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/501_find_mode_in_binary_search_tree.html">501_find_mode_in_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/509_fibonacci_number.html">509_fibonacci_number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/513_find_bottom_left_tree_value.html">513_find_bottom_left_tree_value</a></li>
@@ -256,6 +260,7 @@
 <li class="toctree-l2"><a class="reference internal" href="solution/700_search_in_a_binary_search_tree.html">700_search_in_a_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/701_insert_into_a_binary_search_tree.html">701_insert_into_a_binary_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/704_binary_search.html">704_binary_search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/746_min_cost_climbing_stairs.html">746_min_cost_climbing_stairs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/844_backspace_string_compare.html">844_backspace_string_compare</a></li>
@@ -384,6 +389,8 @@
   <h2>C</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="solution/70_climbing_staris.html#src.solution.70_climbing_staris.Solution.climbStairs">climbStairs() (src.solution.70_climbing_staris.Solution method)</a>
+</li>
         <li><a href="solution/27_remove_element.html#src.solution.27_remove_element.Solution.collision_pointer">collision_pointer() (src.solution.27_remove_element.Solution method)</a>
 </li>
         <li><a href="solution/77_combinations.html#src.solution.77_combinations.Solution.combine">combine() (src.solution.77_combinations.Solution method)</a>
@@ -530,6 +537,8 @@
 </li>
         <li><a href="solution/513_find_bottom_left_tree_value.html#src.solution.513_find_bottom_left_tree_value.Solution.findBottomLeftValue">findBottomLeftValue() (src.solution.513_find_bottom_left_tree_value.Solution method)</a>
 </li>
+        <li><a href="solution/455_assign_cookies.html#src.solution.455_assign_cookies.Solution.findContentChildren">findContentChildren() (src.solution.455_assign_cookies.Solution method)</a>
+</li>
         <li><a href="solution/153_find_minimum_in_rotated_sorted_array.html#src.solution.153_find_minimum_in_rotated_sorted_array.Solution.findMin">findMin() (src.solution.153_find_minimum_in_rotated_sorted_array.Solution method)</a>
 
         <ul>
@@ -656,8 +665,6 @@
           <li><a href="datastruct/bs_treenode.html#src.datastruct.bs_treenode.BSTreeNode.insert">(src.datastruct.bs_treenode.BSTreeNode method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datastruct/avl_treenode.html#src.datastruct.avl_treenode.AVLTreeNode.insert_dfs">insert_dfs() (src.datastruct.avl_treenode.AVLTreeNode class method)</a>
 
         <ul>
@@ -666,6 +673,8 @@
           <li><a href="solution/701_insert_into_a_binary_search_tree.html#src.solution.701_insert_into_a_binary_search_tree.Solution.insert_dfs">(src.solution.701_insert_into_a_binary_search_tree.Solution method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="algo/sort/insert_sort.html#src.algo.sort.insert_sort.insert_sort">insert_sort() (in module src.algo.sort.insert_sort)</a>
 </li>
         <li><a href="solution/701_insert_into_a_binary_search_tree.html#src.solution.701_insert_into_a_binary_search_tree.Solution.insertIntoBST">insertIntoBST() (src.solution.701_insert_into_a_binary_search_tree.Solution method)</a>
@@ -689,6 +698,8 @@
         <li><a href="solution/9_palindrome_number.html#src.solution.9_palindrome_number.Solution.isPalindrome">isPalindrome() (src.solution.9_palindrome_number.Solution method)</a>
 </li>
         <li><a href="solution/100_same_trees.html#src.solution.100_same_trees.Solution.isSameTree">isSameTree() (src.solution.100_same_trees.Solution method)</a>
+</li>
+        <li><a href="solution/392_is_subsequence.html#src.solution.392_is_subsequence.Solution.isSubsequence">isSubsequence() (src.solution.392_is_subsequence.Solution method)</a>
 </li>
         <li><a href="solution/101_symmetric_tree.html#src.solution.101_symmetric_tree.Solution.isSymmetric">isSymmetric() (src.solution.101_symmetric_tree.Solution method)</a>
 </li>
@@ -769,6 +780,8 @@
         <li><a href="algo/sort/merge_sort.html#src.algo.sort.merge_sort.merge_left_right">merge_left_right() (in module src.algo.sort.merge_sort)</a>
 </li>
         <li><a href="algo/sort/merge_sort.html#src.algo.sort.merge_sort.merge_sort">merge_sort() (in module src.algo.sort.merge_sort)</a>
+</li>
+        <li><a href="solution/746_min_cost_climbing_stairs.html#src.solution.746_min_cost_climbing_stairs.Solution.minCostClimbingStairs">minCostClimbingStairs() (src.solution.746_min_cost_climbing_stairs.Solution method)</a>
 </li>
         <li><a href="solution/783_minimum_distance_between_bst_nodes.html#src.solution.783_minimum_distance_between_bst_nodes.Solution.minDiffInBST">minDiffInBST() (src.solution.783_minimum_distance_between_bst_nodes.Solution method)</a>
 </li>
@@ -912,9 +925,13 @@
 </li>
           <li><a href="solution/374_guess_number_higher_or_lo.html#module-src.solution.374_guess_number_higher_or_lo">src.solution.374_guess_number_higher_or_lo</a>
 </li>
+          <li><a href="solution/392_is_subsequence.html#module-src.solution.392_is_subsequence">src.solution.392_is_subsequence</a>
+</li>
           <li><a href="solution/3_longest_substring_without_repeating_characters.html#module-src.solution.3_longest_substring_without_repeating_characters">src.solution.3_longest_substring_without_repeating_characters</a>
 </li>
           <li><a href="solution/450_delete_node_in_a_bst.html#module-src.solution.450_delete_node_in_a_bst">src.solution.450_delete_node_in_a_bst</a>
+</li>
+          <li><a href="solution/455_assign_cookies.html#module-src.solution.455_assign_cookies">src.solution.455_assign_cookies</a>
 </li>
           <li><a href="solution/46_permutations.html#module-src.solution.46_permutations">src.solution.46_permutations</a>
 </li>
@@ -942,6 +959,8 @@
 </li>
           <li><a href="solution/5_longest_palindromic_substring.html#module-src.solution.5_longest_palindromic_substring">src.solution.5_longest_palindromic_substring</a>
 </li>
+          <li><a href="solution/62_unique_paths.html#module-src.solution.62_unique_paths">src.solution.62_unique_paths</a>
+</li>
           <li><a href="solution/654_maximum_binary_tree.html#module-src.solution.654_maximum_binary_tree">src.solution.654_maximum_binary_tree</a>
 </li>
           <li><a href="solution/655_print_binary_tree.html#module-src.solution.655_print_binary_tree">src.solution.655_print_binary_tree</a>
@@ -956,7 +975,11 @@
 </li>
           <li><a href="solution/704_binary_search.html#module-src.solution.704_binary_search">src.solution.704_binary_search</a>
 </li>
+          <li><a href="solution/70_climbing_staris.html#module-src.solution.70_climbing_staris">src.solution.70_climbing_staris</a>
+</li>
           <li><a href="solution/71_simplify_path.html#module-src.solution.71_simplify_path">src.solution.71_simplify_path</a>
+</li>
+          <li><a href="solution/746_min_cost_climbing_stairs.html#module-src.solution.746_min_cost_climbing_stairs">src.solution.746_min_cost_climbing_stairs</a>
 </li>
           <li><a href="solution/75_sort_colors.html#module-src.solution.75_sort_colors">src.solution.75_sort_colors</a>
 </li>
@@ -1266,7 +1289,11 @@
 </li>
           <li><a href="solution/374_guess_number_higher_or_lo.html#src.solution.374_guess_number_higher_or_lo.TestSolution.setUp">(src.solution.374_guess_number_higher_or_lo.TestSolution method)</a>
 </li>
+          <li><a href="solution/392_is_subsequence.html#src.solution.392_is_subsequence.TestSolution.setUp">(src.solution.392_is_subsequence.TestSolution method)</a>
+</li>
           <li><a href="solution/450_delete_node_in_a_bst.html#src.solution.450_delete_node_in_a_bst.TestSolution.setUp">(src.solution.450_delete_node_in_a_bst.TestSolution method)</a>
+</li>
+          <li><a href="solution/455_assign_cookies.html#src.solution.455_assign_cookies.TestSolution.setUp">(src.solution.455_assign_cookies.TestSolution method)</a>
 </li>
           <li><a href="solution/46_permutations.html#src.solution.46_permutations.TestSolution.setUp">(src.solution.46_permutations.TestSolution method)</a>
 </li>
@@ -1294,6 +1321,8 @@
 </li>
           <li><a href="solution/5_longest_palindromic_substring.html#src.solution.5_longest_palindromic_substring.TestSolution.setUp">(src.solution.5_longest_palindromic_substring.TestSolution method)</a>
 </li>
+          <li><a href="solution/62_unique_paths.html#src.solution.62_unique_paths.TestSolution.setUp">(src.solution.62_unique_paths.TestSolution method)</a>
+</li>
           <li><a href="solution/654_maximum_binary_tree.html#src.solution.654_maximum_binary_tree.TestSolution.setUp">(src.solution.654_maximum_binary_tree.TestSolution method)</a>
 </li>
           <li><a href="solution/655_print_binary_tree.html#src.solution.655_print_binary_tree.TestSolution.setUp">(src.solution.655_print_binary_tree.TestSolution method)</a>
@@ -1308,7 +1337,11 @@
 </li>
           <li><a href="solution/704_binary_search.html#src.solution.704_binary_search.TestSolution.setUp">(src.solution.704_binary_search.TestSolution method)</a>
 </li>
+          <li><a href="solution/70_climbing_staris.html#src.solution.70_climbing_staris.TestSolution.setUp">(src.solution.70_climbing_staris.TestSolution method)</a>
+</li>
           <li><a href="solution/71_simplify_path.html#src.solution.71_simplify_path.TestSolution.setUp">(src.solution.71_simplify_path.TestSolution method)</a>
+</li>
+          <li><a href="solution/746_min_cost_climbing_stairs.html#src.solution.746_min_cost_climbing_stairs.TestSolution.setUp">(src.solution.746_min_cost_climbing_stairs.TestSolution method)</a>
 </li>
           <li><a href="solution/75_sort_colors.html#src.solution.75_sort_colors.TestSolution.setUp">(src.solution.75_sort_colors.TestSolution method)</a>
 </li>
@@ -1446,9 +1479,13 @@
 </li>
           <li><a href="solution/374_guess_number_higher_or_lo.html#src.solution.374_guess_number_higher_or_lo.Solution">(class in src.solution.374_guess_number_higher_or_lo)</a>
 </li>
+          <li><a href="solution/392_is_subsequence.html#src.solution.392_is_subsequence.Solution">(class in src.solution.392_is_subsequence)</a>
+</li>
           <li><a href="solution/3_longest_substring_without_repeating_characters.html#src.solution.3_longest_substring_without_repeating_characters.Solution">(class in src.solution.3_longest_substring_without_repeating_characters)</a>
 </li>
           <li><a href="solution/450_delete_node_in_a_bst.html#src.solution.450_delete_node_in_a_bst.Solution">(class in src.solution.450_delete_node_in_a_bst)</a>
+</li>
+          <li><a href="solution/455_assign_cookies.html#src.solution.455_assign_cookies.Solution">(class in src.solution.455_assign_cookies)</a>
 </li>
           <li><a href="solution/46_permutations.html#src.solution.46_permutations.Solution">(class in src.solution.46_permutations)</a>
 </li>
@@ -1476,6 +1513,8 @@
 </li>
           <li><a href="solution/5_longest_palindromic_substring.html#src.solution.5_longest_palindromic_substring.Solution">(class in src.solution.5_longest_palindromic_substring)</a>
 </li>
+          <li><a href="solution/62_unique_paths.html#src.solution.62_unique_paths.Solution">(class in src.solution.62_unique_paths)</a>
+</li>
           <li><a href="solution/654_maximum_binary_tree.html#src.solution.654_maximum_binary_tree.Solution">(class in src.solution.654_maximum_binary_tree)</a>
 </li>
           <li><a href="solution/655_print_binary_tree.html#src.solution.655_print_binary_tree.Solution">(class in src.solution.655_print_binary_tree)</a>
@@ -1490,7 +1529,11 @@
 </li>
           <li><a href="solution/704_binary_search.html#src.solution.704_binary_search.Solution">(class in src.solution.704_binary_search)</a>
 </li>
+          <li><a href="solution/70_climbing_staris.html#src.solution.70_climbing_staris.Solution">(class in src.solution.70_climbing_staris)</a>
+</li>
           <li><a href="solution/71_simplify_path.html#src.solution.71_simplify_path.Solution">(class in src.solution.71_simplify_path)</a>
+</li>
+          <li><a href="solution/746_min_cost_climbing_stairs.html#src.solution.746_min_cost_climbing_stairs.Solution">(class in src.solution.746_min_cost_climbing_stairs)</a>
 </li>
           <li><a href="solution/75_sort_colors.html#src.solution.75_sort_colors.Solution">(class in src.solution.75_sort_colors)</a>
 </li>
@@ -1954,6 +1997,13 @@
 </li>
         </ul></li>
         <li>
+    src.solution.392_is_subsequence
+
+        <ul>
+          <li><a href="solution/392_is_subsequence.html#module-src.solution.392_is_subsequence">module</a>
+</li>
+        </ul></li>
+        <li>
     src.solution.3_longest_substring_without_repeating_characters
 
         <ul>
@@ -1965,6 +2015,13 @@
 
         <ul>
           <li><a href="solution/450_delete_node_in_a_bst.html#module-src.solution.450_delete_node_in_a_bst">module</a>
+</li>
+        </ul></li>
+        <li>
+    src.solution.455_assign_cookies
+
+        <ul>
+          <li><a href="solution/455_assign_cookies.html#module-src.solution.455_assign_cookies">module</a>
 </li>
         </ul></li>
         <li>
@@ -2059,6 +2116,13 @@
 </li>
         </ul></li>
         <li>
+    src.solution.62_unique_paths
+
+        <ul>
+          <li><a href="solution/62_unique_paths.html#module-src.solution.62_unique_paths">module</a>
+</li>
+        </ul></li>
+        <li>
     src.solution.654_maximum_binary_tree
 
         <ul>
@@ -2108,10 +2172,24 @@
 </li>
         </ul></li>
         <li>
+    src.solution.70_climbing_staris
+
+        <ul>
+          <li><a href="solution/70_climbing_staris.html#module-src.solution.70_climbing_staris">module</a>
+</li>
+        </ul></li>
+        <li>
     src.solution.71_simplify_path
 
         <ul>
           <li><a href="solution/71_simplify_path.html#module-src.solution.71_simplify_path">module</a>
+</li>
+        </ul></li>
+        <li>
+    src.solution.746_min_cost_climbing_stairs
+
+        <ul>
+          <li><a href="solution/746_min_cost_climbing_stairs.html#module-src.solution.746_min_cost_climbing_stairs">module</a>
 </li>
         </ul></li>
         <li>
@@ -2401,7 +2479,11 @@
 </li>
           <li><a href="solution/374_guess_number_higher_or_lo.html#src.solution.374_guess_number_higher_or_lo.TestSolution.test_solution">(src.solution.374_guess_number_higher_or_lo.TestSolution method)</a>
 </li>
+          <li><a href="solution/392_is_subsequence.html#src.solution.392_is_subsequence.TestSolution.test_solution">(src.solution.392_is_subsequence.TestSolution method)</a>
+</li>
           <li><a href="solution/450_delete_node_in_a_bst.html#src.solution.450_delete_node_in_a_bst.TestSolution.test_solution">(src.solution.450_delete_node_in_a_bst.TestSolution method)</a>
+</li>
+          <li><a href="solution/455_assign_cookies.html#src.solution.455_assign_cookies.TestSolution.test_solution">(src.solution.455_assign_cookies.TestSolution method)</a>
 </li>
           <li><a href="solution/46_permutations.html#src.solution.46_permutations.TestSolution.test_solution">(src.solution.46_permutations.TestSolution method)</a>
 </li>
@@ -2429,6 +2511,8 @@
 </li>
           <li><a href="solution/5_longest_palindromic_substring.html#src.solution.5_longest_palindromic_substring.TestSolution.test_solution">(src.solution.5_longest_palindromic_substring.TestSolution method)</a>
 </li>
+          <li><a href="solution/62_unique_paths.html#src.solution.62_unique_paths.TestSolution.test_solution">(src.solution.62_unique_paths.TestSolution method)</a>
+</li>
           <li><a href="solution/654_maximum_binary_tree.html#src.solution.654_maximum_binary_tree.TestSolution.test_solution">(src.solution.654_maximum_binary_tree.TestSolution method)</a>
 </li>
           <li><a href="solution/655_print_binary_tree.html#src.solution.655_print_binary_tree.TestSolution.test_solution">(src.solution.655_print_binary_tree.TestSolution method)</a>
@@ -2443,7 +2527,11 @@
 </li>
           <li><a href="solution/704_binary_search.html#src.solution.704_binary_search.TestSolution.test_solution">(src.solution.704_binary_search.TestSolution method)</a>
 </li>
+          <li><a href="solution/70_climbing_staris.html#src.solution.70_climbing_staris.TestSolution.test_solution">(src.solution.70_climbing_staris.TestSolution method)</a>
+</li>
           <li><a href="solution/71_simplify_path.html#src.solution.71_simplify_path.TestSolution.test_solution">(src.solution.71_simplify_path.TestSolution method)</a>
+</li>
+          <li><a href="solution/746_min_cost_climbing_stairs.html#src.solution.746_min_cost_climbing_stairs.TestSolution.test_solution">(src.solution.746_min_cost_climbing_stairs.TestSolution method)</a>
 </li>
           <li><a href="solution/75_sort_colors.html#src.solution.75_sort_colors.TestSolution.test_solution">(src.solution.75_sort_colors.TestSolution method)</a>
 </li>
@@ -2597,7 +2685,11 @@
 </li>
           <li><a href="solution/374_guess_number_higher_or_lo.html#src.solution.374_guess_number_higher_or_lo.TestSolution">(class in src.solution.374_guess_number_higher_or_lo)</a>
 </li>
+          <li><a href="solution/392_is_subsequence.html#src.solution.392_is_subsequence.TestSolution">(class in src.solution.392_is_subsequence)</a>
+</li>
           <li><a href="solution/450_delete_node_in_a_bst.html#src.solution.450_delete_node_in_a_bst.TestSolution">(class in src.solution.450_delete_node_in_a_bst)</a>
+</li>
+          <li><a href="solution/455_assign_cookies.html#src.solution.455_assign_cookies.TestSolution">(class in src.solution.455_assign_cookies)</a>
 </li>
           <li><a href="solution/46_permutations.html#src.solution.46_permutations.TestSolution">(class in src.solution.46_permutations)</a>
 </li>
@@ -2625,6 +2717,8 @@
 </li>
           <li><a href="solution/5_longest_palindromic_substring.html#src.solution.5_longest_palindromic_substring.TestSolution">(class in src.solution.5_longest_palindromic_substring)</a>
 </li>
+          <li><a href="solution/62_unique_paths.html#src.solution.62_unique_paths.TestSolution">(class in src.solution.62_unique_paths)</a>
+</li>
           <li><a href="solution/654_maximum_binary_tree.html#src.solution.654_maximum_binary_tree.TestSolution">(class in src.solution.654_maximum_binary_tree)</a>
 </li>
           <li><a href="solution/655_print_binary_tree.html#src.solution.655_print_binary_tree.TestSolution">(class in src.solution.655_print_binary_tree)</a>
@@ -2639,7 +2733,11 @@
 </li>
           <li><a href="solution/704_binary_search.html#src.solution.704_binary_search.TestSolution">(class in src.solution.704_binary_search)</a>
 </li>
+          <li><a href="solution/70_climbing_staris.html#src.solution.70_climbing_staris.TestSolution">(class in src.solution.70_climbing_staris)</a>
+</li>
           <li><a href="solution/71_simplify_path.html#src.solution.71_simplify_path.TestSolution">(class in src.solution.71_simplify_path)</a>
+</li>
+          <li><a href="solution/746_min_cost_climbing_stairs.html#src.solution.746_min_cost_climbing_stairs.TestSolution">(class in src.solution.746_min_cost_climbing_stairs)</a>
 </li>
           <li><a href="solution/75_sort_colors.html#src.solution.75_sort_colors.TestSolution">(class in src.solution.75_sort_colors)</a>
 </li>
@@ -2691,6 +2789,10 @@
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="datastruct/b_treenode.html#src.datastruct.b_treenode.BTreeNode.underflow_merge">underflow_merge() (src.datastruct.b_treenode.BTreeNode class method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="solution/62_unique_paths.html#src.solution.62_unique_paths.Solution.uniquePaths">uniquePaths() (src.solution.62_unique_paths.Solution method)</a>
 </li>
     </ul></td>
   </tr></table>

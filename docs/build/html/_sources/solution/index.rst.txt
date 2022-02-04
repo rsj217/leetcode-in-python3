@@ -22,7 +22,9 @@ Solution
    46_permutations
    54_spiral_matrix
    59_spiral_matrix_ii
+   62_unique_paths
    69_sqrtx
+   70_climbing_staris
    71_simplify_path
    75_sort_colors
    77_combinations
@@ -61,7 +63,9 @@ Solution
    257_binary_tree_paths
    283_move_zeroes
    374_guess_number_higher_or_lo
+   392_is_subsequence
    450_delete_node_in_a_bst
+   455_assign_cookies
    501_find_mode_in_binary_search_tree
    509_fibonacci_number
    513_find_bottom_left_tree_value
@@ -77,6 +81,7 @@ Solution
    700_search_in_a_binary_search_tree
    701_insert_into_a_binary_search_tree
    704_binary_search
+   746_min_cost_climbing_stairs
    783_minimum_distance_between_bst_nodes
    814_binary_tree_pruning
    844_backspace_string_compare
