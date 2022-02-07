@@ -32,6 +32,7 @@ Solution
    81_search_in_rotated_sorted_array_ii
    90_subsets_with_duplicates
    94_binary_tree_inorder_traversal
+   96_unique_binary_search_trees
    98_validate_binary_search_tree
    100_same_trees
    101_symmetric_tree
@@ -62,6 +63,7 @@ Solution
    236_lowest_common_ancestor_of_a_binary_tree
    257_binary_tree_paths
    283_move_zeroes
+   343_integer_break
    374_guess_number_higher_or_lo
    392_is_subsequence
    450_delete_node_in_a_bst
