@@ -88,13 +88,7 @@ class TestSolution(unittest.TestCase):
     def test_solution(self):
         for nums, answer in self.test_case:
             ans = self.s.subsets(nums)
-            self.assertTrue(equal(answer, ans))
-
-
-def equal(nums1: List[List[int]], nums2: List[List[int]]):
-    nums1.sort()
-    nums2.sort()
-    return nums1 == nums2
+            self.assertListEqual(answer, ans)
 
 
 if __name__ == '__main__':
