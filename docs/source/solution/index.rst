@@ -15,6 +15,7 @@ Solution
    14_longest_common_prefix
    15_3sum
    17_letter_combinations_of_a_phone_number
+   25_reverse_nodes_in_k_group
    26_remove_duplicates_from_sorted_array
    27_remove_element
    33_search_in_rotated_sorted_array
@@ -63,6 +64,7 @@ Solution
    236_lowest_common_ancestor_of_a_binary_tree
    257_binary_tree_paths
    283_move_zeroes
+   300_longest_increasing_subsequence
    343_integer_break
    374_guess_number_higher_or_lo
    392_is_subsequence

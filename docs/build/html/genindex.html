@@ -194,6 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="solution/14_longest_common_prefix.html">14_longest_common_prefix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/15_3sum.html">15_3sum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/17_letter_combinations_of_a_phone_number.html">17_letter_combinations_of_a_phone_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/25_reverse_nodes_in_k_group.html">25_reverse_nodes_in_k_group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/26_remove_duplicates_from_sorted_array.html">26_remove_duplicates_from_sorted_array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/27_remove_element.html">27_remove_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/33_search_in_rotated_sorted_array.html">33_search_in_rotated_sorted_array</a></li>
@@ -242,6 +243,7 @@
 <li class="toctree-l2"><a class="reference internal" href="solution/236_lowest_common_ancestor_of_a_binary_tree.html">236_lowest_common_ancestor_of_a_binary_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/257_binary_tree_paths.html">257_binary_tree_paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/283_move_zeroes.html">283_move_zeroes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solution/300_longest_increasing_subsequence.html">300_longest_increasing_subsequence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/343_integer_break.html">343_integer_break</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/374_guess_number_higher_or_lo.html">374_guess_number_higher_or_lo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="solution/392_is_subsequence.html">392_is_subsequence</a></li>
@@ -707,6 +709,8 @@
 </li>
         <li><a href="datastruct/avl_treenode.html#src.datastruct.avl_treenode.AVLTreeNode.left_rotate">left_rotate() (src.datastruct.avl_treenode.AVLTreeNode class method)</a>
 </li>
+        <li><a href="solution/300_longest_increasing_subsequence.html#src.solution.300_longest_increasing_subsequence.Solution.lengthOfLIS">lengthOfLIS() (src.solution.300_longest_increasing_subsequence.Solution method)</a>
+</li>
         <li><a href="solution/3_longest_substring_without_repeating_characters.html#src.solution.3_longest_substring_without_repeating_characters.Solution.lengthOfLongestSubstring">lengthOfLongestSubstring() (src.solution.3_longest_substring_without_repeating_characters.Solution method)</a>
 </li>
         <li><a href="solution/17_letter_combinations_of_a_phone_number.html#src.solution.17_letter_combinations_of_a_phone_number.Solution.letterCombinations">letterCombinations() (src.solution.17_letter_combinations_of_a_phone_number.Solution method)</a>
@@ -901,6 +905,8 @@
 </li>
           <li><a href="solution/257_binary_tree_paths.html#module-src.solution.257_binary_tree_paths">src.solution.257_binary_tree_paths</a>
 </li>
+          <li><a href="solution/25_reverse_nodes_in_k_group.html#module-src.solution.25_reverse_nodes_in_k_group">src.solution.25_reverse_nodes_in_k_group</a>
+</li>
           <li><a href="solution/26_remove_duplicates_from_sorted_array.html#module-src.solution.26_remove_duplicates_from_sorted_array">src.solution.26_remove_duplicates_from_sorted_array</a>
 </li>
           <li><a href="solution/27_remove_element.html#module-src.solution.27_remove_element">src.solution.27_remove_element</a>
@@ -908,6 +914,8 @@
           <li><a href="solution/283_move_zeroes.html#module-src.solution.283_move_zeroes">src.solution.283_move_zeroes</a>
 </li>
           <li><a href="solution/2_add_two_numbers.html#module-src.solution.2_add_two_numbers">src.solution.2_add_two_numbers</a>
+</li>
+          <li><a href="solution/300_longest_increasing_subsequence.html#module-src.solution.300_longest_increasing_subsequence">src.solution.300_longest_increasing_subsequence</a>
 </li>
           <li><a href="solution/33_search_in_rotated_sorted_array.html#module-src.solution.33_search_in_rotated_sorted_array">src.solution.33_search_in_rotated_sorted_array</a>
 </li>
@@ -1152,6 +1160,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="solution/7_reverse_integer.html#src.solution.7_reverse_integer.Solution.reverse">reverse() (src.solution.7_reverse_integer.Solution method)</a>
 </li>
+        <li><a href="solution/25_reverse_nodes_in_k_group.html#src.solution.25_reverse_nodes_in_k_group.Solution.reverseKGroup">reverseKGroup() (src.solution.25_reverse_nodes_in_k_group.Solution method)</a>
+</li>
         <li><a href="datastruct/avl_treenode.html#src.datastruct.avl_treenode.AVLTreeNode.right_rotate">right_rotate() (src.datastruct.avl_treenode.AVLTreeNode class method)</a>
 </li>
         <li><a href="solution/199_binary_tree_right_side_view.html#src.solution.199_binary_tree_right_side_view.Solution.rightSideView">rightSideView() (src.solution.199_binary_tree_right_side_view.Solution method)</a>
@@ -1271,6 +1281,8 @@
 </li>
           <li><a href="solution/257_binary_tree_paths.html#src.solution.257_binary_tree_paths.TestSolution.setUp">(src.solution.257_binary_tree_paths.TestSolution method)</a>
 </li>
+          <li><a href="solution/25_reverse_nodes_in_k_group.html#src.solution.25_reverse_nodes_in_k_group.TestSolution.setUp">(src.solution.25_reverse_nodes_in_k_group.TestSolution method)</a>
+</li>
           <li><a href="solution/26_remove_duplicates_from_sorted_array.html#src.solution.26_remove_duplicates_from_sorted_array.TestSolution.setUp">(src.solution.26_remove_duplicates_from_sorted_array.TestSolution method)</a>
 </li>
           <li><a href="solution/27_remove_element.html#src.solution.27_remove_element.TestSolution.setUp">(src.solution.27_remove_element.TestSolution method)</a>
@@ -1278,6 +1290,8 @@
           <li><a href="solution/283_move_zeroes.html#src.solution.283_move_zeroes.TestSolution.setUp">(src.solution.283_move_zeroes.TestSolution method)</a>
 </li>
           <li><a href="solution/2_add_two_numbers.html#src.solution.2_add_two_numbers.TestSolution.setUp">(src.solution.2_add_two_numbers.TestSolution method)</a>
+</li>
+          <li><a href="solution/300_longest_increasing_subsequence.html#src.solution.300_longest_increasing_subsequence.TestSolution.setUp">(src.solution.300_longest_increasing_subsequence.TestSolution method)</a>
 </li>
           <li><a href="solution/33_search_in_rotated_sorted_array.html#src.solution.33_search_in_rotated_sorted_array.TestSolution.setUp">(src.solution.33_search_in_rotated_sorted_array.TestSolution method)</a>
 </li>
@@ -1465,6 +1479,8 @@
 </li>
           <li><a href="solution/257_binary_tree_paths.html#src.solution.257_binary_tree_paths.Solution">(class in src.solution.257_binary_tree_paths)</a>
 </li>
+          <li><a href="solution/25_reverse_nodes_in_k_group.html#src.solution.25_reverse_nodes_in_k_group.Solution">(class in src.solution.25_reverse_nodes_in_k_group)</a>
+</li>
           <li><a href="solution/26_remove_duplicates_from_sorted_array.html#src.solution.26_remove_duplicates_from_sorted_array.Solution">(class in src.solution.26_remove_duplicates_from_sorted_array)</a>
 </li>
           <li><a href="solution/27_remove_element.html#src.solution.27_remove_element.Solution">(class in src.solution.27_remove_element)</a>
@@ -1472,6 +1488,8 @@
           <li><a href="solution/283_move_zeroes.html#src.solution.283_move_zeroes.Solution">(class in src.solution.283_move_zeroes)</a>
 </li>
           <li><a href="solution/2_add_two_numbers.html#src.solution.2_add_two_numbers.Solution">(class in src.solution.2_add_two_numbers)</a>
+</li>
+          <li><a href="solution/300_longest_increasing_subsequence.html#src.solution.300_longest_increasing_subsequence.Solution">(class in src.solution.300_longest_increasing_subsequence)</a>
 </li>
           <li><a href="solution/33_search_in_rotated_sorted_array.html#src.solution.33_search_in_rotated_sorted_array.Solution">(class in src.solution.33_search_in_rotated_sorted_array)</a>
 </li>
@@ -1952,6 +1970,13 @@
 </li>
         </ul></li>
         <li>
+    src.solution.25_reverse_nodes_in_k_group
+
+        <ul>
+          <li><a href="solution/25_reverse_nodes_in_k_group.html#module-src.solution.25_reverse_nodes_in_k_group">module</a>
+</li>
+        </ul></li>
+        <li>
     src.solution.26_remove_duplicates_from_sorted_array
 
         <ul>
@@ -1977,6 +2002,13 @@
 
         <ul>
           <li><a href="solution/2_add_two_numbers.html#module-src.solution.2_add_two_numbers">module</a>
+</li>
+        </ul></li>
+        <li>
+    src.solution.300_longest_increasing_subsequence
+
+        <ul>
+          <li><a href="solution/300_longest_increasing_subsequence.html#module-src.solution.300_longest_increasing_subsequence">module</a>
 </li>
         </ul></li>
         <li>
@@ -2485,11 +2517,15 @@
 </li>
           <li><a href="solution/257_binary_tree_paths.html#src.solution.257_binary_tree_paths.TestSolution.test_solution">(src.solution.257_binary_tree_paths.TestSolution method)</a>
 </li>
+          <li><a href="solution/25_reverse_nodes_in_k_group.html#src.solution.25_reverse_nodes_in_k_group.TestSolution.test_solution">(src.solution.25_reverse_nodes_in_k_group.TestSolution method)</a>
+</li>
           <li><a href="solution/26_remove_duplicates_from_sorted_array.html#src.solution.26_remove_duplicates_from_sorted_array.TestSolution.test_solution">(src.solution.26_remove_duplicates_from_sorted_array.TestSolution method)</a>
 </li>
           <li><a href="solution/27_remove_element.html#src.solution.27_remove_element.TestSolution.test_solution">(src.solution.27_remove_element.TestSolution method)</a>
 </li>
           <li><a href="solution/283_move_zeroes.html#src.solution.283_move_zeroes.TestSolution.test_solution">(src.solution.283_move_zeroes.TestSolution method)</a>
+</li>
+          <li><a href="solution/300_longest_increasing_subsequence.html#src.solution.300_longest_increasing_subsequence.TestSolution.test_solution">(src.solution.300_longest_increasing_subsequence.TestSolution method)</a>
 </li>
           <li><a href="solution/33_search_in_rotated_sorted_array.html#src.solution.33_search_in_rotated_sorted_array.TestSolution.test_solution">(src.solution.33_search_in_rotated_sorted_array.TestSolution method)</a>
 </li>
@@ -2693,6 +2729,8 @@
 </li>
           <li><a href="solution/257_binary_tree_paths.html#src.solution.257_binary_tree_paths.TestSolution">(class in src.solution.257_binary_tree_paths)</a>
 </li>
+          <li><a href="solution/25_reverse_nodes_in_k_group.html#src.solution.25_reverse_nodes_in_k_group.TestSolution">(class in src.solution.25_reverse_nodes_in_k_group)</a>
+</li>
           <li><a href="solution/26_remove_duplicates_from_sorted_array.html#src.solution.26_remove_duplicates_from_sorted_array.TestSolution">(class in src.solution.26_remove_duplicates_from_sorted_array)</a>
 </li>
           <li><a href="solution/27_remove_element.html#src.solution.27_remove_element.TestSolution">(class in src.solution.27_remove_element)</a>
@@ -2700,6 +2738,8 @@
           <li><a href="solution/283_move_zeroes.html#src.solution.283_move_zeroes.TestSolution">(class in src.solution.283_move_zeroes)</a>
 </li>
           <li><a href="solution/2_add_two_numbers.html#src.solution.2_add_two_numbers.TestSolution">(class in src.solution.2_add_two_numbers)</a>
+</li>
+          <li><a href="solution/300_longest_increasing_subsequence.html#src.solution.300_longest_increasing_subsequence.TestSolution">(class in src.solution.300_longest_increasing_subsequence)</a>
 </li>
           <li><a href="solution/33_search_in_rotated_sorted_array.html#src.solution.33_search_in_rotated_sorted_array.TestSolution">(class in src.solution.33_search_in_rotated_sorted_array)</a>
 </li>
