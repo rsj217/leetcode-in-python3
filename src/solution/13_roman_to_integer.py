@@ -3,36 +3,43 @@ import unittest
 
 
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
+    def romanToInt(self, s: str) -> int:
+        t = dict(
+            I=1,
+            V=5,
+            X=10,
+            L=50,
+            C=100,
+            D=500,
+            M=1000,
+        )
+        i = 0
         ans = 0
-        l, r = 0, len(height) - 1
-
-        while l < r:
-            if height[l] < height[r]:
-                area = height[l] * (r - l)
-                l += 1
+        while i < len(s):
+            if i + 1 < len(s) and  t[s[i]] <  t[s[i+1]]:
+                ans += t[s[i+1]] - t[s[i]]
+                i += 2
             else:
-                area = height[r] * (r - l)
-                r -= 1
-            ans = max(ans , area)
+                ans += t[s[i]]
+                i += 1
         return ans
-
 
 class TestSolution(unittest.TestCase):
 
     def setUp(self):
-        self.input = [
-            [1, 8, 6, 2, 5, 4, 8, 3, 7],
-            [1, 1],
-            [4, 3, 2, 1, 4]
+        self.test_case= [
+            ("MCDLXXVI", 1476),
+            ("LVIII", 58),
+            ("MCMXCIV", 1994)
+
+
         ]
-        self.answer = [49, 1, 16]
         self.s = Solution()
 
     def test_solution(self):
-        for i, item in enumerate(self.input):
-            ans = self.s.maxArea(item)
-            self.assertEqual(ans , self.answer[i],ans )
+        for s, answer in self.test_case:
+            ans = self.s.romanToInt(s)
+            self.assertEqual(answer, ans)
 
 
 if __name__ == '__main__':
