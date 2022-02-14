@@ -1,23 +1,6 @@
 """
-`Problem <https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/>`_
+`Problem <https://leetcode-cn.com/problems/merge-two-sorted-lists/>`_
 -------------------------------------------------------------------------------------
-
-给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
-
-::
-
-    示例 1：
-    输入：head = [1,2,3,4,5], n = 2
-    输出：[1,2,3,5]
-
-    示例 2：
-
-    输入：head = [1], n = 1
-    输出：[]
-
-    示例 3：
-    list2：head = [1,2], n = 1
-    输出：[1]
 
 Tips
 ------
@@ -59,11 +42,13 @@ class Solution:
             nodej = nodej.next
 
         return head.next
+
+
 class TestSolution(unittest.TestCase):
 
     def setUp(self):
         self.test_case = [
-            ([1, 2, 4], [1, 3, 4], [1,1,2,3,4,4]),
+            ([1, 2, 4], [1, 3, 4], [1, 1, 2, 3, 4, 4]),
             ([], [], []),
             ([], [0], [0]),
         ]

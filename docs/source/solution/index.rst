@@ -15,15 +15,19 @@ Solution
    14_longest_common_prefix
    15_3sum
    17_letter_combinations_of_a_phone_number
+   19_remove_nth_node_from_end_of_list
+   21_merge_two_sorted_list
    25_reverse_nodes_in_k_group
    26_remove_duplicates_from_sorted_array
    27_remove_element
    33_search_in_rotated_sorted_array
    35_search_insert_position
    46_permutations
+   48_rotate_image
    54_spiral_matrix
    59_spiral_matrix_ii
    62_unique_paths
+   66_plus_one
    69_sqrtx
    70_climbing_staris
    71_simplify_path
@@ -51,6 +55,7 @@ Solution
    121_best_time_to_buy_and_sell_stock
    122_best_time_to_buy_and_sell_stock_ii
    124_binary_tree_maximum_path_sum
+   125_valid_palindrome
    136_single_number
    144_binary_tree_preorder_traversal
    145_binary_tree_postorder_traversal
@@ -58,15 +63,20 @@ Solution
    154_find_minimum_in_rotated_sorted_array_ii
    162_find_peak_element
    199_binary_tree_right_side_view
+   206_reverse_linked_list
    209_minimum_size_subarray_sum
    226_invert_binary_tree
    235_lowest_common_ancestor_of_a_binary_search_tree
    236_lowest_common_ancestor_of_a_binary_tree
+   237_delete_node_in_a_linked_list
+   242_valid_anagram
    257_binary_tree_paths
    283_move_zeroes
    300_longest_increasing_subsequence
    343_integer_break
+   344_reverse_string
    374_guess_number_higher_or_lo
+   387_first_unique_character_in_a_string
    392_is_subsequence
    450_delete_node_in_a_bst
    455_assign_cookies
