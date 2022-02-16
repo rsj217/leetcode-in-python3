@@ -7,11 +7,12 @@ import unittest
 class Solution:
 
     def maxDepth(self, root: TreeNode) -> int:
-        num = random.randint(0, 2)
+        num = random.randint(0, 3)
         d = {
             0: self.dfs,
             1: self.postorder,
-            2: self.bfs
+            2: self.bfs,
+            3: self.dfs1,
         }
         return d[num](root)
 
@@ -64,7 +65,24 @@ class Solution:
             if node is None:
                 return 0
             return 1 + max(_dfs(node.left), _dfs(node.right))
+
         return _dfs(root)
+
+    def dfs1(self, root: TreeNode) -> int:
+        ans = 0
+
+        def dfs_(node, deep):
+            nonlocal ans
+            if node is None:
+                return
+            deep += 1
+            if node.left is None and node.right is None:
+                ans = max(ans, deep)
+            dfs_(node.left, deep)
+            dfs_(node.right, deep)
+
+        dfs_(root, 0)
+        return ans
 
 
 class TestSolution(unittest.TestCase):

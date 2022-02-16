@@ -1,3 +1,9 @@
+
+"""
+1. 层序遍历
+2. 前序dfs，上层节点先建立 左右 关系，子节点即可知其 sibling 节点
+
+"""
 from collections import deque
 from src.datastruct.treenode import TreeNode, print_tree
 import unittest
