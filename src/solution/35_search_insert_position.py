@@ -49,10 +49,10 @@ class Solution:
         lo, hi = 0, len(nums)
         while lo < hi:
             mid = lo + (hi - lo) // 2
-            if nums[mid] < target:  # 绝对小于，右半边
-                lo = mid + 1
-            else:  # target <= nums[mid]
+            if target <= nums[mid]:
                 hi = mid
+            else:
+                lo = mid + 1
         return hi
 
 
