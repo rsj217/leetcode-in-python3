@@ -41,13 +41,13 @@ class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         assert 1 <= len(strs) <= 200
         ans = strs[0]
-        for s in strs[1:]:
-            min_index = min(len(ans), len(s))
-            if len(s) < len(ans):
-                ans, s = s, ans
-            for i in range(min_index):
-                if ans[i] != s[i]:
-                    ans = s[:i]
+        for i in range(1, len(strs)):
+            target = strs[i]
+            if len(target) < len(ans):
+                ans, target = target, ans
+            for j in range(len(ans)):
+                if ans[j] != target[j]:
+                    ans = ans[:j]
                     break
         return ans
 
