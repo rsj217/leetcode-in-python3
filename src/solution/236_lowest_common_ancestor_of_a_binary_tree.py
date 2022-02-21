@@ -33,7 +33,7 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, p, q, answer in self.test_case:
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
             p = TreeNode(p)
             q = TreeNode(q)
             ans = self.s.lowestCommonAncestor(root, p, q)

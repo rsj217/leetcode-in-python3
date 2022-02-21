@@ -51,8 +51,8 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, answer in self.test_case:
-            root = TreeNode.create(nums)
-            answer = TreeNode.create(answer)
+            root = TreeNode.deserialize(nums)
+            answer = TreeNode.deserialize(answer)
             ans = self.s.invertTree(root)
             # self.asertEqual(answer.to_list(),ans .to_list) # TODO
 

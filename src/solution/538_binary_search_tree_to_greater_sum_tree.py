@@ -38,9 +38,9 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, answer in self.test_case:
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
             ans = self.s.convertBST(root)
-            self.assertEqual(TreeNode.literal(ans), answer)
+            self.assertEqual(TreeNode.serialize(ans), answer)
 
 
 if __name__ == '__main__':

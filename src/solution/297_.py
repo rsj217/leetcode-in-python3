@@ -126,11 +126,11 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, serialize, deserialize in self.test_case:
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
             data = self.s.serialize(root)
             self.assertEqual(data, serialize)
             newroot = self.s.deserialize(data)
-            self.assertListEqual(deserialize, TreeNode.literal(newroot))
+            self.assertListEqual(deserialize, TreeNode.serialize(newroot))
 
 
 if __name__ == '__main__':

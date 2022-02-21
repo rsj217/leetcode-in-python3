@@ -66,8 +66,8 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums1, nums2, answer in self.test_case:
-            root1 = TreeNode.create(nums1)
-            root2 = TreeNode.create(nums2)
+            root1 = TreeNode.deserialize(nums1)
+            root2 = TreeNode.deserialize(nums2)
             ans = self.s.flipEquiv(root1, root2)
             self.assertEqual(answer, ans)
 

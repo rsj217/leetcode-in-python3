@@ -79,7 +79,7 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, answer in self.test_case:
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
             ans = self.s.printTree(root)
             self.assertEqual(answer, ans)
 

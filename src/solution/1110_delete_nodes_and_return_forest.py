@@ -116,7 +116,7 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, target, answer in self.test_case:
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
             ans = self.s.delNodes(root, target)  # TODO
             # self.assertEqual(answer,ans , (nums, answer))
 

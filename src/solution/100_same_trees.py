@@ -24,8 +24,8 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for pp, qq, answer in self.test_case:
-            p = TreeNode.create(pp)
-            q = TreeNode.create(qq)
+            p = TreeNode.deserialize(pp)
+            q = TreeNode.deserialize(qq)
             ans = self.s.isSameTree(p, q)
             self.assertEqual(answer,ans )
 

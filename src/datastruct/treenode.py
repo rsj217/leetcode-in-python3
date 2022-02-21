@@ -2,7 +2,7 @@
 树节点&树结构定义，序列化/反序列化，打印，遍历相关算法
 
 """
-
+from __future__ import annotations
 from typing import List
 from collections import deque
 import unittest
@@ -54,11 +54,11 @@ class TreeNode:
         return 1 + max(self._get_height(node.left), self._get_height(node.right))
 
     @classmethod
-    def create(cls, nums: List[int]):
-        """ ``create`` 方法用于将的正数列表反序列化成一棵树。
+    def deserialize(cls, nums: List[int]) -> TreeNode:
+        """ ``deserialize`` 方法用于将的正数列表反序列化成一棵树。
         列表元素的的顺序是树的 `BFS` 层序遍历的顺序
         除了最深的一层的叶子节点之外，其他的叶子节点的左右子树，使用 ``None`` 站位。位于最后一个节点之后的 ``None`` 则需要去掉
-        该方法与 ``literal`` 逆方法。后者将一棵树序列化成整数列表。
+        该方法与 ``serialize`` 逆方法。后者将一棵树序列化成整数列表。
         实现原理借助了完全二叉树层序遍历的序号(seq) 与 数组中索引(index)的关系。
         由于有的None节点在数组中不存在，因此这个 seq 与 完全二叉树的节点 seq 有差别。但左右子树的序号与当前节点的序号关系依然成立
 
@@ -70,7 +70,7 @@ class TreeNode:
                 4, None, 5, 6,
                 None, 7, None, None, 8,
             ]
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
 
         root 的拓扑形状如下，可以使用该模块的 ``print_tree`` 打印树的拓扑
 
@@ -85,8 +85,8 @@ class TreeNode:
         树的序列化和反序列化可以参考 Leetcode `[297.二叉树序列化] <https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/>`_
         """
 
-        nums_size = len(nums)
-        if nums_size <= 0:
+        size = len(nums)
+        if size <= 0:
             return None
 
         root = cls(nums[0])
@@ -95,24 +95,24 @@ class TreeNode:
         # 数组index
         index = 0
         while len(queue) > 0:
-            size = len(queue)
-            for i in range(size):
+            lsize = len(queue)
+            for i in range(lsize):
                 node = queue.popleft()
                 lseq = 2 * index + 1
                 rseq = 2 * index + 2
-                if lseq < nums_size and nums[lseq] is not None:
+                if lseq < size and nums[lseq] is not None:
                     node.left = cls(nums[lseq])
                     queue.append(node.left)
-                if rseq < nums_size and nums[rseq] is not None:
+                if rseq < size and nums[rseq] is not None:
                     node.right = cls(nums[rseq])
                     queue.append(node.right)
                 index += 1
         return root
 
     @classmethod
-    def literal(cls, root) -> List[int]:
+    def serialize(cls, root) -> List[int]:
         """
-        ``literal`` 是将一颗二叉树序列化成整数列表。是 ``create`` 方法的逆方法。
+        ``literal`` 是将一颗二叉树序列化成整数列表。是 ``deserialize`` 方法的逆方法。
         其原理是使用二叉树的 `bfs` 层序遍历依次解析节点。
         从树根开始遍历，如果当前节点不存在，直接放入输出 ``None`` 进行占位。如果节点存在，则将其值输出到结果。
         遍历完成之后，再剔除最后一个节点之后的 ``None`` 值。
@@ -123,7 +123,7 @@ class TreeNode:
             nums = [
                 1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8,
             ]
-            root = TreeNode.create(nums)
+            root = TreeNode.deserialize(nums)
             ans = TreeNode.literal(root)
             assert nums, ans, "err"
         """
@@ -304,60 +304,60 @@ class TestTreeNode(unittest.TestCase):
 
     def test_create(self):
         nums = []
-        root = TreeNode.create(nums)
+        root = TreeNode.deserialize(nums)
         self.assertIsNone(root)
-        self.assertEqual(nums, TreeNode.literal(root))
+        self.assertEqual(nums, TreeNode.serialize(root))
 
         nums = [1, 2, 3]
-        root = TreeNode.create(nums)
-        self.assertEqual(nums, TreeNode.literal(root))
+        root = TreeNode.deserialize(nums)
+        self.assertEqual(nums, TreeNode.serialize(root))
 
         nums = [1, None, 2, 3]
-        root = TreeNode.create(nums)
-        self.assertEqual(nums, TreeNode.literal(root))
+        root = TreeNode.deserialize(nums)
+        self.assertEqual(nums, TreeNode.serialize(root))
 
         nums = [1, 2, 3, None, 4, 5]
-        root = TreeNode.create(nums)
-        self.assertEqual(nums, TreeNode.literal(root))
+        root = TreeNode.deserialize(nums)
+        self.assertEqual(nums, TreeNode.serialize(root))
 
         nums = [1, 2, 3, None, None, 5]
-        root = TreeNode.create(nums)
-        self.assertEqual(nums, TreeNode.literal(root))
+        root = TreeNode.deserialize(nums)
+        self.assertEqual(nums, TreeNode.serialize(root))
 
         nums = [1, 2, 3, None, None, 5, None, 6]
-        root = TreeNode.create(nums)
-        self.assertEqual(nums, TreeNode.literal(root))
+        root = TreeNode.deserialize(nums)
+        self.assertEqual(nums, TreeNode.serialize(root))
 
 
 class TestPrintTreeNode(unittest.TestCase):
 
     def test_empty(self):
-        root = TreeNode.create([])
+        root = TreeNode.deserialize([])
         print(print_tree(root))
 
     def test_print_tree(self):
-        root = TreeNode.create([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
+        root = TreeNode.deserialize([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
         print(print_tree(root))
         graphviz_tree(root)
 
         nums = [1, None, 2, 3]
-        root = TreeNode.create(nums)
+        root = TreeNode.deserialize(nums)
         print(print_tree(root))
 
         nums = [1, 2, None, 3]
-        root = TreeNode.create(nums)
+        root = TreeNode.deserialize(nums)
         print(print_tree(root))
 
         nums = [1, 2, 3, None, 4, 5]
-        root = TreeNode.create(nums)
+        root = TreeNode.deserialize(nums)
         print(print_tree(root))
 
         nums = [1, 2, 3, None, None, 5]
-        root = TreeNode.create(nums)
+        root = TreeNode.deserialize(nums)
         print(print_tree(root))
 
         nums = [1, 2, 3, None, None, 5, None, 6]
-        root = TreeNode.create(nums)
+        root = TreeNode.deserialize(nums)
         print(print_tree(root))
 
 
