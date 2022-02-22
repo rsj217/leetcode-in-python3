@@ -1,5 +1,5 @@
 """
-`Problem <<https://leetcode-cn.com/problems/two-sum/>`_
+`Problem <https://leetcode-cn.com/problems/two-sum/>`_
 --------------------------------------------------------
 
 编写一个函数来查找字符串数组中的最长公共前缀。
