@@ -14,7 +14,7 @@ class NTreeNode:
         self.children = []
 
     @classmethod
-    def create(cls, nums: List[int]) -> Optional[NTreeNode]:
+    def serialize(cls, nums: List[int]) -> Optional[NTreeNode]:
         if len(nums) <= 0:
             return None
         root = NTreeNode(val=nums[0])
@@ -33,7 +33,7 @@ class NTreeNode:
         return root
 
     @classmethod
-    def literal(cls, node: NTreeNode) -> List[int]:
+    def deserialize(cls, node: NTreeNode) -> List[int]:
         if node is None:
             return []
 
@@ -120,8 +120,8 @@ class TestNTreeNode(unittest.TestCase):
         ]
 
         for nums in test_case:
-            root = NTreeNode.create(nums)
-            ans = NTreeNode.literal(root)
+            root = NTreeNode.serialize(nums)
+            ans = NTreeNode.deserialize(root)
             self.assertEqual(nums, ans)
             # graphviz_tree(root)
 
