@@ -1,11 +1,36 @@
-from src.datastruct.b_treenode import *
+from typing import List
 
-bt = BTree(order=4)
+nums = [1, 1, 2]
 
-nums = [3, 1, 5, 4, 2, 9, 10, 8, 7, 6]
-nums.reverse()
 
-for i in nums:
-    bt.insert(i)
+# 1 1 2, 1 2 1, 2 1 1
 
-graphviz_tree(bt.root)
+def aaa(nums):
+    def dfs(nums, size, dct, visited, path, ans):
+        if size == len(path):
+            ans.append(path[:])
+            return
+        for item in nums:
+            if visited.get(item, 0) >= dct[item]:
+                continue
+            visited[item] = visited.get(item, 0) + 1
+            path.append(item)
+            dfs(nums, size, dct, visited, path, ans)
+            item = path.pop()
+            visited[item] = visited[item] - 1
+
+    dct = dict()
+    size = len(nums)
+    for item in nums:
+        dct[item] = dct.get(item, 0) + 1
+    visited = dict()
+
+    ans = []
+    path = []
+    nums = list(set(nums))
+    dfs(nums, size, dct, visited, path, ans)
+    return ans
+
+
+ans = aaa(nums)
+print(ans)

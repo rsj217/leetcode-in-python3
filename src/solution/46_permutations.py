@@ -1,29 +1,69 @@
+"""
+`Problem <https://leetcode-cn.com/problems/permutations>`_
+-----------------------------------------------------------------------------
+
+46. 全排列
+
+给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
+
+::
+
+    示例 1：
+
+    输入：nums = [1,2,3]
+    输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+    示例 2：
+
+    输入：nums = [0,1]
+    输出：[[0,1],[1,0]]
+    示例 3：
+
+    输入：nums = [1]
+    输出：[[1]]
+
+    提示：
+
+    1 <= nums.length <= 6
+    -10 <= nums[i] <= 10
+    nums 中的所有整数 互不相同
+
+
+Tips
+------
+
+回溯法
+1. 遍历数组
+2. 记录已遍历路径
+
+Answer
+------
+
+"""
 import unittest
 from typing import List
 
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        nums_visit = [False for _ in range(len(nums))]
-
-        def backtrack(nums_visit: List[int], path: List[int]):
+        def dfs(nums: List[int], visited: List[int], path: List[int], ans: List[List[int]]):
+            assert 1 <= len(nums) <= 6, "nums err"
             if len(nums) == len(path):
                 ans.append(path[:])
                 return
-
-            for i, item in enumerate(nums):
-                if nums_visit[i]:
+            for item in nums:
+                if item in visited:
                     continue
-
-                nums_visit[i] = True
+                visited.append(item)
                 path.append(item)
-                backtrack(nums_visit, path)
-                nums_visit[i] = False
+                dfs(nums, visited, path, ans)
                 path.pop()
-        backtrack(nums_visit, [])
-        return ans
+                visited.pop()
 
+        visited = []
+        path = []
+        ans = []
+        dfs(nums, visited, path, ans)
+        return ans
 
 
 class TestSolution(unittest.TestCase):
@@ -31,8 +71,8 @@ class TestSolution(unittest.TestCase):
     def setUp(self):
         self.test_case = [
             ([1], [[1]]),
-            ([0, 1], [[0,1],[1,0]]),
-            ([1, 2, 3], [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]),
+            ([0, 1], [[0, 1], [1, 0]]),
+            ([1, 2, 3], [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]),
         ]
         self.s = Solution()
 
