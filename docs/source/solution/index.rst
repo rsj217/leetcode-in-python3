@@ -22,12 +22,18 @@ Solution
    27_remove_element
    33_search_in_rotated_sorted_array
    35_search_insert_position
+   39_combination_sum
+   40_combination_sum_ii
+   42_trapping_rain_water
    46_permutations
+   47_permutation_ii
    48_rotate_image
+   49_group_anagrams
    54_spiral_matrix
    56_merge_intervals
    59_spiral_matrix_ii
    62_unique_paths
+   64_minimum_path_sum
    66_plus_one
    69_sqrtx
    70_climbing_staris
@@ -72,6 +78,7 @@ Solution
    199_binary_tree_right_side_view
    206_reverse_linked_list
    209_minimum_size_subarray_sum
+   216_combination_sum_iii
    226_invert_binary_tree
    234_palindrome_linked_list
    235_lowest_common_ancestor_of_a_binary_search_tree
@@ -79,6 +86,7 @@ Solution
    237_delete_node_in_a_linked_list
    242_valid_anagram
    257_binary_tree_paths
+   266_palindrome_permutation
    268_missing_number
    278_first_bad_version
    283_move_zeroes
@@ -86,7 +94,9 @@ Solution
    300_longest_increasing_subsequence
    343_integer_break
    344_reverse_string
+   347_top_k_frequent_elements
    374_guess_number_higher_or_lo
+   377_combination_sum_iv
    387_first_unique_character_in_a_string
    392_is_subsequence
    450_delete_node_in_a_bst
