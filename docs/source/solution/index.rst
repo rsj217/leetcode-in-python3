@@ -33,6 +33,7 @@ Solution
    56_merge_intervals
    59_spiral_matrix_ii
    62_unique_paths
+   63_unique_paths_ii
    64_minimum_path_sum
    66_plus_one
    69_sqrtx
@@ -44,6 +45,7 @@ Solution
    81_search_in_rotated_sorted_array_ii
    88_merge_sorted_array
    90_subsets_with_duplicates
+   93_restore_ip_addresses
    94_binary_tree_inorder_traversal
    96_unique_binary_search_trees
    98_validate_binary_search_tree
@@ -74,6 +76,7 @@ Solution
    154_find_minimum_in_rotated_sorted_array_ii
    162_find_peak_element
    167_two_sum_ii_input_array_is_sorted
+   190_reverse_bits
    198_house_robber
    199_binary_tree_right_side_view
    206_reverse_linked_list
