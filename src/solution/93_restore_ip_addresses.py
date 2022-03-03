@@ -47,6 +47,7 @@ Answer
 
 from typing import List
 
+
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         def dfs(s, size, index, path, ans):
@@ -55,11 +56,14 @@ class Solution:
                     ans.append(".".join(path[:]))
                 return
             for i in range(index, index + 3):
+                # 过滤不满足个数
                 if i + 1 > size:
                     return
                 n = s[index:i + 1]
+                # 过滤 0 开头的数
                 if len(n) > 1 and n.startswith("0"):
                     return
+                # 过滤大于 255 的数
                 if int(n) > 255:
                     return
                 path.append(n)
