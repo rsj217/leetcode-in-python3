@@ -1,36 +1,32 @@
-s = "25525511135"
-n = ["255.255.11.135", "255.255.111.35"]
-
-# s = "0000"
-s = "033042150063"
+matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]]
+target = 13
 
 
-def aaa(s):
-    def dfs(s, size, index, path, ans):
-        if len(path) == 4:
-            if size == index:
-                ans.append(".".join(path[:]))
-            return
-        for i in range(index, index+3):
-            if i >= size:
-                return
-            n = s[index:i+1]
-            if len(n) > 1 and n.startswith("0"):
-                return
-            if int(n) > 255:
-                return
-            path.append(n)
-            dfs(s, size, i+1, path, ans)
-            path.pop()
+def aaa(matrix, target):
+    m = len(matrix)
+    n = len(matrix[0])
+
+    row = m
+    for i in range(m):
+        if target < matrix[i][n - 1]:
+            row = i
+            break
+        elif target == matrix[i][n - 1]:
+            return True
+
+    if row == m:
+        return False
+    lo, hi = 0, n
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if target < matrix[row][mid]:
+            hi = mid
+        elif matrix[row][mid] < target:
+            lo = mid + 1
+        else:
+            return True
+    return False
 
 
-    size = len(s)
-    index = 0
-    path = []
-    ans = []
-    dfs(s, size, index, path, ans)
-    return ans
-
-
-ans = aaa(s)
+ans = aaa(matrix, target)
 print(ans)
