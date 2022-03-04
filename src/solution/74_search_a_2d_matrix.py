@@ -1,5 +1,5 @@
 """
-`Problem <https://leetcode-cn.com/problems/>`_
+`Problem <https://leetcode-cn.com/problems/search-a-2d-matrix/>`_
 -----------------------------------------------------------------------------
 
 74. 搜索二维矩阵
@@ -14,10 +14,15 @@
 
     示例 1：
 
+    .. image:: ../../img/74-1.jpeg
+
+
     输入：matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
     输出：true
 
     示例 2：
+
+    .. image:: ../../img/74-2.jpeg
 
     输入：matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
     输出：false
