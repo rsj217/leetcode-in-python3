@@ -16,14 +16,6 @@ class ListNode:
             node = node.next
         return s
 
-    # def serialize(self):
-    #     node = self
-    #     r = []
-    #     while node is not None:
-    #         r.append(node.val)
-    #         node = node.next
-    #     return r
-
     @classmethod
     def serialize(self, node: ListNode) -> List[int]:
         r = []
