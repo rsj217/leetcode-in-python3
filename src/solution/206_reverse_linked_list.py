@@ -28,9 +28,9 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, answer in self.test_case:
-            head = ListNode.create(nums)
+            head = ListNode.deserialize(nums)
             ans = self.s.reverseList(head)
-            self.assertListEqual(answer, ans.to_list())
+            self.assertListEqual(answer, ListNode.serialize(ans))
 
 
 if __name__ == '__main__':

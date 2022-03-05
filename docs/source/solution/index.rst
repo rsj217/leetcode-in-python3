@@ -39,6 +39,7 @@ Solution
    69_sqrtx
    70_climbing_staris
    71_simplify_path
+   74_search_a_2d_matrix
    75_sort_colors
    77_combinations
    78_subsets
@@ -76,6 +77,8 @@ Solution
    154_find_minimum_in_rotated_sorted_array_ii
    162_find_peak_element
    167_two_sum_ii_input_array_is_sorted
+   171_excel_sheet_column_number
+   179_largest_number
    190_reverse_bits
    198_house_robber
    199_binary_tree_right_side_view
@@ -126,6 +129,7 @@ Solution
    783_minimum_distance_between_bst_nodes
    814_binary_tree_pruning
    844_backspace_string_compare
+   876_middle_of_the_linked_list
    897_increasing_order_search_tree
    938_range_sum_of_bst
    951_flip_equivalent_binary_trees

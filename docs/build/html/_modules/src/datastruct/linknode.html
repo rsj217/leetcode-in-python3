@@ -219,6 +219,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/69_sqrtx.html">69_sqrtx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/70_climbing_staris.html">70_climbing_staris</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/71_simplify_path.html">71_simplify_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/74_search_a_2d_matrix.html">74_search_a_2d_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/75_sort_colors.html">75_sort_colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/77_combinations.html">77_combinations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/78_subsets.html">78_subsets</a></li>
@@ -256,6 +257,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/154_find_minimum_in_rotated_sorted_array_ii.html">154_find_minimum_in_rotated_sorted_array_ii</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/162_find_peak_element.html">162_find_peak_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/167_two_sum_ii_input_array_is_sorted.html">167_two_sum_ii_input_array_is_sorted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/171_excel_sheet_column_number.html">171_excel_sheet_column_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/179_largest_number.html">179_largest_number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/190_reverse_bits.html">190_reverse_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/198_house_robber.html">198_house_robber</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/199_binary_tree_right_side_view.html">199_binary_tree_right_side_view</a></li>
@@ -306,6 +309,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/844_backspace_string_compare.html">844_backspace_string_compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/876_middle_of_the_linked_list.html">876_middle_of_the_linked_list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/897_increasing_order_search_tree.html">897_increasing_order_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
@@ -343,7 +347,8 @@
         </div>
         <article role="main">
           <h1>Source code for src.datastruct.linknode</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
 
@@ -360,16 +365,24 @@
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
         <span class="k">return</span> <span class="n">s</span>
 
-    <span class="k">def</span> <span class="nf">to_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="c1"># def serialize(self):</span>
+    <span class="c1">#     node = self</span>
+    <span class="c1">#     r = []</span>
+    <span class="c1">#     while node is not None:</span>
+    <span class="c1">#         r.append(node.val)</span>
+    <span class="c1">#         node = node.next</span>
+    <span class="c1">#     return r</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
         <span class="k">return</span> <span class="n">r</span>
 
-<div class="viewcode-block" id="ListNode.create"><a class="viewcode-back" href="../../../datastruct/linknode.html#src.datastruct.linknode.ListNode.create">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ListNode</span><span class="p">]:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
 
@@ -378,23 +391,23 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
             <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
-        <span class="k">return</span> <span class="n">head</span></div></div>
+        <span class="k">return</span> <span class="n">head</span></div>
 
 
 <div class="viewcode-block" id="TestListNode"><a class="viewcode-back" href="../../../datastruct/linknode.html#src.datastruct.linknode.TestListNode">[docs]</a><span class="k">class</span> <span class="nc">TestListNode</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
 <div class="viewcode-block" id="TestListNode.test_create"><a class="viewcode-back" href="../../../datastruct/linknode.html#src.datastruct.linknode.TestListNode.test_create">[docs]</a>    <span class="k">def</span> <span class="nf">test_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">nums</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 
         <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
 
         <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
@@ -403,7 +416,7 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-    <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </pre></div>
         </article>

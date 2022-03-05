@@ -22,7 +22,7 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, val, answer in self.test_case:
-            head = ListNode.create(nums)
+            head = ListNode.deserialize(nums)
             node = head
             while node is not None:
                 if node.val == val:
@@ -30,7 +30,7 @@ class TestSolution(unittest.TestCase):
                 else:
                     node = node.next
             self.s.deleteNode(node)
-            self.assertListEqual(answer, head.to_list())
+            self.assertListEqual(answer, ListNode.serialize(head))
 
 
 if __name__ == '__main__':

@@ -94,9 +94,9 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for num, k, answer in self.test_case:
-            node = ListNode.create(num)
+            node = ListNode.deserialize(num)
             ans = self.s.reverseKGroup(node, k)
-            self.assertListEqual(answer, ans.to_list())
+            self.assertListEqual(answer, ListNode.serialize(ans))
 
 
 if __name__ == '__main__':

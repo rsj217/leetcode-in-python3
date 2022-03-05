@@ -1,4 +1,5 @@
-from typing import List
+from __future__ import annotations
+from typing import List, Optional
 import unittest
 
 
@@ -15,8 +16,16 @@ class ListNode:
             node = node.next
         return s
 
-    def to_list(self):
-        node = self
+    # def serialize(self):
+    #     node = self
+    #     r = []
+    #     while node is not None:
+    #         r.append(node.val)
+    #         node = node.next
+    #     return r
+
+    @classmethod
+    def serialize(self, node: ListNode) -> List[int]:
         r = []
         while node is not None:
             r.append(node.val)
@@ -24,7 +33,7 @@ class ListNode:
         return r
 
     @classmethod
-    def create(cls, nums: List[int]):
+    def deserialize(cls, nums: List[int]) -> Optional[ListNode]:
         if not nums:
             return None
 
@@ -40,16 +49,16 @@ class TestListNode(unittest.TestCase):
 
     def test_create(self):
         nums = []
-        node = ListNode.create(nums)
+        node = ListNode.deserialize(nums)
         self.assertIsNone(node)
 
         nums = [3]
-        node = ListNode.create(nums)
+        node = ListNode.deserialize(nums)
         self.assertEqual(node.val, 3)
         self.assertIsNone(node.next)
 
         nums = [3, 5, 6]
-        node = ListNode.create(nums)
+        node = ListNode.deserialize(nums)
         self.assertEqual(node.val, 3)
         self.assertEqual(node.next.val, 5)
         self.assertEqual(node.next.next.val, 6)
@@ -58,5 +67,5 @@ class TestListNode(unittest.TestCase):
 
 if __name__ == '__main__':
     nums = [3, 5, 6, 2, 6]
-    node = ListNode.create(nums)
+    node = ListNode.deserialize(nums)
     print(node)

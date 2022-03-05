@@ -10,7 +10,7 @@ LinkNode
    create linknode
    ^^^^^^^^^^^^^^^^
 
-   .. automethod:: ListNode.create
+   .. automethod:: ListNode.deserialize
 
    .. autoclass:: TestListNode
       :members:

@@ -56,11 +56,11 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for l1, l2, answer in self.test_case:
-            list1 = ListNode.create(l1)
-            list2 = ListNode.create(l2)
+            list1 = ListNode.deserialize(l1)
+            list2 = ListNode.deserialize(l2)
             ans = self.s.mergeTwoLists(list1, list2)
             if ans is not None:
-                self.assertListEqual(answer, ans.to_list())
+                self.assertListEqual(answer, ListNode.serialize(ans))
             else:
                 self.assertEqual(answer, [])
 

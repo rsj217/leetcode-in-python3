@@ -72,10 +72,10 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, n, answer in self.test_case:
-            head = ListNode.create(nums)
+            head = ListNode.deserialize(nums)
             ans = self.s.removeNthFromEnd(head, n)
             if ans is not None:
-                self.assertListEqual(answer, ans.to_list())
+                self.assertListEqual(answer, ListNode.serialize(ans))
             else:
                 self.assertEqual(answer, [])
 

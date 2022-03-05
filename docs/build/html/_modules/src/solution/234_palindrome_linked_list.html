@@ -219,6 +219,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/69_sqrtx.html">69_sqrtx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/70_climbing_staris.html">70_climbing_staris</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/71_simplify_path.html">71_simplify_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/74_search_a_2d_matrix.html">74_search_a_2d_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/75_sort_colors.html">75_sort_colors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/77_combinations.html">77_combinations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/78_subsets.html">78_subsets</a></li>
@@ -256,6 +257,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/154_find_minimum_in_rotated_sorted_array_ii.html">154_find_minimum_in_rotated_sorted_array_ii</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/162_find_peak_element.html">162_find_peak_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/167_two_sum_ii_input_array_is_sorted.html">167_two_sum_ii_input_array_is_sorted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/171_excel_sheet_column_number.html">171_excel_sheet_column_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/179_largest_number.html">179_largest_number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/190_reverse_bits.html">190_reverse_bits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/198_house_robber.html">198_house_robber</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/199_binary_tree_right_side_view.html">199_binary_tree_right_side_view</a></li>
@@ -306,6 +309,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/783_minimum_distance_between_bst_nodes.html">783_minimum_distance_between_bst_nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/814_binary_tree_pruning.html">814_binary_tree_pruning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/844_backspace_string_compare.html">844_backspace_string_compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../solution/876_middle_of_the_linked_list.html">876_middle_of_the_linked_list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/897_increasing_order_search_tree.html">897_increasing_order_search_tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/938_range_sum_of_bst.html">938_range_sum_of_bst</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../solution/951_flip_equivalent_binary_trees.html">951_flip_equivalent_binary_trees</a></li>
@@ -436,7 +440,7 @@
 
 <div class="viewcode-block" id="TestSolution.test_solution"><a class="viewcode-back" href="../../../solution/234_palindrome_linked_list.html#src.solution.234_palindrome_linked_list.TestSolution.test_solution">[docs]</a>    <span class="k">def</span> <span class="nf">test_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">nums</span><span class="p">,</span> <span class="n">answer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_case</span><span class="p">:</span>
-            <span class="n">head</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">ListNode</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
             <span class="n">ans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">isPalindrome</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span></div></div>
 

@@ -91,7 +91,7 @@ class TestSolution(unittest.TestCase):
 
     def test_solution(self):
         for nums, answer in self.test_case:
-            head = ListNode.create(nums)
+            head = ListNode.deserialize(nums)
             ans = self.s.isPalindrome(head)
             self.assertEqual(answer, ans)
 

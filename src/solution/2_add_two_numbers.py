@@ -31,19 +31,19 @@ class TestSolution(unittest.TestCase):
         l1 = [2, 4, 3]
         l2 = [5, 6, 4]
         answer = [7, 0, 8]
-        l1 = ListNode.create(l1)
-        l2 = ListNode.create(l2)
+        l1 = ListNode.deserialize(l1)
+        l2 = ListNode.deserialize(l2)
         ans = self.s.addTwoNumbers(l1, l2)
-        self.assertEqual(answer,ans .to_list())
+        self.assertEqual(answer, ListNode.serialize(ans))
 
     def test_99999(self):
         l1 = [9, 9, 9, 9, 9, 9, 9]
         l2 = [9, 9, 9, 9]
         answer = [8, 9, 9, 9, 0, 0, 0, 1]
-        l1 = ListNode.create(l1)
-        l2 = ListNode.create(l2)
+        l1 = ListNode.deserialize(l1)
+        l2 = ListNode.deserialize(l2)
         ans = self.s.addTwoNumbers(l1, l2)
-        self.assertEqual(answer,ans .to_list())
+        self.assertEqual(answer, ListNode.serialize(ans))
 
 
 if __name__ == '__main__':
