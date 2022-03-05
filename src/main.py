@@ -1,32 +1,17 @@
-matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]]
-target = 13
+
+import functools
 
 
-def aaa(matrix, target):
-    m = len(matrix)
-    n = len(matrix[0])
 
-    row = m
-    for i in range(m):
-        if target < matrix[i][n - 1]:
-            row = i
-            break
-        elif target == matrix[i][n - 1]:
-            return True
+def compare(a, b):
+    ab = a + b
+    ba = b + a
+    if ab < ba:
+        return 1
+    return -1
 
-    if row == m:
-        return False
-    lo, hi = 0, n
-    while lo < hi:
-        mid = lo + (hi - lo) // 2
-        if target < matrix[row][mid]:
-            hi = mid
-        elif matrix[row][mid] < target:
-            lo = mid + 1
-        else:
-            return True
-    return False
+nums = [10,2,9,39,17]
+nums_list = [str(i) for i in nums]
+nums_list.sort(key=functools.cmp_to_key(compare))
 
-
-ans = aaa(matrix, target)
-print(ans)
+print(nums_list)
