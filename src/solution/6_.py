@@ -48,8 +48,10 @@ string convert(string s, int numRows);
 
 Tips
 ------
-
-题解
+模拟
+1. 二维矩阵, 一共 numRow 行
+2. 从上往下打印, 对应的行添加字符
+3. 再从下往上打印
 
 Answer
 ------

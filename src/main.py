@@ -1,34 +1,34 @@
-s = "egg"
-t = "add"
+s = "11106"
+s = "12"
+s = "226"
+s = "0"
 
-s = "foo"
-t = "bar"
-#
-# s = "paper"
-# t = "title"
-#
-# s = "bbbaaaba"
-# t = "aaabbbba"
-#
-# s="badc"
-# t="xaxa"
+# 1 1 10 6
 
-def aaa(s, t):
+def aaa(s):
+    def dfs(s, index, path):
+        nonlocal ans
+        if index == len(s):
+            # ans.append(path[:])
+            ans += 1
+            return
 
-    assert len(s) == len(t)
-    dct = dict()
-    used = []
-    for i in range(len(s)):
-        if s[i] not in dct:
-            if t[i] in used:
-                return False
-            dct[s[i]] = t[i]
-            used.append(t[i])
-        else:
-            if dct[s[i]] !=  t[i]:
-                return False
-    return True
+        for i in range(index, index + 2):
+            if i + 1 > len(s):
+                return
+            n = s[index:i + 1]
+            if n.startswith("0"):
+                return
+            if int(n) > 26:
+                return
+            path.append(n)
+            dfs(s, i + 1, path)
+            path.pop()
+
+    ans = 0
+    dfs(s, 0, [])
+    return ans
 
 
-ans = aaa(s, t)
+ans = aaa(s)
 print(ans)
