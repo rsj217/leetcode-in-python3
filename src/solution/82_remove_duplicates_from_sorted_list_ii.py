@@ -1,5 +1,5 @@
 """
-`Problem <https://leetcode-cn.com/problems/>`_
+`Problem <https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/>`_
 -----------------------------------------------------------------------------
 
 82. 删除排序链表中的重复元素II
@@ -10,8 +10,18 @@
 
     示例 1：
 
+.. image:: ../../img/82-1.jpeg
+
+
+::
+
     输入：head = [1,2,3,3,4,4,5]
     输出：[1,2,5]
+
+
+.. image:: ../../img/82-2.png
+
+::
 
     示例 2：
 

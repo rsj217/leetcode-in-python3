@@ -1,5 +1,5 @@
 """
-`Problem <https://leetcode-cn.com/problems/>`_
+`Problem <https://leetcode-cn.com/problems/isomorphic-strings/>`_
 -----------------------------------------------------------------------------
 
 205. 同构字符串

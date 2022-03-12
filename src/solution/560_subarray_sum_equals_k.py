@@ -1,5 +1,5 @@
 """
-`Problem <https://leetcode-cn.com/problems/>`_
+`Problem <https://leetcode-cn.com/problems/subarray-sum-equals-k/>`_
 -----------------------------------------------------------------------------
 
 560. 和为k的子数组
