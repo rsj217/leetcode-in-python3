@@ -8,6 +8,7 @@ Solution
    2_add_two_numbers
    3_longest_substring_without_repeating_characters
    5_longest_palindromic_substring
+   6_zigzag_conversion
    7_reverse_integer
    9_palindrome_number
    11_container_with_most_water
@@ -44,8 +45,12 @@ Solution
    77_combinations
    78_subsets
    81_search_in_rotated_sorted_array_ii
+   82_remove_duplicates_from_sorted_list_ii
+   83_remove_duplicates_from_sorted_list
    88_merge_sorted_array
    90_subsets_with_duplicates
+   91_decode_ways
+   92_reverse_linked_list_ii
    93_restore_ip_addresses
    94_binary_tree_inorder_traversal
    96_unique_binary_search_trees
@@ -75,6 +80,7 @@ Solution
    151_reverse_words_in_a_string
    153_find_minimum_in_rotated_sorted_array
    154_find_minimum_in_rotated_sorted_array_ii
+   161_one_edit_distance
    162_find_peak_element
    167_two_sum_ii_input_array_is_sorted
    171_excel_sheet_column_number
@@ -82,6 +88,7 @@ Solution
    190_reverse_bits
    198_house_robber
    199_binary_tree_right_side_view
+   205_isomorphic_strings
    206_reverse_linked_list
    209_minimum_size_subarray_sum
    216_combination_sum_iii
@@ -115,6 +122,7 @@ Solution
    530_minimum_absolute_difference_in_bst
    538_binary_search_tree_to_greater_sum_tree
    543_diameter_of_binary_tree
+   560_subarray_sum_equals_k
    561_array_partition_i
    589_n_ary_tree_preorder_traversal
    590_n_ary_tree_postorder_traversal

@@ -1,9 +1,10 @@
 """
-`Problem <https://leetcode-cn.com/problems/>`_
------------------------------------------------------------------------------
+`Problem <https://leetcode-cn.com/problems/reverse-linked-list-ii/>`_
+--------------------------------------------------------------------------------------
 
-给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。请你反转从位置 left 到位置 right 的链
-表节点，返回 反转后的链表 。
+92. 反转链表II
+
+给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。
 
 ::
 
@@ -20,11 +21,13 @@
     提示：
 
     链表中节点数目为 n
+
     1 <= n <= 500
     -500 <= Node.val <= 500
     1 <= left <= right <= n
 
     进阶： 你可以使用一趟扫描完成反转吗？
+
 
 Tips
 ------
@@ -32,10 +35,10 @@ Tips
 1. 线性扫描，反转 left，right，反转前记录  left.prev 和 left
 2. 反转之后，left 接入 right.next
 3. left.prev 不存在，即left=0，直接返回反转后的新head
-3. left.prev 存在，left.prev 接入 反转后的新head ，返回 head
+4. left.prev 存在，left.prev 接入 反转后的新head ，返回 head
 
 Answer
-------
+--------
 
 """
 
