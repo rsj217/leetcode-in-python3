@@ -35,15 +35,39 @@ Answer
 
 """
 
+import random
+
 
 class Solution:
     def numTrees(self, n: int) -> int:
+        seq = random.randint(1, 2)
+        func = self.numTrees.__name__
+        fname = f"{func}_{seq}"
+        f = getattr(self, fname)
+        print(f.__name__)
+        return f(n)
+
+    def numTrees_1(self, n: int) -> int:
         dp = [0] * (n + 1)
         dp[0], dp[1] = 1, 1  # dp[0] 无实际意义
         for i in range(2, n + 1):
             for j in range(1, i + 1):
                 dp[i] += dp[j - 1] * dp[i - j]
         return dp[n]
+
+    def numTrees_2(self, n: int) -> int:
+        dct = {0: 1, 1: 1}
+
+        def dfs(n, dct):
+            if n in dct:
+                return dct[n]
+            ans = 0
+            for i in range(1, n + 1):
+                ans += dfs(i - 1, dct) * dfs(n - i, dct)
+            dct[n] = ans
+            return ans
+
+        return dfs(n, dct)
 
 
 import unittest
