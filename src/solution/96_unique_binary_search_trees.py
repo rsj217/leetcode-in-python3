@@ -41,8 +41,8 @@ import random
 class Solution:
     def numTrees(self, n: int) -> int:
         seq = random.randint(1, 2)
-        func = self.numTrees.__name__
-        fname = f"{func}_{seq}"
+        name = self.numTrees.__name__
+        fname = f"{name}_{seq}"
         f = getattr(self, fname)
         print(f.__name__)
         return f(n)
