@@ -27,8 +27,22 @@
 Tips
 ------
 
+1. 动态规划
+2. 记忆化递归
 
+1. n 个节点组成一个排序的数组，遍历这个数组，每个节点都可以成为root。
+2. 节点之前的是左子树，节点之后的是右子树，当前节点数目是左右子树的乘积。
+3. 左右子树可以递归调用。
 
+f(i) = f(i-1) * f(n-i)
+f(n) = f(1) + f(2) +.... f(i) + f(n)
+
+伪代码：
+
+f(n) = 0
+for i in 1..n+1:
+    f(i) = f(i-1) * f(n-i)
+    f(n) += f(i)
 
 Answer
 ------
@@ -56,7 +70,6 @@ class Solution:
         return dp[n]
 
     def numTrees_2(self, n: int) -> int:
-        dct = {0: 1, 1: 1}
 
         def dfs(n, dct):
             if n in dct:
@@ -67,6 +80,7 @@ class Solution:
             dct[n] = ans
             return ans
 
+        dct = {0: 1, 1: 1}
         return dfs(n, dct)
 
 
