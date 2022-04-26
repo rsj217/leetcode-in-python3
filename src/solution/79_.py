@@ -57,50 +57,36 @@ class Solution:
             letter = word[idx]
             if letter != board[y][x]:
                 return False
-
             nexts = []
             if 0 < y:
                 top = (y - 1, x)
-                next_ = top
-                k = f"{next_[0]}-{next_[1]}"
-                if not dct.get(k, False):
-                    nexts.append(next_)
-
+                nexts.append(top)
             if y < m - 1:
                 bottom = (y + 1, x)
-                next_ = bottom
-                k = f"{next_[0]}-{next_[1]}"
-                if not dct.get(k, False):
-                    nexts.append(next_)
-
+                nexts.append(bottom)
             if 0 < x:
                 left = (y, x - 1)
-                next_ = left
-                k = f"{next_[0]}-{next_[1]}"
-                if not dct.get(k, False):
-                    nexts.append(next_)
-
+                nexts.append(left)
             if x < n - 1:
                 right = (y, x + 1)
-                next_ = right
-                k = f"{next_[0]}-{next_[1]}"
-                if not dct.get(k, False):
-                    nexts.append(next_)
+                nexts.append(right)
 
             for next_ in nexts:
-                k = f"{y}-{x}"
-                dct[k] = True
+                next_pos = f"{next_[0]}-{next_[1]}"
+                if dct.get(next_pos, False):
+                    continue
+                cur_pos = f"{y}-{x}"
+                dct[cur_pos] = True
                 ans = dfs(board, m, n, next_[0], next_[1], dct, word, idx + 1)
                 if ans:
                     return True
-                dct[k] = False
+                dct[cur_pos] = False
             return idx == len(word) - 1
 
         dct = {}
         idx = 0
         m = len(board)
         n = len(board[0])
-
         for y in range(m):
             for x in range(n):
                 if board[y][x] == word[0] and dfs(board, m, n, y, x, dct, word, idx):
