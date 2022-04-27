@@ -5,31 +5,27 @@ class Trie:
         self.children = {}
 
     def insert(self, word: str) -> None:
-        prev = self
+        node = self
         for w in word:
-            node = prev.children.get(w, None)
-            if node is None:
-                node = Trie()
-                prev.children[w] = node
-            prev = node
+            if node.children.get(w, None) is None:
+                node.children[w] = Trie()
+            node = node.children[w]
         node.is_word = True
 
     def search(self, word: str) -> bool:
-        prev = self
+        node = self
         for w in word:
-            node = prev.children.get(w, None)
-            if node is None:
+            if node.children.get(w, None) is None:
                 return False
-            prev = node
+            node = node.children[w]
         return node.is_word
 
     def startsWith(self, prefix: str) -> bool:
-        prev = self
+        node = self
         for w in prefix:
-            node = prev.children.get(w, None)
-            if node is None:
+            if node.children.get(w, None) is None:
                 return False
-            prev = node
+            node = node.children[w]
         return True
 
 
