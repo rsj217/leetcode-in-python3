@@ -62,7 +62,7 @@ class Solution:
             if node.left is None and node.right is None:
                 if sum(path_list) + node.val == targetSum:
                     path_list.append(node.val)
-                    ans .append(path_list)
+                    ans.append(path_list)
                 return
 
             path_list.append(node.val)

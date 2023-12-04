@@ -53,23 +53,8 @@ from typing import List
 
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def dfs(candidates: List[int], target: int, index: int, path: List[int], ans: List[List[int]]):
-            sum_ = sum(path)
-            if sum_ >= target:
-                if sum_ == target:
-                    ans.append(path[:])
-                return
-            for i in range(index, len(candidates)):
-                path.append(candidates[i])
-                dfs(candidates, target, i, path, ans)
-                path.pop()
-
-        ans = []
-        path = []
-        index = 0
-        dfs(candidates, target, index, path, ans)
-        return ans
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        pass
 
 
 import unittest
@@ -79,16 +64,12 @@ class TestSolution(unittest.TestCase):
 
     def setUp(self):
         self.test_case = [
-            ([2, 3, 6, 7], 7, [[2, 2, 3], [7]]),
-            ([2, 3, 5], 8, [[2, 2, 2, 2], [2, 3, 3], [3, 5]]),
-            ([2], 1, [])
-
         ]
         self.s = Solution()
 
     def test_solution(self):
         for candidates, target, answer in self.test_case:
-            ans = self.s.combinationSum(candidates, target)
+            ans = self.s.combinationSum2(candidates, target)
             self.assertEqual(answer, ans)
 
 
