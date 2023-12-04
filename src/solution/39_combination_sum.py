@@ -54,24 +54,27 @@ from typing import List
 
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def dfs(candidates: List[int], target: int, index: int, path: List[int], ans: List[List[int]]):
-            sum_ = sum(path)
-            if sum_ >= target:
-                if sum_ == target:
-                    ans.append(path[:])
+        def dfs(idx, path, path_sum):
+            if target < path_sum:
                 return
-            for i in range(index, len(candidates)):
+            if target == path_sum:
+                ans.append(path.copy())
+                return
+
+            for i in range(idx, len(candidates)):
                 path.append(candidates[i])
-                dfs(candidates, target, i, path, ans)
+                path_sum += candidates[i]
+                dfs(i, path, path_sum)
+                path_sum -= candidates[i]
                 path.pop()
 
         ans = []
         path = []
-        index = 0
-        dfs(candidates, target, index, path, ans)
+        path_sum = 0
+        idx = 0
+        dfs(idx, path, path_sum)
+
         return ans
-
-
 import unittest
 
 

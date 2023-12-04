@@ -54,7 +54,31 @@ from typing import List
 
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        pass
+
+        def dfs(idx, path, path_sum):
+            if target < path_sum:
+                return
+            if target == path_sum:
+                ans.append(path.copy())
+                return
+
+            for i in range(idx, len(candidates)):
+                if idx < i and candidates[i - 1] == candidates[i]:
+                    continue
+
+                path.append(candidates[i])
+                path_sum += candidates[i]
+                dfs(i + 1, path, path_sum)
+                path_sum -= candidates[i]
+                path.pop()
+
+        ans = []
+        path = []
+        path_sum = 0
+        idx = 0
+        candidates.sort()
+        dfs(idx, path, path_sum)
+        return ans
 
 
 import unittest
@@ -64,6 +88,8 @@ class TestSolution(unittest.TestCase):
 
     def setUp(self):
         self.test_case = [
+            ([10, 1, 2, 7, 6, 1, 5], 8, [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]),
+            ([2, 5, 2, 1, 2], 5, [[1, 2, 2], [5]])
         ]
         self.s = Solution()
 
