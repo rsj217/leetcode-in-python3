@@ -9,7 +9,7 @@ from src.algo.sort.quick_sort import quick_sort
 def algo_performance(algos: List[Callable[[List[int]], None]], size, l, r):
     arr = helper.random_nums(size, l, r)
     for fn in algos:
-        nums = arr[:]
+        nums = arr.copy()
         start = time.time()
         fn(nums)
         end = time.time() - start
