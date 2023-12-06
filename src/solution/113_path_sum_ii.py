@@ -22,7 +22,7 @@ class Solution:
         while len(stack) > 0:
             node, path_list = stack.pop()
             if node.left is None and node.right is None and sum(path_list) == targetSum:
-                ans .append(path_list)
+                ans.append(path_list)
 
             if node.right is not None:
                 stack.append((node.right, path_list + [node.right.val]))

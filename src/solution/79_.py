@@ -50,46 +50,51 @@ from typing import List
 
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        def dfs(board, m, n, y, x, dct, word, idx):
-            if len(word) <= idx:
+        def dfs(x, y, d, idx):
+            if len(word) <= idx:  # 单词搜索完毕，没有发现不匹配的，返回 True
                 return True
+            else:
+                # 坐标越界
+                if col <= x or x < 0 or row <= y or y < 0:
+                    return False
 
-            letter = word[idx]
-            if letter != board[y][x]:
+            # 已搜索过路径
+            if d.get(f"{y}-{x}", False):
                 return False
-            nexts = []
-            if 0 < y:
-                top = (y - 1, x)
-                nexts.append(top)
-            if y < m - 1:
-                bottom = (y + 1, x)
-                nexts.append(bottom)
-            if 0 < x:
-                left = (y, x - 1)
-                nexts.append(left)
-            if x < n - 1:
-                right = (y, x + 1)
-                nexts.append(right)
-
-            for next_ in nexts:
-                next_pos = f"{next_[0]}-{next_[1]}"
-                if dct.get(next_pos, False):
-                    continue
-                cur_pos = f"{y}-{x}"
-                dct[cur_pos] = True
-                ans = dfs(board, m, n, next_[0], next_[1], dct, word, idx + 1)
-                if ans:
+            # 当前单词判等
+            if board[y][x] != word[idx]:
+                return False
+            else:
+                # 更新搜索状态
+                d[f"{y}-{x}"] = True
+                # 右
+                if dfs(x + 1, y, d, idx + 1):
                     return True
-                dct[cur_pos] = False
-            return idx == len(word) - 1
 
-        dct = {}
+                # 左
+                if dfs(x - 1, y, d, idx + 1):
+                    return True
+
+                # 上
+                if dfs(x, y - 1, d, idx + 1):
+                    return True
+
+                # 下
+                if dfs(x, y + 1, d, idx + 1):
+                    return True
+                # 恢复状态
+                d[f"{y}-{x}"] = False
+            # 没有搜索结果
+            return False
+
+        d = dict()
         idx = 0
-        m = len(board)
-        n = len(board[0])
-        for y in range(m):
-            for x in range(n):
-                if board[y][x] == word[0] and dfs(board, m, n, y, x, dct, word, idx):
+        row = len(board)
+        col = len(board[0])
+
+        for y in range(row):
+            for x in range(col):
+                if dfs(x, y, d, idx):
                     return True
         return False
 
@@ -124,6 +129,14 @@ class TestSolution(unittest.TestCase):
                  ["a", "b", "c"],
                  ["a", "e", "d"],
                  ["a", "f", "g"]], "abcdefg", True),
+
+            ([
+                 ["A", "A", "A", "A", "A", "A"],
+                 ["A", "A", "A", "A", "A", "A"],
+                 ["A", "A", "A", "A", "A", "A"],
+                 ["A", "A", "A", "A", "A", "A"],
+                 ["A", "A", "A", "A", "A", "A"],
+                 ["A", "A", "A", "A", "A", "A"]], "AAAAAAAAAAAAAAa", False)
         ]
         self.s = Solution()
 

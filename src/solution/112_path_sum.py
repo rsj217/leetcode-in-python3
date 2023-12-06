@@ -9,12 +9,12 @@ class Solution:
         d = {
             0: self.dfs,
             1: self.postorder,
-            2: self.bfs,
+            2: self.preorder,
         }
 
         return d[num](root, targetSum)
 
-    def bfs(self, root: TreeNode, targetSum: int) -> bool:
+    def preorder(self, root: TreeNode, targetSum: int) -> bool:
         if root is None:
             return False
         stack = [(root, root.val)]
