@@ -78,6 +78,18 @@ class TestAdjDictGraph(unittest.TestCase):
         print(self.g)
 
 
+def graphviz_graph(g: AdjDictGraph):
+    lines = ["graph g {"]
+    for k, v in g._adj.items():
+        lines.extend([f"{k} -- {i}" for i in v if k < i])
+    lines.append("}")
+    with open("graph.dot", "w") as f:
+        f.write("\n".join(lines))
+    cmd = "dot -T png -o graph.png graph.dot"
+    os.system(cmd)
+    os.system("open graph.png")
+
+
 if __name__ == '__main__':
     # unittest.main()
     s = """7, 9
@@ -96,3 +108,5 @@ if __name__ == '__main__':
 
     ans = AdjDictGraph.dumps(g)
     print(ans)
+
+    graphviz_graph(g)

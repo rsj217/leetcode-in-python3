@@ -72,7 +72,6 @@ def graphviz_graph(g: AdjMatrixGraph):
     for row in range(g.vsize):
         for clo in range(row, g.vsize):
             if g.adj[row][clo] == 1:
-                print(f"{row} -- {clo}")
                 lines.append(f"{row} -- {clo}")
     lines.append("}")
     with open("graph.dot", "w") as f:
@@ -97,6 +96,7 @@ class TestAdjMatrixGraph(unittest.TestCase):
             5, 6                                                                               
         """
         self.g = AdjMatrixGraph.load(s)
+        graphviz_graph(self.g)
 
     def test_dump(self):
         ans = AdjMatrixGraph.dumps(self.g)
