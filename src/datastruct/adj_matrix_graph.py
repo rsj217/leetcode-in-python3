@@ -11,7 +11,7 @@ class AdjMatrixGraph:
     def __init__(self):
         self.vsize = 0
         self.esize = 0
-        self.adj = []
+        self.adj = None
 
     def __str__(self):
         title = [str(i) for i in range(self.vsize)]
@@ -50,9 +50,9 @@ class AdjMatrixGraph:
         for line in text:
             line = line.strip()
             if line != "":
-                a, b = map(int, line.strip().split(","))
+                a, b = map(int, line.split(","))
                 assert a != b, "self loop edge err"
-                assert g.adj[a][b] != 1, "parallel"
+                assert g.adj[a][b] != 1, "parallel edge"
                 g.adj[a][b] = 1
                 g.adj[b][a] = 1
         return g
