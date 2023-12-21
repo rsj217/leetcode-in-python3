@@ -7,6 +7,7 @@ AVL 树也是二叉搜索树，其插入，删除方法基于二叉搜索插入�
 """
 
 from __future__ import annotations
+from typing import Optional
 import unittest
 import random
 
@@ -89,7 +90,7 @@ class AVLTreeNode:
         return cls._balance_rotate(node)
 
     @classmethod
-    def delete_dfs(cls, node: AVLTreeNode, key: int) -> AVLTreeNode:
+    def delete_dfs(cls, node: AVLTreeNode, key: int) -> Optional[AVLTreeNode]:
         """ 以 ``node`` 为根删除匹配 ``key`` 的节点, 返回删除后新的 ``root``，若 ``key`` 不存在，则不作删除操作。
             该方法与 ``二叉树搜索`` 的 ``delete_dfs`` 方法类似，不同在于需要调整平衡。
             与 ``_insert`` 方法类似，删除节点的祖先节点的高度都会变化，需要更新其高度，并对当前节点为根的子树进行平衡调整。

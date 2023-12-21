@@ -195,36 +195,8 @@ class TestBSTreeNode(unittest.TestCase):
         print(print_tree(root))
         self.assertTrue(is_valid(root))
 
-def graphviz_tree(node: BSTreeNode) -> List[List[str]]:
-    if node is None:
-        return []
 
-    seq = 1
-    queue = [(node, seq)]
 
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="<f0> |{node.val}| <f1>"];\n')
-    while len(queue) > 0:
-        size = len(queue)
-        for i in range(size):
-            node, seq = queue.pop(0)
-            if node.left is not None:
-                queue.append((node.left, 2 * seq))
-                lines.append(f'node{2 * seq}[label="<f0> |{node.left.val}| <f1>"];\n')
-                lines.append(f'node{seq}:f0 -> node{2 * seq};\n')
-
-            if node.right is not None:
-                queue.append((node.right, 2 * seq + 1))
-                lines.append(f'node{2 * seq + 1}[label="<f0> |{node.right.val}| <f1>"];\n')
-                lines.append(f'node{seq}:f1 -> node{2 * seq + 1};\n')
-    lines.append('}')
-    with open("tree.dot", "w") as f:
-        f.writelines(lines)
-    cmd = "dot -Tpng -o tree.png tree.dot"
-    os.system(cmd)
-    os.system("open tree.png")
 
 if __name__ == '__main__':
     unittest.main()

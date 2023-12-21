@@ -3,7 +3,7 @@
 
 """
 from __future__ import annotations
-from typing import List
+from typing import List, Optional
 from collections import deque
 import unittest
 import random
@@ -24,17 +24,17 @@ class TreeNode:
         self.left = left
         self.right = right
 
-    def __str__(self):
+    def __str__(self) -> str:
         cur = self.val
         left = self.left.val if self.left is not None else ""
         right = self.right.val if self.right is not None else ""
         return f"{left}<-{cur}->{right}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
 
     @property
-    def height(self):
+    def height(self) -> int:
         """ 树高属性，已当前节点为root的树的树高
         ::
 
@@ -44,7 +44,7 @@ class TreeNode:
         """
         return self._get_height(self)
 
-    def _get_height(self, node) -> int:
+    def _get_height(self, node: TreeNode) -> int:
         """ 树高的求法，递归DFS方法。
         即 ``curnode.height = 1 + max(node.left.height, node.right.height)``
         空树（empty tree）定义高度为0
@@ -110,7 +110,7 @@ class TreeNode:
         return root
 
     @classmethod
-    def serialize(cls, root) -> List[int]:
+    def serialize(cls, root: TreeNode) -> List[int]:
         """
         ``literal`` 是将一颗二叉树序列化成整数列表。是 ``deserialize`` 方法的逆方法。
         其原理是使用二叉树的 `bfs` 层序遍历依次解析节点。
@@ -154,7 +154,7 @@ class TreeNode:
         return ans
 
 
-def print_tree(node) -> str:
+def print_tree(node: TreeNode) -> str:
     """ 打印二叉树的拓扑形状，调用两个子函数，
     分表是 dfs 方法和 bfs 方法，两个方法随机调用
     """
@@ -226,7 +226,7 @@ def print_tree_bfs(node: TreeNode) -> List[List[str]]:
     return levels
 
 
-def draw_tree(root):
+def draw_tree(root: TreeNode):
     def jump_to(x, y):
         t.penup()
         t.goto(x, y)
@@ -253,7 +253,7 @@ def draw_tree(root):
     turtle.mainloop()
 
 
-def deserialize(string):
+def deserialize(string: str) -> Optional[TreeNode]:
     """ deserialize('[1,2,3,null,null,4,null,null,5,6]') """
     if string == '{}':
         return None
@@ -266,38 +266,6 @@ def deserialize(string):
             if kids: node.left = kids.pop()
             if kids: node.right = kids.pop()
     return root
-
-
-def graphviz_tree(node: TreeNode) -> List[List[str]]:
-    if node is None:
-        return []
-
-    seq = 1
-    queue = [(node, seq)]
-
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="<f0> |{node.val}| <f1>"];\n')
-    while len(queue) > 0:
-        size = len(queue)
-        for i in range(size):
-            node, seq = queue.pop(0)
-            if node.left is not None:
-                queue.append((node.left, 2 * seq))
-                lines.append(f'node{2 * seq}[label="<f0> |{node.left.val}| <f1>"];\n')
-                lines.append(f'node{seq}:f0 -> node{2 * seq};\n')
-
-            if node.right is not None:
-                queue.append((node.right, 2 * seq + 1))
-                lines.append(f'node{2 * seq + 1}[label="<f0> |{node.right.val}| <f1>"];\n')
-                lines.append(f'node{seq}:f1 -> node{2 * seq + 1};\n')
-    lines.append('}')
-    with open("tree.dot", "w") as f:
-        f.writelines(lines)
-    cmd = "dot -Tpng -o tree.png tree.dot"
-    os.system(cmd)
-    os.system("open tree.png")
 
 
 class TestTreeNode(unittest.TestCase):

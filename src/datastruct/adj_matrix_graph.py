@@ -67,20 +67,6 @@ class AdjMatrixGraph:
         return "\n".join(lines)
 
 
-def graphviz_graph(g: AdjMatrixGraph):
-    lines = ["graph g {"]
-    for row in range(g.vsize):
-        for clo in range(row, g.vsize):
-            if g.adj[row][clo] == 1:
-                lines.append(f"{row} -- {clo}")
-    lines.append("}")
-    with open("graph.dot", "w") as f:
-        f.write("\n".join(lines))
-    cmd = "dot -T png -o graph.png graph.dot"
-    os.system(cmd)
-    os.system("open graph.png")
-
-
 class TestAdjMatrixGraph(unittest.TestCase):
 
     def setUp(self) -> None:
@@ -96,7 +82,6 @@ class TestAdjMatrixGraph(unittest.TestCase):
             5, 6                                                                               
         """
         self.g = AdjMatrixGraph.load(s)
-        graphviz_graph(self.g)
 
     def test_dump(self):
         ans = AdjMatrixGraph.dumps(self.g)

@@ -21,12 +21,12 @@ class BTreeNode:
         self.keys = []
         self.children = [None]
 
-    def __str__(self):
+    def __str__(self) -> str:
         keys = [str(i) for i in self.keys]
         val = "|".join(keys)
         return f"|{val}|"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
 
     @classmethod
@@ -214,43 +214,6 @@ class BTree:
     def delete(self, key: int):
         self.root = BTreeNode.delete(self.root, key, self.order)
 
-
-def graphviz_tree(node: BTreeNode):
-    def graphviz_label(node: BTreeNode) -> str:
-        i = 0
-        label = f"<f{i}>"
-        while i < len(node.keys):
-            label += f" |{node.keys[i]}| <f{i + 1}>"
-            i += 1
-        return label
-
-    root = node
-    label = graphviz_label(root)
-    seq = 0
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="{label}"];\n')
-
-    queue = collections.deque()
-    queue.append((root, f"node{seq}"))
-    while len(queue) > 0:
-        size = len(queue)
-        for _ in range(size):
-            node, parent = queue.popleft()
-            for i, v in enumerate(node.children):
-                if v is not None:
-                    seq += 1
-                    label = graphviz_label(v)
-                    lines.append(f'node{seq}[label="{label}"];\n')
-                    lines.append(f'"{parent}": f{i} -> "node{seq}"\n')
-                    queue.append((v, f'node{seq}'))
-    lines.append("}")
-    with open("btree.dot", "w") as f:
-        f.writelines(lines)
-    cmd = "dot -Tpng -o btree.png btree.dot"
-    os.system(cmd)
-    os.system("open btree.png")
 
 
 class TestBTreeNode(unittest.TestCase):

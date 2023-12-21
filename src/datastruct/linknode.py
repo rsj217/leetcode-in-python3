@@ -4,9 +4,9 @@ import unittest
 
 
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val=0, next_: ListNode = None):
         self.val = val
-        self.next = next
+        self.next = next_
 
     def __str__(self):
         s = ""

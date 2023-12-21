@@ -76,34 +76,6 @@ def preorder_traversal(node: NTreeNode) -> int:
             stack.append(node.children[i])
 
 
-def graphviz_tree(node: NTreeNode):
-    if node is None:
-        return []
-
-    seq = 0
-    lines = []
-    lines.append('digraph g {')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="{node.val}"];\n')
-
-    queue = [(node, f'node{seq}')]
-
-    while len(queue) > 0:
-        size = len(queue)
-        for i in range(size):
-            node, parent = queue.pop(0)
-            for i in node.children:
-                seq += 1
-                queue.append((i, f'node{seq}'))
-                lines.append(f'node{seq}[label="{i.val}"];\n')
-                lines.append(f'{parent} -> node{seq};\n')
-
-    lines.append('}')
-    with open("ntree.dot", "w") as f:
-        f.writelines(lines)
-    cmd = "dot -Tpng -o ntree.png ntree.dot"
-    os.system(cmd)
-    os.system("open ntree.png")
 
 
 import unittest
