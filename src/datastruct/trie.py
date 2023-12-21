@@ -32,7 +32,6 @@ class Trie:
         return True
 
 
-
 import unittest
 
 
@@ -47,8 +46,6 @@ class TestTrie(unittest.TestCase):
         trie.insert("app")
         self.assertTrue(trie.search("app"))
 
-        graphviz_trie(trie)
-
     def test_more(self):
         trie = Trie()
         trie.insert("apple")
@@ -57,4 +54,6 @@ class TestTrie(unittest.TestCase):
         trie.insert("what")
         trie.insert("where")
 
-        graphviz_trie(trie)
+
+if __name__ == '__main__':
+    unittest.main()

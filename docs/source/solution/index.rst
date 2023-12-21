@@ -22,6 +22,7 @@ Solution
    26_remove_duplicates_from_sorted_array
    27_remove_element
    33_search_in_rotated_sorted_array
+   34_
    35_search_insert_position
    39_combination_sum
    40_combination_sum_ii
@@ -44,6 +45,7 @@ Solution
    75_sort_colors
    77_combinations
    78_subsets
+   79_
    81_search_in_rotated_sorted_array_ii
    82_remove_duplicates_from_sorted_list_ii
    83_remove_duplicates_from_sorted_list
@@ -144,5 +146,7 @@ Solution
    977_squares_of_sorted_array
    1026_maximum_difference_between_node_and_ancestor
    1038_binary_search_tree_to_greater_sum_tree
+   1060_
    1110_delete_nodes_and_return_forest
    1302_deepest_leaves_sum
+   1448_count_good_nodes_in_binary_tree
