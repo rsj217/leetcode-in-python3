@@ -32,32 +32,6 @@ class Trie:
         return True
 
 
-def graphviz_trie(node: Trie):
-    def dfs(node, cur_label):
-        nonlocal seq
-        if len(node.children) <= 0:
-            return
-        for k, v in node.children.items():
-            seq += 1
-            next_label = f'node{seq}'
-            lines.append(f'\t{next_label}[label="{k}"];\n')
-            lines.append(f'\t{cur_label}->{next_label};\n')
-            dfs(v, next_label)
-
-    seq = 0
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('\tnode [height=.1];\n')
-    lines.append('\tnode0[label=root];\n')
-    dfs(node, "node0")
-    lines.append('}')
-
-    with open("trie.dot", "w") as f:
-        f.writelines(lines)
-    cmd = "dot -Tpng -o trie.png trie.dot"
-    os.system(cmd)
-    os.system("open trie.png")
-
 
 import unittest
 

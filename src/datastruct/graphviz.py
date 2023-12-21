@@ -6,6 +6,7 @@ from b_treenode import BTreeNode
 from n_treenode import NTreeNode
 from adj_matrix_graph import AdjMatrixGraph
 from adj_list_graph import AdjListGraph
+from trie import Trie
 
 
 def leetcode_tree(s: str):
@@ -137,3 +138,30 @@ def adjlist_graph(g: AdjListGraph):
     cmd = "dot -T png -o graph.png graph.dot"
     os.system(cmd)
     os.system("open graph.png")
+
+
+def trie(node: Trie):
+    def dfs(node, curr_label):
+        nonlocal seq
+        if len(node.children) <= 0:
+            return
+        for k, v in node.children.items():
+            seq += 1
+            next_label = f'node{seq}'
+            lines.append(f'\t{next_label}[label="{k}"];\n')
+            lines.append(f'\t{curr_label}->{next_label};\n')
+            dfs(v, next_label)
+
+    seq = 0
+    lines = []
+    lines.append('digraph g {\n')
+    lines.append('\tnode [height=.1];\n')
+    lines.append('\tnode0[label=root];\n')
+    dfs(node, "node0")
+    lines.append('}')
+
+    with open("trie.dot", "w") as f:
+        f.writelines(lines)
+    cmd = "dot -T png -o trie.png trie.dot"
+    os.system(cmd)
+    os.system("open trie.png")
