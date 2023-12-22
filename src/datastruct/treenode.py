@@ -275,7 +275,7 @@ class TestTreeNode(unittest.TestCase):
         root = TreeNode.deserialize(nums)
         self.assertIsNone(root)
         self.assertEqual(nums, TreeNode.serialize(root))
-
+ 
         nums = [1, 2, 3]
         root = TreeNode.deserialize(nums)
         self.assertEqual(nums, TreeNode.serialize(root))
@@ -306,7 +306,6 @@ class TestPrintTreeNode(unittest.TestCase):
     def test_print_tree(self):
         root = TreeNode.deserialize([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
         print(print_tree(root))
-        graphviz_tree(root)
 
         nums = [1, None, 2, 3]
         root = TreeNode.deserialize(nums)

@@ -96,5 +96,3 @@ if __name__ == '__main__':
 
     ans = AdjListGraph.dumps(g)
     print(ans)
-
-    graphviz_graph(g)
