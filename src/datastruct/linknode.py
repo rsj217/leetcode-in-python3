@@ -1,13 +1,14 @@
 from __future__ import annotations
 from typing import List, Optional
+from dataclasses import dataclass
 import unittest
 
 
+@dataclass
 class ListNode:
-    def __init__(self, val=0, next_: ListNode = None):
-        self.val = val
-        self.next = next_
-
+    val: int = 0
+    next: Optional[ListNode] = None
+    
     def __str__(self):
         s = ""
         node = self
@@ -15,7 +16,7 @@ class ListNode:
             s += f"{node.val}->"
             node = node.next
         return s
-
+    
     @classmethod
     def serialize(self, node: ListNode) -> List[int]:
         r = []
@@ -23,12 +24,12 @@ class ListNode:
             r.append(node.val)
             node = node.next
         return r
-
+    
     @classmethod
     def deserialize(cls, nums: List[int]) -> Optional[ListNode]:
         if not nums:
             return None
-
+        
         head = cls(val=nums[0])
         node = head
         for i in nums[1:]:
@@ -38,17 +39,17 @@ class ListNode:
 
 
 class TestListNode(unittest.TestCase):
-
+    
     def test_create(self):
         nums = []
         node = ListNode.deserialize(nums)
         self.assertIsNone(node)
-
+        
         nums = [3]
         node = ListNode.deserialize(nums)
         self.assertEqual(node.val, 3)
         self.assertIsNone(node.next)
-
+        
         nums = [3, 5, 6]
         node = ListNode.deserialize(nums)
         self.assertEqual(node.val, 3)

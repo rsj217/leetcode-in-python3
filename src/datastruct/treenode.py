@@ -3,13 +3,15 @@
 
 """
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import List, Optional
 from collections import deque
 import unittest
 import random
-import os
 
 
+@dataclass
 class TreeNode:
     """ 树节点(TreeNode)定义，三个字段
 
@@ -18,21 +20,19 @@ class TreeNode:
     * right：右子树, TreeNode 类型
 
     """
-
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+    val: int = 0
+    left: TreeNode = None
+    right: TreeNode = None
+    
     def __str__(self) -> str:
         cur = self.val
         left = self.left.val if self.left is not None else ""
         right = self.right.val if self.right is not None else ""
         return f"{left}<-{cur}->{right}"
-
+    
     def __repr__(self) -> str:
         return self.__str__()
-
+    
     @property
     def height(self) -> int:
         """ 树高属性，已当前节点为root的树的树高
@@ -43,7 +43,7 @@ class TreeNode:
             >>> height = root.height
         """
         return self._get_height(self)
-
+    
     def _get_height(self, node: TreeNode) -> int:
         """ 树高的求法，递归DFS方法。
         即 ``curnode.height = 1 + max(node.left.height, node.right.height)``
@@ -52,7 +52,7 @@ class TreeNode:
         if not node:
             return 0
         return 1 + max(self._get_height(node.left), self._get_height(node.right))
-
+    
     @classmethod
     def deserialize(cls, nums: List[int]) -> TreeNode:
         """ ``deserialize`` 方法用于将的正数列表反序列化成一棵树。
@@ -84,11 +84,11 @@ class TreeNode:
         叶子节点 2 的右子树，4的左子树 5 的左右子树都用 None 占位，叶子节点 6 的右子树在最后一个节点 8 之后，就不需要 None 占位了。
         树的序列化和反序列化可以参考 Leetcode `[297.二叉树序列化] <https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/>`_
         """
-
+        
         size = len(nums)
         if size <= 0:
             return None
-
+        
         root = cls(nums[0])
         queue = deque()
         queue.append(root)
@@ -108,7 +108,7 @@ class TreeNode:
                     queue.append(node.right)
                 index += 1
         return root
-
+    
     @classmethod
     def serialize(cls, root: TreeNode) -> List[int]:
         """
@@ -127,10 +127,10 @@ class TreeNode:
             ans = TreeNode.literal(root)
             assert nums, ans, "err"
         """
-
+        
         if root is None:
             return []
-
+        
         queue = deque()
         queue.append(root)
         ans = []
@@ -144,7 +144,7 @@ class TreeNode:
                     queue.append(node.right)
                 else:
                     ans.append(None)
-
+        
         size = len(ans)
         for i in range(size - 1, -1, -1):
             if ans[i] is None:
@@ -158,7 +158,7 @@ def print_tree(node: TreeNode) -> str:
     """ 打印二叉树的拓扑形状，调用两个子函数，
     分表是 dfs 方法和 bfs 方法，两个方法随机调用
     """
-
+    
     num = random.randint(0, 1)
     d = {
         0: print_tree_dfs,
@@ -175,14 +175,14 @@ def print_tree_dfs(node: TreeNode) -> List[List[str]]:
     拓扑结果中，并没有画出路径，由于控制台输出长度的限制，树的节点数也有限制。树的宽度 ``width = (1<<height) - 1`` ，不能太大。
     函数使用了 ``DFS`` 方式遍历一棵树。
     """
-
+    
     if node is None:
         return []
-
+    
     height = node.height
     width = (1 << height) - 1
     ans = [[" " for _ in range(width)] for _ in range(height)]
-
+    
     def dfs(node: TreeNode, deep: int, lo: int, hi: int):
         if node is None:
             return
@@ -190,7 +190,7 @@ def print_tree_dfs(node: TreeNode) -> List[List[str]]:
         ans[deep][mid] = str(node.val)
         dfs(node.left, deep + 1, lo, mid)
         dfs(node.right, deep + 1, mid + 1, hi)
-
+    
     dfs(node, 0, 0, width)
     return ans
 
@@ -203,7 +203,7 @@ def print_tree_bfs(node: TreeNode) -> List[List[str]]:
     height = node.height
     width = (1 << height) - 1
     levels = [[" " for _ in range(width)] for _ in range(height)]
-
+    
     queue = deque()
     queue.append((node, 0))
     deep = 0
@@ -213,7 +213,7 @@ def print_tree_bfs(node: TreeNode) -> List[List[str]]:
         step = 2 ** level_height
         left_index = 2 ** (level_height - 1) - 1
         left_seq = 2 ** (deep - 1) - 1
-
+        
         size = len(queue)
         for _ in range(size):
             node, seq = queue.popleft()
@@ -231,7 +231,7 @@ def draw_tree(root: TreeNode):
         t.penup()
         t.goto(x, y)
         t.pendown()
-
+    
     def draw(node, x, y, dx):
         if node:
             t.goto(x, y)
@@ -241,7 +241,7 @@ def draw_tree(root: TreeNode):
             draw(node.left, x - dx, y - 60, dx / 2)
             jump_to(x, y - 20)
             draw(node.right, x + dx, y - 60, dx / 2)
-
+    
     import turtle
     t = turtle.Turtle()
     t.speed(0)
@@ -269,60 +269,60 @@ def deserialize(string: str) -> Optional[TreeNode]:
 
 
 class TestTreeNode(unittest.TestCase):
-
+    
     def test_create(self):
         nums = []
         root = TreeNode.deserialize(nums)
         self.assertIsNone(root)
         self.assertEqual(nums, TreeNode.serialize(root))
- 
+        
         nums = [1, 2, 3]
         root = TreeNode.deserialize(nums)
         self.assertEqual(nums, TreeNode.serialize(root))
-
+        
         nums = [1, None, 2, 3]
         root = TreeNode.deserialize(nums)
         self.assertEqual(nums, TreeNode.serialize(root))
-
+        
         nums = [1, 2, 3, None, 4, 5]
         root = TreeNode.deserialize(nums)
         self.assertEqual(nums, TreeNode.serialize(root))
-
+        
         nums = [1, 2, 3, None, None, 5]
         root = TreeNode.deserialize(nums)
         self.assertEqual(nums, TreeNode.serialize(root))
-
+        
         nums = [1, 2, 3, None, None, 5, None, 6]
         root = TreeNode.deserialize(nums)
         self.assertEqual(nums, TreeNode.serialize(root))
 
 
 class TestPrintTreeNode(unittest.TestCase):
-
+    
     def test_empty(self):
         root = TreeNode.deserialize([])
         print(print_tree(root))
-
+    
     def test_print_tree(self):
         root = TreeNode.deserialize([1, 2, 3, 4, None, 5, 6, None, 7, None, None, 8])
         print(print_tree(root))
-
+        
         nums = [1, None, 2, 3]
         root = TreeNode.deserialize(nums)
         print(print_tree(root))
-
+        
         nums = [1, 2, None, 3]
         root = TreeNode.deserialize(nums)
         print(print_tree(root))
-
+        
         nums = [1, 2, 3, None, 4, 5]
         root = TreeNode.deserialize(nums)
         print(print_tree(root))
-
+        
         nums = [1, 2, 3, None, None, 5]
         root = TreeNode.deserialize(nums)
         print(print_tree(root))
-
+        
         nums = [1, 2, 3, None, None, 5, None, 6]
         root = TreeNode.deserialize(nums)
         print(print_tree(root))

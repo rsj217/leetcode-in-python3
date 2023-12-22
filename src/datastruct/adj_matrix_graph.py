@@ -2,17 +2,16 @@ from __future__ import annotations
 
 import unittest
 from typing import List
+from dataclasses import dataclass, field
 import io
-import os
 
 
+@dataclass
 class AdjMatrixGraph:
-
-    def __init__(self):
-        self.vsize = 0
-        self.esize = 0
-        self.adj = None
-
+    vsize: int = 0
+    esize: int = 0
+    adj: List[List[int]] = field(default_factory=list)
+    
     def __str__(self):
         title = [str(i) for i in range(self.vsize)]
         title.insert(0, "  ")
@@ -22,21 +21,21 @@ class AdjMatrixGraph:
             newRow.insert(0, f"{idx}:")
             ans.append(" ".join(map(str, newRow)))
         return "\n".join(ans)
-
+    
     def __repr__(self):
         return self.__str__()
-
+    
     def has_edge(self, v: int, w: int) -> bool:
         assert 0 <= v or 0 <= w, "invalid vertex"
         return self.adj[v][w] == 1
-
+    
     def adj_edge(self, v: int) -> List[int]:
         assert 0 <= v, "invalid vertex"
         return [i for i in range(self.vsize) if self.adj[v][i] == 1]
-
+    
     def degree(self, v: int) -> int:
         return len(self.adj_edge(v))
-
+    
     @classmethod
     def load(cls, s: str) -> AdjMatrixGraph:
         g = cls()
@@ -44,7 +43,7 @@ class AdjMatrixGraph:
         first_line = next(text)
         v, e = map(int, first_line.strip().split(","))
         assert 0 <= v, "invalid vertex"
-
+        
         g.vsize, g.esize = v, e
         g.adj = [[0 for _ in range(g.vsize)] for _ in range(g.vsize)]
         for line in text:
@@ -56,7 +55,7 @@ class AdjMatrixGraph:
                 g.adj[a][b] = 1
                 g.adj[b][a] = 1
         return g
-
+    
     @classmethod
     def dumps(cls, g: AdjMatrixGraph) -> str:
         lines = [f"{g.vsize}, {g.esize}"]
@@ -68,7 +67,7 @@ class AdjMatrixGraph:
 
 
 class TestAdjMatrixGraph(unittest.TestCase):
-
+    
     def setUp(self) -> None:
         s = """7, 9
             0, 1
@@ -82,16 +81,16 @@ class TestAdjMatrixGraph(unittest.TestCase):
             5, 6                                                                               
         """
         self.g = AdjMatrixGraph.load(s)
-
+    
     def test_dump(self):
         ans = AdjMatrixGraph.dumps(self.g)
         print(ans)
-
+    
     def test_has_edge(self):
         for v in range(self.g.vsize):
             for i in range(self.g.vsize):
                 self.assertEqual(self.g.adj[v][i] == 1, self.g.has_edge(v, i))
-
+    
     def test_adj_edge(self):
         self.assertEqual(self.g.adj_edge(0), [1, 3])
         self.assertEqual(self.g.adj_edge(1), [0, 2, 6])

@@ -8,40 +8,41 @@ AVL 树也是二叉搜索树，其插入，删除方法基于二叉搜索插入�
 
 from __future__ import annotations
 from typing import Optional
+from dataclasses import dataclass
 import unittest
 import random
 
 
+@dataclass
 class AVLTreeNode:
     """ 二叉搜索树节点
     ``AVLTreeNode`` 新增了 ``height`` 属性。提供了节点的插入 ``insert`` 和删除 ``delete`` 操作。
     在插入和删除之后，需要更新节点的 ``height`` 属性。
     通过 ``height`` 计算平衡因子 ``balance factor`` ,当树节点不再平衡的时候，调用旋转 ``_balance_rotate`` 接口维护平衡。
     """
-
-    def __init__(self, key=0):
-        self.key = key
-        self.left = None
-        self.right = None
-        self.height = 1
-
+    
+    key: int = 0
+    left: Optional[AVLTreeNode] = None
+    right: Optional[AVLTreeNode] = None
+    height: int = 1
+    
     def minimum(self) -> AVLTreeNode:
         """ 求最小值节点方法，通过调用 """
         return AVLTreeNode.minimum_dfs(self)
-
+    
     # 为了适配 print_tree 方法
     @property
     def val(self):
         return self.key
-
+    
     def insert(self, key: int) -> AVLTreeNode:
         """ 插入节点方法，当 key 已存在，则更新节点的值，否则将节点插入到 ``AVLTreeNode`` 中 """
         return AVLTreeNode.insert_dfs(self, key)
-
+    
     def delete(self, key: int) -> AVLTreeNode:
         """ 删除节点方法，当 key 不存在，什么也不做 """
         return AVLTreeNode.delete_dfs(self, key)
-
+    
     @classmethod
     def get_height(cls, node: AVLTreeNode) -> int:
         """ 求节点的树的高度，当节点不存在（空树）时候返回 0
@@ -50,14 +51,14 @@ class AVLTreeNode:
         if node is None:
             return 0
         return 1 + max(cls.get_height(node.left), cls.get_height(node.right))
-
+    
     @classmethod
     def get_bf(cls, node: AVLTreeNode) -> int:
         """ 求节点的 平衡因子 ``balance_factor = node.left.height - node.right.height`` """
         if node is None:
             return 0
         return cls.get_height(node.left) - cls.get_height(node.right)
-
+    
     @classmethod
     def _update_height(cls, node: AVLTreeNode) -> AVLTreeNode:
         """ 更新节点的 ``height`` ，返回更新后的节点 """
@@ -65,7 +66,7 @@ class AVLTreeNode:
         height = cls.get_height(node)
         node.height = height
         return node
-
+    
     @classmethod
     def insert_dfs(cls, node: AVLTreeNode, key: int) -> AVLTreeNode:
         """ 以 ``node`` 为根插入 ``key``, 返回插入新的 ``root``
@@ -88,7 +89,7 @@ class AVLTreeNode:
         node = cls._update_height(node)
         # 平衡调整，并返回新的节点作为子树的root，返回给上层调用
         return cls._balance_rotate(node)
-
+    
     @classmethod
     def delete_dfs(cls, node: AVLTreeNode, key: int) -> Optional[AVLTreeNode]:
         """ 以 ``node`` 为根删除匹配 ``key`` 的节点, 返回删除后新的 ``root``，若 ``key`` 不存在，则不作删除操作。
@@ -118,12 +119,12 @@ class AVLTreeNode:
                 node = node.right
             else:  # 左右子树都为空，删除当前节点，即返回None即可
                 return None
-
+        
         # 更新当前节点高度
         node = cls._update_height(node)
         # 平衡调整，并返回新的节点作为子树的root，返回给上层调用
         return cls._balance_rotate(node)
-
+    
     @classmethod
     def minimum_dfs(cls, node: AVLTreeNode) -> AVLTreeNode:
         """ 以 ``node`` 为 ``root`` 的AVL树中查找最小值节点 """
@@ -131,7 +132,7 @@ class AVLTreeNode:
         if node.left is None:
             return node
         return cls.minimum_dfs(node.left)
-
+    
     @classmethod
     def right_rotate(cls, x: AVLTreeNode) -> AVLTreeNode:
         """ 右旋转
@@ -143,7 +144,7 @@ class AVLTreeNode:
         # 旋转之后，更新新的树 树高
         cls._update_height(x)
         return cls._update_height(y)
-
+    
     @classmethod
     def left_rotate(cls, x: AVLTreeNode) -> AVLTreeNode:
         """ 左旋转
@@ -152,10 +153,10 @@ class AVLTreeNode:
         T2 = y.left
         y.left = x
         x.right = T2
-
+        
         cls._update_height(x)
         return cls._update_height(y)
-
+    
     @classmethod
     def _balance_rotate(cls, node: AVLTreeNode) -> AVLTreeNode:
         """ 平衡调整 一共四种情况
@@ -181,7 +182,7 @@ class AVLTreeNode:
                 node.right = cls.right_rotate(node.right)
                 node = cls.left_rotate(node)
         return node
-
+    
     @classmethod
     def is_balance(cls, node: AVLTreeNode) -> bool:
         """ 平衡判断 """
@@ -195,13 +196,13 @@ class AVLTreeNode:
 class AVLTree:
     def __init__(self):
         self.root = None
-
+    
     def insert(self, key):
         if self.root is None:
             self.root = AVLTreeNode(key)
         else:
             self.root = AVLTreeNode.insert_dfs(self.root, key)
-
+    
     def delete(self, key):
         if self.root is None:
             return
@@ -212,7 +213,7 @@ from src.datastruct.treenode import print_tree
 
 
 class TestAVLTreeNode(unittest.TestCase):
-
+    
     def test_insert_LL(self):
         """
         """
@@ -222,7 +223,7 @@ class TestAVLTreeNode(unittest.TestCase):
         for i in nums:
             root = avl.insert(i)
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_insert_LR(self):
         """
         ::
@@ -239,7 +240,7 @@ class TestAVLTreeNode(unittest.TestCase):
         for i in nums:
             root = avl.insert(i)
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_insert_RR(self):
         """
         ::
@@ -256,7 +257,7 @@ class TestAVLTreeNode(unittest.TestCase):
         for i in nums:
             root = avl.insert(i)
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_insert_RL(self):
         """
         ::
@@ -273,17 +274,17 @@ class TestAVLTreeNode(unittest.TestCase):
         for i in nums:
             root = avl.insert(i)
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_delete_one_element(self):
         avl = AVLTreeNode(0)
         avl.delete(10)
         self.assertEqual(avl.key, 0)
         print(print_tree(avl))
-
+        
         avl = avl.delete(0)
         print(print_tree(avl))
         self.assertIsNone(avl)
-
+    
     def test_delete_LL(self):
         nums = [2, 4, 1]
         avl = AVLTreeNode(3)
@@ -295,7 +296,7 @@ class TestAVLTreeNode(unittest.TestCase):
         root = avl.delete(4)
         print(print_tree(root))
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_delete_LR(self):
         nums = [1, 4, 2]
         avl = AVLTreeNode(3)
@@ -307,7 +308,7 @@ class TestAVLTreeNode(unittest.TestCase):
         root = avl.delete(4)
         print(print_tree(root))
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_delete_RR(self):
         nums = [1, 3, 4]
         avl = AVLTreeNode(2)
@@ -319,7 +320,7 @@ class TestAVLTreeNode(unittest.TestCase):
         root = avl.delete(1)
         print(print_tree(root))
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_delete_RL(self):
         nums = [1, 4, 3]
         avl = AVLTreeNode(2)
@@ -331,7 +332,7 @@ class TestAVLTreeNode(unittest.TestCase):
         root = avl.delete(1)
         print(print_tree(root))
         self.assertTrue(AVLTreeNode.is_balance(root))
-
+    
     def test_random(self):
         nums = list(range(1, 10))
         avl = AVLTreeNode(0)
@@ -339,7 +340,7 @@ class TestAVLTreeNode(unittest.TestCase):
         for i in nums:
             root = root.insert(i)
         print(print_tree(root))
-
+        
         for _ in range(len(nums) - 2):
             n = random.randint(nums[0], nums[-1])
             print("=" * 20)

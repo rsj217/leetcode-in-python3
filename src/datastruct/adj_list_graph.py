@@ -1,35 +1,34 @@
 from __future__ import annotations
 
 import unittest
-from typing import List
+from typing import List, Dict
+from dataclasses import dataclass, field
 import io
-import os
 
 
+@dataclass
 class AdjListGraph:
-
-    def __init__(self):
-        self._vsize = 0
-        self._esize = 0
-        self._adj = None
-
+    _vsize: int = 0
+    _esize: int = 0
+    _adj: Dict[int, List[int]] = field(default_factory=dict)
+    
     def __str__(self):
         lines = [f"{k}: {v}" for k, v in self._adj.items()]
         return "\n".join(lines)
-
+    
     def __repr__(self):
         return self.__str__()
-
+    
     def has_edge(self, v: int, w: int) -> bool:
         return w in self._adj[v]
-
+    
     def adj_edge(self, v: int) -> List[int]:
         assert 0 <= v, "invalid vertex"
         return self._adj[v]
-
+    
     def degree(self, v: int) -> int:
         return len(self.adj_edge(v))
-
+    
     @classmethod
     def load(cls, s: str):
         g = cls()
@@ -37,10 +36,10 @@ class AdjListGraph:
         first_line = next(text)
         v, e = map(int, first_line.strip().split(","))
         assert 0 < v, "invalid vertex"
-
+        
         g._vsize, g._esize = v, e
         g._adj = {i: [] for i in range(v)}
-
+        
         for line in text:
             line = line.strip()
             if line != "":
@@ -51,7 +50,7 @@ class AdjListGraph:
                 g._adj[a].append(b)
                 g._adj[b].append(a)
         return g
-
+    
     @classmethod
     def dumps(cls, g: AdjListGraph) -> str:
         lines = [f"{g._vsize}, {g._esize}"]
@@ -61,7 +60,7 @@ class AdjListGraph:
 
 
 class TestAdjDictGraph(unittest.TestCase):
-
+    
     def setUp(self) -> None:
         s = """7, 9
             0, 1
@@ -93,6 +92,6 @@ if __name__ == '__main__':
     """
     g = AdjListGraph.load(s)
     # print(g)
-
+    
     ans = AdjListGraph.dumps(g)
     print(ans)

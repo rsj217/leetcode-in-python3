@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 import unittest
-from typing import Optional
-import collections
-import os
+from typing import Optional, List
+from dataclasses import dataclass, field
 
 
 def find(nums, key):
@@ -14,21 +13,20 @@ def find(nums, key):
     return -1
 
 
+@dataclass
 class BTreeNode:
-
-    def __init__(self):
-        self.parent = None
-        self.keys = []
-        self.children = [None]
-
+    parent: Optional[BTreeNode] = None
+    keys: List[int] = field(default_factory=list)
+    children: List[BTreeNode] = field(default_factory=lambda: [None])
+    
     def __str__(self) -> str:
         keys = [str(i) for i in self.keys]
         val = "|".join(keys)
         return f"|{val}|"
-
+    
     def __repr__(self) -> str:
         return self.__str__()
-
+    
     @classmethod
     def search_dfs(cls, node: Optional[BTreeNode], key: int, hot: Optional[BTreeNode]) -> (BTreeNode, BTreeNode):
         """
@@ -38,20 +36,20 @@ class BTreeNode:
         """
         if node is None:
             return hot, node
-
+        
         r = find(node.keys, key)
         if (0 <= r) and node.keys[r] == key:
             return hot, node
         hot = node
         node = node.children[r + 1]
         return cls.search_dfs(node, key, hot)
-
+    
     @classmethod
     def minimum_dfs(cls, node: BTreeNode) -> BTreeNode:
         if node.children[0] is None:
             return node
         return cls.minimum_dfs(node.children[0])
-
+    
     @staticmethod
     def _search(node: BTreeNode, key: int) -> (BTreeNode, BTreeNode):
         parent = None
@@ -62,7 +60,7 @@ class BTreeNode:
             parent = node
             node = node.children[r + 1]
         return parent, node
-
+    
     @classmethod
     def insert(cls, node: BTreeNode, key: int, order: int) -> BTreeNode:
         """
@@ -77,7 +75,7 @@ class BTreeNode:
         hot.keys.insert(r + 1, key)
         hot.children.insert(r + 2, None)
         return cls.overflow_split(node, hot, order)
-
+    
     @classmethod
     def delete(cls, node: BTreeNode, key: int, order: int) -> BTreeNode:
         """
@@ -99,24 +97,24 @@ class BTreeNode:
         ans.keys.pop(r)
         ans.children.pop(r + 1)
         return cls.underflow_merge(node, ans, order)  # 删除节点可能发生下溢，通过旋转或合并修复
-
+    
     @classmethod
     def overflow_split(cls, root: BTreeNode, node: BTreeNode, order: int) -> BTreeNode:
-
+        
         if len(node.children) <= order:  # 递归基：当前节点node的children 小于等于order的时候，节点未发生overflow
             return root
         mid = order // 2  # 中位数节点
-
+        
         right = BTreeNode()  # 新建一个空节点，为以中位数节点分离的右节点
         right.keys = node.keys[mid + 1:]
         right.children = node.children[mid + 1:]
         node.keys = node.keys[:mid + 1]
         node.children = node.children[:mid + 1]
-
+        
         if right.children[0] is not None:  # 若 right 的children 不为None，需要更新他们的parent，之前是 node，现在更新为 right
             for i in range(order - mid):
                 right.children[i].parent = right
-
+        
         p = node.parent
         left = node
         if p is None:  # p 不存在，则表示 node 是根节点
@@ -124,18 +122,18 @@ class BTreeNode:
             p.children[0] = left  # node 作为新根 p 的左孩子节点
             left.parent = p
             root = p
-
+        
         r = 1 + find(p.keys, left.keys[0])  # 找到 p 中指向原 node 的r，用于插入分裂的 mid
         p.keys.insert(r, left.keys.pop(mid))  # p 插入 mid 的 key
         p.children.insert(r + 1, right)  # p 插入 mid 的 children
         right.parent = p  # 更新 分裂 的 right的 parent
         return cls.overflow_split(root, p, order)  # 当前层分裂完毕，向上递归，至多  O(H)，即 O(logN))
-
+    
     @classmethod
     def underflow_merge(cls, root: BTreeNode, node: BTreeNode, order: int) -> BTreeNode:
         if (order + 1) // 2 <= len(node.children):  # 递归基：当前节点满足最小关键码的大小 [m+1//2, m-1]
             return root
-
+        
         p = node.parent
         if p is None:
             if len(node.keys) <= 0 and node.children[0] is not None:
@@ -143,7 +141,7 @@ class BTreeNode:
                 root.parent = None
                 node.children[0] = None
             return root
-
+        
         r = 0
         while p.children[r] is not node:  # 寻找 node 在 其 parent children中的 rank
             r += 1
@@ -157,7 +155,7 @@ class BTreeNode:
                 if node.children[0] is not None:  # 借出的 children 非叶子节点，
                     node.children[0].parent = node  # 则需要更新该节点的 parent 为 node
                 return root
-
+        
         # case2: 右盼：向右兄弟借key 旋转
         if r < (len(p.children) - 1):  # 存在有兄弟
             rs = p.children[r + 1]  # rs: right sibling 右兄弟
@@ -176,13 +174,13 @@ class BTreeNode:
             ls.children.append(node.children.pop(0))
             if ls.children[-1] is not None:
                 ls.children[-1].parent = ls
-
+            
             while len(node.keys) > 0:
                 ls.keys.append(node.keys.pop(0))
                 ls.children.append(node.children.pop(0))
                 if ls.children[-1] is not None:
                     ls.children[-1].parent = ls
-
+        
         else:  # 与右兄弟合并
             rs = p.children[r + 1]
             rs.keys.insert(0, p.keys.pop(r))
@@ -195,7 +193,7 @@ class BTreeNode:
                 rs.children.insert(0, node.children.pop(-1))
                 if rs.children[0]:
                     rs.children[0].parent = rs
-
+        
         # 合并之后, 高度减少，需要向上回溯，依次修复下溢的节点
         return cls.underflow_merge(root, p, order)
 
@@ -204,29 +202,28 @@ class BTree:
     def __init__(self, order: int = 3):
         self.order = order
         self.root = BTreeNode()
-
+    
     def search(self, key) -> Optional[int]:
         return BTreeNode.search(self.root, key)
-
+    
     def insert(self, key: int):
         self.root = BTreeNode.insert(self.root, key, self.order)
-
+    
     def delete(self, key: int):
         self.root = BTreeNode.delete(self.root, key, self.order)
 
 
-
 class TestBTreeNode(unittest.TestCase):
-
+    
     def setUp(self) -> None:
         pass
-
+    
     def test_empty(self):
         node = BTreeNode()
         self.assertIsNone(node.parent)
         self.assertEqual(len(node.keys), 0)
         self.assertEqual(len(node.children), 1)
-
+    
     def test_insert(self):
         order = 3
         root = BTreeNode()
@@ -234,145 +231,145 @@ class TestBTreeNode(unittest.TestCase):
         self.assertIsNone(root.parent)
         self.assertEqual(root.keys, [53])
         self.assertEqual(root.children, [None, None])
-
+        
         root = BTreeNode.insert(root, 36, order)
         self.assertIsNone(root.parent)
         self.assertEqual(root.keys, [36, 53])
         self.assertEqual(root.children, [None, None, None])
-
+        
         root = BTreeNode.insert(root, 77, order)
         self.assertIsNone(root.parent)
         self.assertEqual(root.keys, [53])
         self.assertEqual(len(root.children), 2)
-
+        
         left = root.children[0]
         right = root.children[1]
-
+        
         self.assertEqual(left.parent, root)
         self.assertEqual(left.keys, [36])
         self.assertEqual(len(left.children), 2)
-
+        
         self.assertEqual(right.parent, root)
         self.assertEqual(right.keys, [77])
         self.assertEqual(len(right.children), 2)
 
 
 class TestBTree(unittest.TestCase):
-
+    
     def setUp(self) -> None:
         pass
-
+    
     def test_insert_overflow_split(self):
         bt = BTree()
         nums = [53, 36, 77, 97, 19, 41, 51, 75, 79, 89, 84]
         for i in nums:
             bt.insert(i)
-
+        
         bt.insert(23)
         # graphviz_tree(bt.root)
         node36 = bt.root.children[0]
         node1923 = node36.children[0]
         self.assertEqual(node1923.keys, [19, 23])
         self.assertEqual(node1923.parent, node36)
-
+        
         bt.insert(29)
-
+        
         node2336 = bt.root.children[0]
         node19, node29, node4151 = node2336.children
         self.assertEqual(node19.parent, node2336)
         self.assertEqual(node19.keys, [19])
-
+        
         self.assertEqual(node29.parent, node2336)
         self.assertEqual(node29.keys, [29])
-
+        
         self.assertEqual(node4151.parent, node2336)
         self.assertEqual(node4151.keys, [41, 51])
-
+        
         bt.insert(45)
-
+        
         root = bt.root
         self.assertIsNone(root.parent)
         self.assertEqual(root.keys, [36, 53])
-
+        
         node23, node45, node7789 = root.children
-
+        
         self.assertEqual(node23.parent, root)
         self.assertEqual(node23.keys, [23])
-
+        
         self.assertEqual(node45.parent, root)
         self.assertEqual(node45.keys, [45])
-
+        
         self.assertEqual(node7789.parent, root)
         self.assertEqual(node7789.keys, [77, 89])
-
+        
         node41, node51 = node45.children
         self.assertEqual(node41.parent, node45)
         self.assertEqual(node41.keys, [41])
-
+        
         self.assertEqual(node51.parent, node45)
         self.assertEqual(node51.keys, [51])
-
+        
         bt.insert(87)
         root = bt.root
         self.assertIsNone(root.parent)
         self.assertEqual(root.keys, [53])
-
+    
     def test_delete_underflow_merge(self):
         bt = BTree()
         nums = [53, 36, 77, 97, 19, 41, 51, 75, 79, 89, 84, 64]
         for i in nums:
             bt.insert(i)
-
+        
         bt.delete(41)
-
+        
         n36 = bt.root.children[0]
         n51 = n36.children[0]
         self.assertEqual(n51.parent, n36)
         self.assertEqual(len(n36.keys), 1)
-
+        
         bt.delete(53)
-
+        
         root = bt.root
         self.assertEqual(root.keys, [64])
         n75 = root.children[1].children[0]
         self.assertEqual(n75.keys, [75])
         self.assertEqual(n75.children, [None, None])
-
+        
         bt.delete(75)
-
+        
         n7989 = bt.root.children[1]
-
+        
         n77, n84, n97 = n7989.children
         self.assertEqual(n77.keys, [77])
         self.assertEqual(n77.parent, n7989)
-
+        
         self.assertEqual(n84.keys, [84])
         self.assertEqual(n84.parent, n7989)
-
+        
         self.assertEqual(n97.keys, [97])
         self.assertEqual(n97.parent, n7989)
-
+        
         bt.delete(84)
-
+        
         n89 = bt.root.children[1]
         n7779 = n89.children[0]
         self.assertEqual(len(n89.children), 2)
         self.assertEqual(n7779.keys, [77, 79])
         self.assertEqual(n7779.parent, n89)
-
+        
         bt.delete(51)
-
+        
         n6489 = bt.root
         n1936, n7779, n97 = n6489.children
         self.assertEqual(n1936.keys, [19, 36])
         self.assertEqual(n1936.parent, n6489)
-
+        
         self.assertEqual(n7779.keys, [77, 79])
         self.assertEqual(n7779.parent, n6489)
-
+        
         self.assertEqual(n97.keys, [97])
         self.assertEqual(n97.parent, n6489)
-
+    
     # def test_delete_rotate(self):
     #     bt = BTree(5)
     #     nums = [528, 249, 703, 268, 850, 54, 315, 758, 855, 152, 266, 423, 468, 484, 644, 771, 882, 936, 984, 500, 990]
@@ -381,53 +378,53 @@ class TestBTree(unittest.TestCase):
     #
     #     bt.delete(266)
     #     bt.delete(644)
-
+    
     def test_left_rotate(self):
         bt = BTree()
         nums = [53, 36, 77, 97, 19, 41, 10, 75, 79, 89]
         for i in nums:
             bt.insert(i)
-
+        
         bt.delete(41)
-
+        
         n19 = bt.root.children[0]
         self.assertEqual(n19.parent, bt.root)
         self.assertEqual(n19.keys, [19])
-
+        
         n10, n36 = n19.children
-
+        
         self.assertEqual(n10.parent, n19)
         self.assertEqual(n10.keys, [10])
-
+        
         self.assertEqual(n36.parent, n19)
         self.assertEqual(n36.keys, [36])
-
+    
     def test_right_rotate(self):
         bt = BTree()
         nums = [53, 36, 77, 97, 19, 41, 51, 75, 79, 89]
         for i in nums:
             bt.insert(i)
-
+        
         bt.delete(19)
-
+        
         n41 = bt.root.children[0]
         self.assertEqual(n41.parent, bt.root)
         self.assertEqual(n41.keys, [41])
-
+        
         n36, n51 = n41.children
         self.assertEqual(n36.parent, n41)
         self.assertEqual(n36.keys, [36])
-
+        
         self.assertEqual(n51.parent, n41)
         self.assertEqual(n51.keys, [51])
-
+    
     def test_right_merge(self):
         bt = BTree(5)
         nums = [528, 249, 703, 850, 54, 315, 758, 855, 152, 266, 423, 468, 484, 644, 771, 882, 936, 984, 500, 990]
         for i in nums:
             bt.insert(i)
         bt.delete(54)
-
+    
     def test_left_merge(self):
         bt = BTree(5)
         nums = [528, 249, 703, 850, 54, 315, 758, 855, 152, 266, 423, 468, 484, 644, 771, 882, 936, 984, 500, 990]
