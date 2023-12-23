@@ -81,8 +81,8 @@ def travel(g: AdjListGraph):
         yield v
         for w in g.adjs(v):
             yield from dfs(w)
-    
-    yield from dfs(0)
+    for k, _ in g.adj.items():
+        yield from dfs(k)
 
 
 class TestAdjDictGraph(unittest.TestCase):
@@ -105,16 +105,13 @@ class TestAdjDictGraph(unittest.TestCase):
 
 if __name__ == '__main__':
     # unittest.main()
-    s = """7, 9
+    s = """7, 6
         0, 1
-        0, 3
-        1, 2
-        1, 6
+        0, 2
+        1, 3
+        1, 4
         2, 3
-        2, 5
-        3, 4
-        4, 5
-        5, 6                                                                               
+        2, 6
     """
     
     g = AdjListGraph.load(s)

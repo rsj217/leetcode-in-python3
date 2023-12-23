@@ -131,6 +131,10 @@ def adjmatrix_graph(g: AdjMatrixGraph):
 def adjlist_graph(g: AdjListGraph):
     lines = ["graph g {"]
     for k, v in g.adj.items():
+        # 非联通图
+        if len(v) == 0:
+            lines.extend([f"{k}"])
+            continue
         lines.extend([f"{k} -- {i}" for i in v if k < i])
     lines.append("}")
     with open("graph.dot", "w") as f:
