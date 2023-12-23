@@ -12,22 +12,34 @@ class AdjListGraph:
     _esize: int = 0
     _adj: Dict[int, List[int]] = field(default_factory=dict)
     
-    def __str__(self):
+    @property
+    def vsize(self):
+        return self._vsize
+    
+    @property
+    def esize(self):
+        return self._esize
+    
+    @property
+    def adj(self):
+        return self._adj
+    
+    def __str__(self) -> str:
         lines = [f"{k}: {v}" for k, v in self._adj.items()]
         return "\n".join(lines)
     
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
     
     def has_edge(self, v: int, w: int) -> bool:
         return w in self._adj[v]
     
-    def adj_edge(self, v: int) -> List[int]:
+    def adjs(self, v: int) -> List[int]:
         assert 0 <= v, "invalid vertex"
         return self._adj[v]
     
     def degree(self, v: int) -> int:
-        return len(self.adj_edge(v))
+        return len(self.adjs(v))
     
     @classmethod
     def load(cls, s: str):
@@ -57,6 +69,20 @@ class AdjListGraph:
         for k, v in g._adj.items():
             lines.extend([f"{k}, {i}" for i in v if k < i])
         return "\n".join(lines)
+
+
+def travel(g: AdjListGraph):
+    visit = {k: False for k, _ in g._adj.items()}
+    
+    def dfs(v: int):
+        if visit[v]:
+            return
+        visit[v] = True
+        yield v
+        for w in g.adjs(v):
+            yield from dfs(w)
+    
+    yield from dfs(0)
 
 
 class TestAdjDictGraph(unittest.TestCase):
@@ -90,8 +116,15 @@ if __name__ == '__main__':
         4, 5
         5, 6                                                                               
     """
+    
     g = AdjListGraph.load(s)
     # print(g)
     
     ans = AdjListGraph.dumps(g)
+    print(ans)
+    import pprint
+    
+    pprint.pprint(g.adj)
+    
+    ans = list(travel(g))
     print(ans)
