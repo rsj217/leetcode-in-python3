@@ -107,28 +107,35 @@ def postorder_dfs(g: AdjListGraph):
 class TestAdjListGraphBuild(unittest.TestCase):
     
     def test_connected_graph_loads(self):
-        s = """7, 9
+        """
+        0 ----- 1
+        |      / \
+        |     /   \
+        2 -- 3     4
+         \    \
+          6 -- 5
+        """
+        s = """7, 7
             0, 1
-            0, 3
-            1, 2
-            1, 6
+            0, 2
+            1, 3
+            1, 4
             2, 3
-            2, 5
-            3, 4
-            4, 5
+            2, 6
+            3, 5
             5, 6
         """
         g = AdjListGraph.load(s)
         self.assertEqual(g.vsize, 7)
-        self.assertEqual(g.esize, 9)
+        self.assertEqual(g.esize, 7)
         
-        self.assertEqual(g.adj[0], [1, 3])
-        self.assertEqual(g.adj[1], [0, 2, 6])
-        self.assertEqual(g.adj[2], [1, 3, 5])
-        self.assertEqual(g.adj[3], [0, 2, 4])
-        self.assertEqual(g.adj[4], [3, 5])
-        self.assertEqual(g.adj[5], [2, 4, 6])
-        self.assertEqual(g.adj[6], [1, 5])
+        self.assertEqual(g.adj[0], [1, 2])
+        self.assertEqual(g.adj[1], [0, 3, 4])
+        self.assertEqual(g.adj[2], [0, 3, 6])
+        self.assertEqual(g.adj[3], [1, 2, 5])
+        self.assertEqual(g.adj[4], [1])
+        self.assertEqual(g.adj[5], [3, 6])
+        self.assertEqual(g.adj[6], [2, 5])
     
     def test_connected_graph_dumps(self):
         s = """7, 9
@@ -149,6 +156,14 @@ class TestAdjListGraphBuild(unittest.TestCase):
         self.assertListEqual(src, des)
     
     def test_disconnected_graph_loads(self):
+        """
+        0 ----- 1
+        |      / \
+        |     /   \
+        2 -- 3     4
+         \
+          6      5
+        """
         s = """7, 6
             0, 1
             0, 2
@@ -188,6 +203,14 @@ class TestAdjListGraphBuild(unittest.TestCase):
 class TestAdjDictGraph(unittest.TestCase):
     
     def setUp(self) -> None:
+        """
+        0 ----- 1
+        |      / \
+        |     /   \
+        2 -- 3     4
+         \
+          6      5
+        """
         s = """7, 6
             0, 1
             0, 2
