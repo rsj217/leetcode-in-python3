@@ -1,3 +1,5 @@
+from typing import Dict, Generator
+from collections import deque
 from src.datastruct.adj_list_graph import AdjListGraph
 from src.datastruct import graphviz
 
@@ -92,3 +94,40 @@ def _build_unbipartite_graph() -> AdjListGraph:
 def show_disconnect_graph(g: AdjListGraph):
     print(g)
     graphviz.adjlist_graph(g)
+
+
+def dfs(g: AdjListGraph) -> Generator:
+    def _dfs(v: int, visited: Dict[int, bool]) -> Generator:
+        stack = [v]
+        visited[v] = True
+        while 0 < len(stack):
+            v = stack.pop()
+            yield v
+            for w in g.adjs(v):
+                if not visited[w]:
+                    stack.append(w)
+                    visited[w] = True
+    
+    visit = {k: False for k in g.adj}
+    for k in g.adj:
+        if not visit[k]:
+            yield from _dfs(k, visit)
+
+
+def bfs(g: AdjListGraph) -> Generator:
+    def _bfs(v: int, visited: Dict[int, bool]) -> Generator:
+        queue = deque(maxlen=g.vsize)
+        queue.append(v)
+        visited[v] = True
+        while 0 < len(queue):
+            v = queue.popleft()
+            yield v
+            for w in g.adjs(v):
+                if not visited[w]:
+                    queue.append(w)
+                    visited[w] = True
+    
+    visited = {k: False for k in g.adj}
+    for k in g.adj:
+        if not visited[k]:
+            yield from _bfs(k, visited)
