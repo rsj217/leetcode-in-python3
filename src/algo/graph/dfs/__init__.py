@@ -46,6 +46,25 @@ def _build_connect_graph() -> AdjListGraph:
     return AdjListGraph.load(s)
 
 
+def _build_without_circle_graph() -> AdjListGraph:
+    """
+    0 ----- 1
+    |      / \
+    |     /   \
+    2    3     4
+     \
+      6     5
+    """
+    s = """7, 6
+        0, 1
+        0, 2
+        1, 3
+        1, 4
+        2, 6
+    """
+    return AdjListGraph.load(s)
+
+
 def show_disconnect_graph(g: AdjListGraph):
     print(g)
     graphviz.adjlist_graph(g)
