@@ -7,12 +7,11 @@ from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 def single_source_path(g: AdjListGraph, s: int, t: int) -> List[int]:
     def dfs(v: int, parent, prev: Dict[int, int], visited: Dict[int, bool]):
-        if visited[v]:
-            return
         visited[v] = True
         prev[v] = parent
         for w in g.adjs(v):
-            dfs(w, v, prev, visited)
+            if not visited[w]:
+                dfs(w, v, prev, visited)
     
     visited = {k: False for k in g.adj}
     prev = {k: k for k in g.adj}
@@ -36,15 +35,14 @@ def path(g: AdjListGraph, s: int, t: int) -> List[int]:
     """
     
     def dfs(v: int, parent: int, prev: Dict[int, int], visited: Dict[int, bool]) -> bool:
-        if visited[v]:
-            return False
         visited[v] = True
         prev[v] = parent
         if v == t:
             return True
         for w in g.adjs(v):
-            if dfs(w, v, prev, visited):
-                return True
+            if not visited[w]:
+                if dfs(w, v, prev, visited):
+                    return True
         return False
     
     assert 0 <= s, "vertex invalid"

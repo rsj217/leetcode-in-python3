@@ -7,7 +7,6 @@ from src.algo.graph import _build_bipartite_graph, _build_unbipartite_graph
 
 def is_bipartite(g: AdjListGraph) -> bool:
     def dfs(v: int, color: int, colors: Dict[int, int], visited: Dict[int, bool]) -> bool:
-        
         visited[v] = True
         colors[v] = color
         for w in g.adjs(v):

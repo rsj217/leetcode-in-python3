@@ -10,13 +10,11 @@ def preorder(g: AdjListGraph) -> Generator:
     """
     
     def dfs(v: int, visit: Dict[int, bool]) -> Generator:
-        if visited[v]:
-            return
-        
         visited[v] = True
         yield v
         for w in g.adjs(v):
-            yield from dfs(w, visited)
+            if not visited[w]:
+                yield from dfs(w, visited)
     
     visited = {k: False for k in g.adj}
     
@@ -30,12 +28,10 @@ def postorder(g: AdjListGraph) -> Generator:
     """
     
     def dfs(v: int, visited: Dict[int, bool]) -> Generator:
-        if visited[v]:
-            return
-        
         visited[v] = True
         for w in g.adjs(v):
-            yield from dfs(w, visited)
+            if not visited[w]:
+                yield from dfs(w, visited)
         yield v
     
     visited = {k: False for k in g.adj}

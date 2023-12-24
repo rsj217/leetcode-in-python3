@@ -8,7 +8,7 @@ from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 def bfsorder(g: AdjListGraph) -> Generator:
     def bfs(v: int, visited: Dict[int, bool]) -> Generator:
-        queue = deque()
+        queue = deque(maxlen=g.vsize)
         queue.append(v)
         visited[v] = True
         while 0 < len(queue):
