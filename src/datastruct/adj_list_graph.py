@@ -71,23 +71,42 @@ class AdjListGraph:
         return "\n".join(lines)
 
 
-def travel(g: AdjListGraph):
+def preorder_dfs(g: AdjListGraph):
     visit = {k: False for k, _ in g._adj.items()}
     
-    def dfs(v: int):
+    def _dfs(v: int):
         if visit[v]:
             return
         visit[v] = True
+        # 先序
         yield v
         for w in g.adjs(v):
-            yield from dfs(w)
-    for k, _ in g.adj.items():
-        yield from dfs(k)
-
-
-class TestAdjDictGraph(unittest.TestCase):
+            yield from _dfs(w)
     
-    def setUp(self) -> None:
+    # 每一个点都遍历，保证非连通图覆盖
+    for k, _ in g.adj.items():
+        yield from _dfs(k)
+
+
+def postorder_dfs(g: AdjListGraph):
+    visit = {k: False for k, _ in g._adj.items()}
+    
+    def _dfs(v: int):
+        if visit[v]:
+            return
+        visit[v] = True
+        for w in g.adjs(v):
+            yield from _dfs(w)
+        yield v
+    
+    # 每一个点都遍历，保证非连通图覆盖
+    for k, _ in g.adj.items():
+        yield from _dfs(k)
+
+
+class TestAdjListGraphBuild(unittest.TestCase):
+    
+    def test_connected_graph_loads(self):
         s = """7, 9
             0, 1
             0, 3
@@ -97,31 +116,156 @@ class TestAdjDictGraph(unittest.TestCase):
             2, 5
             3, 4
             4, 5
-            5, 6                                                                               
+            5, 6
+        """
+        g = AdjListGraph.load(s)
+        self.assertEqual(g.vsize, 7)
+        self.assertEqual(g.esize, 9)
+        
+        self.assertEqual(g.adj[0], [1, 3])
+        self.assertEqual(g.adj[1], [0, 2, 6])
+        self.assertEqual(g.adj[2], [1, 3, 5])
+        self.assertEqual(g.adj[3], [0, 2, 4])
+        self.assertEqual(g.adj[4], [3, 5])
+        self.assertEqual(g.adj[5], [2, 4, 6])
+        self.assertEqual(g.adj[6], [1, 5])
+    
+    def test_connected_graph_dumps(self):
+        s = """7, 9
+            0, 1
+            0, 3
+            1, 2
+            1, 6
+            2, 3
+            2, 5
+            3, 4
+            4, 5
+            5, 6
+        """
+        g = AdjListGraph.load(s)
+        ans = AdjListGraph.dumps(g)
+        src = [list(map(int, line.strip().split(","))) for line in io.StringIO(s) if line.strip() != ""]
+        des = [list(map(int, line.strip().split(","))) for line in io.StringIO(ans) if line.strip() != ""]
+        self.assertListEqual(src, des)
+    
+    def test_disconnected_graph_loads(self):
+        s = """7, 6
+            0, 1
+            0, 2
+            1, 3
+            1, 4
+            2, 3
+            2, 6
+        """
+        g = AdjListGraph.load(s)
+        self.assertEqual(g.vsize, 7)
+        self.assertEqual(g.esize, 6)
+        
+        self.assertEqual(g.adj[0], [1, 2])
+        self.assertEqual(g.adj[1], [0, 3, 4])
+        self.assertEqual(g.adj[2], [0, 3, 6])
+        self.assertEqual(g.adj[3], [1, 2])
+        self.assertEqual(g.adj[4], [1])
+        self.assertEqual(g.adj[5], [])
+        self.assertEqual(g.adj[6], [2])
+    
+    def test_disconnected_graph_dumps(self):
+        s = """7, 6
+            0, 1
+            0, 2
+            1, 3
+            1, 4
+            2, 3
+            2, 6
+        """
+        g = AdjListGraph.load(s)
+        ans = AdjListGraph.dumps(g)
+        src = [list(map(int, line.strip().split(","))) for line in io.StringIO(s) if line.strip() != ""]
+        des = [list(map(int, line.strip().split(","))) for line in io.StringIO(ans) if line.strip() != ""]
+        self.assertListEqual(src, des)
+
+
+class TestAdjDictGraph(unittest.TestCase):
+    
+    def setUp(self) -> None:
+        s = """7, 6
+            0, 1
+            0, 2
+            1, 3
+            1, 4
+            2, 3
+            2, 6
         """
         self.g = AdjListGraph.load(s)
-        print(self.g)
+    
+    def test_has_edge(self):
+        self.assertTrue(self.g.has_edge(0, 1))
+        self.assertTrue(self.g.has_edge(0, 2))
+        self.assertFalse(self.g.has_edge(0, 3))
+        self.assertFalse(self.g.has_edge(0, 4))
+        self.assertFalse(self.g.has_edge(0, 5))
+        self.assertFalse(self.g.has_edge(0, 6))
+        
+        self.assertTrue(self.g.has_edge(1, 0))
+        self.assertFalse(self.g.has_edge(1, 2))
+        self.assertTrue(self.g.has_edge(1, 3))
+        self.assertTrue(self.g.has_edge(1, 4))
+        self.assertFalse(self.g.has_edge(1, 5))
+        self.assertFalse(self.g.has_edge(1, 6))
+        
+        self.assertTrue(self.g.has_edge(2, 0))
+        self.assertFalse(self.g.has_edge(2, 1))
+        self.assertTrue(self.g.has_edge(2, 3))
+        self.assertFalse(self.g.has_edge(2, 4))
+        self.assertFalse(self.g.has_edge(2, 5))
+        self.assertTrue(self.g.has_edge(2, 6))
+        
+        self.assertFalse(self.g.has_edge(3, 0))
+        self.assertTrue(self.g.has_edge(3, 1))
+        self.assertTrue(self.g.has_edge(3, 2))
+        self.assertFalse(self.g.has_edge(3, 4))
+        self.assertFalse(self.g.has_edge(3, 5))
+        self.assertFalse(self.g.has_edge(3, 6))
+        
+        self.assertFalse(self.g.has_edge(4, 0))
+        self.assertTrue(self.g.has_edge(4, 1))
+        self.assertFalse(self.g.has_edge(4, 2))
+        self.assertFalse(self.g.has_edge(4, 3))
+        self.assertFalse(self.g.has_edge(4, 5))
+        self.assertFalse(self.g.has_edge(4, 6))
+        
+        self.assertFalse(self.g.has_edge(5, 0))
+        self.assertFalse(self.g.has_edge(5, 1))
+        self.assertFalse(self.g.has_edge(5, 2))
+        self.assertFalse(self.g.has_edge(5, 3))
+        self.assertFalse(self.g.has_edge(5, 4))
+        self.assertFalse(self.g.has_edge(5, 6))
+        
+        self.assertFalse(self.g.has_edge(6, 0))
+        self.assertFalse(self.g.has_edge(6, 1))
+        self.assertTrue(self.g.has_edge(6, 2))
+        self.assertFalse(self.g.has_edge(6, 3))
+        self.assertFalse(self.g.has_edge(6, 4))
+        self.assertFalse(self.g.has_edge(6, 5))
+    
+    def test_adjs(self):
+        self.assertEqual(self.g.adjs(0), [1, 2])
+        self.assertEqual(self.g.adjs(1), [0, 3, 4])
+        self.assertEqual(self.g.adjs(2), [0, 3, 6])
+        self.assertEqual(self.g.adjs(3), [1, 2])
+        self.assertEqual(self.g.adjs(4), [1])
+        self.assertEqual(self.g.adjs(5), [])
+        self.assertEqual(self.g.adjs(6), [2])
+    
+    def test_degree(self):
+        self.assertEqual(self.g.degree(0), 2)
+        self.assertEqual(self.g.degree(1), 3)
+        self.assertEqual(self.g.degree(2), 3)
+        self.assertEqual(self.g.degree(3), 2)
+        self.assertEqual(self.g.degree(4), 1)
+        self.assertEqual(self.g.degree(5), 0)
+        self.assertEqual(self.g.degree(6), 1)
 
 
 if __name__ == '__main__':
-    # unittest.main()
-    s = """7, 6
-        0, 1
-        0, 2
-        1, 3
-        1, 4
-        2, 3
-        2, 6
-    """
-    
-    g = AdjListGraph.load(s)
-    # print(g)
-    
-    ans = AdjListGraph.dumps(g)
-    print(ans)
-    import pprint
-    
-    pprint.pprint(g.adj)
-    
-    ans = list(travel(g))
-    print(ans)
+    unittest.main()
