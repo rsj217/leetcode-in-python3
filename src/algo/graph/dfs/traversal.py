@@ -41,6 +41,24 @@ def postorder(g: AdjListGraph) -> Generator:
             yield from dfs(k, visited)
 
 
+def search(g: AdjListGraph) -> Generator:
+    def dfs(v: int, visited: Dict[int, bool]) -> Generator:
+        stack = [v]
+        visited[v] = True
+        while 0 < len(stack):
+            v = stack.pop()
+            yield v
+            for w in g.adjs(v):
+                if not visited[w]:
+                    stack.append(w)
+                    visited[w] = True
+    
+    visit = {k: False for k in g.adj}
+    for k in g.adj:
+        if not visit[k]:
+            yield from dfs(k, visit)
+
+
 class TestGraphTraversal(unittest.TestCase):
     def setUp(self) -> None:
         self.dg = _build_disconnect_graph()
@@ -53,6 +71,10 @@ class TestGraphTraversal(unittest.TestCase):
     def test_postorder(self):
         self.assertEqual(list(postorder(self.g)), [5, 6, 2, 3, 4, 1, 0])
         self.assertEqual(list(postorder(self.dg)), [6, 2, 3, 4, 1, 0, 5])
+    
+    def test_search(self):
+        self.assertEqual(list(search(self.g)), [0, 2, 6, 5, 3, 1, 4])
+        self.assertEqual(list(search(self.dg)), [0, 2, 6, 3, 1, 4, 5])
 
 
 if __name__ == '__main__':
