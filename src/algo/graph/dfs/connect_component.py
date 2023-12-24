@@ -2,7 +2,7 @@ import unittest
 
 from typing import Dict, List
 from src.datastruct.adj_list_graph import AdjListGraph
-from src.algo.graph.dfs import _build_connect_graph, _build_disconnect_graph
+from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 
 def connect_component_count(g: AdjListGraph) -> int:

@@ -2,7 +2,7 @@ import unittest
 
 from typing import Dict
 from src.datastruct.adj_list_graph import AdjListGraph
-from src.algo.graph.dfs import _build_connect_graph, _build_disconnect_graph, _build_without_circle_graph
+from src.algo.graph import _build_connect_graph, _build_disconnect_graph, _build_without_circle_graph
 
 
 def has_circle(g: AdjListGraph) -> bool:
