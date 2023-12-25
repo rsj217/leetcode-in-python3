@@ -21,10 +21,12 @@ def binary_tree(node: TreeNode | BSTreeNode):
     seq = 1
     queue = [(node, seq)]
     
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="<f0> |{node.val}| <f1>"];\n')
+    lines = [
+        'digraph g {\n',
+        'node [shape=record, height=.1];\n',
+        f'node{seq}[label="<f0> |{node.val}| <f1>"];\n'
+    ]
+    
     while len(queue) > 0:
         size = len(queue)
         for i in range(size):
@@ -51,10 +53,11 @@ def ntree(node: NTreeNode):
         return None
     
     seq = 0
-    lines = []
-    lines.append('digraph g {')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="{node.val}"];\n')
+    lines = [
+        'digraph g {',
+        'node [shape=record, height=.1];\n',
+        f'node{seq}[label="{node.val}"];\n'
+    ]
     
     queue = [(node, f'node{seq}')]
     
@@ -88,10 +91,11 @@ def btree(node: BTreeNode):
     root = node
     label = draw_label(root)
     seq = 0
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('node [shape=record, height=.1];\n')
-    lines.append(f'node{seq}[label="{label}"];\n')
+    lines = [
+        'digraph g {\n',
+        'node [shape=record, height=.1];\n',
+        f'node{seq}[label="{label}"];\n'
+    ]
     
     queue = collections.deque()
     queue.append((root, f"node{seq}"))
@@ -157,10 +161,11 @@ def trie(node: Trie):
             dfs(v, next_label)
     
     seq = 0
-    lines = []
-    lines.append('digraph g {\n')
-    lines.append('\tnode [height=.1];\n')
-    lines.append('\tnode0[label=root];\n')
+    lines = [
+        'digraph g {\n',
+        '\tnode [height=.1];\n',
+        '\tnode0[label=root];\n'
+    ]
     dfs(node, "node0")
     lines.append('}')
     
