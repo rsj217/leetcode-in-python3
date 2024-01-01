@@ -6,6 +6,7 @@ from src.datastruct.b_treenode import BTreeNode
 from src.datastruct.n_treenode import NTreeNode
 from src.datastruct.adj_matrix_graph import AdjMatrixGraph
 from src.datastruct.graph import Graph
+from src.datastruct.weight_graph import WeightedGraph
 from src.datastruct.trie import Trie
 
 
@@ -148,14 +149,14 @@ def graph(g: Graph):
     os.system("open graph.png")
 
 
-def weighted_graph(g: Graph):
+def weighted_graph(g: WeightedGraph):
     lines = ["graph g {"]
-    for k, v in g.graph.items():
+    for v, adj in enumerate(g.graph):
         # 非联通图
-        if len(v) == 0:
-            lines.extend([f"{k}"])
+        if len(adj) == 0:
+            lines.extend([f"{v}"])
             continue
-        lines.extend([f"{k} -- {i}" for i in v if k < i])
+        lines.extend([f'{v} -- {key} [label="{val}", penwidth={val / 2}]' for key, val in adj.items() if v < key])
     lines.append("}")
     with open("graph.dot", "w") as f:
         f.write("\n".join(lines))
