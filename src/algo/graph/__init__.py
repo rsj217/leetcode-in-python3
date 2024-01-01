@@ -103,7 +103,7 @@ def dfs(g: Graph) -> Generator:
         while 0 < len(stack):
             v = stack.pop()
             yield v
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if not visited[w]:
                     stack.append(w)
                     visited[w] = True
@@ -122,7 +122,7 @@ def bfs(g: Graph) -> Generator:
         while 0 < len(queue):
             v = queue.popleft()
             yield v
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True

@@ -12,7 +12,7 @@ def preorder(g: Graph) -> Generator:
     def dfs(v: int, visit: Dict[int, bool]) -> Generator:
         visited[v] = True
         yield v
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 yield from dfs(w, visited)
     
@@ -29,7 +29,7 @@ def postorder(g: Graph) -> Generator:
     
     def dfs(v: int, visited: Dict[int, bool]) -> Generator:
         visited[v] = True
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 yield from dfs(w, visited)
         yield v
@@ -48,7 +48,7 @@ def search(g: Graph) -> Generator:
         while 0 < len(stack):
             v = stack.pop()
             yield v
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if not visited[w]:
                     stack.append(w)
                     visited[w] = True

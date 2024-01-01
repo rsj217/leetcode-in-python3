@@ -9,7 +9,7 @@ def is_bipartite(g: Graph) -> bool:
     def dfs(v: int, color: int, colors: Dict[int, int], visited: Dict[int, bool]) -> bool:
         visited[v] = True
         colors[v] = color
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 if not dfs(w, 0 - color, colors, visited):
                     return False
@@ -30,7 +30,7 @@ def bipartite_list(g: Graph) -> List[List[int]]:
     def dfs(v: int, color: int, colors: Dict[int, int], visited: Dict[int, bool]):
         visited[v] = True
         colors[v] = color
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 if not dfs(w, 0 - color, colors, visited):
                     return False

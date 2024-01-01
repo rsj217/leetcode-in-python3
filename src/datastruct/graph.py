@@ -37,6 +37,7 @@ class Graph:
         return w in self._graph[v]
     
     def adj(self, v: int) -> List[int]:
+        """ 获取vertex v 的领接顶点列表 """
         assert 0 <= v, "invalid vertex"
         return self._graph[v]
     

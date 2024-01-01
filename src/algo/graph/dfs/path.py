@@ -9,7 +9,7 @@ def single_source_path(g: Graph, s: int, t: int) -> List[int]:
     def dfs(v: int, parent, prev: Dict[int, int], visited: Dict[int, bool]):
         visited[v] = True
         prev[v] = parent
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 dfs(w, v, prev, visited)
     
@@ -39,7 +39,7 @@ def path(g: Graph, s: int, t: int) -> List[int]:
         prev[v] = parent
         if v == t:
             return True
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 if dfs(w, v, prev, visited):
                     return True

@@ -10,7 +10,7 @@ def has_circle(g: Graph) -> bool:
         """ 从 v 出发，找出是否有环
         """
         visited[v] = True
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 if dfs(w, v, visited):
                     return True

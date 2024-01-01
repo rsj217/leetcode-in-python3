@@ -8,7 +8,7 @@ from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 def connect_component_count(g: Graph) -> int:
     def dfs(v: int, visited: Dict[int, bool]):
         visited[v] = True
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if not visited[w]:
                 dfs(w, visited)
     
@@ -27,7 +27,7 @@ def connect_component_list(g: Graph) -> List[List[int]]:
     
     def dfs(v: int, cc_count: int, visited: Dict[int, int]):
         visited[v] = cc_count
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if visited[w] == 0:
                 dfs(w, cc_count, visited)
     
@@ -50,7 +50,7 @@ def is_connected(g: Graph, s: int, t: int) -> bool:
     
     def dfs(v: int, cc_count: int, visited: Dict[int, int]):
         visited[v] = cc_count
-        for w in g.adj(v):
+        for w in g.graph[v]:
             if visited[w] == 0:
                 dfs(w, cc_count, visited)
     

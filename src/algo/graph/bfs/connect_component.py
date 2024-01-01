@@ -12,7 +12,7 @@ def connect_component_count(g: Graph) -> int:
         visited[v] = True
         while 0 < len(queue):
             v = queue.popleft()
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
@@ -37,7 +37,7 @@ def connect_component_list(g: Graph) -> List[List[int]]:
         
         while 0 < len(queue):
             v = queue.popleft()
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if visited[w] == 0:
                     queue.append(w)
                     visited[w] = cc_count
@@ -66,7 +66,7 @@ def is_connected(g: Graph, s: int, t: int) -> bool:
         
         while 0 < len(queue):
             v = queue.popleft()
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if visited[w] == 0:
                     queue.append(w)
                     visited[w] = cc_count

@@ -15,7 +15,7 @@ def single_source_path(g: Graph, s: int, t: int) -> List[int]:
         
         while 0 < len(queue):
             v = queue.popleft()
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
@@ -52,7 +52,7 @@ def path(g: Graph, s: int, t: int) -> List[int]:
             v = queue.popleft()
             if v == t:
                 return True
-            for w in g.adj(v):
+            for w in g.graph[v]:
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
