@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import io
 from dataclasses import dataclass, field
 from typing import List, Dict
@@ -30,8 +32,19 @@ class WeightedGraph:
     def __repr__(self) -> str:
         return self.__str__()
     
+    def has_edge(self, v: int, w: int) -> bool:
+        return w in self._graph[v]
+    
+    def adj(self, v: int) -> List[int]:
+        """ 获取vertex v 的领接顶点列表 """
+        assert 0 <= v, "invalid vertex"
+        return list(self._graph[v].keys())
+    
+    def degree(self, v: int) -> int:
+        return len(self.adj(v))
+    
     @classmethod
-    def loads(cls, s: str):
+    def loads(cls, s: str) -> WeightedGraph:
         g = cls()
         text = io.StringIO(s)
         first_line = next(text)
@@ -51,6 +64,13 @@ class WeightedGraph:
                 g._graph[a][b] = w
                 g._graph[b][a] = w
         return g
+    
+    @classmethod
+    def dumps(cls, g: WeightedGraph) -> str:
+        lines = [f"{g._vsize}, {g._esize}"]
+        for idx, item in enumerate(g._graph):
+            lines.extend([f"{idx}, {k}, {v}" for k, v in item.items() if idx < k])
+        return "\n".join(lines)
 
 
 if __name__ == '__main__':

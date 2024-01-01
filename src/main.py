@@ -20,5 +20,5 @@ if __name__ == '__main__':
     """
     g = WeightedGraph.loads(s)
     print(g)
-    graphviz.weighted_graph(g)
-    # graphviz.graph(g)
+    s = WeightedGraph.dumps(g)
+    print(s)

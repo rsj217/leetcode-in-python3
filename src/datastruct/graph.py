@@ -45,7 +45,7 @@ class Graph:
         return len(self.adj(v))
     
     @classmethod
-    def loads(cls, s: str):
+    def loads(cls, s: str) -> Graph:
         g = cls()
         text = io.StringIO(s)
         first_line = next(text)
