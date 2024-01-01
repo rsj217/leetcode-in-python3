@@ -2,11 +2,11 @@ from collections import deque
 import unittest
 
 from typing import Dict, List
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 
-def single_source_path(g: AdjListGraph, s: int, t: int) -> List[int]:
+def single_source_path(g: Graph, s: int, t: int) -> List[int]:
     def bfs(v: int, parent: int, prev: Dict[int, int], visited: Dict[int, int]):
         queue = deque(maxlen=g.vsize)
         queue.append(v)
@@ -15,14 +15,15 @@ def single_source_path(g: AdjListGraph, s: int, t: int) -> List[int]:
         
         while 0 < len(queue):
             v = queue.popleft()
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
                     prev[w] = v
     
-    visited = {k: False for k in g.adj}
-    prev = {k: k for k in g.adj}
+    visited = {v: False for v in range(len(g.graph))}
+    prev = {v: v for v in range(len(g.graph))}
+    
     bfs(s, s, prev, visited)
     
     ans = []
@@ -38,7 +39,7 @@ def single_source_path(g: AdjListGraph, s: int, t: int) -> List[int]:
     return ans
 
 
-def path(g: AdjListGraph, s: int, t: int) -> List[int]:
+def path(g: Graph, s: int, t: int) -> List[int]:
     """ 从 s 到 t 的路径，找到后提前终止遍历
     """
     
@@ -51,7 +52,7 @@ def path(g: AdjListGraph, s: int, t: int) -> List[int]:
             v = queue.popleft()
             if v == t:
                 return True
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
@@ -62,8 +63,9 @@ def path(g: AdjListGraph, s: int, t: int) -> List[int]:
     assert 0 <= s, "vertex invalid"
     assert 0 <= t, "vertex invalid"
     
-    visited = {k: False for k in g.adj}
-    prev = {k: k for k in g.adj}
+    visited = {v: False for v in range(len(g.graph))}
+    prev = {v: v for v in range(len(g.graph))}
+    
     is_find = bfs(s, s, prev, visited)
     ans = []
     if not is_find:

@@ -1,10 +1,10 @@
 from typing import Dict, Generator
 from collections import deque
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.datastruct import graphviz
 
 
-def _build_disconnect_graph() -> AdjListGraph:
+def _build_disconnect_graph() -> Graph:
     """
     0 ----- 1
     |      / \
@@ -22,10 +22,10 @@ def _build_disconnect_graph() -> AdjListGraph:
         2, 6
     """
     
-    return AdjListGraph.load(s)
+    return Graph.load(s)
 
 
-def _build_connect_graph() -> AdjListGraph:
+def _build_connect_graph() -> Graph:
     """
     0 ----- 1
     |      / \
@@ -44,10 +44,10 @@ def _build_connect_graph() -> AdjListGraph:
         3, 5
         5, 6
     """
-    return AdjListGraph.load(s)
+    return Graph.load(s)
 
 
-def _build_without_circle_graph() -> AdjListGraph:
+def _build_without_circle_graph() -> Graph:
     """
     0 ----- 1
     |      / \
@@ -63,10 +63,10 @@ def _build_without_circle_graph() -> AdjListGraph:
         1, 4
         2, 6
     """
-    return AdjListGraph.load(s)
+    return Graph.load(s)
 
 
-def _build_bipartite_graph() -> AdjListGraph:
+def _build_bipartite_graph() -> Graph:
     s = """7,7
     0, 1
     0, 2
@@ -76,10 +76,10 @@ def _build_bipartite_graph() -> AdjListGraph:
     2, 6
     5, 6
     """
-    return AdjListGraph.load(s)
+    return Graph.load(s)
 
 
-def _build_unbipartite_graph() -> AdjListGraph:
+def _build_unbipartite_graph() -> Graph:
     s = """4, 6
     0, 1
     0, 2
@@ -88,33 +88,33 @@ def _build_unbipartite_graph() -> AdjListGraph:
     1, 3
     2, 3
     """
-    return AdjListGraph.load(s)
+    return Graph.load(s)
 
 
-def show_disconnect_graph(g: AdjListGraph):
+def show_disconnect_graph(g: Graph):
     print(g)
     graphviz.adjlist_graph(g)
 
 
-def dfs(g: AdjListGraph) -> Generator:
+def dfs(g: Graph) -> Generator:
     def _dfs(v: int, visited: Dict[int, bool]) -> Generator:
         stack = [v]
         visited[v] = True
         while 0 < len(stack):
             v = stack.pop()
             yield v
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     stack.append(w)
                     visited[w] = True
     
-    visit = {k: False for k in g.adj}
-    for k in g.adj:
-        if not visit[k]:
-            yield from _dfs(k, visit)
+    visited = {v: False for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from _dfs(v, visited)
 
 
-def bfs(g: AdjListGraph) -> Generator:
+def bfs(g: Graph) -> Generator:
     def _bfs(v: int, visited: Dict[int, bool]) -> Generator:
         queue = deque(maxlen=g.vsize)
         queue.append(v)
@@ -122,12 +122,12 @@ def bfs(g: AdjListGraph) -> Generator:
         while 0 < len(queue):
             v = queue.popleft()
             yield v
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
     
-    visited = {k: False for k in g.adj}
-    for k in g.adj:
-        if not visited[k]:
-            yield from _bfs(k, visited)
+    visited = {v: False for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from _bfs(v, visited)

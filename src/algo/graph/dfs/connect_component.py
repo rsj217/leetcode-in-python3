@@ -1,42 +1,42 @@
 import unittest
 
 from typing import Dict, List
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 
-def connect_component_count(g: AdjListGraph) -> int:
+def connect_component_count(g: Graph) -> int:
     def dfs(v: int, visited: Dict[int, bool]):
         visited[v] = True
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if not visited[w]:
                 dfs(w, visited)
     
     cc_count = 0
-    visited = {k: False for k in g.adj}
-    for k in g.adj:
-        if not visited[k]:
+    visited = {v: False for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
             cc_count += 1
-            dfs(k, visited)
+            dfs(v, visited)
     return cc_count
 
 
-def connect_component_list(g: AdjListGraph) -> List[List[int]]:
+def connect_component_list(g: Graph) -> List[List[int]]:
     """ 联通量的 vertex 列表
     """
     
     def dfs(v: int, cc_count: int, visited: Dict[int, int]):
         visited[v] = cc_count
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if visited[w] == 0:
                 dfs(w, cc_count, visited)
     
     cc_count = 0
-    visited = {k: 0 for k in g.adj}
-    for k in g.adj:
-        if visited[k] == 0:
+    visited = {v: 0 for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if visited[v] == 0:
             cc_count += 1
-            dfs(k, cc_count, visited)
+            dfs(v, cc_count, visited)
     
     ans = [[] for _ in range(cc_count)]
     for k, v in visited.items():
@@ -44,27 +44,27 @@ def connect_component_list(g: AdjListGraph) -> List[List[int]]:
     return ans
 
 
-def is_connected(g: AdjListGraph, v: int, w: int) -> bool:
+def is_connected(g: Graph, s: int, t: int) -> bool:
     """ 两个 vertext 是否联通
     """
     
     def dfs(v: int, cc_count: int, visited: Dict[int, int]):
         visited[v] = cc_count
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if visited[w] == 0:
                 dfs(w, cc_count, visited)
     
-    assert 0 <= v, "vertex invalid"
-    assert 0 <= w, "vertex invalid"
+    assert 0 <= s, "vertex invalid"
+    assert 0 <= t, "vertex invalid"
     
     cc_count = 0
-    visited = {k: 0 for k in g.adj}
-    for k in g.adj:
-        if visited[k] == 0:
+    visited = {v: 0 for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if visited[v] == 0:
             cc_count += 1
-            dfs(k, cc_count, visited)
+            dfs(v, cc_count, visited)
     
-    return visited[v] == visited[w]
+    return visited[s] == visited[t]
 
 
 class TestGraphConnectComponent(unittest.TestCase):
@@ -87,8 +87,8 @@ class TestGraphConnectComponent(unittest.TestCase):
         self.assertEqual(ans[1], [5])
     
     def test_is_connect(self):
-        for v in self.g.adj:
-            for w in self.g.adj:
+        for v in range(len(self.g.graph)):
+            for w in range(len(self.g.graph)):
                 self.assertTrue(is_connected(self.g, v, w))
         
         self.assertTrue(is_connected(self.dg, 0, 1))

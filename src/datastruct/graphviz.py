@@ -5,7 +5,7 @@ from src.datastruct.bs_treenode import BSTreeNode
 from src.datastruct.b_treenode import BTreeNode
 from src.datastruct.n_treenode import NTreeNode
 from src.datastruct.adj_matrix_graph import AdjMatrixGraph
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.datastruct.trie import Trie
 
 
@@ -132,9 +132,9 @@ def adjmatrix_graph(g: AdjMatrixGraph):
     os.system("open graph.png")
 
 
-def adjlist_graph(g: AdjListGraph):
+def adjlist_graph(g: Graph):
     lines = ["graph g {"]
-    for k, v in g.adj.items():
+    for k, v in g.graph.items():
         # 非联通图
         if len(v) == 0:
             lines.extend([f"{k}"])

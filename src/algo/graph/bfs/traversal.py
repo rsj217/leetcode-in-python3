@@ -2,11 +2,11 @@ import unittest
 
 from collections import deque
 from typing import Generator, Dict
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 
-def bfsorder(g: AdjListGraph) -> Generator:
+def bfsorder(g: Graph) -> Generator:
     def bfs(v: int, visited: Dict[int, bool]) -> Generator:
         queue = deque(maxlen=g.vsize)
         queue.append(v)
@@ -14,18 +14,18 @@ def bfsorder(g: AdjListGraph) -> Generator:
         while 0 < len(queue):
             v = queue.popleft()
             yield v
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
     
-    visited = {k: False for k in g.adj}
-    for k in g.adj:
-        if not visited[k]:
-            yield from bfs(k, visited)
+    visited = {v: False for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from bfs(v, visited)
 
 
-def levelorder(g: AdjListGraph) -> Generator:
+def levelorder(g: Graph) -> Generator:
     def bfs(v: int, visited: Dict[int, bool]) -> Generator:
         queue = deque(maxlen=g.vsize)
         queue.append(v)
@@ -36,19 +36,19 @@ def levelorder(g: AdjListGraph) -> Generator:
             for _ in range(lsize):
                 v = queue.popleft()
                 level.append(v)
-                for w in g.adjs(v):
+                for w in g.adj(v):
                     if not visited[w]:
                         queue.append(w)
                         visited[w] = True
             yield level
     
-    visited = {k: False for k in g.adj}
-    for k in g.adj:
-        if not visited[k]:
-            yield from bfs(k, visited)
+    visited = {v: False for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from bfs(v, visited)
 
 
-def disorder(g: AdjListGraph, s: int, t: int) -> int:
+def disorder(g: Graph, s: int, t: int) -> int:
     def bfs(v: int, dis: Dict[int, int], visited: Dict[int, bool]):
         queue = deque(maxlen=g.vsize)
         queue.append(v)
@@ -56,15 +56,15 @@ def disorder(g: AdjListGraph, s: int, t: int) -> int:
         
         while 0 < len(queue):
             v = queue.popleft()
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     queue.append(w)
                     visited[w] = True
                     dis[w] = dis[v] + 1
     
     assert 0 <= s, "vertex invalid"
-    visited = {k: False for k in g.adj}
-    dis = {k: 0 for k in g.adj}
+    visited = {v: False for v in range(len(g.graph))}
+    dis = {v: 0 for v in range(len(g.graph))}
     bfs(s, dis, visited)
     if not visited[t]:
         return -1

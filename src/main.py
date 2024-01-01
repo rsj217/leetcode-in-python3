@@ -1,4 +1,4 @@
-from src.datastruct.adj_list_graph import *
+from src.datastruct.graph import *
 from src.datastruct import graphviz
 
 
@@ -11,7 +11,7 @@ if __name__ == '__main__':
         2, 3
         2, 6
     """
-    g = AdjListGraph.load(s)
+    g = Graph.load(s)
     print(g)
     print(list(travel(g)))
     graphviz.adjlist_graph(g)

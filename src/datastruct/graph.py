@@ -7,10 +7,12 @@ import io
 
 
 @dataclass
-class AdjListGraph:
+class Graph:
+    """ Graph 表示使用领接表实现的无向无权图
+    """
     _vsize: int = 0
     _esize: int = 0
-    _adj: Dict[int, List[int]] = field(default_factory=dict)
+    _graph: List[List[int]] = field(default_factory=list)
     
     @property
     def vsize(self):
@@ -21,25 +23,25 @@ class AdjListGraph:
         return self._esize
     
     @property
-    def adj(self):
-        return self._adj
+    def graph(self):
+        return self._graph
     
     def __str__(self) -> str:
-        lines = [f"{k}: {v}" for k, v in self._adj.items()]
+        lines = [f"{idx}: {item}" for idx, item in enumerate(self._graph)]
         return "\n".join(lines)
     
     def __repr__(self) -> str:
         return self.__str__()
     
     def has_edge(self, v: int, w: int) -> bool:
-        return w in self._adj[v]
+        return w in self._graph[v]
     
-    def adjs(self, v: int) -> List[int]:
+    def adj(self, v: int) -> List[int]:
         assert 0 <= v, "invalid vertex"
-        return self._adj[v]
+        return self._graph[v]
     
     def degree(self, v: int) -> int:
-        return len(self.adjs(v))
+        return len(self.adj(v))
     
     @classmethod
     def load(cls, s: str):
@@ -50,58 +52,25 @@ class AdjListGraph:
         assert 0 < v, "invalid vertex"
         
         g._vsize, g._esize = v, e
-        g._adj = {i: [] for i in range(v)}
+        g._graph = [[] for _ in range(v)]
         
         for line in text:
             line = line.strip()
             if line != "":
                 a, b = map(int, line.split(","))
                 assert a != b, "self loop edge err"
-                assert b not in g._adj[a], "parallel edge"
-                assert a not in g._adj[b], "parallel edge"
-                g._adj[a].append(b)
-                g._adj[b].append(a)
+                assert b not in g._graph[a], "parallel edge"
+                assert a not in g._graph[b], "parallel edge"
+                g._graph[a].append(b)
+                g._graph[b].append(a)
         return g
     
     @classmethod
-    def dumps(cls, g: AdjListGraph) -> str:
+    def dumps(cls, g: Graph) -> str:
         lines = [f"{g._vsize}, {g._esize}"]
-        for k, v in g._adj.items():
-            lines.extend([f"{k}, {i}" for i in v if k < i])
+        for idx, item in enumerate(g._graph):
+            lines.extend([f"{idx}, {i}" for i in item if idx < i])
         return "\n".join(lines)
-
-
-def preorder_dfs(g: AdjListGraph):
-    visit = {k: False for k, _ in g._adj.items()}
-    
-    def _dfs(v: int):
-        if visit[v]:
-            return
-        visit[v] = True
-        # 先序
-        yield v
-        for w in g.adjs(v):
-            yield from _dfs(w)
-    
-    # 每一个点都遍历，保证非连通图覆盖
-    for k, _ in g.adj.items():
-        yield from _dfs(k)
-
-
-def postorder_dfs(g: AdjListGraph):
-    visit = {k: False for k, _ in g._adj.items()}
-    
-    def _dfs(v: int):
-        if visit[v]:
-            return
-        visit[v] = True
-        for w in g.adjs(v):
-            yield from _dfs(w)
-        yield v
-    
-    # 每一个点都遍历，保证非连通图覆盖
-    for k, _ in g.adj.items():
-        yield from _dfs(k)
 
 
 class TestAdjListGraphBuild(unittest.TestCase):
@@ -125,17 +94,17 @@ class TestAdjListGraphBuild(unittest.TestCase):
             3, 5
             5, 6
         """
-        g = AdjListGraph.load(s)
+        g = Graph.load(s)
         self.assertEqual(g.vsize, 7)
         self.assertEqual(g.esize, 7)
         
-        self.assertEqual(g.adj[0], [1, 2])
-        self.assertEqual(g.adj[1], [0, 3, 4])
-        self.assertEqual(g.adj[2], [0, 3, 6])
-        self.assertEqual(g.adj[3], [1, 2, 5])
-        self.assertEqual(g.adj[4], [1])
-        self.assertEqual(g.adj[5], [3, 6])
-        self.assertEqual(g.adj[6], [2, 5])
+        self.assertEqual(g.graph[0], [1, 2])
+        self.assertEqual(g.graph[1], [0, 3, 4])
+        self.assertEqual(g.graph[2], [0, 3, 6])
+        self.assertEqual(g.graph[3], [1, 2, 5])
+        self.assertEqual(g.graph[4], [1])
+        self.assertEqual(g.graph[5], [3, 6])
+        self.assertEqual(g.graph[6], [2, 5])
     
     def test_connected_graph_dumps(self):
         s = """7, 9
@@ -149,8 +118,8 @@ class TestAdjListGraphBuild(unittest.TestCase):
             4, 5
             5, 6
         """
-        g = AdjListGraph.load(s)
-        ans = AdjListGraph.dumps(g)
+        g = Graph.load(s)
+        ans = Graph.dumps(g)
         src = [list(map(int, line.strip().split(","))) for line in io.StringIO(s) if line.strip() != ""]
         des = [list(map(int, line.strip().split(","))) for line in io.StringIO(ans) if line.strip() != ""]
         self.assertListEqual(src, des)
@@ -172,17 +141,17 @@ class TestAdjListGraphBuild(unittest.TestCase):
             2, 3
             2, 6
         """
-        g = AdjListGraph.load(s)
+        g = Graph.load(s)
         self.assertEqual(g.vsize, 7)
         self.assertEqual(g.esize, 6)
         
-        self.assertEqual(g.adj[0], [1, 2])
-        self.assertEqual(g.adj[1], [0, 3, 4])
-        self.assertEqual(g.adj[2], [0, 3, 6])
-        self.assertEqual(g.adj[3], [1, 2])
-        self.assertEqual(g.adj[4], [1])
-        self.assertEqual(g.adj[5], [])
-        self.assertEqual(g.adj[6], [2])
+        self.assertEqual(g.graph[0], [1, 2])
+        self.assertEqual(g.graph[1], [0, 3, 4])
+        self.assertEqual(g.graph[2], [0, 3, 6])
+        self.assertEqual(g.graph[3], [1, 2])
+        self.assertEqual(g.graph[4], [1])
+        self.assertEqual(g.graph[5], [])
+        self.assertEqual(g.graph[6], [2])
     
     def test_disconnected_graph_dumps(self):
         s = """7, 6
@@ -193,8 +162,8 @@ class TestAdjListGraphBuild(unittest.TestCase):
             2, 3
             2, 6
         """
-        g = AdjListGraph.load(s)
-        ans = AdjListGraph.dumps(g)
+        g = Graph.load(s)
+        ans = Graph.dumps(g)
         src = [list(map(int, line.strip().split(","))) for line in io.StringIO(s) if line.strip() != ""]
         des = [list(map(int, line.strip().split(","))) for line in io.StringIO(ans) if line.strip() != ""]
         self.assertListEqual(src, des)
@@ -219,7 +188,7 @@ class TestAdjDictGraph(unittest.TestCase):
             2, 3
             2, 6
         """
-        self.g = AdjListGraph.load(s)
+        self.g = Graph.load(s)
     
     def test_has_edge(self):
         self.assertTrue(self.g.has_edge(0, 1))
@@ -272,13 +241,13 @@ class TestAdjDictGraph(unittest.TestCase):
         self.assertFalse(self.g.has_edge(6, 5))
     
     def test_adjs(self):
-        self.assertEqual(self.g.adjs(0), [1, 2])
-        self.assertEqual(self.g.adjs(1), [0, 3, 4])
-        self.assertEqual(self.g.adjs(2), [0, 3, 6])
-        self.assertEqual(self.g.adjs(3), [1, 2])
-        self.assertEqual(self.g.adjs(4), [1])
-        self.assertEqual(self.g.adjs(5), [])
-        self.assertEqual(self.g.adjs(6), [2])
+        self.assertEqual(self.g.adj(0), [1, 2])
+        self.assertEqual(self.g.adj(1), [0, 3, 4])
+        self.assertEqual(self.g.adj(2), [0, 3, 6])
+        self.assertEqual(self.g.adj(3), [1, 2])
+        self.assertEqual(self.g.adj(4), [1])
+        self.assertEqual(self.g.adj(5), [])
+        self.assertEqual(self.g.adj(6), [2])
     
     def test_degree(self):
         self.assertEqual(self.g.degree(0), 2)

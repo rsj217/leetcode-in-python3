@@ -1,15 +1,15 @@
 import unittest
 
 from typing import Dict, List
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.algo.graph import _build_bipartite_graph, _build_unbipartite_graph
 
 
-def is_bipartite(g: AdjListGraph) -> bool:
+def is_bipartite(g: Graph) -> bool:
     def dfs(v: int, color: int, colors: Dict[int, int], visited: Dict[int, bool]) -> bool:
         visited[v] = True
         colors[v] = color
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if not visited[w]:
                 if not dfs(w, 0 - color, colors, visited):
                     return False
@@ -17,20 +17,20 @@ def is_bipartite(g: AdjListGraph) -> bool:
                 return False
         return True
     
-    visited = {k: False for k in g.adj}
-    colors = {k: 0 for k in g.adj}
-    for k in g.adj:
-        if not visited[k]:
-            if not dfs(k, 1, colors, visited):
+    visited = {v: False for v in range(len(g.graph))}
+    colors = {v: 0 for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            if not dfs(v, 1, colors, visited):
                 return False
     return True
 
 
-def bipartite_list(g: AdjListGraph) -> List[List[int]]:
+def bipartite_list(g: Graph) -> List[List[int]]:
     def dfs(v: int, color: int, colors: Dict[int, int], visited: Dict[int, bool]):
         visited[v] = True
         colors[v] = color
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if not visited[w]:
                 if not dfs(w, 0 - color, colors, visited):
                     return False
@@ -38,13 +38,13 @@ def bipartite_list(g: AdjListGraph) -> List[List[int]]:
                 return False
         return True
     
-    visited = {k: False for k in g.adj}
-    colors = {k: 0 for k in g.adj}
+    visited = {v: False for v in range(len(g.graph))}
+    colors = {v: 0 for v in range(len(g.graph))}
     
     is_bipart = True
-    for k in g.adj:
-        if not visited[k]:
-            if not dfs(k, 1, colors, visited):
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            if not dfs(v, 1, colors, visited):
                 return []
     
     if not is_bipart:

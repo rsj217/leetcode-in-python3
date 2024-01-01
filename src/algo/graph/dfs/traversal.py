@@ -1,62 +1,62 @@
 import unittest
 
 from typing import Generator, Dict
-from src.datastruct.adj_list_graph import AdjListGraph
+from src.datastruct.graph import Graph
 from src.algo.graph import _build_connect_graph, _build_disconnect_graph
 
 
-def preorder(g: AdjListGraph) -> Generator:
+def preorder(g: Graph) -> Generator:
     """ 深度优先搜索前序遍历
     """
     
     def dfs(v: int, visit: Dict[int, bool]) -> Generator:
         visited[v] = True
         yield v
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if not visited[w]:
                 yield from dfs(w, visited)
     
-    visited = {k: False for k in g.adj}
+    visited = {v: False for v in range(len(g.graph))}
     
-    for k in g.adj:
-        if not visited[k]:
-            yield from dfs(k, visited)
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from dfs(v, visited)
 
 
-def postorder(g: AdjListGraph) -> Generator:
+def postorder(g: Graph) -> Generator:
     """ 深度优先搜索后序遍历
     """
     
     def dfs(v: int, visited: Dict[int, bool]) -> Generator:
         visited[v] = True
-        for w in g.adjs(v):
+        for w in g.adj(v):
             if not visited[w]:
                 yield from dfs(w, visited)
         yield v
     
-    visited = {k: False for k in g.adj}
+    visited = {v: False for v in range(len(g.graph))}
     
-    for k in g.adj:
-        if not visited[k]:
-            yield from dfs(k, visited)
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from dfs(v, visited)
 
 
-def search(g: AdjListGraph) -> Generator:
+def search(g: Graph) -> Generator:
     def dfs(v: int, visited: Dict[int, bool]) -> Generator:
         stack = [v]
         visited[v] = True
         while 0 < len(stack):
             v = stack.pop()
             yield v
-            for w in g.adjs(v):
+            for w in g.adj(v):
                 if not visited[w]:
                     stack.append(w)
                     visited[w] = True
     
-    visit = {k: False for k in g.adj}
-    for k in g.adj:
-        if not visit[k]:
-            yield from dfs(k, visit)
+    visited = {v: False for v in range(len(g.graph))}
+    for v in range(len(g.graph)):
+        if not visited[v]:
+            yield from dfs(v, visited)
 
 
 class TestGraphTraversal(unittest.TestCase):
