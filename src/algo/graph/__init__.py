@@ -22,7 +22,7 @@ def _build_disconnect_graph() -> Graph:
         2, 6
     """
     
-    return Graph.load(s)
+    return Graph.loads(s)
 
 
 def _build_connect_graph() -> Graph:
@@ -44,7 +44,7 @@ def _build_connect_graph() -> Graph:
         3, 5
         5, 6
     """
-    return Graph.load(s)
+    return Graph.loads(s)
 
 
 def _build_without_circle_graph() -> Graph:
@@ -63,7 +63,7 @@ def _build_without_circle_graph() -> Graph:
         1, 4
         2, 6
     """
-    return Graph.load(s)
+    return Graph.loads(s)
 
 
 def _build_bipartite_graph() -> Graph:
@@ -76,7 +76,7 @@ def _build_bipartite_graph() -> Graph:
     2, 6
     5, 6
     """
-    return Graph.load(s)
+    return Graph.loads(s)
 
 
 def _build_unbipartite_graph() -> Graph:
@@ -88,12 +88,12 @@ def _build_unbipartite_graph() -> Graph:
     1, 3
     2, 3
     """
-    return Graph.load(s)
+    return Graph.loads(s)
 
 
 def show_disconnect_graph(g: Graph):
     print(g)
-    graphviz.adjlist_graph(g)
+    graphviz.graph(g)
 
 
 def dfs(g: Graph) -> Generator:

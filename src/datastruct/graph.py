@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import unittest
-from typing import List, Dict
+from typing import List
 from dataclasses import dataclass, field
 import io
 
@@ -45,7 +45,7 @@ class Graph:
         return len(self.adj(v))
     
     @classmethod
-    def load(cls, s: str):
+    def loads(cls, s: str):
         g = cls()
         text = io.StringIO(s)
         first_line = next(text)
@@ -95,7 +95,7 @@ class TestAdjListGraphBuild(unittest.TestCase):
             3, 5
             5, 6
         """
-        g = Graph.load(s)
+        g = Graph.loads(s)
         self.assertEqual(g.vsize, 7)
         self.assertEqual(g.esize, 7)
         
@@ -119,7 +119,7 @@ class TestAdjListGraphBuild(unittest.TestCase):
             4, 5
             5, 6
         """
-        g = Graph.load(s)
+        g = Graph.loads(s)
         ans = Graph.dumps(g)
         src = [list(map(int, line.strip().split(","))) for line in io.StringIO(s) if line.strip() != ""]
         des = [list(map(int, line.strip().split(","))) for line in io.StringIO(ans) if line.strip() != ""]
@@ -142,7 +142,7 @@ class TestAdjListGraphBuild(unittest.TestCase):
             2, 3
             2, 6
         """
-        g = Graph.load(s)
+        g = Graph.loads(s)
         self.assertEqual(g.vsize, 7)
         self.assertEqual(g.esize, 6)
         
@@ -163,7 +163,7 @@ class TestAdjListGraphBuild(unittest.TestCase):
             2, 3
             2, 6
         """
-        g = Graph.load(s)
+        g = Graph.loads(s)
         ans = Graph.dumps(g)
         src = [list(map(int, line.strip().split(","))) for line in io.StringIO(s) if line.strip() != ""]
         des = [list(map(int, line.strip().split(","))) for line in io.StringIO(ans) if line.strip() != ""]
@@ -189,7 +189,7 @@ class TestAdjDictGraph(unittest.TestCase):
             2, 3
             2, 6
         """
-        self.g = Graph.load(s)
+        self.g = Graph.loads(s)
     
     def test_has_edge(self):
         self.assertTrue(self.g.has_edge(0, 1))

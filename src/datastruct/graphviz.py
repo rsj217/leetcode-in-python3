@@ -132,7 +132,23 @@ def adjmatrix_graph(g: AdjMatrixGraph):
     os.system("open graph.png")
 
 
-def adjlist_graph(g: Graph):
+def graph(g: Graph):
+    lines = ["graph g {"]
+    for v, adj in enumerate(g.graph):
+        # 非联通图
+        if len(adj) == 0:
+            lines.extend([f"{v}"])
+            continue
+        lines.extend([f"{v} -- {i}" for i in adj if v < i])
+    lines.append("}")
+    with open("graph.dot", "w") as f:
+        f.write("\n".join(lines))
+    cmd = "dot -T png -o graph.png graph.dot"
+    os.system(cmd)
+    os.system("open graph.png")
+
+
+def weighted_graph(g: Graph):
     lines = ["graph g {"]
     for k, v in g.graph.items():
         # 非联通图
