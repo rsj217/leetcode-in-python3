@@ -1,3 +1,4 @@
+import os
 import heapq
 import unittest
 from src.algo.graph import _build_weighted_graph
@@ -27,6 +28,21 @@ def prim(g: WeightedGraph):
                 if not visited[k]:
                     heapq.heappush(queue, (v, t, k))
     return mst
+
+
+def draw(g: WeightedGraph):
+    ans = prim(g)
+    
+    lines = ["graph g {"]
+    
+    for s, t, w in ans:
+        lines.append(f'{s} -- {t} [label="{w}", penwidth={w / 2}]')
+    lines.append("}")
+    with open("mst.dot", "w") as f:
+        f.write("\n".join(lines))
+    cmd = "dot -T png -o mst.png mst.dot"
+    os.system(cmd)
+    os.system("open mst.png")
 
 
 class TestPrim(unittest.TestCase):
