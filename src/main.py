@@ -1,4 +1,4 @@
-from src.algo.graph import dfs
+from src.algo.graph.minimum_spanning_tree.prim import prim
 from src.datastruct.graph import Graph
 from src.datastruct.weight_graph import WeightedGraph
 from src.datastruct import graphviz
@@ -19,6 +19,8 @@ if __name__ == '__main__':
     4,6,7
     """
     g = WeightedGraph.loads(s)
-    print(g)
-    s = WeightedGraph.dumps(g)
-    print(s)
+    graphviz.weighted_graph(g)
+    
+    ans = prim(g)
+    for s, t, w in ans:
+        print(f"{s}-{t}: {w}")
