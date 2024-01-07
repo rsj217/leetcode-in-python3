@@ -10,13 +10,13 @@ from src.datastruct.digraph import DiGraph
 
 if __name__ == '__main__':
     """
-          0
-        /  \
-      /     \
-    1 -------2
+        0
+      /  \
+     /     \
+    1 ------ 2
      \     / |
       \  /   |
-      3 -----4
+       3 ----4
     """
     s = """5, 8
         0, 1
