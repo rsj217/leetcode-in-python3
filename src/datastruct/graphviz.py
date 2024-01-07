@@ -6,6 +6,7 @@ from src.datastruct.b_treenode import BTreeNode
 from src.datastruct.n_treenode import NTreeNode
 from src.datastruct.adj_matrix_graph import AdjMatrixGraph
 from src.datastruct.graph import Graph
+from src.datastruct.digraph import DiGraph
 from src.datastruct.weight_graph import WeightedGraph
 from src.datastruct.trie import Trie
 
@@ -163,6 +164,22 @@ def weighted_graph(g: WeightedGraph):
     cmd = "dot -T png -o graph.png graph.dot"
     os.system(cmd)
     os.system("open graph.png")
+
+
+def digraph(g: DiGraph):
+    lines = ["digraph g {"]
+    for v, adj in enumerate(g.graph):
+        # 非联通图
+        if len(adj) == 0:
+            lines.extend([f"{v}"])
+            continue
+        lines.extend([f"{v} -> {i}" for i in adj])
+    lines.append("}")
+    with open("disgraph.dot", "w") as f:
+        f.write("\n".join(lines))
+    cmd = "dot -T png -o disgraph.png disgraph.dot"
+    os.system(cmd)
+    os.system("open disgraph.png")
 
 
 def trie(node: Trie):

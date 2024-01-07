@@ -50,6 +50,8 @@ from typing import List
 
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
+        dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        
         def dfs(x, y, d, idx):
             if len(word) <= idx:  # 单词搜索完毕，没有发现不匹配的，返回 True
                 return True
@@ -57,7 +59,7 @@ class Solution:
                 # 坐标越界
                 if col <= x or x < 0 or row <= y or y < 0:
                     return False
-
+            
             # 已搜索过路径
             if d.get(f"{y}-{x}", False):
                 return False
@@ -67,31 +69,21 @@ class Solution:
             else:
                 # 更新搜索状态
                 d[f"{y}-{x}"] = True
-                # 右
-                if dfs(x + 1, y, d, idx + 1):
-                    return True
-
-                # 左
-                if dfs(x - 1, y, d, idx + 1):
-                    return True
-
-                # 上
-                if dfs(x, y - 1, d, idx + 1):
-                    return True
-
-                # 下
-                if dfs(x, y + 1, d, idx + 1):
-                    return True
+                
+                # 搜索上下左右
+                for m, n in dirs:
+                    if dfs(x+m,y+n, d, idx+1):
+                        return True
                 # 恢复状态
                 d[f"{y}-{x}"] = False
             # 没有搜索结果
             return False
-
+        
         d = dict()
         idx = 0
         row = len(board)
         col = len(board[0])
-
+        
         for y in range(row):
             for x in range(col):
                 if dfs(x, y, d, idx):
@@ -103,7 +95,7 @@ import unittest
 
 
 class TestSolution(unittest.TestCase):
-
+    
     def setUp(self):
         self.test_case = [
             ([
@@ -129,7 +121,7 @@ class TestSolution(unittest.TestCase):
                  ["a", "b", "c"],
                  ["a", "e", "d"],
                  ["a", "f", "g"]], "abcdefg", True),
-
+            
             ([
                  ["A", "A", "A", "A", "A", "A"],
                  ["A", "A", "A", "A", "A", "A"],
@@ -139,7 +131,7 @@ class TestSolution(unittest.TestCase):
                  ["A", "A", "A", "A", "A", "A"]], "AAAAAAAAAAAAAAa", False)
         ]
         self.s = Solution()
-
+    
     def test_solution(self):
         for board, word, answer in self.test_case:
             ans = self.s.exist(board, word)
