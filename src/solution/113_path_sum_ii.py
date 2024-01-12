@@ -66,8 +66,8 @@ class Solution:
                 return
 
             path_list.append(node.val)
-            dfs(node.left, path_list[:])
-            dfs(node.right, path_list[:])
+            dfs(node.left, path_list.copy())
+            dfs(node.right, path_list.copy())
 
         dfs(root, [])
         return ans
