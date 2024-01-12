@@ -16,17 +16,17 @@ def inorder_dfs(root: TreeNode) -> Generator:
     if root is None:
         return
     
-    yield from preorder_dfs(root.left)
+    yield from inorder_dfs(root.left)
     yield root.val
-    yield from preorder_dfs(root.right)
+    yield from inorder_dfs(root.right)
 
 
 def postorder_dfs(root: TreeNode) -> Generator:
     if root is None:
         return
     
-    yield from preorder_dfs(root.left)
-    yield from preorder_dfs(root.right)
+    yield from postorder_dfs(root.left)
+    yield from postorder_dfs(root.right)
     yield root.val
 
 
@@ -46,8 +46,7 @@ def dfs(root: TreeNode) -> Generator:
 def bfs(root: TreeNode) -> Generator:
     if root is None:
         return
-    queue = deque()
-    queue.append(root)
+    queue = deque([root])
     while 0 < len(queue):
         node = queue.popleft()
         yield node.val
@@ -71,6 +70,7 @@ def preorder_traversal(root: TreeNode) -> Generator:
         
         if len(stack) <= 0:
             break
+        node = stack.pop()
         node = node.right
 
 
@@ -87,6 +87,7 @@ def inorder_traversal(root: TreeNode) -> Generator:
         
         if len(stack) <= 0:
             break
+        node = stack.pop()
         yield node.val
         node = node.right
 
@@ -112,3 +113,21 @@ def postorder_traversal(root: TreeNode) -> Generator:
         else:
             visited = stack.pop()
             yield visited.val
+
+
+def levelorder_traversal(root: TreeNode) -> Generator:
+    if root is None:
+        return
+    
+    queue = deque([root])
+    while 0 < len(queue):
+        qsize = len(queue)
+        qlevel = []
+        for _ in range(qsize):
+            node = queue.popleft()
+            qlevel.append(node.val)
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+        yield qlevel
