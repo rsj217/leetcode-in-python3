@@ -6,24 +6,23 @@ arr = [0, 1, 2, 3, 4, 5, 6]
 
 root = ListNode.deserialize(arr)
 
+print(root)
 
-def traversal(node: ListNode):
-    def dfs(node: ListNode):
-        print(node.val)
-        next_node = node.next
-        if next_node is not None:
-            dfs(next_node)
+
+def reverser(root):
+    prev = None
+    node = root
     
-    dfs(node)
+    while node is not None:
+        next_ = node.next
+        node.next = prev
+        prev = node
+        node = next_
+    
+    return prev
 
 
-def traversal(node: ListNode):
-    stack = [node]
-    while 0 < len(stack):
-        node = stack.pop()
-        print(node.val)
-        next_node = node.next
-        if next_node is not None:
-            stack.append(next_node)
 
 
+ans = reverser(root)
+print("ans", ans)
