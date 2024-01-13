@@ -1,26 +1,29 @@
+from typing import List
 
-from src.algo.tree.traversal import *
-from src.datastruct.treenode import TreeNode
-from src.datastruct.graphviz import *
+from src.datastruct.linknode import ListNode
 
+arr = [0, 1, 2, 3, 4, 5, 6]
 
-
-s = [4, 3, 5, 1, 2]
-
-
-root = TreeNode.deserialize(s)
+root = ListNode.deserialize(arr)
 
 
+def traversal(node: ListNode):
+    def dfs(node: ListNode):
+        print(node.val)
+        next_node = node.next
+        if next_node is not None:
+            dfs(next_node)
+    
+    dfs(node)
 
-ans1 = list(inorder_dfs(root))
-print(ans1)
 
-
-ans2 = list(inorder_traversal(root))
-print(ans2)
-
-
-ans3 = list(levelorder_travel(root))
-print(ans3)
+def traversal(node: ListNode):
+    stack = [node]
+    while 0 < len(stack):
+        node = stack.pop()
+        print(node.val)
+        next_node = node.next
+        if next_node is not None:
+            stack.append(next_node)
 
 
