@@ -3,30 +3,30 @@ from typing import Generator
 from collections import deque
 
 
-def preorder_dfs(root: TreeNode) -> Generator:
+def preorder(root: TreeNode) -> Generator:
     if root is None:
         return
     
     yield root.val
-    yield from preorder_dfs(root.left)
-    yield from preorder_dfs(root.right)
+    yield from preorder(root.left)
+    yield from preorder(root.right)
 
 
-def inorder_dfs(root: TreeNode) -> Generator:
+def inorder(root: TreeNode) -> Generator:
     if root is None:
         return
     
-    yield from inorder_dfs(root.left)
+    yield from inorder(root.left)
     yield root.val
-    yield from inorder_dfs(root.right)
+    yield from inorder(root.right)
 
 
-def postorder_dfs(root: TreeNode) -> Generator:
+def postorder(root: TreeNode) -> Generator:
     if root is None:
         return
     
-    yield from postorder_dfs(root.left)
-    yield from postorder_dfs(root.right)
+    yield from postorder(root.left)
+    yield from postorder(root.right)
     yield root.val
 
 
