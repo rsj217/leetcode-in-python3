@@ -35,27 +35,28 @@ Answer
 
 """
 
-
 import functools
 from typing import List
+
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         nums_list = [str(i) for i in nums]
+        
         def compare(a, b):
             ab = a + b
             ba = b + a
-            if ab < ba:
-                return 1
-            return -1
+            return 1 if ab < ba else -1
+        
         nums_list.sort(key=functools.cmp_to_key(compare))
         return "0" if nums_list[0] == "0" else "".join(nums_list)
+
 
 import unittest
 
 
 class TestSolution(unittest.TestCase):
-
+    
     def setUp(self):
         self.test_case = [
             ([10, 2, 9, 39, 17], "93921710"),
@@ -65,7 +66,7 @@ class TestSolution(unittest.TestCase):
             ([0, 0], "0"),
         ]
         self.s = Solution()
-
+    
     def test_solution(self):
         for nums, answer in self.test_case:
             ans = self.s.largestNumber(nums)

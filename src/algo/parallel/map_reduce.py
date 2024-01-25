@@ -12,16 +12,21 @@ def reduce_func(word: str, counts: List[int]) -> Generator:
     yield word, sum(counts)
 
 
-def map_reduce(data: List[str], map_fn: Callable[[str], Generator],
-               reduce_fn: Callable[[str, List[int]], Generator]) -> List[Tuple[str, int]]:
+def map_reduce(
+    data: List[str],
+    map_fn: Callable[[str], Generator],
+    reduce_fn: Callable[[str, List[int]], Generator]) -> List[Tuple[str, int]]:
     tmp = []
+    # map
     for line in data:
         tmp.extend(map_fn(line))
     
+    # shuffle
     groups = defaultdict(list)
     for k, v in tmp:
         groups[k].append(v)
     
+    # reduce
     reduced = []
     for k, v in groups.items():
         reduced.extend(reduce_fn(k, v))
@@ -46,6 +51,7 @@ class TestMapReduce(unittest.TestCase):
         self.assertEqual(word, 1)
         self.assertEqual(mapreduce, 3)
         self.assertEqual(example, 2)
+
 
 if __name__ == '__main__':
     unittest.main()
