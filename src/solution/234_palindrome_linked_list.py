@@ -28,10 +28,24 @@
 Tips
 ------
 
-1. 快慢指针，找到中点
+1. 快慢指针，找到中点，同时翻转左边
 2. 根据 fast 是否存在，判定中点是正中还是偏右
-3. 反转右边部分，正中的从下一个节点开始反转，偏右从当前节点开始反转
-4. 比对左边和反转的右边，判定结构
+3. 比对左边和反转的右边，判定结构
+
+```
+1--->2--->3--->2--->1-->
+
+1<---2<---3--->2--->1-->
+     |    |         |
+    prev slow      fast
+
+
+1--->2--->2--->1-->
+
+1<---2--->2--->1-->none
+     |    |         |
+    prev slow      fast
+```
 
 Answer
 ------
@@ -43,40 +57,38 @@ import unittest
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
-
-        # 快慢指针找中点
+        
         fast = head
         slow = head
+        prev = None
+        
+        # 快慢指针找中点，同时 reverse 左边链表
         while fast is not None and fast.next is not None:
             fast = fast.next.next
-            slow = slow.next
-
+            # 翻转左边
+            next_ = slow.next
+            slow.next = prev
+            prev = slow
+            slow = next_
+        
         # 判定中点偏右还是正中
+        left = prev
         if fast is not None:
-            node = slow.next
+            right = slow.next
         else:
-            node = slow
-
-        # 反转右边
-        prev = None
-        while node is not None:
-            next_ = node.next
-            node.next = prev
-            prev = node
-            node = next_
-
-        # 比对左边和右边
-        head_ = prev
-        while head_ is not None:
-            if head_.val != head.val:
+            right = slow
+        
+        # 从中间相两边比较
+        while left is not None:
+            if left.val != right.val:
                 return False
-            head = head.next
-            head_ = head_.next
+            left = left.next
+            right = right.next
         return True
 
 
 class TestSolution(unittest.TestCase):
-
+    
     def setUp(self):
         self.test_case = [
             ([1, 2, 3, 2, 1], True),
@@ -88,7 +100,7 @@ class TestSolution(unittest.TestCase):
             ([1, 1], True),
         ]
         self.s = Solution()
-
+    
     def test_solution(self):
         for nums, answer in self.test_case:
             head = ListNode.deserialize(nums)

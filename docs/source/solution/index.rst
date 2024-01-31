@@ -21,8 +21,9 @@ Solution
    25_reverse_nodes_in_k_group
    26_remove_duplicates_from_sorted_array
    27_remove_element
+   31
    33_search_in_rotated_sorted_array
-   34_
+   34_find_first_and_last_position_of_element_in_sorted_array
    35_search_insert_position
    39_combination_sum
    40_combination_sum_ii
@@ -45,7 +46,7 @@ Solution
    75_sort_colors
    77_combinations
    78_subsets
-   79_
+   79_word_search
    81_search_in_rotated_sorted_array_ii
    82_remove_duplicates_from_sorted_list_ii
    83_remove_duplicates_from_sorted_list
@@ -114,9 +115,11 @@ Solution
    377_combination_sum_iv
    387_first_unique_character_in_a_string
    392_is_subsequence
+   416_partition_equal_subset_sum
    450_delete_node_in_a_bst
    455_assign_cookies
    485_max_consecutive_ones
+   494_target_sum
    501_find_mode_in_binary_search_tree
    509_fibonacci_number
    513_find_bottom_left_tree_value
@@ -146,7 +149,7 @@ Solution
    977_squares_of_sorted_array
    1026_maximum_difference_between_node_and_ancestor
    1038_binary_search_tree_to_greater_sum_tree
-   1060_
+   1060_missing_element_in_sorted_array
    1110_delete_nodes_and_return_forest
    1302_deepest_leaves_sum
    1448_count_good_nodes_in_binary_tree
